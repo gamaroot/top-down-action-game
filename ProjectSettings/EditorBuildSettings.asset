@@ -8,6 +8,30 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Project/Scenes/Master.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Project/Scenes/Home.unity
+    guid: 70551f1387d54a64d9526220d9d7acf4
+  - enabled: 1
+    path: Assets/Project/Scenes/Settings.unity
+    guid: fb1b02ddaabad9545999bb7a4fcf2046
+  - enabled: 1
+    path: Assets/Project/Scenes/InGame Settings.unity
+    guid: faf49d10f04669a44b3eb3e630788ec3
+  - enabled: 1
+    path: Assets/Project/Scenes/Loading.unity
+    guid: 2d1d546f8cb134846afd57eb8845bd14
+  - enabled: 1
+    path: Assets/Project/Scenes/Matchmaking.unity
+    guid: 083adb2aa7a029341871811b0d5f5c88
+  - enabled: 1
+    path: Assets/Project/Scenes/Match Results.unity
+    guid: 8fe5f893377c86a4c9768668d798e550
+  - enabled: 1
+    path: Assets/Project/Scenes/Achievements.unity
+    guid: 3e76a9310dede684eb8840ad6047df0f
+  - enabled: 1
+    path: Assets/Project/Scenes/Stage 1.unity
+    guid: ff5dc1fce5df2ea4ca31f8204d01fe10
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 23a8ab7da0b2d83449a063a08c1ce514,
       type: 2}
