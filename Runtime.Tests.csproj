@@ -9,9 +9,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
-    <ProjectGuid>{32D3DFCF-80FA-BDD7-1A07-C0DDA03BFCA7}</ProjectGuid>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{4C127FFC-42D6-F02F-3C1D-51B9FBE537FE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Runtime.Tests</AssemblyName>
@@ -946,11 +945,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="ScreenNavigation.csproj">
-      <Project>{A103368C-5B12-B442-90E4-924937480717}</Project>
+      <Project>{EB79A67B-BDA8-A03A-386C-22CC8CA29BDD}</Project>
       <Name>ScreenNavigation</Name>
     </ProjectReference>
     <ProjectReference Include="Game.csproj">
-      <Project>{C5878A10-F646-2D3A-1546-08C174E0BC73}</Project>
+      <Project>{74A8C27A-0651-E17E-C4F8-8936B731170B}</Project>
       <Name>Game</Name>
     </ProjectReference>
   </ItemGroup>
