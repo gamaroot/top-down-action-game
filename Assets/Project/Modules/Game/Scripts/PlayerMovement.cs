@@ -15,18 +15,18 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInput playerInput;
     private InputAction moveAction;
     private InputAction rotateAction;
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer sprite;
     private Vector2 direction;
 
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        sprite = GetComponent<SpriteRenderer>();
+        playerInput = GetComponent<PlayerInput>();
     }
     // Start is called before the first frame update
     void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions.FindAction("Move");
         rotateAction = playerInput.actions.FindAction("Rotate");
     }
@@ -35,8 +35,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         MovePlayer();
-        //RotatePlayer();
-        //SpriteFlip();
+        GamePadLook();
+        //MouseLook();
     }
 
     void MovePlayer()
@@ -45,34 +45,48 @@ public class PlayerMovement : MonoBehaviour
         transform.position += new Vector3(direction.x, 0, direction.y) * moveSpeed * Time.deltaTime;
     }
 
-    //void SpriteFlip()
-    //{
-    //    if (direction.x < 0)
-    //    {
-    //        spriteRenderer.flipX = false;
-    //    }
-    //    if (direction.x > 0)
-    //    {
-    //        spriteRenderer.flipX = true;
-    //    }
-    //}
+    private void GamePadLook()
+    {
 
-   
-    //Not Rotating the Player right now
+        float rotate = rotateAction.ReadValue<float>();
 
-    //void RotatePlayer()
-    //{
-    //    float rotate = rotateAction.ReadValue<float>();
+        if (rotate < 0 && sprite.flipX)
+        {
+            sprite.flipX = false;
+        }
+        else if (rotate > 0 && !sprite.flipX)
+        {
+            sprite.flipX = true;
+        }
+    }
 
-    //    if (rotate == -1)
-    //    {
-    //        transform.Rotate(0, -1, 0);
-    //    }
 
-    //    if (rotate == 1)
-    //    {
-    //        transform.Rotate(0, 1, 0);
-    //    }
-    //}
+    //
+    // Currently Disabled until finished implementing funtionality
+    //
+
+    /*
+    private void MouseLook()
+    {
+
+        float rotate = rotateAction.ReadValue<float>();
+        // Calculate the distance between the camera and the player
+        float distanceFromCamera = Mathf.Abs(Camera.main.transform.position.z - transform.position.z);
+
+        // Get the mouse position in world space, using the distance from the camera
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, distanceFromCamera));
+
+        // Flip the sprite based on the mouse position relative to the player
+
+        if ((mousePosition.x < transform.position.x && !sprite.flipX) || (rotate < 0 && sprite.flipX))
+        {
+            sprite.flipX = true;
+        }
+        if (mousePosition.x > transform.position.x && sprite.flipX || (rotate > 0 && !sprite.flipX))
+        {
+            sprite.flipX = false;
+        }
+    }
+    */
 }
     
