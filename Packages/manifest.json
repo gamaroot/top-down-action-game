@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.unity.ai.navigation": "2.0.4",
     "com.unity.behavior": "1.0.2",
     "com.unity.cinemachine": "3.1.1",
     "com.unity.ide.visualstudio": "2.0.22",

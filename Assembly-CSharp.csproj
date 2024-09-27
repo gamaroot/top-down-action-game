@@ -117,10 +117,10 @@
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\2dxfx_AL\_2dxFX_AL_Hologram.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\ExtraShaders\Examples\_2DC_ShaderLerpDemo.cs" />
     <Compile Include="Assets\SampleAssets\VFX\Epic Toon FX\Scripts\ETFXLightFade.cs" />
-    <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_Offset.cs" />
     <Compile Include="Assets\SampleAssets\VFX\Epic Toon FX\Demo\Scripts\ETFXProjectileScript.cs" />
-    <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_Blur.cs" />
+    <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_Offset.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_FlameAdditive.cs" />
+    <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_Blur.cs" />
     <Compile Include="Assets\SampleAssets\VFX\Epic Toon FX\Demo\Scripts\ETFXLoopScript.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_BlurHQX.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_Sepia.cs" />
@@ -1090,12 +1090,12 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Mono.Cecil">
-      <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil\Mono.Cecil.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json\Runtime\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil\Mono.Cecil.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
@@ -1730,16 +1730,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.AppUI.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Collections.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Collections.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Behavior.Authoring">
       <HintPath>Library\ScriptAssemblies\Unity.Behavior.Authoring.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+    <Reference Include="Unity.Collections.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Collections.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
@@ -1754,6 +1750,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Center.Common.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Muse.Behavior">
       <HintPath>Library\ScriptAssemblies\Unity.Muse.Behavior.dll</HintPath>
       <Private>False</Private>
@@ -1766,12 +1766,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.AppUI.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="SerializableGUID">
       <HintPath>Library\ScriptAssemblies\SerializableGUID.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
