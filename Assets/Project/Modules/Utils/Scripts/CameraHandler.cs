@@ -1,10 +1,9 @@
-using System.Collections;
 using UnityEngine;
-using Cinemachine;
+using Unity.Cinemachine;
 
 namespace Utils
 {
-    [RequireComponent(typeof(CinemachineVirtualCamera))]
+    [RequireComponent(typeof(CinemachineCamera))]
     public class CameraHandler : MonoBehaviour
     {
         [Header("Properties")]
@@ -12,33 +11,37 @@ namespace Utils
         [SerializeField] private float _duration;
 
         [Header("Components")]
-        [SerializeField] private CinemachineVirtualCamera _vcam;
+        [SerializeField] private CinemachineCamera _camera;
+        [SerializeField] private CinemachineBasicMultiChannelPerlin _perlinNoise;
 
         public Camera MainCamera { get; private set; }
 
-        private CinemachineBasicMultiChannelPerlin _perlinNoise;
-
         private void OnValidate()
         {
-            this._vcam = base.GetComponent<CinemachineVirtualCamera>();
+            this._perlinNoise = base.GetComponent<CinemachineBasicMultiChannelPerlin>();
+            this._perlinNoise = (CinemachineBasicMultiChannelPerlin)this._camera.GetCinemachineComponent(CinemachineCore.Stage.Noise);
         }
 
         private void Start()
         {
             this.MainCamera = Camera.main;
-            this._perlinNoise = _vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        }
+
+        private void OnDisable()
+        {
+            base.CancelInvoke();
+            this._perlinNoise.AmplitudeGain = 0;
         }
 
         public void Shake()
         {
-            this._perlinNoise.m_AmplitudeGain = this._strength;
-            base.StartCoroutine(this.StopShake(this._duration));
+            this._perlinNoise.AmplitudeGain = this._strength;
+            base.Invoke("StopShake", this._duration);
         }
 
-        private IEnumerator StopShake(float delay)
+        private void StopShake()
         {
-            yield return new WaitForSeconds(delay);
-            this._perlinNoise.m_AmplitudeGain = 0;
+            this._perlinNoise.AmplitudeGain = 0;
         }
     }
 }
