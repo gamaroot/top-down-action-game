@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e8ce9961912f3214586fe8709b9012c1
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104580
+  packageName: Volumetric 3D Lasers
+  packageVersion: 1.3a
+  assetPath: Assets/SineVFX/PostProcessingV2/Shaders/Builtins/CopyStdFromDoubleWide.shader
+  uploadId: 373289

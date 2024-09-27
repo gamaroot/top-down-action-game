@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 4117fce9491711c4094d33a048e36e73
+timeCreated: 1498468345
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104580
+  packageName: Volumetric 3D Lasers
+  packageVersion: 1.3a
+  assetPath: Assets/SineVFX/PostProcessingV2/Shaders/Builtins/DeferredFog.shader
+  uploadId: 373289

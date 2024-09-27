@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 6a0c0086cde60e74e9ad1fce57eab9f1
+timeCreated: 1489754265
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104580
+  packageName: Volumetric 3D Lasers
+  packageVersion: 1.3a
+  assetPath: Assets/SineVFX/PostProcessingV2/Shaders/API/OpenGL.hlsl
+  uploadId: 373289

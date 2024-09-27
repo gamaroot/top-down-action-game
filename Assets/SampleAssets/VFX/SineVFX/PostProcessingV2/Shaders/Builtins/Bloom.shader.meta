@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: c1e1d3119c6fd4646aea0b4b74cacc1a
+timeCreated: 1489940191
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104580
+  packageName: Volumetric 3D Lasers
+  packageVersion: 1.3a
+  assetPath: Assets/SineVFX/PostProcessingV2/Shaders/Builtins/Bloom.shader
+  uploadId: 373289

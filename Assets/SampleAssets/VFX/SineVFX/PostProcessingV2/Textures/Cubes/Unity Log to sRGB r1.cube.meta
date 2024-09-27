@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 302dae2302d23ac49bbec3e17c0530b9
+timeCreated: 1496826837
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104580
+  packageName: Volumetric 3D Lasers
+  packageVersion: 1.3a
+  assetPath: Assets/SineVFX/PostProcessingV2/Textures/Cubes/Unity Log to sRGB r1.cube
+  uploadId: 373289

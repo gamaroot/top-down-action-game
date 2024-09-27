@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d7640629310e79646af0f46eb55ae466
+timeCreated: 1498574566
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104580
+  packageName: Volumetric 3D Lasers
+  packageVersion: 1.3a
+  assetPath: Assets/SineVFX/PostProcessingV2/Shaders/Builtins/ScalableAO.shader
+  uploadId: 373289

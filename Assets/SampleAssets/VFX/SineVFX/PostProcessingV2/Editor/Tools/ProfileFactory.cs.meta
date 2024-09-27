@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: ac5668592895c1742a0c6e9d111f870b
+timeCreated: 1498836357
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104580
+  packageName: Volumetric 3D Lasers
+  packageVersion: 1.3a
+  assetPath: Assets/SineVFX/PostProcessingV2/Editor/Tools/ProfileFactory.cs
+  uploadId: 373289
