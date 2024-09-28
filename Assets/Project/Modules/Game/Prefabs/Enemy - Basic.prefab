@@ -68,6 +68,7 @@ MonoBehaviour:
   m_BlackboardVariableOverridesList:
   - rid: 1653337366749512085
   - rid: 1653337366749512086
+  - rid: 1653337390161068205
   references:
     version: 2
     RefIds:
@@ -93,6 +94,15 @@ MonoBehaviour:
         - {fileID: 0}
         - {fileID: 0}
         - {fileID: 0}
+    - rid: 1653337390161068205
+      type: {class: 'BlackboardVariable`1[[Utils.Sensor, Game]]', ns: Unity.Behavior,
+        asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 16230850093122429375
+          m_Value1: 13896667933093893957
+        Name: Sensor
+        m_Value: {fileID: 8189904075132405839}
 --- !u!195 &7153801489365045476
 NavMeshAgent:
   m_ObjectHideFlags: 0

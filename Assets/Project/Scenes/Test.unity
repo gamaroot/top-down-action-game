@@ -6020,66 +6020,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1384683702542551252, guid: 78c3dbd8f65962a4f8f79255fb731ec4,
         type: 3}
-      propertyPath: 'managedReferences[1653337389462978731]'
-      value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[Utils.Sensor, Game]]'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1384683702542551252, guid: 78c3dbd8f65962a4f8f79255fb731ec4,
-        type: 3}
-      propertyPath: 'managedReferences[1653337390161068205]'
-      value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[Utils.Sensor, Game]]'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1384683702542551252, guid: 78c3dbd8f65962a4f8f79255fb731ec4,
-        type: 3}
-      propertyPath: managedReferences[1653337389462978731].Name
-      value: Sensor
-      objectReference: {fileID: 0}
-    - target: {fileID: 1384683702542551252, guid: 78c3dbd8f65962a4f8f79255fb731ec4,
-        type: 3}
-      propertyPath: managedReferences[1653337390161068205].Name
-      value: Sensor
-      objectReference: {fileID: 0}
-    - target: {fileID: 1384683702542551252, guid: 78c3dbd8f65962a4f8f79255fb731ec4,
-        type: 3}
-      propertyPath: m_BlackboardVariableOverridesList.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1384683702542551252, guid: 78c3dbd8f65962a4f8f79255fb731ec4,
-        type: 3}
-      propertyPath: managedReferences[1653337389462978731].m_Value
-      value: 
-      objectReference: {fileID: 2432693483643559413}
-    - target: {fileID: 1384683702542551252, guid: 78c3dbd8f65962a4f8f79255fb731ec4,
-        type: 3}
-      propertyPath: managedReferences[1653337390161068205].m_Value
-      value: 
-      objectReference: {fileID: 2432693483643559413}
-    - target: {fileID: 1384683702542551252, guid: 78c3dbd8f65962a4f8f79255fb731ec4,
-        type: 3}
-      propertyPath: 'm_BlackboardVariableOverridesList.Array.data[2]'
-      value: 1653337390161068205
-      objectReference: {fileID: 0}
-    - target: {fileID: 1384683702542551252, guid: 78c3dbd8f65962a4f8f79255fb731ec4,
-        type: 3}
-      propertyPath: managedReferences[1653337389462978731].GUID.m_Value0
-      value: 16564558741020928479
-      objectReference: {fileID: 0}
-    - target: {fileID: 1384683702542551252, guid: 78c3dbd8f65962a4f8f79255fb731ec4,
-        type: 3}
-      propertyPath: managedReferences[1653337389462978731].GUID.m_Value1
-      value: 10041943645784074035
-      objectReference: {fileID: 0}
-    - target: {fileID: 1384683702542551252, guid: 78c3dbd8f65962a4f8f79255fb731ec4,
-        type: 3}
-      propertyPath: managedReferences[1653337390161068205].GUID.m_Value0
-      value: 16230850093122429375
-      objectReference: {fileID: 0}
-    - target: {fileID: 1384683702542551252, guid: 78c3dbd8f65962a4f8f79255fb731ec4,
-        type: 3}
-      propertyPath: managedReferences[1653337390161068205].GUID.m_Value1
-      value: 13896667933093893957
-      objectReference: {fileID: 0}
-    - target: {fileID: 1384683702542551252, guid: 78c3dbd8f65962a4f8f79255fb731ec4,
-        type: 3}
       propertyPath: 'managedReferences[1653337366749512086].m_Value.Array.data[0]'
       value: 
       objectReference: {fileID: 2035900451}
@@ -6158,18 +6098,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78c3dbd8f65962a4f8f79255fb731ec4, type: 3}
---- !u!114 &2432693483643559413 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8189904075132405839, guid: 78c3dbd8f65962a4f8f79255fb731ec4,
-    type: 3}
-  m_PrefabInstance: {fileID: 2432693483643559410}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e64dfc74d82b1742830c62e09645323, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
