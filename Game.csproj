@@ -59,17 +59,24 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.21f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.21f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.21f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
+    <Analyzer Include="C:\Users\gamar\Documents\Projects\Gama\top-down-action-game\Library\PackageCache\com.unity.dt.app-ui\Runtime\SourceGenerators\netstandard2.0\EnumToLowerCase.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Project\Modules\Utils\Scripts\Tags.cs" />
+    <Compile Include="Assets\Project\Modules\Utils\Scripts\ReadOnlyAttribute.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Extension\EnumUtils.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Preferences\GamePreferences.cs" />
     <Compile Include="Assets\Project\Modules\Constants\Scripts\PlayerPrefsKeys.cs" />
+    <Compile Include="Assets\Project\Modules\Utils\Scripts\Editor\ReadOnlyDrawer.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Behavior\ChaseTargetAction.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\CrossSceneReference.cs" />
     <Compile Include="Assets\Project\Modules\Constants\Scripts\GameTags.cs" />
     <Compile Include="Assets\Project\Modules\Bootstrap.cs" />
     <Compile Include="Assets\Project\Modules\InputSettings\InputController.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Extension\StringFormatUtils.cs" />
+    <Compile Include="Assets\Project\Modules\Utils\Scripts\Sensor.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\CameraHandler.cs" />
+    <Compile Include="Assets\Project\Modules\Utils\Scripts\Editor\TagEnumGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Project\Modules\Game.asmdef" />
@@ -579,16 +586,16 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json\Runtime\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
       <HintPath>Library\PackageCache\com.unity.visualscripting\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil\Mono.Cecil.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json\Runtime\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
@@ -1109,6 +1116,14 @@
     </Reference>
     <Reference Include="Unity.InputSystem">
       <HintPath>Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Behavior">
+      <HintPath>Library\ScriptAssemblies\Unity.Behavior.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Behavior.GraphFramework">
+      <HintPath>Library\ScriptAssemblies\Unity.Behavior.GraphFramework.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.UI">
