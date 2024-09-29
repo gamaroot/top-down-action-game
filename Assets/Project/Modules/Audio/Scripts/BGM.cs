@@ -17,8 +17,6 @@ namespace Game
 
         private readonly List<int> _toPlay = new();
 
-        private int _playingMusic = -1;
-
         private void OnValidate()
         {
             if (this._audioSource == null)
@@ -81,44 +79,6 @@ namespace Game
             this._audioSource.clip = this._playlist[(int)type];
             this._audioSource.Play();
             this._audioSource.DOFade(1f, AUDIO_FADE_DURATION);
-        }
-
-        private void RandomizeMusic()
-        {
-            if (!this.IsMusicEnabled())
-                return;
-
-            this._audioSource.loop = false;
-
-            if (this._audioSource.isPlaying)
-            {
-                this._audioSource.DOFade(0, AUDIO_FADE_DURATION)
-                                 .OnComplete(this.PlayRandomTrack);
-            } else {
-                this.PlayRandomTrack();
-            }
-        }
-
-        private void PlayRandomTrack()
-        {
-            if (this._toPlay.Count == 0)
-            {
-                for (int index = 0; index < this._playlist.Length; index++)
-                {
-                    if (index != this._playingMusic)
-                        this._toPlay.Add(index);
-                }
-            }
-
-            this._playingMusic = this._toPlay[Random.Range(0, this._toPlay.Count)];
-            this._toPlay.Remove(_playingMusic);
-
-            this._audioSource.clip = this._playlist[this._playingMusic];
-            this._audioSource.Play();
-            this._audioSource.DOFade(1f, AUDIO_FADE_DURATION);
-
-            float remainingTime = this._audioSource.clip.length - this._audioSource.time;
-            base.Invoke(nameof(this.RandomizeMusic), remainingTime);
         }
 
         private bool IsMusicEnabled()
