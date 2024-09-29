@@ -18,9 +18,9 @@ namespace Game
             }
         }
 
-        public static T Spawn<T>(SpawnType type)
+        public static T Spawn<T>(SpawnType type, float autoDisableInSeconds = -1f)
         {
-            return _pools[(int)type].BorrowObject<T>();
+            return _pools[(int)type].BorrowObject<T>(autoDisableInSeconds);
         }
 
         public static void DisableAll()

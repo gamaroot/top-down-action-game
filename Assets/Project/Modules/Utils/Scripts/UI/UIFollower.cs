@@ -6,19 +6,14 @@ namespace Utils
     public class UIFollower : MonoBehaviour
     {
         [SerializeField] private RectTransform _rectTransform;
-        [SerializeField] private Transform _target;
         [SerializeField] private Vector2 _offset = new(0, 2);
 
-        private void OnValidate()
-        {
-            if (this._rectTransform == null)
-                this._rectTransform = this.GetComponent<RectTransform>();
-        }
+        private Transform _target;
 
         private void LateUpdate()
         {
             Vector3 screenPosition = CameraHandler.Instance.MainCamera.WorldToScreenPoint(this._target.position);
-            base.transform.position = screenPosition;
+            this._rectTransform.transform.position = screenPosition;
 
             this._rectTransform.anchoredPosition += this._offset;
         }

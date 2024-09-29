@@ -71,6 +71,7 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Preferences\GamePreferences.cs" />
     <Compile Include="Assets\Project\Modules\Constants\Scripts\PlayerPrefsKeys.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Pooling\Pool.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Behavior\EnemyState.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Editor\ReadOnlyDrawer.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Behavior\ChaseTargetAction.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\CrossSceneReference.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Sensor.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\UI\UIFollower.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Pooling\PoolingObject.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Behavior\StateDisplay.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\CameraHandler.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Editor\TagEnumGenerator.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\InputFeedback\ButtonFeedback.cs" />
