@@ -4,7 +4,6 @@ namespace Game
     {
         // UI
         BUTTON_CLICK,
-        BUTTON_HOVER,
 
         // Gameplay
         SHOOT,

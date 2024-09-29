@@ -1,15 +1,16 @@
 using UnityEngine;
-using UnityEngine.Audio;
 
 namespace Game
 {
     public class SFX : MonoBehaviour
     {
-        [SerializeField] private GameObject _prefabsShoot;
-        [SerializeField] private GameObject _prefabsReload;
+        [Header("Gameplay")]
+        [SerializeField] private GameObject _prefabShoot;
+        [SerializeField] private GameObject _prefabReload;
         [SerializeField] private GameObject _prefabsEmptyMagazine;
+
+        [Header("UI")]
         [SerializeField] private GameObject _prefabButtonClick;
-        [SerializeField] private GameObject _prefabButtonHover;
 
         private static Pool[] _pools;
 
@@ -18,11 +19,10 @@ namespace Game
             Transform baseTransform = base.transform;
             _pools = new Pool[]
             {
-                new(baseTransform, _prefabsShoot),
-                new(baseTransform, _prefabsReload),
+                new(baseTransform, _prefabShoot),
+                new(baseTransform, _prefabReload),
                 new(baseTransform, _prefabsEmptyMagazine),
                 new(baseTransform, _prefabButtonClick),
-                new(baseTransform, _prefabButtonHover)
             };
         }
 
