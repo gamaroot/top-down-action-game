@@ -62,8 +62,9 @@
     <Analyzer Include="C:\Users\gamar\Documents\Projects\Gama\top-down-action-game\Library\PackageCache\com.unity.dt.app-ui\Runtime\SourceGenerators\netstandard2.0\EnumToLowerCase.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Pooling\Pool.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\BGM.cs" />
-    <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\Pooling\PoolingObject.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Pooling\PoolingObject.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Tags.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\ReadOnlyAttribute.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Extension\EnumUtils.cs" />
@@ -74,8 +75,8 @@
     <Compile Include="Assets\Project\Modules\Utils\Scripts\CrossSceneReference.cs" />
     <Compile Include="Assets\Project\Modules\Constants\Scripts\GameTags.cs" />
     <Compile Include="Assets\Project\Modules\Bootstrap.cs" />
+    <Compile Include="Assets\Project\Modules\Utils\Scripts\InputFeedback\Vibration.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFXType.cs" />
-    <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\Pooling\Pool.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\BGMType.cs" />
     <Compile Include="Assets\Project\Modules\InputSettings\InputController.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Extension\StringFormatUtils.cs" />
@@ -84,7 +85,6 @@
     <Compile Include="Assets\Project\Modules\Utils\Scripts\CameraHandler.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Editor\TagEnumGenerator.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\InputFeedback\ButtonFeedback.cs" />
-    <Compile Include="Assets\Project\Modules\Utils\Scripts\InputFeedback\HapticFeedback.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFX.cs" />
   </ItemGroup>
   <ItemGroup>
