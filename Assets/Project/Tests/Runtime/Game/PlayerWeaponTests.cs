@@ -4,14 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.TestTools;
-using Utils;
 
 namespace Game.Tests
 {
     public class PlayerWeaponTests
     {
         private GameObject _eventSystem;
-        private CameraHandler _cameraHandler;
 
         [SetUp]
         public void Setup()
@@ -36,10 +34,8 @@ namespace Game.Tests
         public void TearDown()
         {
             GameObject.Destroy(this._eventSystem);
-            GameObject.Destroy(this._cameraHandler.gameObject);
 
             this._eventSystem = null;
-            this._cameraHandler = null;
         }
 
         private void CreateEventSystem()
