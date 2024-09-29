@@ -62,7 +62,9 @@
     <Analyzer Include="C:\Users\gamar\Documents\Projects\Gama\top-down-action-game\Library\PackageCache\com.unity.dt.app-ui\Runtime\SourceGenerators\netstandard2.0\EnumToLowerCase.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnablePool.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\BGM.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnType.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Tags.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\ReadOnlyAttribute.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Extension\EnumUtils.cs" />
