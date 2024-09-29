@@ -1,0 +1,18 @@
+{
+    "name": "Demigiant.DOTween.Pro",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c943d4ef4916ab04b921a7eeceb2ebe4"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using ScreenNavigation;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace Game
 
         private void Awake()
         {
+            DOTween.Init(this);
 #if UNITY_WEBGL
             Application.targetFrameRate = -1;
 #else
