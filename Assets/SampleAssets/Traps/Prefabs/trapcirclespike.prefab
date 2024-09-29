@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 11029909499270496}
   - component: {fileID: 5846487259176956513}
   - component: {fileID: 1366194497170855235}
+  - component: {fileID: 126147920294012001}
   m_Layer: 0
   m_Name: Cylinder.020
   m_TagString: Untagged
@@ -86,6 +87,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &126147920294012001
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2324852278413171641}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.033115704, y: 0.08224835, z: 0.012027346}
+  m_Center: {x: -0.0018465818, y: 0.059334658, z: 0.0008906685}
 --- !u!1 &5881791567021533408
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,6 +119,7 @@ GameObject:
   - component: {fileID: 8039795983144404002}
   - component: {fileID: 5372256870599333232}
   - component: {fileID: 8782976609147610107}
+  - component: {fileID: 8296682172408776227}
   m_Layer: 0
   m_Name: trapcirclespike
   m_TagString: Untagged
@@ -112,14 +135,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5881791567021533408}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 2.4444463, y: 0.8, z: 13.33}
   m_LocalScale: {x: 40, y: 40, z: 96}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 11029909499270496}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &5372256870599333232
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -173,3 +196,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8296682172408776227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5881791567021533408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc9701beb35dcd740a05adc21f54dae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: -200
