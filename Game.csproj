@@ -78,8 +78,10 @@
     <Compile Include="Assets\Project\Modules\Utils\Scripts\CrossSceneReference.cs" />
     <Compile Include="Assets\Project\Modules\Constants\Scripts\GameTags.cs" />
     <Compile Include="Assets\Project\Modules\Bootstrap.cs" />
+    <Compile Include="Assets\Project\Modules\Debug\Scripts\DebugScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\InputFeedback\Vibration.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFXType.cs" />
+    <Compile Include="Assets\Project\Modules\Debug\Scripts\DebugButton.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\BGMType.cs" />
     <Compile Include="Assets\Project\Modules\InputSettings\InputController.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Extension\StringFormatUtils.cs" />

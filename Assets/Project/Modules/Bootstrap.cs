@@ -23,11 +23,8 @@ namespace Game
 
         private void Start()
         {
-            if (this._firstScene != SceneID.NONE)
-            {
-                SceneNavigator.Initialize();
-                SceneNavigator.Instance.LoadAdditiveSceneAsync(this._firstScene);
-            }
+            SceneNavigator.Initialize();
+            SceneNavigator.Instance.LoadAdditiveSceneAsync(this._firstScene);
 
             Destroy(base.gameObject);
         }

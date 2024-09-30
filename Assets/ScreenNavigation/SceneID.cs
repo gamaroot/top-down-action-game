@@ -5,13 +5,13 @@ namespace ScreenNavigation
     [Serializable]
     public enum SceneID
     {
-        NONE,
-        HOME,
-        SETTINGS,
-        LOADOUT_SETUP,
-        LOADING,
-        GAME,
-        INGAME_SETTINGS,
-        GAME_OVER,
+        DEBUG = 1,
+        HOME = 2,
+        SETTINGS = 3,
+        LOADOUT_SETUP = 4,
+        LOADING = 5,
+        GAME = 6,
+        INGAME_SETTINGS = 7,
+        GAME_OVER = 8,
     }
 }
