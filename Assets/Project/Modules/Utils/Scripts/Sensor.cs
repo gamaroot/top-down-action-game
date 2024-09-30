@@ -54,7 +54,6 @@ namespace Utils
             {
                 this.IsTargetBehindObstacle = true;
                 Debug.DrawLine(sensorPosition, hit.point, Color.red);
-                Debug.Log("Target is behind an obstacle: " + hit.collider.name);
             }
             else
             {
