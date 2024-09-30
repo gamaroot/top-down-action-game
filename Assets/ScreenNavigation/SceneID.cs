@@ -8,11 +8,10 @@ namespace ScreenNavigation
         NONE,
         HOME,
         SETTINGS,
-        INGAME_SETTINGS,
+        LOADOUT_SETUP,
         LOADING,
-        MATCH_MAKING,
-        MATCH_RESULTS,
-        ACHIEVEMENTS,
-        STAGE_1,
+        GAME,
+        INGAME_SETTINGS,
+        GAME_OVER,
     }
 }
