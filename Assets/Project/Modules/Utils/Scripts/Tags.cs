@@ -10,7 +10,6 @@ namespace Utils
 		Player,
 		GameController,
 		PlayerCamera,
-		Missile,
-		Target,
+		Enemy,
 	}
 }

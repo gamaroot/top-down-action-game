@@ -82,6 +82,7 @@
     <Compile Include="Assets\Project\Modules\Utils\Scripts\InputFeedback\Vibration.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFXType.cs" />
     <Compile Include="Assets\Project\Modules\Debug\Scripts\DebugButton.cs" />
+    <Compile Include="Assets\Project\Modules\Debug\Scripts\DebugUtils.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\BGMType.cs" />
     <Compile Include="Assets\Project\Modules\InputSettings\InputController.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Extension\StringFormatUtils.cs" />
@@ -1164,6 +1165,10 @@
     </Reference>
     <Reference Include="Unity.Behavior.GraphFramework">
       <HintPath>Library\ScriptAssemblies\Unity.Behavior.GraphFramework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SerializableGUID">
+      <HintPath>Library\ScriptAssemblies\SerializableGUID.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.UI">

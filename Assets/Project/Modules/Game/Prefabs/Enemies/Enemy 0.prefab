@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 3682514530847574177, guid: 35e699492e1eeb847a31d7e3785b1b4f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -104,8 +104,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: '?'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 35e699492e1eeb847a31d7e3785b1b4f, type: 2}
+  m_sharedMaterial: {fileID: 3682514530847574177, guid: 35e699492e1eeb847a31d7e3785b1b4f,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -208,7 +209,7 @@ Transform:
   m_GameObject: {fileID: 9036938352783240745}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21, y: 1, z: 46}
+  m_LocalPosition: {x: -21, y: 0.5, z: 46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -245,7 +246,7 @@ MonoBehaviour:
   m_BlackboardVariableOverridesList:
   - rid: 1653337366749512085
   - rid: 1653337366749512086
-  - rid: 1653337390161068205
+  - rid: 1653337422262174130
   references:
     version: 2
     RefIds:
@@ -266,18 +267,14 @@ MonoBehaviour:
           m_Value0: 14790590699252540112
           m_Value1: 301352915747845040
         Name: Waypoints
-        m_Value:
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 0}
-    - rid: 1653337390161068205
+        m_Value: []
+    - rid: 1653337422262174130
       type: {class: 'BlackboardVariable`1[[Utils.Sensor, Game]]', ns: Unity.Behavior,
         asm: Unity.Behavior}
       data:
         GUID:
-          m_Value0: 16230850093122429375
-          m_Value1: 13896667933093893957
+          m_Value0: 12868409162849154438
+          m_Value1: 3504285707184086972
         Name: Sensor
         m_Value: {fileID: 8189904075132405839}
 --- !u!195 &7153801489365045476
@@ -299,7 +296,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 1
+  m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!33 &9209638019226785598
