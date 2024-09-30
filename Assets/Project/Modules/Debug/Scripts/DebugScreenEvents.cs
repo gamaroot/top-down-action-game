@@ -38,7 +38,7 @@ namespace Game
         {
             var spawnType = (SpawnType)this._dropdownSpawnable.value;
             Transform spawn = SpawnablePool.Spawn<Transform>(spawnType);
-            spawn.position = this._debugUtils.GetRandomCircularPosition(this._player.transform.position, 10f, 5f);
+            spawn.position = this._debugUtils.GetRandomCircularPosition(this._player.transform.position, 28f, 12f);
 
             if (spawn.tag == Tags.Enemy.ToString())
             {
