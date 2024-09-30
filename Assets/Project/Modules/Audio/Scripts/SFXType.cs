@@ -5,9 +5,10 @@ namespace Game
         // UI
         BUTTON_CLICK,
 
-        // Gameplay
-        SHOOT,
+        // Weapon
         RELOAD,
-        EMPTY_MAGAZINE
+        EMPTY_MAGAZINE,
+        SHOT_0,
+        EXPLOSION_0,
     }
 }

@@ -62,9 +62,12 @@
     <Analyzer Include="C:\Users\gamar\Documents\Projects\Gama\top-down-action-game\Library\PackageCache\com.unity.dt.app-ui\Runtime\SourceGenerators\netstandard2.0\EnumToLowerCase.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Behavior\ChaseTarget.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnablePool.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\BGM.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnType.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Weapon\Bullet.cs" />
+    <Compile Include="Assets\Project\Modules\Utils\Scripts\RendererEventsListener.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Tags.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\ReadOnlyAttribute.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Extension\EnumUtils.cs" />
@@ -73,7 +76,6 @@
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Pooling\Pool.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Behavior\EnemyState.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Editor\ReadOnlyDrawer.cs" />
-    <Compile Include="Assets\Project\Modules\Game\Scripts\Behavior\ChaseTargetAction.cs" />
     <Compile Include="Assets\Project\Modules\UI\Screens\Home\Scripts\HomeScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\CrossSceneReference.cs" />
     <Compile Include="Assets\Project\Modules\Constants\Scripts\GameTags.cs" />
@@ -87,12 +89,14 @@
     <Compile Include="Assets\Project\Modules\InputSettings\InputController.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Extension\StringFormatUtils.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Sensor.cs" />
+    <Compile Include="Assets\Project\Modules\Database\Scripts\WeaponConfig.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\UI\UIFollower.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Pooling\PoolingObject.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Behavior\StateDisplay.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\CameraHandler.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Editor\TagEnumGenerator.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\InputFeedback\ButtonFeedback.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFX.cs" />
   </ItemGroup>
   <ItemGroup>

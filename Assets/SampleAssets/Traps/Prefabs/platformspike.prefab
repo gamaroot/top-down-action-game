@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4876658316124464795}
   - component: {fileID: 5674093506550618141}
   - component: {fileID: 1862049801677021686}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: platformspike
   m_TagString: Untagged
   m_Icon: {fileID: 0}

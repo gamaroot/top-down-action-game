@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5846487259176956513}
   - component: {fileID: 1366194497170855235}
   - component: {fileID: 126147920294012001}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cylinder.020
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 5372256870599333232}
   - component: {fileID: 8782976609147610107}
   - component: {fileID: 8296682172408776227}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: trapcirclespike
   m_TagString: Untagged
   m_Icon: {fileID: 0}

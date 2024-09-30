@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4862190661462165920}
   - component: {fileID: -194302815888901922}
   m_Layer: 0
-  m_Name: sfx_shoot_1
+  m_Name: sfx_shoot_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,8 +43,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 2095053380581386613, guid: cb0a5b69bbe465249a5a0993d6447d09,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: bd6ff8cfcc38c6d4487f5f627fe87432, type: 3}
-  m_Resource: {fileID: 8300000, guid: bd6ff8cfcc38c6d4487f5f627fe87432, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 44c43d327acca084da65ee39fda69a22, type: 3}
+  m_Resource: {fileID: 8300000, guid: 44c43d327acca084da65ee39fda69a22, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

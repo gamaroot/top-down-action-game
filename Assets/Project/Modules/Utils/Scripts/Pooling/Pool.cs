@@ -76,20 +76,17 @@ namespace Game
 
                 this._onObjectCreated?.Invoke(newObj);
 
-                PoolingObject poolingObj = newObj.AddComponent<PoolingObject>();
+                PoolingObject poolingObj = newObj.GetComponent<PoolingObject>();
+
+                if (poolingObj == null)
+                    poolingObj = newObj.AddComponent<PoolingObject>();
+
                 poolingObj.Initialize(this);
 
                 if (newObj.GetComponent<AudioSource>() != null)
                 {
                     AudioSource audioSource = newObj.GetComponent<AudioSource>();
                     poolingObj.SetAutoDisable(Mathf.Max(1f, audioSource.clip.length));
-                }
-                else if (newObj.GetComponent<ParticleSystem>() != null)
-                {
-                    ParticleSystem particle = newObj.GetComponent<ParticleSystem>();
-
-                    float disableInSeconds = particle.main.loop ? 10f : particle.main.duration;
-                    poolingObj.SetAutoDisable(disableInSeconds);
                 }
 
                 this._pool.Push(newObj);

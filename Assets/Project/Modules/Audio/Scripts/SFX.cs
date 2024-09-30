@@ -5,25 +5,19 @@ namespace Game
     public class SFX : MonoBehaviour
     {
         [Header("Gameplay")]
-        [SerializeField] private GameObject _prefabShoot;
-        [SerializeField] private GameObject _prefabReload;
-        [SerializeField] private GameObject _prefabsEmptyMagazine;
-
-        [Header("UI")]
-        [SerializeField] private GameObject _prefabButtonClick;
+        [SerializeField] private GameObject[] _prefabs;
 
         private static Pool[] _pools;
 
         private void Awake()
         {
             Transform baseTransform = base.transform;
-            _pools = new Pool[]
+
+            _pools = new Pool[this._prefabs.Length];
+            for (int index = 0; index < this._prefabs.Length; index++)
             {
-                new(baseTransform, _prefabShoot),
-                new(baseTransform, _prefabReload),
-                new(baseTransform, _prefabsEmptyMagazine),
-                new(baseTransform, _prefabButtonClick),
-            };
+                _pools[index] = new(baseTransform, this._prefabs[index]);
+            }
         }
 
         public static void Play(SFXType type)

@@ -4,13 +4,16 @@ using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
 using Utils;
+using Game;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "ChaseTarget", story: "[Agent] chases target if detected by [Sensor]", category: "Action", id: "77d414558db7ca861e427caefd6f6922")]
+[NodeDescription(name: "ChaseTarget", story: "[Agent] chases/attack target if detected by [Sensor] and [keepDistanceFromTarget] if not [isKamikaze]", category: "Action", id: "77d414558db7ca861e427caefd6f6922")]
 public partial class ChaseTargetAction : Action
 {
-    [SerializeReference] public BlackboardVariable<UnityEngine.AI.NavMeshAgent> Agent;
+    [SerializeReference] public BlackboardVariable<Enemy> Agent;
     [SerializeReference] public BlackboardVariable<Sensor> Sensor;
+    [SerializeReference] public BlackboardVariable<float> KeepDistanceFromTarget;
+    [SerializeReference] public BlackboardVariable<bool> IsKamikaze;
     [SerializeReference] public BlackboardVariable<bool> IsTargetOnSight;
     protected override Status OnStart()
     {
@@ -22,7 +25,9 @@ public partial class ChaseTargetAction : Action
         this.IsTargetOnSight.Value = this.Sensor.Value.Target != null;
         if (this.IsTargetOnSight.Value)
         {
-            this.Agent.Value.SetDestination(this.Sensor.Value.Target.transform.position);
+            this.Agent.Value.OnTargetOnSight(this.Sensor.Value.Target.transform,
+                                             this.KeepDistanceFromTarget.Value,
+                                             this.IsKamikaze.Value);
         }
 
         return Status.Running;
