@@ -51,7 +51,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetTag: 5
+  _obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8
   <Target>k__BackingField: {fileID: 0}
+  <IsTargetBehindObstacle>k__BackingField: 0
 --- !u!114 &1384683702542551252
 MonoBehaviour:
   m_ObjectHideFlags: 0
