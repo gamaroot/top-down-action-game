@@ -74,6 +74,7 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Behavior\EnemyState.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Editor\ReadOnlyDrawer.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Behavior\ChaseTargetAction.cs" />
+    <Compile Include="Assets\Project\Modules\UI\Screens\Home\Scripts\HomeScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\CrossSceneReference.cs" />
     <Compile Include="Assets\Project\Modules\Constants\Scripts\GameTags.cs" />
     <Compile Include="Assets\Project\Modules\Bootstrap.cs" />
