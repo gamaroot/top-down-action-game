@@ -38,16 +38,7 @@ namespace Game
             this._onObjectActivated?.Invoke(obj);
 
             PoolingObject poolingObj = obj.GetComponent<PoolingObject>();
-
-            if (typeof(T) == typeof(AudioSource))
-            {
-                AudioSource audioSource = obj.GetComponent<AudioSource>();
-                poolingObj.SetAutoDisable(Mathf.Max(1f, audioSource.clip.length));
-            }
-            else
-            {
-                poolingObj.SetAutoDisable(autoDisableInSeconds);
-            }
+            poolingObj.SetAutoDisable(autoDisableInSeconds);
 
             return obj.GetComponent<T>();
         }
@@ -87,6 +78,19 @@ namespace Game
 
                 PoolingObject poolingObj = newObj.AddComponent<PoolingObject>();
                 poolingObj.Initialize(this);
+
+                if (newObj.GetComponent<AudioSource>() != null)
+                {
+                    AudioSource audioSource = newObj.GetComponent<AudioSource>();
+                    poolingObj.SetAutoDisable(Mathf.Max(1f, audioSource.clip.length));
+                }
+                else if (newObj.GetComponent<ParticleSystem>() != null)
+                {
+                    ParticleSystem particle = newObj.GetComponent<ParticleSystem>();
+
+                    float disableInSeconds = particle.main.loop ? 10f : particle.main.duration;
+                    poolingObj.SetAutoDisable(disableInSeconds);
+                }
 
                 this._pool.Push(newObj);
             }

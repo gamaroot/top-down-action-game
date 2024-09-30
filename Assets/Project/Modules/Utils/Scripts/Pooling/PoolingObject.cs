@@ -32,7 +32,8 @@ namespace Game
 
         public void SetAutoDisable(float time)
         {
-            this._autoDisableTimer = time;
+            if (time > 0)
+                this._autoDisableTimer = time;
         }
     }
 }
