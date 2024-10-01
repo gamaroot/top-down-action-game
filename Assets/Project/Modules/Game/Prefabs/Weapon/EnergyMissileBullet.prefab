@@ -4817,7 +4817,7 @@ GameObject:
   - component: {fileID: 182154626688665623}
   - component: {fileID: -4561819734138416000}
   m_Layer: 0
-  m_Name: EnergyMissile
+  m_Name: EnergyMissileBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

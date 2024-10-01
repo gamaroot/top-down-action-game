@@ -9,16 +9,18 @@ namespace Game
     public class Enemy : MonoBehaviour
     {
         [Header("Settings")]
-        [SerializeField] private WeaponConfig _weaponConfig;
+        [SerializeField] private WeaponType _weaponType;
         [SerializeField] private LayerMask _weaponLayerMask;
 
         [Header("Components")]
+        [SerializeField] private Transform _shootPoint;
         [SerializeField, ReadOnly] public Sensor _sensor;
         [SerializeField, ReadOnly] public NavMeshAgent _agent;
-        [SerializeField] private Transform _shootPoint;
+        [SerializeField, ReadOnly] private WeaponDatabase _weaponDatabase;
 
         private float _lastTimeShot;
         private int _weaponLayerIndex;
+        private WeaponConfig _weaponConfig;
 
         private void OnValidate()
         {
@@ -27,10 +29,14 @@ namespace Game
 
             if (this._agent == null)
                 this._agent = this.GetComponent<NavMeshAgent>();
+
+            if (this._weaponDatabase == null)
+                this._weaponDatabase = Resources.Load<WeaponDatabase>(ProjectPaths.WEAPON_DATABASE);
         }
 
         private void Awake()
         {
+            this._weaponConfig = this._weaponDatabase.Weapons[(int)this._weaponType];
             this._weaponLayerIndex = Mathf.RoundToInt(Mathf.Log(_weaponLayerMask.value, 2));
         }
 
@@ -52,7 +58,7 @@ namespace Game
                 // Reposition to shoot the target
                 this.MoveToDestination(this._sensor.BestShootingPosition);
             }
-            else if (this._lastTimeShot > this._weaponConfig.FireRate)
+            else if (this._lastTimeShot > this._weaponConfig.ShootInterval)
             {
                 this.ChaseTarget(target, keepDistanceFromTarget);
                 this.ShootTarget(target);

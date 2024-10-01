@@ -64,7 +64,7 @@ Transform:
   m_GameObject: {fileID: 9036938352783240745}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21, y: 0.5, z: 46}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -83,13 +83,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a8e174082069747941914ccef51186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponConfig: {fileID: 11400000, guid: 773e1d800630a5243a61fd9ebd2a6252, type: 2}
+  _weaponType: 0
   _weaponLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  _shootPoint: {fileID: 525587873716736208}
   _sensor: {fileID: 8189904075132405839}
   _agent: {fileID: 7153801489365045476}
-  _shootPoint: {fileID: 525587873716736208}
+  _weaponDatabase: {fileID: 11400000, guid: 232f97f12c2a3894f9e35592b8205052, type: 2}
 --- !u!114 &8189904075132405839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,6 +107,7 @@ MonoBehaviour:
   _obstacleLayer:
     serializedVersion: 2
     m_Bits: 8
+  _sphereCollider: {fileID: 8277404079912007783}
   <Target>k__BackingField: {fileID: 0}
   <IsTargetBehindObstacle>k__BackingField: 0
 --- !u!114 &1384683702542551252

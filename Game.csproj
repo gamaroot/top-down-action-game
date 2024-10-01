@@ -77,9 +77,13 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Behavior\EnemyState.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Editor\ReadOnlyDrawer.cs" />
     <Compile Include="Assets\Project\Modules\UI\Screens\Home\Scripts\HomeScreenEvents.cs" />
+    <Compile Include="Assets\Project\Modules\Database\Scripts\Weapon\WeaponDatabase.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\CrossSceneReference.cs" />
+    <Compile Include="Assets\Project\Modules\Constants\Scripts\ProjectPaths.cs" />
+    <Compile Include="Assets\Project\Modules\Database\Scripts\Weapon\WeaponConfig.cs" />
     <Compile Include="Assets\Project\Modules\Constants\Scripts\GameTags.cs" />
     <Compile Include="Assets\Project\Modules\Bootstrap.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Weapon\WeaponType.cs" />
     <Compile Include="Assets\Project\Modules\Debug\Scripts\DebugScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\InputFeedback\Vibration.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFXType.cs" />
@@ -89,7 +93,6 @@
     <Compile Include="Assets\Project\Modules\InputSettings\InputController.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Extension\StringFormatUtils.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Sensor.cs" />
-    <Compile Include="Assets\Project\Modules\Database\Scripts\WeaponConfig.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\UI\UIFollower.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Pooling\PoolingObject.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Behavior\StateDisplay.cs" />
