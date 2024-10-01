@@ -64,8 +64,6 @@ namespace Utils
             {
                 this.IsTargetBehindObstacle = true;
                 this.BestShootingPosition = this.GetBestShootingPosition(this._sphereCollider.radius);
-
-                Debug.DrawLine(sensorPosition, hit.point, Color.red);
             }
             else
             {
@@ -76,20 +74,19 @@ namespace Utils
 
         private Vector3 GetBestShootingPosition(float searchRadius, int searchAngleSteps = 30)
         {
-            if (this.Target == null) return Vector3.zero; // No target found
-
             Vector3 bestPosition = Vector3.zero;
             Vector3 sensorPosition = base.transform.position;
             Vector3 targetPosition = this.Target.transform.position;
+
             float bestDistance = Mathf.Infinity;
 
             // Sweep around the sensor in a circle to find the best clear path
-            for (int i = 0; i < 360; i += searchAngleSteps)
+            for (int index = 0; index < 360; index += searchAngleSteps)
             {
-                float angle = i * Mathf.Deg2Rad;
-                Vector3 direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
+                float angleInRad = index * Mathf.Deg2Rad;
+                var direction = new Vector3(Mathf.Cos(angleInRad), 0, Mathf.Sin(angleInRad));
 
-                Vector3 candidatePosition = sensorPosition + direction * searchRadius;
+                Vector3 candidatePosition = sensorPosition + (direction * searchRadius);
                 Vector3 directionToTarget = (targetPosition - candidatePosition).normalized;
                 float distanceToTarget = Vector3.Distance(candidatePosition, targetPosition);
 
@@ -112,7 +109,7 @@ namespace Utils
                 }
             }
 
-            return bestPosition != Vector3.zero ? bestPosition : sensorPosition; // Return original if no better position found
+            return bestPosition;
         }
     }
 }
