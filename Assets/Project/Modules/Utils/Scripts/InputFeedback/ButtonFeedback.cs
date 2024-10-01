@@ -9,7 +9,7 @@ namespace Game
     {
         public void OnClick()
         {
-            SFX.Play(SFXType.BUTTON_CLICK);
+            SFX.PlayUI(SFXTypeUI.BUTTON_CLICK);
 
             Vibration.StartHapticFeedback();
             

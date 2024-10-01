@@ -108,7 +108,6 @@
     <Compile Include="Assets\SampleAssets\VFX\SineVFX\Volumetric3DLasers\Scripts\MouseTargetV3D.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\2dxfx_AL\_2dxFX_AL_Hologram3.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_Heat.cs" />
-    <Compile Include="Assets\SampleAssets\Traps\Scripts\SemicircularRotation.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_Ghost.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_Frozen.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\2dxfx_AL\_2dxFX_AL_CircleFade.cs" />
@@ -208,7 +207,6 @@
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2DxFX.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_Pixel8bitsBW.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\2dxfx_AL\_2dxFX_AL_MetalFX.cs" />
-    <Compile Include="Assets\SampleAssets\Traps\Scripts\SpringPusher.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_Flame.cs" />
     <Compile Include="Assets\SampleAssets\VFX\Epic Toon FX\Demo\Scripts\ETFXEffectCycler.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_ColorRGB.cs" />
@@ -245,7 +243,6 @@
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_Threshold.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\2dxfx_AL\_2dxFX_AL_EdgeColor.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_Blood.cs" />
-    <Compile Include="Assets\SampleAssets\Traps\Scripts\CircularRotation.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\2dxfx_AL\_2dxFX_AL_Ice.cs" />
   </ItemGroup>
   <ItemGroup>

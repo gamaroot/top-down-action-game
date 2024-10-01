@@ -26,8 +26,8 @@ public partial class StateDisplayAction : Action
         bool hasStateChanged = this.IsTargetOnSight.Value != this._previousIsTargetOnSight;
         if (hasStateChanged)
         {
-            SpawnType spawnType = this.IsTargetOnSight.Value ? SpawnType.EXCLAMATION_MARK : SpawnType.QUESTION_MARK;
-            UIFollower reactionUI = SpawnablePool.Spawn<UIFollower>(spawnType, this.Seconds);
+            SpawnTypeOther spawnType = this.IsTargetOnSight.Value ? SpawnTypeOther.EXCLAMATION_MARK : SpawnTypeOther.QUESTION_MARK;
+            UIFollower reactionUI = SpawnablePool.SpawnOther<UIFollower>(spawnType, this.Seconds);
             reactionUI.SetTarget(this.Agent.Value.transform);
             reactionUI.gameObject.SetActive(true);
         }

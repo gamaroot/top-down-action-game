@@ -37,15 +37,15 @@ namespace Game
             ParticleSystem.MainModule main = this._particleSystem.main;
             main.startColor = this.IsPinky ? this._pinkColor : this._originalColor;
 
-            SFX.Play(this._weaponConfig.SfxOnShoot);
+            SFX.PlayProjectile(this._weaponConfig.SfxOnShoot);
             base.Invoke(nameof(this.Deactivate), this._weaponConfig.LifeTime);
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            SFX.Play(this._weaponConfig.SfxOnExplode);
+            SFX.PlayExplosion(this._weaponConfig.SfxOnExplode);
 
-            ParticleSystem particle = SpawnablePool.Spawn<ParticleSystem>(this._weaponConfig.ExplosionType);
+            ParticleSystem particle = SpawnablePool.SpawnExplosion<ParticleSystem>(this._weaponConfig.ExplosionType);
             particle.transform.position = base.transform.position;
 
             ParticleSystem.MainModule main = particle.main;
@@ -67,7 +67,7 @@ namespace Game
 
             base.gameObject.SetActive(true);
 
-            this._rigidbody.linearVelocity = origin.forward * this._weaponConfig.BulletSpeed;
+            this._rigidbody.linearVelocity = origin.forward * this._weaponConfig.ProjectileSpeed;
         }
 
         private void Deactivate()

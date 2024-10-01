@@ -607,6 +607,73 @@ PrefabInstance:
       propertyPath: m_Name
       value: Audio
       objectReference: {fileID: 0}
+    - target: {fileID: 4689902827515598904, guid: b3627d78b00089745aaadea6d58ed508,
+        type: 3}
+      propertyPath: _prefabs.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4689902827515598904, guid: b3627d78b00089745aaadea6d58ed508,
+        type: 3}
+      propertyPath: '_prefabs.Array.data[6]'
+      value: 
+      objectReference: {fileID: 6232345519844320643, guid: ab895169c4ccf3142bccc973fa187c6b,
+        type: 3}
+    - target: {fileID: 4689902827515598904, guid: b3627d78b00089745aaadea6d58ed508,
+        type: 3}
+      propertyPath: _uiSfxPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4689902827515598904, guid: b3627d78b00089745aaadea6d58ed508,
+        type: 3}
+      propertyPath: _otherSfxPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4689902827515598904, guid: b3627d78b00089745aaadea6d58ed508,
+        type: 3}
+      propertyPath: '_uiSfxPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6232345519844320643, guid: 5cddfc4dd13645041b21ae9a14dea1c1,
+        type: 3}
+    - target: {fileID: 4689902827515598904, guid: b3627d78b00089745aaadea6d58ed508,
+        type: 3}
+      propertyPath: '_otherSfxPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6232345519844320643, guid: 28d427be75c992344a3f96230959678f,
+        type: 3}
+    - target: {fileID: 4689902827515598904, guid: b3627d78b00089745aaadea6d58ed508,
+        type: 3}
+      propertyPath: '_otherSfxPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6232345519844320643, guid: 5d471314ac2739240b2e7bd09cd03f57,
+        type: 3}
+    - target: {fileID: 4689902827515598904, guid: b3627d78b00089745aaadea6d58ed508,
+        type: 3}
+      propertyPath: _explosionSfxPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4689902827515598904, guid: b3627d78b00089745aaadea6d58ed508,
+        type: 3}
+      propertyPath: _projectileSfxPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4689902827515598904, guid: b3627d78b00089745aaadea6d58ed508,
+        type: 3}
+      propertyPath: '_explosionSfxPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6232345519844320643, guid: ab895169c4ccf3142bccc973fa187c6b,
+        type: 3}
+    - target: {fileID: 4689902827515598904, guid: b3627d78b00089745aaadea6d58ed508,
+        type: 3}
+      propertyPath: '_explosionSfxPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6232345519844320643, guid: fcb06c5c0c4b52e459aa70e6b236eaa5,
+        type: 3}
+    - target: {fileID: 4689902827515598904, guid: b3627d78b00089745aaadea6d58ed508,
+        type: 3}
+      propertyPath: '_projectileSfxPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6232345519844320643, guid: 81c65b00b5df7054bbfd691f49482393,
+        type: 3}
     - target: {fileID: 7473649823050092034, guid: b3627d78b00089745aaadea6d58ed508,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -725,6 +792,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spawnables
       objectReference: {fileID: 0}
+    - target: {fileID: 8244331601106842761, guid: f2a53efdd5098974b871f831042b4348,
+        type: 3}
+      propertyPath: _otherPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244331601106842761, guid: f2a53efdd5098974b871f831042b4348,
+        type: 3}
+      propertyPath: '_otherPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 7815843732655380410, guid: 74c2faa695ddc6f4aa2e4e71d740f2a6,
+        type: 3}
+    - target: {fileID: 8244331601106842761, guid: f2a53efdd5098974b871f831042b4348,
+        type: 3}
+      propertyPath: '_otherPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 7815843732655380410, guid: 69a79b5b50e81064f8021b8387f97477,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

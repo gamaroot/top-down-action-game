@@ -2,6 +2,7 @@ namespace Game
 {
     public enum WeaponType
     {
-        ENERGY_GUN,
+        KAMIKAZE = 0,
+        ENERGY_MISSILE = 1,
     }
 }

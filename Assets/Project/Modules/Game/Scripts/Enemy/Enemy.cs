@@ -9,6 +9,7 @@ namespace Game
     public class Enemy : MonoBehaviour
     {
         [Header("Settings")]
+        [SerializeField] private bool _isKamikaze;
         [SerializeField] private WeaponType _weaponType;
         [SerializeField] private LayerMask _weaponLayerMask;
 
@@ -40,14 +41,22 @@ namespace Game
             this._weaponLayerIndex = Mathf.RoundToInt(Mathf.Log(_weaponLayerMask.value, 2));
         }
 
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.CompareTag(Tags.Player.ToString()) && this._isKamikaze)
+            {
+                this.PrepareForSelfDestruction();
+            }
+        }
+
         private void Update()
         {
             this._lastTimeShot += Time.deltaTime;
         }
 
-        public void OnTargetOnSight(Transform target, float keepDistanceFromTarget, bool isKamikaze)
+        public void OnTargetOnSight(Transform target, float keepDistanceFromTarget)
         {
-            if (isKamikaze) // Just chase the target
+            if (this._isKamikaze) // Just chase the target
             {
                 this.MoveToDestination(target.position);
                 return;
@@ -82,7 +91,7 @@ namespace Game
             Vector3 directionToTarget = (target.position - this._shootPoint.position).normalized;
             this._shootPoint.rotation = Quaternion.LookRotation(directionToTarget);
 
-            Bullet bullet = SpawnablePool.Spawn<Bullet>(SpawnType.BULLET_0);
+            Bullet bullet = SpawnablePool.SpawnProjectile<Bullet>(SpawnTypeProjectile.ENERGY_MISSILE);
             bullet.gameObject.layer = this._weaponLayerIndex;
             bullet.SetWeaponConfig(this._weaponConfig);
             bullet.Shoot(this._shootPoint);
@@ -93,6 +102,23 @@ namespace Game
         private void MoveToDestination(Vector3 position)
         {
             this._agent.SetDestination(position);
+        }
+
+        private void PrepareForSelfDestruction()
+        {
+            this._agent.isStopped = true;
+            this._agent.speed = 0f;
+
+            ParticleSystem explosion = SpawnablePool.SpawnExplosion<ParticleSystem>(SpawnTypeExplosion.KAMIKAZE_EXPLOSION);
+            explosion.transform.SetParent(base.transform.parent, false);
+            explosion.gameObject.SetActive(true);
+
+            base.Invoke(nameof(this.OnSelfDestroyed), explosion.main.duration);
+        }
+
+        private void OnSelfDestroyed()
+        {
+            base.gameObject.SetActive(false);
         }
     }
 }

@@ -18,16 +18,13 @@ namespace Game.Database
         [Tooltip("Max ammo capacity")]
         [field: SerializeField] public int AmmoCapacity { get; private set; } = 30;
 
-        [field: SerializeField] public SFXType SfxOnShoot { get; private set; }
-        [field: SerializeField] public SFXType SfxOnExplode { get; private set; }
+        [field: SerializeField] public SFXTypeProjectile SfxOnShoot { get; private set; }
+        [field: SerializeField] public SFXTypeExplosion SfxOnExplode { get; private set; }
 
-        [field: SerializeField] public SpawnType ExplosionType { get; private set; }
-
-        [Tooltip("Bullet prefab to spawn when firing")]
-        [field: SerializeField] public GameObject BulletPrefab { get; private set; }
+        [field: SerializeField] public SpawnTypeExplosion ExplosionType { get; private set; }
 
         [Tooltip("Speed of the bullet")]
-        [field: SerializeField] public float BulletSpeed { get; private set; } = 20f;
+        [field: SerializeField] public float ProjectileSpeed { get; private set; } = 20f;
 
         [Tooltip("Time before the bullet is destroyed")]
         [field: SerializeField] public float LifeTime { get; private set; } = 10f;

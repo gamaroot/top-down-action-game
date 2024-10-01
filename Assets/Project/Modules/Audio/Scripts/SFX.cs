@@ -4,32 +4,61 @@ namespace Game
 {
     public class SFX : MonoBehaviour
     {
-        [Header("Gameplay")]
-        [SerializeField] private GameObject[] _prefabs;
+        [SerializeField] private GameObject[] _uiSfxPrefabs;
+        [SerializeField] private GameObject[] _projectileSfxPrefabs;
+        [SerializeField] private GameObject[] _explosionSfxPrefabs;
+        [SerializeField] private GameObject[] _otherSfxPrefabs;
 
-        private static Pool[] _pools;
+        private readonly static Pool[][] _pools = new Pool[4][];
 
         private void Awake()
         {
             Transform baseTransform = base.transform;
-
-            _pools = new Pool[this._prefabs.Length];
-            for (int index = 0; index < this._prefabs.Length; index++)
-            {
-                _pools[index] = new(baseTransform, this._prefabs[index]);
-            }
+            this.CreatePool(0, baseTransform, this._uiSfxPrefabs);
+            this.CreatePool(1, baseTransform, this._projectileSfxPrefabs);
+            this.CreatePool(2, baseTransform, this._explosionSfxPrefabs);
+            this.CreatePool(3, baseTransform, this._otherSfxPrefabs);
         }
 
-        public static void Play(SFXType type)
+        public static void PlayUI(SFXTypeUI type)
+        {
+            Play(0, (int)type);
+        }
+
+        public static void PlayProjectile(SFXTypeProjectile type)
+        {
+            Play(1, (int)type);
+        }
+
+        public static void PlayExplosion(SFXTypeExplosion type)
+        {
+            Play(2, (int)type);
+        }
+
+        public static void PlayOther(SFXTypeOther type)
+        {
+            Play(3, (int)type);
+        }
+
+        private static void Play(int order, int type)
         {
             float volume = GamePreferences.SoundVolume;
             if (volume == 0)
                 return;
 
-            AudioSource audioSource = _pools[(int)type].BorrowObject<AudioSource>(volume);
+            AudioSource audioSource = _pools[order][type].BorrowObject<AudioSource>(volume);
             audioSource.volume = volume;
             audioSource.gameObject.SetActive(true);
             audioSource.Play();
+        }
+
+        private void CreatePool(int order, Transform baseTransform, GameObject[] prefabs)
+        {
+            _pools[order] = new Pool[prefabs.Length];
+            for (int index = 0; index < prefabs.Length; index++)
+            {
+                _pools[order][index] = new(baseTransform, prefabs[index]);
+            }
         }
     }
 }

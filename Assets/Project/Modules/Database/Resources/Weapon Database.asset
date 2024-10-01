@@ -14,15 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Weapons>k__BackingField:
   - <Type>k__BackingField: 0
+    <Damage>k__BackingField: 50
+    <ShootInterval>k__BackingField: 0
+    <Range>k__BackingField: 0
+    <AmmoCapacity>k__BackingField: 1
+    <SfxOnShoot>k__BackingField: -1
+    <SfxOnExplode>k__BackingField: 0
+    <ExplosionType>k__BackingField: 0
+    <ProjectilePrefab>k__BackingField: {fileID: 0}
+    <ProjectileSpeed>k__BackingField: 20
+    <LifeTime>k__BackingField: 10
+    <ChanceOfBeingPinky>k__BackingField: 1
+  - <Type>k__BackingField: 1
     <Damage>k__BackingField: 1
     <ShootInterval>k__BackingField: 0.5
     <Range>k__BackingField: 10
     <AmmoCapacity>k__BackingField: 7
-    <SfxOnShoot>k__BackingField: 3
-    <SfxOnExplode>k__BackingField: 4
-    <ExplosionType>k__BackingField: 2
-    <BulletPrefab>k__BackingField: {fileID: 8041255665691112014, guid: 0158f8d842891eb449a461898b092704,
+    <SfxOnShoot>k__BackingField: 0
+    <SfxOnExplode>k__BackingField: 1
+    <ExplosionType>k__BackingField: 1
+    <ProjectilePrefab>k__BackingField: {fileID: 8041255665691112014, guid: 0158f8d842891eb449a461898b092704,
       type: 3}
-    <BulletSpeed>k__BackingField: 20
+    <ProjectileSpeed>k__BackingField: 20
     <LifeTime>k__BackingField: 10
     <ChanceOfBeingPinky>k__BackingField: 1
