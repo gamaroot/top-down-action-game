@@ -84,6 +84,8 @@ namespace Utils
             for (int index = 0; index < 360; index += searchAngleSteps)
             {
                 float angleInRad = index * Mathf.Deg2Rad;
+
+                // Trigonometry: Coords of a point in a circle is x = cos(angle), z = sin(angle)
                 var direction = new Vector3(Mathf.Cos(angleInRad), 0, Mathf.Sin(angleInRad));
 
                 Vector3 candidatePosition = sensorPosition + (direction * searchRadius);
