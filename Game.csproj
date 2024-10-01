@@ -81,6 +81,7 @@
     <Compile Include="Assets\Project\Modules\Utils\Scripts\CrossSceneReference.cs" />
     <Compile Include="Assets\Project\Modules\Constants\Scripts\ProjectPaths.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Weapon\WeaponConfig.cs" />
+    <Compile Include="Assets\Project\Modules\Debug\Scripts\DebugWaypoints.cs" />
     <Compile Include="Assets\Project\Modules\Constants\Scripts\GameTags.cs" />
     <Compile Include="Assets\Project\Modules\Bootstrap.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Weapon\WeaponType.cs" />
