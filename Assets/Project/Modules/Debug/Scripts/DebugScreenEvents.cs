@@ -33,9 +33,8 @@ namespace Game
             spawn.position = this._debugUtils.GetRandomCircularPosition(this._player.transform.position, 15f, 10f);
 
             BehaviorGraphAgent enemy = spawn.GetComponent<BehaviorGraphAgent>();
-            enemy.BlackboardReference.SetVariableValue("Waypoints", this._waypoints);
-
             spawn.gameObject.SetActive(true);
+            enemy.BlackboardReference.SetVariableValue("Waypoints", this._waypoints);
         }
 
         public void OnSpawnTrapButtonClick()
