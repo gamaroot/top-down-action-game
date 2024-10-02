@@ -112,6 +112,7 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeEnemy.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFX.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Trap\SpringPusher.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Player\PlayerController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Project\Modules\Game.asmdef" />
