@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using Utils;
 using Unity.Behavior;
+using Unity.Cinemachine;
 
 namespace Game
 {
@@ -13,8 +14,11 @@ namespace Game
         [SerializeField, ReadOnly] private GameObject _player;
         [SerializeField] private TMP_Dropdown _dropdownSpawnableEnemies;
         [SerializeField] private TMP_Dropdown _dropdownSpawnableTraps;
+        [SerializeField] private CinemachineCamera[] _cameras;
+        [SerializeField] private TextMeshProUGUI _textCurrentCamera;
         [SerializeField] private List<GameObject> _waypoints;
 
+        private int _currentActiveCamera;
         private readonly DebugUtils _debugUtils = new();
 
         private void OnValidate()
@@ -24,6 +28,20 @@ namespace Game
 
             this.LoadDropdown<SpawnTypeEnemy>(this._dropdownSpawnableEnemies);
             this.LoadDropdown<TrapSpawnType>(this._dropdownSpawnableTraps);
+        }
+
+        public void OnCameraButtonClick()
+        {
+            this._cameras[this._currentActiveCamera].Priority = 0;
+
+            if (++this._currentActiveCamera >= this._cameras.Length)
+            {
+                this._currentActiveCamera = 0;
+            }
+            CinemachineCamera nextCamera = this._cameras[this._currentActiveCamera];
+            nextCamera.Priority = 1;
+
+            this._textCurrentCamera.text = nextCamera.name.Replace(" Camera", "");
         }
 
         public void OnSpawnEnemyButtonClick()
