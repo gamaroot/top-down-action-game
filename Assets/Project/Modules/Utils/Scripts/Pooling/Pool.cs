@@ -83,10 +83,16 @@ namespace Game
 
                 poolingObj.Initialize(this);
 
-                if (newObj.GetComponent<AudioSource>() != null)
+                AudioSource audioSource = newObj.GetComponent<AudioSource>();
+                if (audioSource != null)
                 {
-                    AudioSource audioSource = newObj.GetComponent<AudioSource>();
-                    poolingObj.SetAutoDisable(Mathf.Max(1f, audioSource.clip.length));
+                    poolingObj.SetAutoDisable(audioSource.clip.length);
+                }
+
+                ParticleSystem particleSystem = newObj.GetComponent<ParticleSystem>();
+                if (particleSystem != null)
+                {
+                    poolingObj.SetAutoDisable(particleSystem.main.duration);
                 }
 
                 this._pool.Push(newObj);

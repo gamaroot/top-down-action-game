@@ -20,36 +20,38 @@ namespace Game
             this.CreatePool(3, baseTransform, this._otherSfxPrefabs);
         }
 
-        public static void PlayUI(SFXTypeUI type)
+        public static AudioSource PlayUI(SFXTypeUI type)
         {
-            Play(0, (int)type);
+            return Play(0, (int)type);
         }
 
-        public static void PlayProjectile(SFXTypeProjectile type)
+        public static AudioSource PlayProjectile(SFXTypeProjectile type)
         {
-            Play(1, (int)type);
+            return Play(1, (int)type);
         }
 
-        public static void PlayExplosion(SFXTypeExplosion type)
+        public static AudioSource PlayExplosion(SFXTypeExplosion type)
         {
-            Play(2, (int)type);
+            return Play(2, (int)type);
         }
 
-        public static void PlayOther(SFXTypeOther type)
+        public static AudioSource PlayOther(SFXTypeOther type)
         {
-            Play(3, (int)type);
+            return Play(3, (int)type);
         }
 
-        private static void Play(int order, int type)
+        private static AudioSource Play(int order, int type)
         {
             float volume = GamePreferences.SoundVolume;
             if (volume == 0)
-                return;
+                return null;
 
-            AudioSource audioSource = _pools[order][type].BorrowObject<AudioSource>(volume);
+            AudioSource audioSource = _pools[order][type].BorrowObject<AudioSource>();
             audioSource.volume = volume;
             audioSource.gameObject.SetActive(true);
             audioSource.Play();
+
+            return audioSource;
         }
 
         private void CreatePool(int order, Transform baseTransform, GameObject[] prefabs)

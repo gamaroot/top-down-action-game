@@ -15,6 +15,7 @@ namespace Game
 
         [Header("Components")]
         [SerializeField] private Transform _shootPoint;
+        [SerializeField, ReadOnly] public MeshRenderer _meshRenderer;
         [SerializeField, ReadOnly] public Sensor _sensor;
         [SerializeField, ReadOnly] public NavMeshAgent _agent;
         [SerializeField, ReadOnly] private WeaponDatabase _weaponDatabase;
@@ -25,8 +26,11 @@ namespace Game
 
         private void OnValidate()
         {
+            if (this._meshRenderer == null)
+                this._meshRenderer = this.GetComponent<MeshRenderer>();
+
             if (this._sensor == null)
-                this._sensor = this.GetComponent<Sensor>();
+                this._sensor = this.GetComponentInChildren<Sensor>();
 
             if (this._agent == null)
                 this._agent = this.GetComponent<NavMeshAgent>();
@@ -41,9 +45,17 @@ namespace Game
             this._weaponLayerIndex = Mathf.RoundToInt(Mathf.Log(_weaponLayerMask.value, 2));
         }
 
+        private void OnEnable()
+        {
+            this._agent.enabled = true;
+            this._meshRenderer.enabled = true;
+        }
+
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.CompareTag(Tags.Player.ToString()) && this._isKamikaze)
+            if (this._isKamikaze &&
+                this._meshRenderer.enabled && // Only if the enemy is still alive
+                collision.gameObject.CompareTag(Tags.Player.ToString()))
             {
                 this.PrepareForSelfDestruction();
             }
@@ -106,14 +118,23 @@ namespace Game
 
         private void PrepareForSelfDestruction()
         {
-            this._agent.isStopped = true;
-            this._agent.speed = 0f;
+            this._meshRenderer.enabled = false;
+
+            AudioSource audioSource = SFX.PlayExplosion(SFXTypeExplosion.KAMIKAZE_EXPLOSION);
+            audioSource.transform.SetParent(base.transform, false);
 
             ParticleSystem explosion = SpawnablePool.SpawnExplosion<ParticleSystem>(SpawnTypeExplosion.KAMIKAZE_EXPLOSION);
-            explosion.transform.SetParent(base.transform.parent, false);
+            explosion.transform.SetParent(base.transform, false);
+            explosion.transform.position = base.transform.position;
             explosion.gameObject.SetActive(true);
 
+            base.Invoke(nameof(this.OnExploded), explosion.main.duration / 2f);
             base.Invoke(nameof(this.OnSelfDestroyed), explosion.main.duration);
+        }
+
+        private void OnExploded()
+        {
+            this._agent.enabled = false;
         }
 
         private void OnSelfDestroyed()

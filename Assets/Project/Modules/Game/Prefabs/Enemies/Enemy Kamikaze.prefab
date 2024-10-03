@@ -52,7 +52,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 20
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2191498822432452884
 MonoBehaviour:
@@ -162,6 +162,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   _shootPoint: {fileID: 525587873716736208}
+  _meshRenderer: {fileID: 948797227930074108}
   _sensor: {fileID: 0}
   _agent: {fileID: 7153801489365045476}
   _weaponDatabase: {fileID: 11400000, guid: 232f97f12c2a3894f9e35592b8205052, type: 2}
