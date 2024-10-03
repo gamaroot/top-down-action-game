@@ -62,8 +62,8 @@
     <Analyzer Include="C:\Users\gamar\Documents\Projects\Gama\top-down-action-game\Library\PackageCache\com.unity.dt.app-ui\Runtime\SourceGenerators\netstandard2.0\EnumToLowerCase.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Project\Modules\Game\Scripts\Behavior\ChaseTarget.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnablePool.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Behavior\EnemyState.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\BGM.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Weapon\Bullet.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\RendererEventsListener.cs" />
@@ -73,7 +73,6 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Preferences\GamePreferences.cs" />
     <Compile Include="Assets\Project\Modules\Constants\Scripts\PlayerPrefsKeys.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Pooling\Pool.cs" />
-    <Compile Include="Assets\Project\Modules\Game\Scripts\Behavior\EnemyState.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Editor\ReadOnlyDrawer.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeExplosion.cs" />
     <Compile Include="Assets\Project\Modules\UI\Screens\Home\Scripts\HomeScreenEvents.cs" />
@@ -92,6 +91,7 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\TrapSpawnType.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFXTypeProjectile.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\InputFeedback\Vibration.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerController.cs" />
     <Compile Include="Assets\Project\Modules\Debug\Scripts\DebugButton.cs" />
     <Compile Include="Assets\Project\Modules\Debug\Scripts\DebugUtils.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\BGMType.cs" />
@@ -99,20 +99,20 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Trap\TrapCircularRotation.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Extension\StringFormatUtils.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Sensor.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\Enemy.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFXTypeUI.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\UI\UIFollower.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Pooling\PoolingObject.cs" />
-    <Compile Include="Assets\Project\Modules\Game\Scripts\Behavior\StateDisplay.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Behavior\ChaseTarget.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\CameraHandler.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Behavior\StateDisplay.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Editor\TagEnumGenerator.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\InputFeedback\ButtonFeedback.cs" />
-    <Compile Include="Assets\Project\Modules\Game\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFXTypeOther.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeOther.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeEnemy.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFX.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Trap\SpringPusher.cs" />
-    <Compile Include="Assets\Project\Modules\Game\Scripts\Player\PlayerController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Project\Modules\Game.asmdef" />

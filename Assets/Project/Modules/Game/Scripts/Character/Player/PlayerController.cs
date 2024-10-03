@@ -13,6 +13,15 @@ namespace Game
         private Vector2 _move;
         private InputController _inputs;
 
+        /**
+        
+            Vector2 mousePosition = Mouse.current.position.ReadValue();
+            Vector2 aimDirection = Gamepad.current.leftStick.ReadValue();
+            shootPoint.forward = aimDir;
+            rb.velocity = shootPoint.forward * bulletSpeed;
+
+         */
+
         private void OnValidate()
         {
             if (this._controller == null)
