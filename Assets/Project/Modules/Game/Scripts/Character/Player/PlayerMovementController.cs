@@ -40,11 +40,8 @@ namespace Game
 
         private void Update()
         {
-            if (this._controller.enabled)
-            {
-                Vector3 movement = this._speed * Time.deltaTime * new Vector3(this._move.x, 0, this._move.y);
-                this._controller.Move(movement);
-            }
+            Vector3 movement = this._speed * Time.deltaTime * new Vector3(this._move.x, 0, this._move.y);
+            this._controller.Move(movement);
         }
 
         public override void Move(Vector3 point)
