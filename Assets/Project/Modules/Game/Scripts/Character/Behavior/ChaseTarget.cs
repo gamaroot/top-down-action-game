@@ -7,12 +7,11 @@ using Utils;
 using Game;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "ChaseTarget", story: "[Agent] chases/attack target if detected by [Sensor] and [keepDistanceFromTarget] if not kamikaze", category: "Action", id: "77d414558db7ca861e427caefd6f6922")]
-public partial class ChaseTargetAction : Action
+[NodeDescription(name: "ChaseTargetAsKamikaze", story: "[Agent] chases target if [IsTargetOnSight] when detected by [Sensor]", category: "Action", id: "77d414558db7ca861e427caefd6f6922")]
+public partial class ChaseTargetAsKamikazeAction : Action
 {
-    [SerializeReference] public BlackboardVariable<Enemy> Agent;
+    [SerializeReference] public BlackboardVariable<EnemyKamikaze> Agent;
     [SerializeReference] public BlackboardVariable<Sensor> Sensor;
-    [SerializeReference] public BlackboardVariable<float> KeepDistanceFromTarget;
     [SerializeReference] public BlackboardVariable<bool> IsTargetOnSight;
     protected override Status OnStart()
     {
@@ -24,8 +23,7 @@ public partial class ChaseTargetAction : Action
         this.IsTargetOnSight.Value = this.Sensor.Value.Target != null;
         if (this.IsTargetOnSight.Value)
         {
-            this.Agent.Value.OnTargetOnSight(this.Sensor.Value.Target.transform,
-                                             this.KeepDistanceFromTarget.Value);
+            this.Agent.Value.OnMove(this.Sensor.Value.Target.transform.position);
         }
 
         return Status.Running;

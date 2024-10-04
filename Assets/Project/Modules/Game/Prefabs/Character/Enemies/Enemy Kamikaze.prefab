@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9209167990322209451}
   - component: {fileID: 8512086632144557551}
   - component: {fileID: 2191498822432452884}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,37 +73,6 @@ MonoBehaviour:
   _sphereCollider: {fileID: 8277404079912007783}
   <Target>k__BackingField: {fileID: 0}
   <IsTargetBehindObstacle>k__BackingField: 0
---- !u!1 &7065078458762430017
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 525587873716736208}
-  m_Layer: 9
-  m_Name: Shoot Point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &525587873716736208
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7065078458762430017}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7063659801511918677}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9036938352783240745
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +82,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7063659801511918677}
-  - component: {fileID: 8088519212354882930}
+  - component: {fileID: 4910523394046150279}
+  - component: {fileID: 1306455811818272514}
   - component: {fileID: 1384683702542551252}
   - component: {fileID: 7153801489365045476}
   - component: {fileID: 9209638019226785598}
@@ -141,10 +111,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9209167990322209451}
-  - {fileID: 525587873716736208}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8088519212354882930
+--- !u!114 &4910523394046150279
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,19 +122,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 9036938352783240745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78a8e174082069747941914ccef51186, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ddace0cbc90987469c1ac2b8da56d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isKamikaze: 1
-  _weaponType: 0
-  _weaponLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
-  _shootPoint: {fileID: 525587873716736208}
   _meshRenderer: {fileID: 948797227930074108}
-  _sensor: {fileID: 0}
+  _movement: {fileID: 1306455811818272514}
+  _weapon: {fileID: 0}
+--- !u!114 &1306455811818272514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9036938352783240745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 179f37a1fa1bf4a46832d866d6d42e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _agent: {fileID: 7153801489365045476}
-  _weaponDatabase: {fileID: 11400000, guid: 232f97f12c2a3894f9e35592b8205052, type: 2}
+  _rotationSpeed: 5
 --- !u!114 &1384683702542551252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,7 +159,6 @@ MonoBehaviour:
   - rid: 1653337366749512085
   - rid: 1653337366749512086
   - rid: 1653337422262174130
-  - rid: 1653337432023630196
   references:
     version: 2
     RefIds:
@@ -214,15 +189,6 @@ MonoBehaviour:
           m_Value1: 3504285707184086972
         Name: Sensor
         m_Value: {fileID: 2191498822432452884}
-    - rid: 1653337432023630196
-      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior,
-        asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 17548337661900675365
-          m_Value1: 11742040012492559337
-        Name: KeepDistanceFromTarget
-        m_Value: 12
 --- !u!195 &7153801489365045476
 NavMeshAgent:
   m_ObjectHideFlags: 0

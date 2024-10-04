@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Game
 {
-    public class PlayerController : MonoBehaviour
+    [RequireComponent(typeof(CharacterController))]
+    public class PlayerMovementController : MovementController
     {
         [Header("Attributes")]
         [SerializeField] private float _speed = 10f;
@@ -12,15 +14,6 @@ namespace Game
 
         private Vector2 _move;
         private InputController _inputs;
-
-        /**
-        
-            Vector2 mousePosition = Mouse.current.position.ReadValue();
-            Vector2 aimDirection = Gamepad.current.leftStick.ReadValue();
-            shootPoint.forward = aimDir;
-            rb.velocity = shootPoint.forward * bulletSpeed;
-
-         */
 
         private void OnValidate()
         {
@@ -52,6 +45,11 @@ namespace Game
                 Vector3 movement = this._speed * Time.deltaTime * new Vector3(this._move.x, 0, this._move.y);
                 this._controller.Move(movement);
             }
+        }
+
+        public override void Move(Vector3 point)
+        {
+            this._controller.Move(point);
         }
     }
 }

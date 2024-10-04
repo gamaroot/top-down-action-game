@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8358713076012240547}
   - component: {fileID: 4689902827515598904}
   - component: {fileID: 8445418398199776538}
+  - component: {fileID: 3006177858125117925}
   m_Layer: 0
   m_Name: Audio
   m_TagString: Untagged
@@ -61,13 +62,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec1a9f1176c639241a96883c708dfd8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabs:
-  - {fileID: 6232345519844320643, guid: 5cddfc4dd13645041b21ae9a14dea1c1, type: 3}
-  - {fileID: 6232345519844320643, guid: 81c65b00b5df7054bbfd691f49482393, type: 3}
-  - {fileID: 6232345519844320643, guid: 28d427be75c992344a3f96230959678f, type: 3}
-  - {fileID: 6232345519844320643, guid: 5d471314ac2739240b2e7bd09cd03f57, type: 3}
-  - {fileID: 6232345519844320643, guid: 81c65b00b5df7054bbfd691f49482393, type: 3}
-  - {fileID: 6232345519844320643, guid: fcb06c5c0c4b52e459aa70e6b236eaa5, type: 3}
+  _uiSfxPrefabs: []
+  _projectileSfxPrefabs: []
+  _explosionSfxPrefabs: []
+  _otherSfxPrefabs: []
 --- !u!82 &8445418398199776538
 AudioSource:
   m_ObjectHideFlags: 0
@@ -165,3 +163,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &3006177858125117925
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435047698766939487}
+  m_Enabled: 1

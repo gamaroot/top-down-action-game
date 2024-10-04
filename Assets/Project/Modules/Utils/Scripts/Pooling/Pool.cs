@@ -90,7 +90,7 @@ namespace Game
                 }
 
                 ParticleSystem particleSystem = newObj.GetComponent<ParticleSystem>();
-                if (particleSystem != null)
+                if (particleSystem != null && !particleSystem.main.loop)
                 {
                     poolingObj.SetAutoDisable(particleSystem.main.duration);
                 }

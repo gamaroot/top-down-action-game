@@ -60,10 +60,10 @@ namespace Game
             this._weaponConfig = weaponConfig;
         }
 
-        public void Shoot(Transform origin)
+        public void Shoot(Transform origin, Quaternion direction)
         {
             base.transform.position = origin.position;
-            base.transform.rotation = origin.rotation;
+            base.transform.rotation = direction;
 
             base.gameObject.SetActive(true);
 
