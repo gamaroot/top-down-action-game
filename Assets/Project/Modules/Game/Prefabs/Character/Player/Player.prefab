@@ -306,6 +306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4391291159302818654}
   - component: {fileID: 4392599432013812452}
+  - component: {fileID: 3510508411092861242}
   - component: {fileID: 8295479494289561504}
   - component: {fileID: 4145685737540136366}
   - component: {fileID: 2330986922002403453}
@@ -348,10 +349,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 10
+  _dashSpeed: 30
+  _dashDuration: 0.2
+  _dashCooldown: 1
   _groundLayerMask:
     serializedVersion: 2
     m_Bits: 2048
   _controller: {fileID: 2330986922002403453}
+--- !u!114 &3510508411092861242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6232202900844893240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e748e5f58b1abb8468ca975c266e62f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weapon: {fileID: 4058481650867848550}
 --- !u!135 &8295479494289561504
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -435,7 +452,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2584479008907316112}
   - component: {fileID: 4058481650867848550}
-  - component: {fileID: 7440445810208316495}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -476,16 +492,3 @@ MonoBehaviour:
     m_Bits: 128
   _shootPoint: {fileID: 2584479008907316112}
   _weaponDatabase: {fileID: 11400000, guid: 232f97f12c2a3894f9e35592b8205052, type: 2}
---- !u!114 &7440445810208316495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6772502279825335762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e748e5f58b1abb8468ca975c266e62f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _weapon: {fileID: 4058481650867848550}

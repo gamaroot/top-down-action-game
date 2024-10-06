@@ -1,10 +1,7 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
-using Utils;
 
 namespace Game
 {
-    [RequireComponent(typeof(WeaponController))]
     public class PlayerShootController : MonoBehaviour
     {
         [Header("Components")]
