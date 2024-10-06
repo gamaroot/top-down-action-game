@@ -28,7 +28,7 @@ public class DashHandler
 
         this.CanDash = false;
         this.IsDashing = true;
-        Debug.Log(this.IsDashing);
+
         this._dashStartTime = Time.time;  // Set the start time of the dash
         this._dashDirection = new Vector3(dashInput.x, 0, dashInput.y).normalized;
 
