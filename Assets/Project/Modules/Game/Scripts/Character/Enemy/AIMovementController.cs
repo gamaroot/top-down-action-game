@@ -8,8 +8,6 @@ namespace Game
     public class AIMovementController : MovementController
     {
         [SerializeField, ReadOnly] private NavMeshAgent _agent;
-        [Tooltip("Speed for rotating towards the target")]
-        [SerializeField] private float _rotationSpeed = 5f;
 
         private void OnValidate()
         {
