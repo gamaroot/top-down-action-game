@@ -107,7 +107,6 @@
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Pooling\PoolingObject.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\WeaponController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Behavior\ChaseTarget.cs" />
-    <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\DashHandler.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\CameraHandler.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Behavior\StateDisplay.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Editor\TagEnumGenerator.cs" />
@@ -116,6 +115,7 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Behavior\ShootTarget.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFXTypeOther.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeOther.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Character\DashHandler.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\AIMovementController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeEnemy.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFX.cs" />
