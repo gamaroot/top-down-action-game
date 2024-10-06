@@ -44,14 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c157c16b3b71b3242a13caf2054820a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabs:
-  - {fileID: 9036938352783240745, guid: 6d87a44cab9fb3648acdbfe14508f5e8, type: 3}
-  - {fileID: 9036938352783240745, guid: 78c3dbd8f65962a4f8f79255fb731ec4, type: 3}
-  - {fileID: 7815843732655380410, guid: 69a79b5b50e81064f8021b8387f97477, type: 3}
-  - {fileID: 8041255665691112014, guid: 0158f8d842891eb449a461898b092704, type: 3}
-  - {fileID: 1873985756121678, guid: 3b417d6889c0b9f4383809bb58ebe1a9, type: 3}
-  - {fileID: 7815843732655380410, guid: 74c2faa695ddc6f4aa2e4e71d740f2a6, type: 3}
-  - {fileID: 7815843732655380410, guid: 69a79b5b50e81064f8021b8387f97477, type: 3}
   _enemyPrefabs:
   - {fileID: 9036938352783240745, guid: 6d87a44cab9fb3648acdbfe14508f5e8, type: 3}
   - {fileID: 9036938352783240745, guid: 78c3dbd8f65962a4f8f79255fb731ec4, type: 3}
@@ -66,6 +58,6 @@ MonoBehaviour:
   - {fileID: 4585351776358199094, guid: 6486bf66ec268c74d85d33b550e2d9cc, type: 3}
   - {fileID: 2191241214476078806, guid: 22d752898dafb0d498ecba966d3a7050, type: 3}
   - {fileID: 7630919769153759379, guid: b460bd9e54a08f041bf88a23712fd8a6, type: 3}
-  _objectPrefabs:
+  _otherPrefabs:
   - {fileID: 7815843732655380410, guid: 74c2faa695ddc6f4aa2e4e71d740f2a6, type: 3}
   - {fileID: 7815843732655380410, guid: 69a79b5b50e81064f8021b8387f97477, type: 3}

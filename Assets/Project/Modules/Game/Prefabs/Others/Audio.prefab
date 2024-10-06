@@ -62,10 +62,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec1a9f1176c639241a96883c708dfd8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uiSfxPrefabs: []
-  _projectileSfxPrefabs: []
-  _explosionSfxPrefabs: []
-  _otherSfxPrefabs: []
+  _uiSfxPrefabs:
+  - {fileID: 6232345519844320643, guid: 5cddfc4dd13645041b21ae9a14dea1c1, type: 3}
+  _projectileSfxPrefabs:
+  - {fileID: 6232345519844320643, guid: 81c65b00b5df7054bbfd691f49482393, type: 3}
+  _explosionSfxPrefabs:
+  - {fileID: 6232345519844320643, guid: ab895169c4ccf3142bccc973fa187c6b, type: 3}
+  - {fileID: 6232345519844320643, guid: fcb06c5c0c4b52e459aa70e6b236eaa5, type: 3}
+  _otherSfxPrefabs:
+  - {fileID: 6232345519844320643, guid: 28d427be75c992344a3f96230959678f, type: 3}
+  - {fileID: 6232345519844320643, guid: 5d471314ac2739240b2e7bd09cd03f57, type: 3}
 --- !u!82 &8445418398199776538
 AudioSource:
   m_ObjectHideFlags: 0
