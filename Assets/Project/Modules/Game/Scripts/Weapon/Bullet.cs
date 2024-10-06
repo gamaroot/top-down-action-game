@@ -41,7 +41,7 @@ namespace Game
             base.Invoke(nameof(this.Deactivate), this._weaponConfig.LifeTime);
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnCollisionEnter(Collision collision)
         {
             SFX.PlayExplosion(this._weaponConfig.SfxOnExplode);
 
@@ -60,10 +60,9 @@ namespace Game
             this._weaponConfig = weaponConfig;
         }
 
-        public void Shoot(Transform origin, Quaternion direction)
+        public void Shoot(Transform origin)
         {
             base.transform.position = origin.position;
-            base.transform.rotation = direction;
 
             base.gameObject.SetActive(true);
 

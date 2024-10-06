@@ -11,10 +11,10 @@ namespace Game
             base.OnMove(point);
         }
 
-        public void OnAttack(Vector3 point)
+        public void OnAttack()
         {
             if (base._weapon.CanShoot)
-                base._weapon.ShootAtTarget(point);
+                base._weapon.Shoot();
         }
     }
 }

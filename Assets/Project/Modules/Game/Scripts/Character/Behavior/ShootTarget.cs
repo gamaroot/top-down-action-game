@@ -24,19 +24,13 @@ public partial class ShootTargetAction : Action
         this.IsTargetOnSight.Value = this.Sensor.Value.Target != null;
         if (this.IsTargetOnSight.Value)
         {
-            Vector3 point;
-            if (this.Sensor.Value.IsTargetBehindObstacle)
-            {
-                // Reposition to shoot the target
-                point = this.Sensor.Value.BestShootingPosition;
-            }
-            else
-            {
-                point = this.Sensor.Value.Target.transform.position;
-                this.Agent.Value.OnAttack(this.Sensor.Value.Target.transform.position);
-            }
+            Vector3 point = this.Sensor.Value.IsTargetBehindObstacle
+                                ? this.Sensor.Value.BestShootingPosition
+                                : this.Sensor.Value.Target.transform.position;
+
             this.Agent.Value.FaceTarget(point);
             this.Agent.Value.OnMove(point);
+            this.Agent.Value.OnAttack();
         }
 
         return Status.Running;

@@ -1,4 +1,5 @@
 using Game.Database;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Utils;
@@ -44,32 +45,10 @@ namespace Game
 
         public void Shoot()
         {
-            bool isGamepadConnected = Gamepad.current != null;
-            if (isGamepadConnected)
-            {
-                Vector2 aimDirection = Gamepad.current.leftStick.ReadValue();
-                this._shootPoint.forward = aimDirection;
-                this.Shoot(aimDirection);
-            }
-            else
-            {
-                Vector2 mousePosition = Mouse.current.position.ReadValue();
-                this.ShootAtTarget(new Vector3(mousePosition.x, 0, mousePosition.y));
-            }
-        }
-
-        public void ShootAtTarget(Vector3 targetPosition)
-        {
-            Vector3 directionToTarget = (targetPosition - this._shootPoint.position).normalized;
-            this.Shoot(directionToTarget);
-        }
-
-        private void Shoot(Vector3 direction)
-        {
             Bullet bullet = SpawnablePool.SpawnProjectile<Bullet>(SpawnTypeProjectile.ENERGY_MISSILE);
             bullet.gameObject.layer = this._weaponLayerIndex;
             bullet.SetWeaponConfig(this._weaponConfig);
-            bullet.Shoot(this._shootPoint, Quaternion.LookRotation(direction));
+            bullet.Shoot(this._shootPoint);
 
             this._lastTimeShot = 0f;
         }
