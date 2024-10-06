@@ -72,23 +72,23 @@ namespace Game
                 // Get the direction from the player to the hit point
                 Vector3 direction = hit.point - this._controller.transform.position;
 
-                this.RotateToDirection(direction);
+                this.RotateToDirection(new Vector3(direction.x, direction.z));
             }
         }
 
         private void RotateToGamepadDirection()
         {
-            Vector2 direction = Gamepad.current.leftStick.ReadValue();
+            Vector2 direction = Gamepad.current.rightStick.value;
             this.RotateToDirection(direction);
         }
 
-        private void RotateToDirection(Vector3 direction)
+        private void RotateToDirection(Vector2 direction)
         {
-            if (direction == Vector3.zero)
+            if (direction == Vector2.zero)
                 return;
 
             // Ensure the direction vector is normalized and ignore the y-axis
-            var flatDirection = new Vector3(direction.x, 0, direction.z);
+            var flatDirection = new Vector3(direction.x, 0, direction.y);
             this._controller.transform.rotation = Quaternion.LookRotation(flatDirection);
         }
     }
