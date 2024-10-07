@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 namespace Game
 {
@@ -41,6 +43,13 @@ namespace Game
 
         private void OnFirePressed()
         {
+            // Check if the gamepad is not connected and the pointer is over a UI element
+            if (Gamepad.current == null &&
+                EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
+
             if (this._weapon.CanShoot)
                 this._weapon.Shoot();
         }
