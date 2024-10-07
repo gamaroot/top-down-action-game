@@ -6,17 +6,23 @@ using UnityEngine;
 using Utils;
 using Unity.Behavior;
 using Unity.Cinemachine;
+using UnityEngine.UI;
 
 namespace Game
 {
     public class DebugScreenEvents : MonoBehaviour
     {
-        [SerializeField, ReadOnly] private GameObject _player;
+        [Header("Attributes")]
+        [SerializeField] private float _spawnLoopInterval = 5f;
+
+        [Header("Components")]
         [SerializeField] private TMP_Dropdown _dropdownSpawnableEnemies;
         [SerializeField] private TMP_Dropdown _dropdownSpawnableTraps;
+        [SerializeField] private Toggle _toggleSpawnLoop;
         [SerializeField] private CinemachineCamera[] _cameras;
         [SerializeField] private TextMeshProUGUI _textCurrentCamera;
         [SerializeField] private List<GameObject> _waypoints;
+        [SerializeField, ReadOnly] private GameObject _player;
 
         private int _currentActiveCamera;
         private readonly DebugUtils _debugUtils = new();
@@ -53,6 +59,18 @@ namespace Game
             BehaviorGraphAgent enemy = spawn.GetComponent<BehaviorGraphAgent>();
             spawn.gameObject.SetActive(true);
             enemy.BlackboardReference.SetVariableValue("Waypoints", this._waypoints);
+        }
+
+        public void OnSpawnLoopToggleClick()
+        {
+            if (this._toggleSpawnLoop.isOn)
+            {
+                this.InvokeRepeating(nameof(this.OnSpawnEnemyButtonClick), 0f, this._spawnLoopInterval);
+            }
+            else
+            {
+                this.CancelInvoke(nameof(this.OnSpawnEnemyButtonClick));
+            }
         }
 
         public void OnSpawnTrapButtonClick()
