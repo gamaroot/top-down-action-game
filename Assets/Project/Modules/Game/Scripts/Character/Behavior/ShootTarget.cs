@@ -21,16 +21,21 @@ public partial class ShootTargetAction : Action
 
     protected override Status OnUpdate()
     {
-        this.IsTargetOnSight.Value = this.Sensor.Value.Target != null;
+        this.IsTargetOnSight.Value = this.Sensor.Value.IsTargetOnSightTarget;
         if (this.IsTargetOnSight.Value)
         {
-            Vector3 point = this.Sensor.Value.IsTargetBehindObstacle
-                                ? this.Sensor.Value.BestShootingPosition
-                                : this.Sensor.Value.Target.transform.position;
+            if (this.Sensor.Value.IsTargetBehindObstacle)
+            {
+                this.Agent.Value.OnMove(this.Sensor.Value.BestShootingPosition);
+            }
+            else
+            {
+                Vector3 point = this.Sensor.Value.Target.transform.position;
 
-            this.Agent.Value.FaceTarget(point);
-            this.Agent.Value.OnMove(point);
-            this.Agent.Value.OnAttack();
+                this.Agent.Value.OnMove(point);
+                this.Agent.Value.FaceTarget(point);
+                this.Agent.Value.OnAttack();
+            }
         }
         else
         {

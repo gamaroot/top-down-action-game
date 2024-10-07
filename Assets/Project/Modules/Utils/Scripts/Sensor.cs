@@ -9,8 +9,9 @@ namespace Utils
         [SerializeField] private LayerMask _obstacleLayer;
         [SerializeField, ReadOnly] private SphereCollider _sphereCollider;
 
-        [field: SerializeField, ReadOnly] public GameObject Target { get; private set; }
-        [field: SerializeField, ReadOnly] public bool IsTargetBehindObstacle { get; private set; }
+        public GameObject Target { get; private set; }
+        public bool IsTargetOnSightTarget => this.Target != null && this.Target.activeSelf;
+        public bool IsTargetBehindObstacle { get; private set; }
         
         public Vector3 BestShootingPosition { get; private set; }
 
