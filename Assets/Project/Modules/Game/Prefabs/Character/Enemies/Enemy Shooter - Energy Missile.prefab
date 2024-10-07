@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 974009700570e1447b59a0dbddfd488e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 3
+  _maxHealth: 10
   _deathVFX: 2
   _deathSFX: 2
 --- !u!114 &1306455811818272514

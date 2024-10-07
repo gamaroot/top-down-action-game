@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Utils;
 
 namespace Game
 {
@@ -40,12 +41,16 @@ namespace Game
         {
             this.CurrentHealth += amount;
             this.HealthRecoverListener.Invoke(amount, this.CurrentHealth, this._maxHealth);
+
+            this.ShowHealthText(amount.ToString(), Color.green);
         }
 
         private void TakeDamage(float amount)
         {
             this.CurrentHealth -= amount;
             this.HealthLoseListener.Invoke(amount, this.CurrentHealth, this._maxHealth);
+
+            this.ShowHealthText(amount.ToString(), Color.red);
 
             if (this.CurrentHealth <= 0)
                 this.OnDeath();
@@ -63,6 +68,14 @@ namespace Game
             ParticleSystem explosion = SpawnablePool.SpawnExplosion<ParticleSystem>(this._deathVFX);
             explosion.transform.position = base.transform.position;
             explosion.gameObject.SetActive(true);
+        }
+
+        private void ShowHealthText(string amount, Color color)
+        {
+            UIWorldJumpingText text = SpawnablePool.SpawnOther<UIWorldJumpingText>(SpawnTypeOther.WORLD_JUMPING_TEXT);
+            text.SetText(amount.ToString(), color);
+            text.gameObject.SetActive(true);
+            text.gameObject.transform.position = base.transform.position;
         }
     }
 }

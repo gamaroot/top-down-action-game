@@ -52,6 +52,7 @@ MonoBehaviour:
   _explosionPrefabs:
   - {fileID: 6697703107581756453, guid: 41e6666412e91814eb7e2441033e132c, type: 3}
   - {fileID: 1873985756121678, guid: 3b417d6889c0b9f4383809bb58ebe1a9, type: 3}
+  - {fileID: 1266414787855183226, guid: 5c0c3c32f177ae34c9a62152f631c6de, type: 3}
   _trapPrefabs:
   - {fileID: 3720952991487081650, guid: f6ea72370e8af4e47b9f7409d0f4bbf8, type: 3}
   - {fileID: 7750034016938775924, guid: 330c992fb7fad6c4486724ed053a2d82, type: 3}
@@ -61,3 +62,4 @@ MonoBehaviour:
   _otherPrefabs:
   - {fileID: 7815843732655380410, guid: 74c2faa695ddc6f4aa2e4e71d740f2a6, type: 3}
   - {fileID: 7815843732655380410, guid: 69a79b5b50e81064f8021b8387f97477, type: 3}
+  - {fileID: 4019034124310788045, guid: 3af59cf2b804ec346a4e2d7fc5afd4cb, type: 3}

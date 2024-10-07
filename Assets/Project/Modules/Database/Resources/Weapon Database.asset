@@ -26,7 +26,7 @@ MonoBehaviour:
     <ChanceOfBeingPinky>k__BackingField: 1
   - <Type>k__BackingField: 1
     <Damage>k__BackingField: 1
-    <ShootInterval>k__BackingField: 0.5
+    <ShootInterval>k__BackingField: 0.3
     <Range>k__BackingField: 10
     <AmmoCapacity>k__BackingField: 7
     <SfxOnShoot>k__BackingField: 0

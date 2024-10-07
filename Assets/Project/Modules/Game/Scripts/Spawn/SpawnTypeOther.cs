@@ -4,5 +4,6 @@ namespace Game
     {
         QUESTION_MARK,
         EXCLAMATION_MARK,
+        WORLD_JUMPING_TEXT
     }
 }
