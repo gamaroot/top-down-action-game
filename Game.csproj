@@ -76,6 +76,7 @@
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Pooling\Pool.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Editor\ReadOnlyDrawer.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerMovementController.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Character\ParryController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeExplosion.cs" />
     <Compile Include="Assets\Project\Modules\UI\Screens\Home\Scripts\HomeScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFXTypeExplosion.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\AIMovementController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeEnemy.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFX.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Weapon\ProjectileDeflector.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\EnemyKamikaze.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Trap\SpringPusher.cs" />
   </ItemGroup>

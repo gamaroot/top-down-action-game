@@ -43,6 +43,10 @@ namespace Game
 
         private void OnCollisionEnter(Collision collision)
         {
+            ParryController parryController = collision.gameObject.GetComponent<ParryController>();
+            if (parryController != null && parryController.IsParryActive)
+                return;
+
             SFX.PlayExplosion(this._weaponConfig.SfxOnExplode);
 
             ParticleSystem particle = SpawnablePool.SpawnExplosion<ParticleSystem>(this._weaponConfig.ExplosionType);
@@ -63,6 +67,7 @@ namespace Game
         public void Shoot(Transform origin)
         {
             base.transform.position = origin.position;
+            base.transform.rotation = Quaternion.LookRotation(origin.forward);
 
             base.gameObject.SetActive(true);
 
