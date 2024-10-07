@@ -5,23 +5,17 @@ namespace Game
 {
     public class EnemyKamikaze : Enemy
     {
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (base._meshRenderer.enabled && // Only if the enemy is still alive
-                collision.gameObject.CompareTag(Tags.Player.ToString()))
-            {
-                this.OnPrepareForSelfDestruction();
-            }
-        }
-
         private void OnEnable()
         {
             this._movement.enabled = true;
             this._meshRenderer.enabled = true;
         }
 
-        private void OnPrepareForSelfDestruction()
+        public void OnCloseToTarget()
         {
+            if (!this._meshRenderer.enabled)
+                return;
+
             this._movement.enabled = false;
             this._meshRenderer.enabled = false;
 

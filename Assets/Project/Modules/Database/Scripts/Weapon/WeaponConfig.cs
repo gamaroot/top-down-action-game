@@ -7,7 +7,7 @@ namespace Game.Database
     public class WeaponConfig
     {
         [field: SerializeField] public WeaponType Type { get; private set; }
-        [field: SerializeField] public float Damage { get; private set; } = 10f;
+        [field: SerializeField] public float Damage { get; private set; } = 1f;
 
         [Tooltip("Time between shots (in seconds)")]
         [field: SerializeField] public float ShootInterval { get; private set; } = 0.5f;

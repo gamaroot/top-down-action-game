@@ -4809,6 +4809,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2302634361738521495}
+  - component: {fileID: 3534823847736888678}
   - component: {fileID: -7822568162804683583}
   - component: {fileID: 2740157513797810161}
   - component: {fileID: -3974331410430613955}
@@ -4840,6 +4841,19 @@ Transform:
   - {fileID: 8943307604226888705}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3534823847736888678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8041255665691112014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 798c8432ee237834c9f9be89b0c1e924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Damage>k__BackingField: 1
 --- !u!114 &-7822568162804683583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4854,6 +4868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 2740157513797810161}
   _rigidbody: {fileID: 6953511326917542987}
+  _damageDealer: {fileID: 3534823847736888678}
   _originalColor: {r: 0.375, g: 0.7155173, b: 1, a: 1}
   _pinkColor: {r: 1, g: 0, b: 1, a: 1}
 --- !u!198 &2740157513797810161

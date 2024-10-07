@@ -481,6 +481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _firstScene: 2
   _mainCamera: {fileID: 330585545}
+  _cinemachineBrain: {fileID: 330585548}
 --- !u!4 &887099279
 Transform:
   m_ObjectHideFlags: 0

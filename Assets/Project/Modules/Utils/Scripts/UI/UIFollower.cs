@@ -7,8 +7,7 @@ namespace Utils
     {
         [SerializeField] private RectTransform _rectTransform;
         [SerializeField] private Vector2 _offset = new(0, 2);
-
-        private Transform _target;
+        [SerializeField] private Transform _target;
 
         private void LateUpdate()
         {

@@ -23,7 +23,16 @@ public partial class ChaseTargetAsKamikazeAction : Action
         this.IsTargetOnSight.Value = this.Sensor.Value.Target != null;
         if (this.IsTargetOnSight.Value)
         {
-            this.Agent.Value.OnMove(this.Sensor.Value.Target.transform.position);
+            Vector3 targetPosition = this.Sensor.Value.Target.transform.position;
+            float distance = Vector3.Distance(this.Agent.Value.transform.position, targetPosition);
+            if (distance <= 1f)
+            {
+                this.Agent.Value.OnCloseToTarget();
+            }
+            else
+            {
+                this.Agent.Value.OnMove(targetPosition);
+            }
         }
 
         return Status.Running;

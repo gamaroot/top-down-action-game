@@ -32,6 +32,10 @@ public partial class ShootTargetAction : Action
             this.Agent.Value.OnMove(point);
             this.Agent.Value.OnAttack();
         }
+        else
+        {
+            this.Agent.Value.OnTargetLost();
+        }
 
         return Status.Running;
     }

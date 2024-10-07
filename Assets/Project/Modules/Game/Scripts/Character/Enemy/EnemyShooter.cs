@@ -11,6 +11,11 @@ namespace Game
             base.OnMove(point);
         }
 
+        public void OnTargetLost()
+        {
+            this._movement.SetStoppingDistance(0);
+        }
+
         public void OnAttack()
         {
             if (base._weapon.CanShoot)

@@ -1,5 +1,6 @@
 using DG.Tweening;
 using ScreenNavigation;
+using Unity.Cinemachine;
 using UnityEngine;
 using Utils;
 
@@ -9,6 +10,7 @@ namespace Game
     {
         [SerializeField] private SceneID _firstScene;
         [SerializeField] private Camera _mainCamera;
+        [SerializeField] private CinemachineBrain _cinemachineBrain;
 
         private void Awake()
         {
@@ -18,7 +20,7 @@ namespace Game
 #else
             Application.targetFrameRate = GamePreferences.FPS;
 #endif
-            CameraHandler.Load(this._mainCamera);
+            CameraHandler.Load(this._mainCamera, this._cinemachineBrain);
         }
 
         private void Start()

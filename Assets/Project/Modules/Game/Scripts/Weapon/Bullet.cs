@@ -4,12 +4,13 @@ using Utils;
 
 namespace Game
 {
-    [RequireComponent(typeof(ParticleSystem), typeof(Rigidbody))]
+    [RequireComponent(typeof(ParticleSystem), typeof(Rigidbody), typeof(DamageDealer))]
     public class Bullet : MonoBehaviour
     {
         [Header("Components")]
         [SerializeField, ReadOnly] private ParticleSystem _particleSystem;
         [SerializeField, ReadOnly] private Rigidbody _rigidbody;
+        [SerializeField, ReadOnly] private DamageDealer _damageDealer;
 
         [Header("Others")]
         [SerializeField, ReadOnly] private Color _originalColor;
@@ -25,6 +26,9 @@ namespace Game
 
             if (this._rigidbody == null)
                 this._rigidbody = base.GetComponent<Rigidbody>();
+
+            if (this._damageDealer == null)
+                this._damageDealer = base.GetComponent<DamageDealer>();
 
             this._originalColor = this._particleSystem.main.startColor.color;
             this._pinkColor = Color.magenta;
@@ -62,6 +66,7 @@ namespace Game
         public void SetWeaponConfig(WeaponConfig weaponConfig)
         {
             this._weaponConfig = weaponConfig;
+            this._damageDealer.LoadConfig(weaponConfig);
         }
 
         public void Shoot(Transform origin)
