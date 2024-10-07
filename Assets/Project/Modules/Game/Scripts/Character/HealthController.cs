@@ -74,8 +74,8 @@ namespace Game
         {
             UIWorldJumpingText text = SpawnablePool.SpawnOther<UIWorldJumpingText>(SpawnTypeOther.WORLD_JUMPING_TEXT);
             text.SetText(amount.ToString(), color);
-            text.gameObject.SetActive(true);
             text.gameObject.transform.position = base.transform.position;
+            text.gameObject.SetActive(true);
         }
     }
 }

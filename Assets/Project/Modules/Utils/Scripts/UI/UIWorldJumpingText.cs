@@ -7,7 +7,7 @@ namespace Utils
     public class UIWorldJumpingText : MonoBehaviour
     {
         [Header("Attributes")]
-        [SerializeField] private float _offsetY = 1f;
+        [SerializeField] private float _offsetZ = 1f;
         [SerializeField] private float _jumpingSpeed = 1f;
         [SerializeField] private float _jumpingHeight = 1f;
         [SerializeField] private float _lifetime = 2f;
@@ -26,13 +26,14 @@ namespace Utils
 
         private void Awake()
         {
-            this._direction = new(0, 1f, this._offsetY);
+            this._direction = new(0, 1f, 1f);
         }
 
         private void OnEnable()
         {
             this._timer = 0;
             this._text.alpha = 1f;
+            base.transform.position += new Vector3(0, 0, this._offsetZ);
         }
 
         private void Update()
