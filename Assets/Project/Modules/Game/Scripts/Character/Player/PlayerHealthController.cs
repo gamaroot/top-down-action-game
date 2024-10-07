@@ -13,8 +13,8 @@ namespace Game
         private void Awake()
         {
             this._canvas.worldCamera = CameraHandler.Instance.MainCamera;
-            this.HealthRecoverListener += this.OnHealthRecover;
-            this.HealthLoseListener += this.OnHealthLose;
+            base.HealthRecoverListener += this.OnHealthRecover;
+            base.HealthLoseListener += this.OnHealthLose;
         }
 
         private void OnDisable()
