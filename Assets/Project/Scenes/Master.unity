@@ -718,6 +718,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spawnables
       objectReference: {fileID: 0}
+    - target: {fileID: 8244331601106842761, guid: f2a53efdd5098974b871f831042b4348,
+        type: 3}
+      propertyPath: _explosionPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244331601106842761, guid: f2a53efdd5098974b871f831042b4348,
+        type: 3}
+      propertyPath: '_explosionPrefabs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1266414787855183226, guid: 5c0c3c32f177ae34c9a62152f631c6de,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

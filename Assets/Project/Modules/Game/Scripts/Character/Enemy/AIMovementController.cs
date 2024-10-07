@@ -18,11 +18,13 @@ namespace Game
 
         private void OnEnable()
         {
+            this._agent.enabled = true;
             this._aim.SetActive(true);
         }
 
         private void OnDisable()
         {
+            this._agent.enabled = false;
             this._aim.SetActive(false);
         }
 

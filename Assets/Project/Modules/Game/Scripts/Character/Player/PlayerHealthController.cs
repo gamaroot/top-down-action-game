@@ -31,12 +31,14 @@ namespace Game
         {
             this._healthBar.value = currentHealth / maxHealth;
 
-            base.StartCoroutine(CameraHandler.Instance.Shake());
+            if (base.gameObject.activeSelf)
+                base.StartCoroutine(CameraHandler.Instance.Shake());
         }
 
-        protected override void Die()
+        public override void OnDeath()
         {
-            Destroy(base.gameObject);
+            base.OnDeath();
+            // TODO Game over
         }
     }
 }

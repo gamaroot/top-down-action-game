@@ -5,5 +5,6 @@ namespace Game
         NONE = -1,
         KAMIKAZE_EXPLOSION,
         ENERGY_MISSILE_EXPLOSION,
+        DEATH_EXPLOSION,
     }
 }

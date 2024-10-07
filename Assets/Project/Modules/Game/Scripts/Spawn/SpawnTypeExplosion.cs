@@ -4,5 +4,6 @@ namespace Game
     {
         KAMIKAZE_EXPLOSION,
         ENERGY_MISSILE_EXPLOSION,
+        DEATH_EXPLOSION,
     }
 }

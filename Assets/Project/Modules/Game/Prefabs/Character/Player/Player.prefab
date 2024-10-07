@@ -565,6 +565,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 10
+  _deathVFX: 2
+  _deathSFX: 2
   _canvas: {fileID: 7296282807849043748}
   _healthBar: {fileID: 8622614867093023155}
 --- !u!114 &4392599432013812452

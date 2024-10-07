@@ -68,6 +68,7 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerShootController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerAimController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Weapon\Bullet.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\EnemyHealthController.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\RendererEventsListener.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Tags.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\ReadOnlyAttribute.cs" />

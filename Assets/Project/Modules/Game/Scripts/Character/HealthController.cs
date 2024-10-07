@@ -3,10 +3,12 @@ using UnityEngine;
 
 namespace Game
 {
-    public abstract class HealthController : MonoBehaviour
+    public class HealthController : MonoBehaviour
     {
         [Header("Attributes")]
-        [SerializeField] private float _maxHealth = 100f;
+        [SerializeField] private float _maxHealth = 10f;
+        [SerializeField] private SpawnTypeExplosion _deathVFX;
+        [SerializeField] private SFXTypeExplosion _deathSFX;
 
         public Action<float, float, float> HealthRecoverListener;
         public Action<float, float, float> HealthLoseListener;
@@ -46,9 +48,21 @@ namespace Game
             this.HealthLoseListener.Invoke(amount, this.CurrentHealth, this._maxHealth);
 
             if (this.CurrentHealth <= 0)
-                this.Die();
+                this.OnDeath();
         }
 
-        protected abstract void Die();
+        public virtual void OnDeath()
+        {
+            if (!base.gameObject.activeSelf)
+                return;
+
+            base.gameObject.SetActive(false);
+
+            SFX.PlayExplosion(this._deathSFX);
+
+            ParticleSystem explosion = SpawnablePool.SpawnExplosion<ParticleSystem>(this._deathVFX);
+            explosion.transform.position = base.transform.position;
+            explosion.gameObject.SetActive(true);
+        }
     }
 }

@@ -253,6 +253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7063659801511918677}
   - component: {fileID: 4807709790577108364}
+  - component: {fileID: 3145143902382942601}
   - component: {fileID: 1306455811818272514}
   - component: {fileID: 1384683702542551252}
   - component: {fileID: 7153801489365045476}
@@ -300,6 +301,21 @@ MonoBehaviour:
   _meshRenderer: {fileID: 948797227930074108}
   _movement: {fileID: 1306455811818272514}
   _weapon: {fileID: 6017972843390906605}
+--- !u!114 &3145143902382942601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9036938352783240745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 974009700570e1447b59a0dbddfd488e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 3
+  _deathVFX: 2
+  _deathSFX: 2
 --- !u!114 &1306455811818272514
 MonoBehaviour:
   m_ObjectHideFlags: 0
