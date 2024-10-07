@@ -7,6 +7,7 @@ using Utils;
 using Unity.Behavior;
 using Unity.Cinemachine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 namespace Game
 {
@@ -16,6 +17,7 @@ namespace Game
         [SerializeField] private float _spawnLoopInterval = 5f;
 
         [Header("Components")]
+        [SerializeField] private GameObject _iconGamepad;
         [SerializeField] private TMP_Dropdown _dropdownSpawnableEnemies;
         [SerializeField] private TMP_Dropdown _dropdownSpawnableTraps;
         [SerializeField] private Toggle _toggleSpawnLoop;
@@ -34,6 +36,11 @@ namespace Game
 
             this.LoadDropdown<SpawnTypeEnemy>(this._dropdownSpawnableEnemies);
             this.LoadDropdown<TrapSpawnType>(this._dropdownSpawnableTraps);
+        }
+
+        private void Update()
+        {
+            this._iconGamepad.SetActive(Gamepad.current != null);
         }
 
         public void OnCameraButtonClick()
