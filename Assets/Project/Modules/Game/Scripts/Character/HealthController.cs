@@ -14,6 +14,10 @@ namespace Game
         public Action<float, float, float> HealthRecoverListener;
         public Action<float, float, float> HealthLoseListener;
 
+        public float MissingHealth => this._maxHealth - this.CurrentHealth;
+        public bool IsFullHealth => this.CurrentHealth == this._maxHealth;
+        public bool IsDead => this.CurrentHealth <= 0;
+
         private float CurrentHealth
         {
             get => this._currentHealth; 
@@ -24,6 +28,8 @@ namespace Game
         }
         private float _currentHealth;
 
+        private float _lastDamageDealerID;
+
         private void OnEnable()
         {
             this.CurrentHealth = this._maxHealth;
@@ -31,14 +37,28 @@ namespace Game
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.TryGetComponent(out DamageDealer damageDealer))
+            if (collision.gameObject.TryGetComponent(out DamageDealer damageDealer) &&
+                damageDealer.ID != this._lastDamageDealerID)
             {
+                this._lastDamageDealerID = damageDealer.ID;
                 this.TakeDamage(damageDealer.Damage);
             }
         }
 
-        private void RecoverHealth(float amount)
+        public void Respawn()
         {
+            this.RecoverHealth(this._maxHealth);
+            base.gameObject.SetActive(true);
+        }
+
+        public void RecoverHealth(float amount)
+        {
+            if (amount <= 0)
+                return;
+
+            if (amount > this.MissingHealth)
+                amount = this.MissingHealth;
+
             this.CurrentHealth += amount;
             this.HealthRecoverListener.Invoke(amount, this.CurrentHealth, this._maxHealth);
 
@@ -73,7 +93,7 @@ namespace Game
         private void ShowHealthText(string amount, Color color)
         {
             UIWorldJumpingText text = SpawnablePool.SpawnOther<UIWorldJumpingText>(SpawnTypeOther.WORLD_JUMPING_TEXT);
-            text.SetText(amount.ToString(), color);
+            text.SetText(amount, color);
             text.gameObject.transform.position = base.transform.position;
             text.gameObject.SetActive(true);
         }

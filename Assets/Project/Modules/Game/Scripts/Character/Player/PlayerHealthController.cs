@@ -22,6 +22,12 @@ namespace Game
             CameraHandler.Instance.StopShake();
         }
 
+        public override void OnDeath()
+        {
+            base.OnDeath();
+            // TODO Game over
+        }
+
         private void OnHealthRecover(float amount, float currentHealth, float maxHealth)
         {
             this._healthBar.value = currentHealth / maxHealth;
@@ -33,12 +39,6 @@ namespace Game
 
             if (base.gameObject.activeSelf)
                 base.StartCoroutine(CameraHandler.Instance.Shake());
-        }
-
-        public override void OnDeath()
-        {
-            base.OnDeath();
-            // TODO Game over
         }
     }
 }

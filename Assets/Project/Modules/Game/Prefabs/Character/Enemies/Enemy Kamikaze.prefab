@@ -103,8 +103,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _sphereCollider: {fileID: 8512086632144557551}
-  <Target>k__BackingField: {fileID: 0}
-  <IsTargetBehindObstacle>k__BackingField: 0
 --- !u!1 &7374068295967743498
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 974009700570e1447b59a0dbddfd488e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 10
+  _maxHealth: 6
   _deathVFX: 0
   _deathSFX: 0
 --- !u!114 &1306455811818272514

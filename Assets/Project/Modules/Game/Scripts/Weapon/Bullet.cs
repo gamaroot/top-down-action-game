@@ -51,6 +51,8 @@ namespace Game
             if (parryController != null && parryController.IsParryActive)
                 return;
 
+            this.Deactivate();
+
             SFX.PlayExplosion(this._weaponConfig.SfxOnExplode);
 
             ParticleSystem particle = SpawnablePool.SpawnExplosion<ParticleSystem>(this._weaponConfig.ExplosionType);
@@ -59,8 +61,6 @@ namespace Game
             ParticleSystem.MainModule main = particle.main;
             main.startColor = this._particleSystem.main.startColor;
             particle.gameObject.SetActive(true);
-
-            this.Deactivate();
         }
 
         public void SetWeaponConfig(WeaponConfig weaponConfig)

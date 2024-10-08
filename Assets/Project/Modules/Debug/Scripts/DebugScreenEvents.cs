@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System;
 using TMPro;
 using UnityEngine;
-using Utils;
 using Unity.Behavior;
 using Unity.Cinemachine;
 using UnityEngine.UI;
@@ -16,24 +15,30 @@ namespace Game
         [Header("Attributes")]
         [SerializeField] private float _spawnLoopInterval = 5f;
 
-        [Header("Components")]
-        [SerializeField] private GameObject _iconGamepad;
+        [Header("Spawns")]
         [SerializeField] private TMP_Dropdown _dropdownSpawnableEnemies;
         [SerializeField] private TMP_Dropdown _dropdownSpawnableTraps;
         [SerializeField] private Toggle _toggleSpawnLoop;
+
+        [Header("Cameras")]
         [SerializeField] private CinemachineCamera[] _cameras;
         [SerializeField] private TextMeshProUGUI _textCurrentCamera;
+
+        [Header("Player")]
+        [SerializeField] private PlayerHealthController _player;
+        [SerializeField] private GameObject _buttonPlayerHeal;
+        [SerializeField] private GameObject _buttonLabelPlayerHeal;
+        [SerializeField] private GameObject _buttonLabelPlayerRespawn;
+
+        [Header("Others")]
+        [SerializeField] private GameObject _iconGamepad;
         [SerializeField] private List<GameObject> _waypoints;
-        [SerializeField, ReadOnly] private GameObject _player;
 
         private int _currentActiveCamera;
         private readonly DebugUtils _debugUtils = new();
 
         private void OnValidate()
         {
-            if (this._player == null)
-                this._player = GameObject.FindWithTag(Tags.Player.ToString());
-
             this.LoadDropdown<SpawnTypeEnemy>(this._dropdownSpawnableEnemies);
             this.LoadDropdown<TrapSpawnType>(this._dropdownSpawnableTraps);
         }
@@ -41,6 +46,8 @@ namespace Game
         private void Update()
         {
             this._iconGamepad.SetActive(Gamepad.current != null);
+
+            this.UpdatePlayerHealButton();
         }
 
         public void OnCameraButtonClick()
@@ -89,6 +96,14 @@ namespace Game
             spawn.gameObject.SetActive(true);
         }
 
+        public void OnPlayerHealButtonClick()
+        {
+            if (this._player.IsDead)
+                this._player.Respawn();
+            else
+                this._player.RecoverHealth(this._player.MissingHealth);
+        }
+
         public void OnQuitButtonClick()
         {
             SceneNavigator.Instance.LoadAdditiveSceneAsync(SceneID.DEBUG, SceneID.HOME);
@@ -105,6 +120,28 @@ namespace Game
                 options.Add(new TMP_Dropdown.OptionData(spawnTypeName));
             }
             dropdown.AddOptions(options);
+        }
+
+        private void UpdatePlayerHealButton()
+        {
+            if (this._player.IsDead)
+            {
+                this._buttonPlayerHeal.SetActive(true);
+                this._buttonLabelPlayerHeal.SetActive(false);
+                this._buttonLabelPlayerRespawn.SetActive(true);
+            }
+            else if (!this._player.IsFullHealth)
+            {
+                this._buttonPlayerHeal.SetActive(true);
+                this._buttonLabelPlayerHeal.SetActive(true);
+                this._buttonLabelPlayerRespawn.SetActive(false);
+            }
+            else
+            {
+                this._buttonPlayerHeal.SetActive(false);
+                this._buttonLabelPlayerHeal.SetActive(false);
+                this._buttonLabelPlayerRespawn.SetActive(false);
+            }
         }
     }
 }

@@ -170,8 +170,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _sphereCollider: {fileID: 2844452711007198085}
-  <Target>k__BackingField: {fileID: 0}
-  <IsTargetBehindObstacle>k__BackingField: 0
 --- !u!135 &2844452711007198085
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -313,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 974009700570e1447b59a0dbddfd488e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 10
+  _maxHealth: 3
   _deathVFX: 2
   _deathSFX: 2
 --- !u!114 &1306455811818272514
