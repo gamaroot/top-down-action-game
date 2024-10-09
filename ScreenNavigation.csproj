@@ -64,6 +64,7 @@
     <Compile Include="Assets\ScreenNavigation\Animation\CanvasAnimation\CanvasFadeAnimation.cs" />
     <Compile Include="Assets\ScreenNavigation\Animation\CanvasAnimation\CanvasAnimationType.cs" />
     <Compile Include="Assets\ScreenNavigation\SceneNavigator.cs" />
+    <Compile Include="Assets\ScreenNavigation\Editor\SceneIdGenerator.cs" />
     <Compile Include="Assets\ScreenNavigation\Animation\CanvasAnimation\CanvasAnimation.cs" />
     <Compile Include="Assets\ScreenNavigation\Model\SceneState.cs" />
     <Compile Include="Assets\ScreenNavigation\Animation\SceneTransitionAnimationData.cs" />
