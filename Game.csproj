@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!-- Generated file, do not modify, your changes will be overwritten (use AssetPostprocessor.OnGeneratedCSProject) -->
   <PropertyGroup>
@@ -83,9 +83,11 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\ParryController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeExplosion.cs" />
     <Compile Include="Assets\Project\Modules\UI\Screens\Home\Scripts\HomeScreenEvents.cs" />
+    <Compile Include="Assets\Project\Modules\UI\Toast\Scripts\Toast.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFXTypeExplosion.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Trap\SemicircularRotation.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Weapon\WeaponDatabase.cs" />
+    <Compile Include="Assets\Project\Modules\UI\Toast\Scripts\ToastType.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\CrossSceneReference.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeProjectile.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerHealthController.cs" />
@@ -114,6 +116,7 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\WeaponController.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\CameraHandler.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Behavior\StateDisplay.cs" />
+    <Compile Include="Assets\Project\Modules\UI\Toast\Scripts\ToastHandler.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Weapon\DamageDealer.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Editor\TagEnumGenerator.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\EnemyShooter.cs" />
@@ -123,6 +126,7 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeOther.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\DashHandler.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\AIMovementController.cs" />
+    <Compile Include="Assets\Project\Modules\Constants\Scripts\AnimationKeys.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\HealthController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeEnemy.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFX.cs" />
