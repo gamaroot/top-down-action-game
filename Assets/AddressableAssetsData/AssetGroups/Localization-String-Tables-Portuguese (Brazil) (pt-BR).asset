@@ -51,6 +51,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-pt-BR
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bd56b245d6199bb45be474ff9752821c
+    m_Address: ScreenDebug_pt-BR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pt-BR
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: be3df1a5726d2cf42a20e72cc84f752a
     m_Address: ScreenInGameSettings_pt-BR
     m_ReadOnly: 1

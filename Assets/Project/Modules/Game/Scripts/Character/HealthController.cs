@@ -11,6 +11,8 @@ namespace Game
         [SerializeField] private SpawnTypeExplosion _deathVFX;
         [SerializeField] private SFXTypeExplosion _deathSFX;
 
+        public Action DeathListener;
+        public Action RespawnListener;
         public Action<float, float, float> HealthRecoverListener;
         public Action<float, float, float> HealthLoseListener;
 
@@ -49,6 +51,8 @@ namespace Game
         {
             this.RecoverHealth(this._maxHealth);
             base.gameObject.SetActive(true);
+
+            this.RespawnListener?.Invoke();
         }
 
         public void RecoverHealth(float amount)
@@ -88,6 +92,8 @@ namespace Game
             ParticleSystem explosion = SpawnablePool.SpawnExplosion<ParticleSystem>(this._deathVFX);
             explosion.transform.position = base.transform.position;
             explosion.gameObject.SetActive(true);
+
+            this.DeathListener?.Invoke();
         }
 
         private void ShowHealthText(string amount, Color color)

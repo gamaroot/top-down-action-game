@@ -1,7 +1,10 @@
 using DG.Tweening;
 using ScreenNavigation;
+using System;
+using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using Utils;
 
 namespace Game
@@ -23,10 +26,14 @@ namespace Game
             CameraHandler.Load(this._mainCamera, this._cinemachineBrain);
         }
 
-        private void Start()
+        private IEnumerator Start()
         {
             SceneNavigator.Initialize();
             SceneNavigator.Instance.LoadAdditiveSceneAsync(this._firstScene);
+
+            yield return LocalizationSettings.InitializationOperation;
+
+            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[GamePreferences.LanguageIndex];
 
             Destroy(base.gameObject);
         }

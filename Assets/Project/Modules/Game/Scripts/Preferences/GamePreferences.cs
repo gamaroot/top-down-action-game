@@ -7,6 +7,7 @@ namespace Game
     {
         private const string SOUND_LEVEL_KEY = "SOUND_LEVEL",
                              MUSIC_LEVEL_KEY = "MUSIC_LEVEL",
+                             LANGUAGE_KEY = "LANGUAGE",
                              FPS_KEY = "FPS";
 
         public static Action<float> OnMusicVolumeChange;
@@ -41,6 +42,16 @@ namespace Game
                 Application.targetFrameRate = value;
 
                 PlayerPrefs.SetInt(FPS_KEY, value);
+                PlayerPrefs.Save();
+            }
+        }
+
+        public static int LanguageIndex
+        {
+            get => PlayerPrefs.GetInt(LANGUAGE_KEY);
+            set
+            {
+                PlayerPrefs.SetInt(LANGUAGE_KEY, value);
                 PlayerPrefs.Save();
             }
         }

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!-- Generated file, do not modify, your changes will be overwritten (use AssetPostprocessor.OnGeneratedCSProject) -->
   <PropertyGroup>
@@ -81,6 +81,7 @@
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Editor\ReadOnlyDrawer.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerMovementController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\ParryController.cs" />
+    <Compile Include="Assets\Project\Modules\UI\Screens\Settings\Scripts\SettingsScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeExplosion.cs" />
     <Compile Include="Assets\Project\Modules\UI\Screens\Home\Scripts\HomeScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\UI\Toast\Scripts\Toast.cs" />
@@ -1208,6 +1209,14 @@
     </Reference>
     <Reference Include="SerializableGUID">
       <HintPath>Library\ScriptAssemblies\SerializableGUID.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Localization">
+      <HintPath>Library\ScriptAssemblies\Unity.Localization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.ResourceManager">
+      <HintPath>Library\ScriptAssemblies\Unity.ResourceManager.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.UI">

@@ -7,6 +7,7 @@ using Unity.Behavior;
 using Unity.Cinemachine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using Utils;
 
 namespace Game
 {
@@ -35,12 +36,20 @@ namespace Game
         [SerializeField] private List<GameObject> _waypoints;
 
         private int _currentActiveCamera;
+        private ToastHandler _toastHandler;
         private readonly DebugUtils _debugUtils = new();
 
         private void OnValidate()
         {
             this.LoadDropdown<SpawnTypeEnemy>(this._dropdownSpawnableEnemies);
             this.LoadDropdown<TrapSpawnType>(this._dropdownSpawnableTraps);
+        }
+
+        private void Awake()
+        {
+            this._toastHandler = new CrossSceneReference().GetObjectByType<ToastHandler>();
+            this._player.RespawnListener = () => this._toastHandler.Show("You Respawned!");
+            this._player.DeathListener = () => this._toastHandler.Show("You died!");
         }
 
         private void Update()

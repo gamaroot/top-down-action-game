@@ -14,7 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TableCollectionName: ScreenSettings
   m_TableCollectionNameGuidString: c53fbb0b7c7d521418f6402edc37b2d3
-  m_Entries: []
+  m_Entries:
+  - m_Id: 4115718982103040
+    m_Key: title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4116488079044608
+    m_Key: sound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4117014917181440
+    m_Key: music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4117314688282624
+    m_Key: version
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4121844293332992
+    m_Key: language
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
