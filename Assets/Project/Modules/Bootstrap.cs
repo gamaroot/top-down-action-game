@@ -26,14 +26,12 @@ namespace Game
             CameraHandler.Load(this._mainCamera, this._cinemachineBrain);
         }
 
-        private IEnumerator Start()
+        private void Start()
         {
+            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[GamePreferences.LanguageIndex];
+
             SceneNavigator.Initialize();
             SceneNavigator.Instance.LoadAdditiveSceneAsync(this._firstScene);
-
-            yield return LocalizationSettings.InitializationOperation;
-
-            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[GamePreferences.LanguageIndex];
 
             Destroy(base.gameObject);
         }
