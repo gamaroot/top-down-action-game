@@ -46,6 +46,14 @@ MonoBehaviour:
     m_Localized: Curar
     m_Metadata:
       m_Items: []
+  - m_Id: 206723389091840
+    m_Localized: Jogador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206756964495360
+    m_Localized: "Cen\xE1rio"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

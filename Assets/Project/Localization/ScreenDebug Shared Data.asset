@@ -43,6 +43,14 @@ MonoBehaviour:
     m_Key: txt_heal
     m_Metadata:
       m_Items: []
+  - m_Id: 206723389091840
+    m_Key: txt_player_camera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206756964495360
+    m_Key: txt_stage_camera
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

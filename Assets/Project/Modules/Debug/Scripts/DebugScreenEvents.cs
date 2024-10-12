@@ -23,7 +23,8 @@ namespace Game
 
         [Header("Cameras")]
         [SerializeField] private CinemachineCamera[] _cameras;
-        [SerializeField] private TextMeshProUGUI _textCurrentCamera;
+        [SerializeField] private GameObject _textCameraPlayer;
+        [SerializeField] private GameObject _textCameraStage;
 
         [Header("Player")]
         [SerializeField] private PlayerHealthController _player;
@@ -70,7 +71,9 @@ namespace Game
             CinemachineCamera nextCamera = this._cameras[this._currentActiveCamera];
             nextCamera.Priority = 1;
 
-            this._textCurrentCamera.text = nextCamera.name.Replace(" Camera", "");
+            bool isPlayerCamera = nextCamera.CompareTag(GameTags.PLAYER_CAMERA);
+            this._textCameraPlayer.SetActive(isPlayerCamera);
+            this._textCameraStage.SetActive(!isPlayerCamera);
         }
 
         public void OnSpawnEnemyButtonClick()

@@ -27,7 +27,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 729564344320
-    m_Localized: BUCLE
+    m_Localized: LOOP
     m_Metadata:
       m_Items: []
   - m_Id: 791719735296
@@ -44,6 +44,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 923852894208
     m_Localized: Curar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206723389091840
+    m_Localized: Jugador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206756964495360
+    m_Localized: Escenario
     m_Metadata:
       m_Items: []
   references:
