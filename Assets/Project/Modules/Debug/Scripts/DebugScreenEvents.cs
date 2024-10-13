@@ -20,6 +20,7 @@ namespace Game
         [SerializeField] private TMP_Dropdown _dropdownSpawnableEnemies;
         [SerializeField] private TMP_Dropdown _dropdownSpawnableTraps;
         [SerializeField] private Toggle _toggleSpawnLoop;
+        [SerializeField] private LayerMask _spawnLayerMaskToAvoid;
 
         [Header("Cameras")]
         [SerializeField] private CinemachineCamera[] _cameras;
@@ -85,7 +86,7 @@ namespace Game
                 spawnType = (SpawnTypeEnemy)(this._dropdownSpawnableEnemies.value - 1);
             
             Transform spawn = SpawnablePool.SpawnEnemy<Transform>(spawnType);
-            spawn.position = this._debugUtils.GetRandomCircularPosition(this._player.transform.position, 15f, 10f);
+            spawn.position = this._debugUtils.GetRandomCircularPosition(this._player.transform.position, 15f, 10f, 5f, this._spawnLayerMaskToAvoid);
 
             BehaviorGraphAgent enemy = spawn.GetComponent<BehaviorGraphAgent>();
             spawn.gameObject.SetActive(true);
@@ -113,7 +114,7 @@ namespace Game
                 spawnType = (TrapSpawnType)(this._dropdownSpawnableTraps.value - 1);
 
             Transform spawn = SpawnablePool.SpawnTrap<Transform>(spawnType);
-            spawn.position = this._debugUtils.GetRandomCircularPosition(Vector3.zero, 15f, 10f);
+            spawn.position = this._debugUtils.GetRandomCircularPosition(Vector3.zero, 15f, 10f, 5f, this._spawnLayerMaskToAvoid);
 
             spawn.gameObject.SetActive(true);
         }

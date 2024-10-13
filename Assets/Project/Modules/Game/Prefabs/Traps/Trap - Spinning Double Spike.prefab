@@ -139,7 +139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6363093301803429997}
-  - component: {fileID: 6427105194259020174}
+  - component: {fileID: 3101465027044594194}
   - component: {fileID: 3430183788487370050}
   - component: {fileID: 8830797535417743094}
   m_Layer: 3
@@ -165,19 +165,28 @@ Transform:
   - {fileID: 1567133732541146339}
   m_Father: {fileID: 8102380702580604465}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!114 &6427105194259020174
-MonoBehaviour:
+--- !u!95 &3101465027044594194
+Animator:
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2945984240825668654}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc9701beb35dcd740a05adc21f54dae7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rotationSpeed: 200
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e2030cf3f31976d44b24dafa04e37670, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!33 &3430183788487370050
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -240,6 +249,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8102380702580604465}
+  - component: {fileID: 1567311987430334569}
   m_Layer: 3
   m_Name: Trap - Spinning Double Spike
   m_TagString: Untagged
@@ -263,3 +273,15 @@ Transform:
   - {fileID: 6363093301803429997}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1567311987430334569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7750034016938775924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26183b07a9dc55944a3ed68b2f130514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

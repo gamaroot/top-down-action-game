@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7621776700249697431}
-  - component: {fileID: 6493442871416038361}
+  - component: {fileID: 7825456011287049461}
   - component: {fileID: 2138385381838089090}
   - component: {fileID: 1420627718903700567}
   m_Layer: 3
@@ -35,19 +35,28 @@ Transform:
   - {fileID: 6671903661000964135}
   m_Father: {fileID: 2111886602657661656}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!114 &6493442871416038361
-MonoBehaviour:
+--- !u!95 &7825456011287049461
+Animator:
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3322142234706651100}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc9701beb35dcd740a05adc21f54dae7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rotationSpeed: 200
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e65fe915768e7594488d8ad128f2d2a8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!33 &2138385381838089090
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -110,6 +119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2111886602657661656}
+  - component: {fileID: 2269711370446691272}
   m_Layer: 3
   m_Name: Trap - Spinning Spike
   m_TagString: Untagged
@@ -133,6 +143,18 @@ Transform:
   - {fileID: 7621776700249697431}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2269711370446691272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3720952991487081650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26183b07a9dc55944a3ed68b2f130514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7186816740117298491
 GameObject:
   m_ObjectHideFlags: 0

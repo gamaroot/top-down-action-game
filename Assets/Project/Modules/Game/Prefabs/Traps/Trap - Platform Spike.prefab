@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8622217453424645589}
+  - component: {fileID: 7220485565850753804}
   - component: {fileID: 8449858779521543627}
   - component: {fileID: 6822281989766027631}
   - component: {fileID: 4020327609879578414}
@@ -34,6 +35,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3691559235302289968}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!95 &7220485565850753804
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3339297386741554018}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 820eabbe1c327cb47ac62d6f084af00b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!33 &8449858779521543627
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -117,6 +140,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3691559235302289968}
+  - component: {fileID: 4234083853078637436}
   m_Layer: 3
   m_Name: Trap - Platform Spike
   m_TagString: Untagged
@@ -140,3 +164,15 @@ Transform:
   - {fileID: 8622217453424645589}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4234083853078637436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4585351776358199094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26183b07a9dc55944a3ed68b2f130514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

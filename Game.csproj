@@ -86,7 +86,6 @@
     <Compile Include="Assets\Project\Modules\UI\Screens\Home\Scripts\HomeScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\UI\Toast\Scripts\Toast.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFXTypeExplosion.cs" />
-    <Compile Include="Assets\Project\Modules\Game\Scripts\Trap\SemicircularRotation.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Weapon\WeaponDatabase.cs" />
     <Compile Include="Assets\Project\Modules\UI\Toast\Scripts\ToastType.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\CrossSceneReference.cs" />
@@ -107,7 +106,6 @@
     <Compile Include="Assets\Project\Modules\Debug\Scripts\DebugUtils.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\BGMType.cs" />
     <Compile Include="Assets\Project\Modules\InputSettings\InputController.cs" />
-    <Compile Include="Assets\Project\Modules\Game\Scripts\Trap\TrapCircularRotation.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Extension\StringFormatUtils.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Sensor.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\Enemy.cs" />
@@ -133,7 +131,6 @@
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFX.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Weapon\ProjectileDeflector.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\EnemyKamikaze.cs" />
-    <Compile Include="Assets\Project\Modules\Game\Scripts\Trap\SpringPusher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Project\Modules\Game.asmdef" />
