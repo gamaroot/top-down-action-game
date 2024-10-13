@@ -82,7 +82,7 @@ namespace Game
             if (this._dropdownSpawnableEnemies.value == 0)
                 spawnType = (SpawnTypeEnemy)UnityEngine.Random.Range(0, Enum.GetValues(typeof(SpawnTypeEnemy)).Length);
             else
-                spawnType = (SpawnTypeEnemy)(this._dropdownSpawnableEnemies.value + 1);
+                spawnType = (SpawnTypeEnemy)(this._dropdownSpawnableEnemies.value - 1);
             
             Transform spawn = SpawnablePool.SpawnEnemy<Transform>(spawnType);
             spawn.position = this._debugUtils.GetRandomCircularPosition(this._player.transform.position, 15f, 10f);
@@ -110,7 +110,7 @@ namespace Game
             if (this._dropdownSpawnableTraps.value == 0)
                 spawnType = (TrapSpawnType)UnityEngine.Random.Range(0, Enum.GetValues(typeof(TrapSpawnType)).Length);
             else
-                spawnType = (TrapSpawnType)(this._dropdownSpawnableTraps.value + 1);
+                spawnType = (TrapSpawnType)(this._dropdownSpawnableTraps.value - 1);
 
             Transform spawn = SpawnablePool.SpawnTrap<Transform>(spawnType);
             spawn.position = this._debugUtils.GetRandomCircularPosition(Vector3.zero, 15f, 10f);
