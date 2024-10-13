@@ -1,7 +1,5 @@
 using Game.Database;
-using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Utils;
 
 namespace Game
@@ -11,30 +9,28 @@ namespace Game
         [Header("Attributes")]
         [SerializeField] private WeaponType _weaponType;
         [SerializeField] private LayerMask _weaponLayerMask;
+        [SerializeField] private WeaponConfig _weaponConfig;
 
         [Header("Components")]
         [SerializeField] private Transform _shootPoint;
-        [SerializeField, ReadOnly] private WeaponDatabase _weaponDatabase;
 
         public float Range => this._weaponConfig.Range;
         public bool CanShoot => this._lastTimeShot > this._weaponConfig.ShootInterval;
 
         private float _lastTimeShot;
         private int _weaponLayerIndex;
-        private WeaponConfig _weaponConfig;
 
         private void OnValidate()
         {
             if (this._shootPoint == null)
                 this._shootPoint = this.transform;
 
-            if (this._weaponDatabase == null)
-                this._weaponDatabase = Resources.Load<WeaponDatabase>(ProjectPaths.WEAPON_DATABASE);
+            WeaponConfigDatabase database = Resources.Load<WeaponConfigDatabase>(ProjectPaths.WEAPON_CONFIG_DATABASE);
+            this._weaponConfig = database.Config[(int)this._weaponType];
         }
 
         private void Awake()
         {
-            this._weaponConfig = this._weaponDatabase.Weapons[(int)this._weaponType];
             this._weaponLayerIndex = Mathf.RoundToInt(Mathf.Log(this._weaponLayerMask.value, 2));
         }
 

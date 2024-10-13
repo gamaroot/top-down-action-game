@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using Utils;
 
 namespace Game
 {
     public class PlayerShootController : MonoBehaviour
     {
         [Header("Components")]
-        [SerializeField] private WeaponController _weapon;
+        [SerializeField, ReadOnly] private WeaponController _weapon;
 
         private bool _isFirePressed;
         private InputController _inputs;

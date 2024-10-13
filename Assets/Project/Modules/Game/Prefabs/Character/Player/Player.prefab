@@ -581,7 +581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3038839d1e273134585b04203f16c695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
+  _movementSpeed: 10
   _dashSpeed: 30
   _dashDuration: 0.2
   _dashCooldown: 1
@@ -611,8 +611,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66a6673bd0552c41a745ade6253dd64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 0.3
-  _cooldown: 1
+  _duration: 10
+  _cooldown: 30
   _projectileDeflector: {fileID: 2192332748518492406}
 --- !u!135 &8295479494289561504
 SphereCollider:
@@ -735,8 +735,17 @@ MonoBehaviour:
   _weaponLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  _weaponConfig:
+    Type: 1
+    Damage: 1
+    ShootInterval: 0.3
+    Range: 10
+    SfxOnShoot: 0
+    SfxOnExplode: 1
+    ExplosionType: 1
+    ProjectileSpeed: 20
+    ChanceOfBeingPinky: 0.1
   _shootPoint: {fileID: 2584479008907316112}
-  _weaponDatabase: {fileID: 11400000, guid: 232f97f12c2a3894f9e35592b8205052, type: 2}
 --- !u!1 &7878494155353374169
 GameObject:
   m_ObjectHideFlags: 0

@@ -239,8 +239,17 @@ MonoBehaviour:
   _weaponLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  _weaponConfig:
+    Type: 1
+    Damage: 1
+    ShootInterval: 0.3
+    Range: 10
+    SfxOnShoot: 0
+    SfxOnExplode: 1
+    ExplosionType: 1
+    ProjectileSpeed: 20
+    ChanceOfBeingPinky: 0.1
   _shootPoint: {fileID: 525587873716736208}
-  _weaponDatabase: {fileID: 11400000, guid: 232f97f12c2a3894f9e35592b8205052, type: 2}
 --- !u!1 &9036938352783240745
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,6 +323,7 @@ MonoBehaviour:
   _maxHealth: 3
   _deathVFX: 2
   _deathSFX: 2
+  _type: 1
 --- !u!114 &1306455811818272514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,7 +354,7 @@ MonoBehaviour:
   m_BlackboardVariableOverridesList:
   - rid: 1653337366749512085
   - rid: 1653337366749512086
-  - rid: 1653337422262174130
+  - rid: 8520601897841721927
   references:
     version: 2
     RefIds:
@@ -366,13 +376,13 @@ MonoBehaviour:
           m_Value1: 301352915747845040
         Name: Waypoints
         m_Value: []
-    - rid: 1653337422262174130
+    - rid: 8520601897841721927
       type: {class: 'BlackboardVariable`1[[Utils.Sensor, Game]]', ns: Unity.Behavior,
         asm: Unity.Behavior}
       data:
         GUID:
-          m_Value0: 12868409162849154438
-          m_Value1: 3504285707184086972
+          m_Value0: 3444881901789239758
+          m_Value1: 5264362059421579474
         Name: Sensor
         m_Value: {fileID: 747891489386550706}
 --- !u!195 &7153801489365045476

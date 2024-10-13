@@ -36,7 +36,7 @@ namespace Game
 
         private void OnEnable()
         {
-            this.IsPinky = Random.Range(0, 10) < this._weaponConfig.ChanceOfBeingPinky;
+            this.IsPinky = Random.Range(0, 1f) < this._weaponConfig.ChanceOfBeingPinky;
 
             ParticleSystem.MainModule main = this._particleSystem.main;
             main.startColor = this.IsPinky ? this._pinkColor : this._originalColor;

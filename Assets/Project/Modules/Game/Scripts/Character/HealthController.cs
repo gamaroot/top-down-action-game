@@ -6,10 +6,9 @@ namespace Game
 {
     public class HealthController : MonoBehaviour
     {
-        [Header("Attributes")]
-        [SerializeField] private float _maxHealth = 10f;
-        [SerializeField] private SpawnTypeExplosion _deathVFX;
-        [SerializeField] private SFXTypeExplosion _deathSFX;
+        [SerializeField, ReadOnly] protected float _maxHealth;
+        [SerializeField, ReadOnly] protected SpawnTypeExplosion _deathVFX;
+        [SerializeField, ReadOnly] protected SFXTypeExplosion _deathSFX;
 
         public Action DeathListener;
         public Action RespawnListener;

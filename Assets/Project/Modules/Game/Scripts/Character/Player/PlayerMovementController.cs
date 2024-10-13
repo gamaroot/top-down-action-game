@@ -1,5 +1,4 @@
-using System;
-using System.Collections;
+using Game.Database;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Utils;
@@ -10,15 +9,15 @@ namespace Game
     public class PlayerMovementController : MovementController
     {
         [Header("Attributes")]
-        [SerializeField] private float _speed = 10f;
-        [SerializeField] private float _dashSpeed = 30f;      // Speed multiplier during dash
-        [SerializeField] private float _dashDuration = 0.2f;  // Duration of the dash
-        [SerializeField] private float _dashCooldown = 1f;    // Cooldown time between dashes
+        [SerializeField, ReadOnly] private float _movementSpeed;
+        [SerializeField, ReadOnly] private float _dashSpeed;
+        [SerializeField, ReadOnly] private float _dashDuration;
+        [SerializeField, ReadOnly] private float _dashCooldown;
 
         [Header("Components")]
-        [SerializeField] private CharacterController _controller;
+        [SerializeField, ReadOnly] private CharacterController _controller;
 
-        private Vector3 NormalMovement => this._speed * Time.deltaTime * new Vector3(this._move.x, 0, this._move.y);
+        private Vector3 NormalMovement => this._movementSpeed * Time.deltaTime * new Vector3(this._move.x, 0, this._move.y);
 
         private Vector2 _move;
         private InputController _inputs;
@@ -28,6 +27,12 @@ namespace Game
         {
             if (this._controller == null)
                 this._controller = base.GetComponent<CharacterController>();
+
+            var database = Resources.Load<CharacterConfigDatabase<CharacterConfig>>(ProjectPaths.PLAYER_CONFIG_DATABASE);
+            this._movementSpeed = database.Config.MovementSpeed;
+            this._dashSpeed = database.Config.DashSpeed;
+            this._dashDuration = database.Config.DashDuration;
+            this._dashCooldown = database.Config.DashCooldown;
         }
 
         private void Awake()

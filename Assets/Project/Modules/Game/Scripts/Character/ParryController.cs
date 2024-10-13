@@ -1,3 +1,4 @@
+using Game.Database;
 using UnityEngine;
 using Utils;
 
@@ -6,11 +7,11 @@ namespace Game
     public class ParryController : MonoBehaviour
     {
         [Header("Attributes")]
-        [SerializeField] private float _duration = 0.5f;
-        [SerializeField] private float _cooldown = 1f;
+        [SerializeField, ReadOnly] private float _duration;
+        [SerializeField, ReadOnly] private float _cooldown;
 
         [Header("Components")]
-        [SerializeField] private GameObject _projectileDeflector;
+        [SerializeField, ReadOnly] private GameObject _projectileDeflector;
 
         public bool IsParryActive => this._projectileDeflector.activeSelf;
 
@@ -18,6 +19,14 @@ namespace Game
 
         private InputController _inputs;
         private float _lastParryTime;
+
+        private void OnValidate()
+        {
+            if (this._projectileDeflector == null)
+                this._projectileDeflector = base.GetComponentInChildren<ProjectileDeflector>().gameObject;
+
+            this.LoadConfig();
+        }
 
         private void Awake()
         {
@@ -50,6 +59,24 @@ namespace Game
         private void DeactivateDeflector()
         {
             this._projectileDeflector.SetActive(false);
+        }
+
+        private void LoadConfig()
+        {
+            if (base.gameObject.CompareTag(GameTags.PLAYER))
+                this.LoadConfig<CharacterConfig>(ProjectPaths.PLAYER_CONFIG_DATABASE);
+            else
+                this.LoadConfig<EnemyConfig>(ProjectPaths.ENEMY_CONFIG_DATABASE);
+        }
+
+        private void LoadConfig<T>(string databasePath) where T : CharacterConfig
+        {
+            var database = Resources.Load<CharacterConfigDatabase<T>>(databasePath);
+            if (database != null)
+            {
+                this._duration = database.Config.MovementSpeed;
+                this._cooldown = database.Config.DashSpeed;
+            }
         }
     }
 }

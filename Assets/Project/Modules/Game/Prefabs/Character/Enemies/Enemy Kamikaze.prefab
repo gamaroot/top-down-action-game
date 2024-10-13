@@ -264,6 +264,7 @@ MonoBehaviour:
   _maxHealth: 6
   _deathVFX: 0
   _deathSFX: 0
+  _type: 0
 --- !u!114 &1306455811818272514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +295,7 @@ MonoBehaviour:
   m_BlackboardVariableOverridesList:
   - rid: 1653337366749512085
   - rid: 1653337366749512086
-  - rid: 1653337422262174130
+  - rid: 8520601897841722002
   references:
     version: 2
     RefIds:
@@ -316,13 +317,13 @@ MonoBehaviour:
           m_Value1: 301352915747845040
         Name: Waypoints
         m_Value: []
-    - rid: 1653337422262174130
+    - rid: 8520601897841722002
       type: {class: 'BlackboardVariable`1[[Utils.Sensor, Game]]', ns: Unity.Behavior,
         asm: Unity.Behavior}
       data:
         GUID:
-          m_Value0: 12868409162849154438
-          m_Value1: 3504285707184086972
+          m_Value0: 2925816279917505334
+          m_Value1: 8731543058368213204
         Name: Sensor
         m_Value: {fileID: 2191498822432452884}
 --- !u!195 &7153801489365045476

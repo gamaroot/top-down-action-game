@@ -62,9 +62,11 @@
     <Analyzer Include="C:\Users\gamar\Documents\Projects\Gama\top-down-action-game\Library\PackageCache\com.unity.dt.app-ui@562079a7bdc9\Runtime\SourceGenerators\netstandard2.0\EnumToLowerCase.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Project\Modules\Database\Scripts\Enemy\EnenyConfigDatabase.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnablePool.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Behavior\EnemyState.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\BGM.cs" />
+    <Compile Include="Assets\Project\Modules\Database\Scripts\Weapon\WeaponSetupDatabase.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerShootController.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\UI\UIWorldJumpingText.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerAimController.cs" />
@@ -83,10 +85,11 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\ParryController.cs" />
     <Compile Include="Assets\Project\Modules\UI\Screens\Settings\Scripts\SettingsScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeExplosion.cs" />
+    <Compile Include="Assets\Project\Modules\Database\Scripts\Player\PlayerConfigDatabase.cs" />
+    <Compile Include="Assets\Project\Modules\Database\Scripts\Editor\GameSetupEditor.cs" />
     <Compile Include="Assets\Project\Modules\UI\Screens\Home\Scripts\HomeScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\UI\Toast\Scripts\Toast.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFXTypeExplosion.cs" />
-    <Compile Include="Assets\Project\Modules\Database\Scripts\Weapon\WeaponDatabase.cs" />
     <Compile Include="Assets\Project\Modules\UI\Toast\Scripts\ToastType.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\CrossSceneReference.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeProjectile.cs" />
@@ -97,8 +100,10 @@
     <Compile Include="Assets\Project\Modules\Constants\Scripts\GameTags.cs" />
     <Compile Include="Assets\Project\Modules\Bootstrap.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Weapon\WeaponType.cs" />
+    <Compile Include="Assets\Project\Modules\Database\Scripts\Player\CharacterConfig.cs" />
     <Compile Include="Assets\Project\Modules\Debug\Scripts\DebugScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\TrapSpawnType.cs" />
+    <Compile Include="Assets\Project\Modules\Database\Scripts\Enemy\EnemyConfig.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFXTypeProjectile.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\InputFeedback\Vibration.cs" />
     <Compile Include="Assets\Project\Modules\Debug\Scripts\DebugButton.cs" />
@@ -108,6 +113,7 @@
     <Compile Include="Assets\Project\Modules\InputSettings\InputController.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Extension\StringFormatUtils.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Sensor.cs" />
+    <Compile Include="Assets\Project\Modules\Database\Scripts\CharacterConfigDatabase.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\Enemy.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFXTypeUI.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\UI\UIFollower.cs" />
@@ -129,6 +135,7 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\HealthController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeEnemy.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFX.cs" />
+    <Compile Include="Assets\Project\Modules\Database\Scripts\GameConfigDatabase.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Weapon\ProjectileDeflector.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\EnemyKamikaze.cs" />
   </ItemGroup>
