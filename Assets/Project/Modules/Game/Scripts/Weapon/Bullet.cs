@@ -42,7 +42,6 @@ namespace Game
             main.startColor = this.IsPinky ? this._pinkColor : this._originalColor;
 
             SFX.PlayProjectile(this._weaponConfig.SfxOnShoot);
-            base.Invoke(nameof(this.Deactivate), this._weaponConfig.LifeTime);
         }
 
         private void OnCollisionEnter(Collision collision)

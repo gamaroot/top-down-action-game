@@ -15,9 +15,6 @@ namespace Game.Database
         [Tooltip("How far the weapon can shoot")]
         [field: SerializeField] public float Range { get; private set; } = 50f;
 
-        [Tooltip("Max ammo capacity")]
-        [field: SerializeField] public int AmmoCapacity { get; private set; } = 30;
-
         [field: SerializeField] public SFXTypeProjectile SfxOnShoot { get; private set; }
         [field: SerializeField] public SFXTypeExplosion SfxOnExplode { get; private set; }
 
@@ -25,9 +22,6 @@ namespace Game.Database
 
         [Tooltip("Speed of the bullet")]
         [field: SerializeField] public float ProjectileSpeed { get; private set; } = 20f;
-
-        [Tooltip("Time before the bullet is destroyed")]
-        [field: SerializeField] public float LifeTime { get; private set; } = 10f;
 
         [Tooltip("from 0 to 10, the chance to spawn bullets that can be parried")]
         [Range(0, 10)]
