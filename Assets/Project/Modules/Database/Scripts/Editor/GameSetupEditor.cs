@@ -160,7 +160,6 @@ namespace Game.Database
             if (this._mapConfig.RoomPrefabs.Count == 0)
                 this._mapConfig.RoomPrefabs.Add(null);
 
-
             // Create a new list to hold the Room Prefabs
             for (int index = 0; index < this._mapConfig.RoomPrefabs.Count; index++)
             {
