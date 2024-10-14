@@ -156,6 +156,11 @@ namespace Game.Database
 
             var indicesToRemove = new List<int>(); // List to keep track of indices to remove
 
+            // Ensures there is at least one element in the list
+            if (this._mapConfig.RoomPrefabs.Count == 0)
+                this._mapConfig.RoomPrefabs.Add(null);
+
+
             // Create a new list to hold the Room Prefabs
             for (int index = 0; index < this._mapConfig.RoomPrefabs.Count; index++)
             {

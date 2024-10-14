@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MapConfig Database
   m_EditorClassIdentifier: 
   <Config>k__BackingField:
-    <RoomPrefabs>k__BackingField: []
+    <RoomPrefabs>k__BackingField:
+    - {fileID: 0}
     <MinRooms>k__BackingField: 10
     <MaxRooms>k__BackingField: 10
