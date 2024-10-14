@@ -86,6 +86,7 @@
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_BurnFX.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\2dxfx_AL\_2dxFX_AL_GrassMultiFX.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_JellyAutoMove.cs" />
+    <Compile Include="Assets\MinimapCamera.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_Outline.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_PlasmaRainbow.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_Liquid.cs" />
