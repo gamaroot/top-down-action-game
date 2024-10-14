@@ -23,6 +23,7 @@ MonoBehaviour:
     <ParryDuration>k__BackingField: 0
     <ParryCooldown>k__BackingField: 0
     <Type>k__BackingField: 0
+    <XpReward>k__BackingField: 15
     <TargetTag>k__BackingField: 5
     <ObstacleLayer>k__BackingField:
       serializedVersion: 2
@@ -40,6 +41,7 @@ MonoBehaviour:
     <ParryDuration>k__BackingField: 0.3
     <ParryCooldown>k__BackingField: 1
     <Type>k__BackingField: 1
+    <XpReward>k__BackingField: 20
     <TargetTag>k__BackingField: 5
     <ObstacleLayer>k__BackingField:
       serializedVersion: 2
