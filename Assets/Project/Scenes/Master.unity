@@ -1099,21 +1099,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2558689884735918698, guid: 07f8804b87c939b4a88e277ca159fad4,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2558689884735918698, guid: 07f8804b87c939b4a88e277ca159fad4,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3701381241258675323, guid: 07f8804b87c939b4a88e277ca159fad4,
-        type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 4391291159302818654, guid: 07f8804b87c939b4a88e277ca159fad4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1164,41 +1149,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4940454971648448639, guid: 07f8804b87c939b4a88e277ca159fad4,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4940454971648448639, guid: 07f8804b87c939b4a88e277ca159fad4,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6232202900844893240, guid: 07f8804b87c939b4a88e277ca159fad4,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6232202900844893240, guid: 07f8804b87c939b4a88e277ca159fad4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6435670751457646928, guid: 07f8804b87c939b4a88e277ca159fad4,
-        type: 3}
-      propertyPath: m_Value
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7296282807849043748, guid: 07f8804b87c939b4a88e277ca159fad4,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585545}
-    - target: {fileID: 8649876501734961594, guid: 07f8804b87c939b4a88e277ca159fad4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

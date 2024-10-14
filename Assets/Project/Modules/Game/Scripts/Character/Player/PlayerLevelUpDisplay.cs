@@ -4,15 +4,17 @@ namespace Game
 {
     public class PlayerLevelUpDisplay : MonoBehaviour
     {
+        [SerializeField] private Animator _animator;
+
         public void OnShow()
         {
-            base.gameObject.SetActive(true);
+            this._animator.SetBool(AnimationKeys.VISIBLE, true);
         }
 
         // Called via Animation Trigger
         public void OnHide()
         {
-            base.gameObject.SetActive(false);
+            this._animator.SetBool(AnimationKeys.VISIBLE, false);
         }
     }
 }

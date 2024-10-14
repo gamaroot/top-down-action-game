@@ -424,7 +424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4391291159302818654
 Transform:
   m_ObjectHideFlags: 0
@@ -732,6 +732,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: HP Bar
       objectReference: {fileID: 0}
+    - target: {fileID: 478239635677456301, guid: f735b7ad7f743964c877a976bdc2240a,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 478239635677456301, guid: f735b7ad7f743964c877a976bdc2240a,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5177556666548470302, guid: f735b7ad7f743964c877a976bdc2240a,
         type: 3}
       propertyPath: m_Pivot.x
@@ -832,6 +842,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8967052776408476823, guid: f735b7ad7f743964c877a976bdc2240a,
+        type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -867,6 +882,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Value
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 855028998391214646, guid: 934b0cc614a8b7549a46685b71a4557c,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 855028998391214646, guid: 934b0cc614a8b7549a46685b71a4557c,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3603194232067482517, guid: 934b0cc614a8b7549a46685b71a4557c,
         type: 3}
@@ -1047,7 +1072,7 @@ PrefabInstance:
     - target: {fileID: 8414104111810565655, guid: c15aee340ec06d6438f5bab843a88ad8,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 8
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8414104111810565655, guid: c15aee340ec06d6438f5bab843a88ad8,
         type: 3}
