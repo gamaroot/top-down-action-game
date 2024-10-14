@@ -245,9 +245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ddace0cbc90987469c1ac2b8da56d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _meshRenderer: {fileID: 948797227930074108}
-  _movement: {fileID: 1306455811818272514}
-  _weapon: {fileID: 0}
+  _movementController: {fileID: 1306455811818272514}
+  _weaponController: {fileID: 0}
   _healthController: {fileID: -2443872182941227530}
 --- !u!114 &-2443872182941227530
 MonoBehaviour:
@@ -261,9 +260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 974009700570e1447b59a0dbddfd488e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 6
-  _deathVFX: 0
-  _deathSFX: 0
   _type: 0
 --- !u!114 &1306455811818272514
 MonoBehaviour:

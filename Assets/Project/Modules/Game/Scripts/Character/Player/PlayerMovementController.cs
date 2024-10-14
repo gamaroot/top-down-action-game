@@ -8,36 +8,29 @@ namespace Game
     [RequireComponent(typeof(CharacterController))]
     public class PlayerMovementController : MovementController
     {
-        [Header("Attributes")]
-        [SerializeField, ReadOnly] private float _movementSpeed;
-        [SerializeField, ReadOnly] private float _dashSpeed;
-        [SerializeField, ReadOnly] private float _dashDuration;
-        [SerializeField, ReadOnly] private float _dashCooldown;
-
         [Header("Components")]
         [SerializeField, ReadOnly] private CharacterController _controller;
 
-        private Vector3 NormalMovement => this._movementSpeed * Time.deltaTime * new Vector3(this._move.x, 0, this._move.y);
+        private float MovementSpeed => this._config.MovementSpeed;
+        private float DashSpeed => this._config.DashSpeed;
+        private float DashDuration => this._config.DashDuration;
+        private float DashCooldown => this._config.DashCooldown;
+        private Vector3 NormalMovement => this.MovementSpeed * Time.deltaTime * new Vector3(this._move.x, 0, this._move.y);
 
         private Vector2 _move;
         private InputController _inputs;
         private DashHandler _dashHandler;
+        private ICharacterConfig _config;
 
         private void OnValidate()
         {
             if (this._controller == null)
                 this._controller = base.GetComponent<CharacterController>();
-
-            var database = Resources.Load<CharacterConfigDatabase<CharacterConfig>>(ProjectPaths.PLAYER_CONFIG_DATABASE);
-            this._movementSpeed = database.Config.MovementSpeed;
-            this._dashSpeed = database.Config.DashSpeed;
-            this._dashDuration = database.Config.DashDuration;
-            this._dashCooldown = database.Config.DashCooldown;
         }
 
         private void Awake()
         {
-            this._dashHandler = new(this._dashSpeed, this._dashDuration, this._dashCooldown);
+            this._dashHandler = new(this.DashSpeed, this.DashDuration, this.DashCooldown);
 
             this._inputs = new InputController();
             this._inputs.Player.Move.performed += context => this._move = context.ReadValue<Vector2>();
@@ -60,6 +53,11 @@ namespace Game
             this._dashHandler.OnUpdate();
 
             this.Move(this._dashHandler.IsDashing ? this._dashHandler.DashMovement : this.NormalMovement);
+        }
+
+        public void Init(ICharacterConfig config)
+        {
+            this._config = config;
         }
 
         public override void Move(Vector3 point)

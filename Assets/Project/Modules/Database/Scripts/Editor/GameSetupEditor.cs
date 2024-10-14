@@ -2,6 +2,7 @@ using System;
 using UnityEditor;
 using UnityEngine;
 using Utils;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Game.Database
 {
@@ -38,9 +39,6 @@ namespace Game.Database
                 case 1: this.DrawEnemyTab(); break;
                 case 2: this.DrawWeaponTab(); break;
             }
-
-            if (GUILayout.Button("Save"))
-                this.SaveData();
         }
 
         private void DrawPlayerTab()
@@ -65,6 +63,9 @@ namespace Game.Database
         {
             for (int index = 0; index < this._enemyConfigs.Length; index++)
             {
+                if (this._enemyConfigs[index] == null)
+                    this._enemyConfigs[index] = new();
+
                 this._enemyConfigs[index].Type = (SpawnTypeEnemy)index;
                 this._enemyFoldouts[index] = EditorGUILayout.Foldout(this._enemyFoldouts[index], $"Enemy: {this._enemyConfigs[index].Type}", true);
 
@@ -80,7 +81,10 @@ namespace Game.Database
 
                 // Sensor
                 this._enemyConfigs[index].TargetTag = (Tags)EditorGUILayout.EnumPopup("Target Tag", this._enemyConfigs[index].TargetTag);
-                this._enemyConfigs[index].ObstacleLayer = EditorGUILayout.LayerField("Obstacle Layer", this._enemyConfigs[index].ObstacleLayer);
+
+                int layer = EditorGUILayout.MaskField("Obstacle Layer", this._enemyConfigs[index].ObstacleLayer.value, UnityEditorInternal.InternalEditorUtility.layers);
+                this._enemyConfigs[index].ObstacleLayer = (LayerMask)layer;
+
                 this._enemyConfigs[index].DetectionRadius = EditorGUILayout.FloatField("Detection Radius", this._enemyConfigs[index].DetectionRadius);
 
                 // Movement
@@ -100,8 +104,11 @@ namespace Game.Database
 
         private void DrawWeaponTab()
         {
-            for (int index = 0; index < this._enemyConfigs.Length; index++)
+            for (int index = 0; index < this._weaponConfigs.Length; index++)
             {
+                if (this._weaponConfigs[index] == null)
+                    this._weaponConfigs[index] = new();
+
                 this._weaponConfigs[index].Type = (WeaponType)index;
                 this._weaponFoldouts[index] = EditorGUILayout.Foldout(this._weaponFoldouts[index], $"Weapon: {this._weaponConfigs[index].Type}", true);
 
@@ -131,30 +138,25 @@ namespace Game.Database
             this._enemyFoldouts = new bool[this._enemyConfigs.Length];
             this._weaponFoldouts = new bool[this._weaponConfigs.Length];
 
-            this._playerConfig = this.LoadData<CharacterConfig>(ProjectPaths.PLAYER_CONFIG_DATABASE);
-            this._enemyConfigs = this.LoadData<EnemyConfig[]>(ProjectPaths.ENEMY_CONFIG_DATABASE);
-            this._weaponConfigs = this.LoadData<WeaponConfig[]>(ProjectPaths.WEAPON_CONFIG_DATABASE);
+            this.LoadData(ProjectPaths.PLAYER_CONFIG_DATABASE, ref this._playerConfig);
+            this.LoadData(ProjectPaths.ENEMY_CONFIG_DATABASE, ref this._enemyConfigs);
+            this.LoadData(ProjectPaths.WEAPON_CONFIG_DATABASE, ref this._weaponConfigs);
+        }
+
+        private void LoadData<T>(string path, ref T configField)
+        {
+            configField = this.LoadData<T>(path);
+        }
+
+        private void LoadData<T>(string path, ref T[] configField)
+        {
+            var data = this.LoadData<T[]>(path);
+            configField = data.Length > 0 ? data : configField;
         }
 
         private T LoadData<T>(string filename)
         {
             return Resources.Load<GameConfigDatabase<T>>(filename).Config;
-        }
-
-        private void SaveData()
-        {
-            this.SaveData(this._playerConfig, typeof(PlayerConfigDatabase), ProjectPaths.PLAYER_CONFIG_DATABASE);
-            this.SaveData(this._enemyConfigs, typeof(EnemyConfigDatabase), ProjectPaths.ENEMY_CONFIG_DATABASE);
-            this.SaveData(this._weaponConfigs, typeof(WeaponConfigDatabase), ProjectPaths.WEAPON_CONFIG_DATABASE);
-
-            AssetDatabase.SaveAssets();
-        }
-
-        private void SaveData<T>(T configData, Type databaseType, string databasePath) where T : class
-        {
-            var configDatabase = ScriptableObject.CreateInstance(databaseType) as GameConfigDatabase<T>;
-            configDatabase.SetData(configData);
-            AssetDatabase.CreateAsset(configDatabase, string.Format(ProjectPaths.DATABASE_PATH, databasePath));
         }
     }
 }

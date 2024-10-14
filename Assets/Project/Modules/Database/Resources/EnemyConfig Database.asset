@@ -13,37 +13,37 @@ MonoBehaviour:
   m_Name: EnemyConfig Database
   m_EditorClassIdentifier: 
   <Config>k__BackingField:
-  - MaxHealth: 6
-    DeathVFX: 0
-    DeathSFX: 0
-    MovementSpeed: 10
-    DashSpeed: 0
-    DashDuration: 0
-    DashCooldown: 0
-    ParryDuration: 0.3
-    ParryCooldown: 0
-    Type: 0
-    TargetTag: 5
-    ObstacleLayer:
+  - <MaxHealth>k__BackingField: 5
+    <DeathVFX>k__BackingField: 0
+    <DeathSFX>k__BackingField: 0
+    <MovementSpeed>k__BackingField: 10
+    <DashSpeed>k__BackingField: 0
+    <DashDuration>k__BackingField: 0
+    <DashCooldown>k__BackingField: 0
+    <ParryDuration>k__BackingField: 0
+    <ParryCooldown>k__BackingField: 0
+    <Type>k__BackingField: 0
+    <TargetTag>k__BackingField: 5
+    <ObstacleLayer>k__BackingField:
       serializedVersion: 2
-      m_Bits: 0
-    DetectionRadius: 20
-    DashPossibility: 0
-    ParryPossibility: 0
-  - MaxHealth: 3
-    DeathVFX: 2
-    DeathSFX: 2
-    MovementSpeed: 10
-    DashSpeed: 30
-    DashDuration: 0.2
-    DashCooldown: 1
-    ParryDuration: 0.3
-    ParryCooldown: 1
-    Type: 1
-    TargetTag: 5
-    ObstacleLayer:
+      m_Bits: 8
+    <DetectionRadius>k__BackingField: 20
+    <DashPossibility>k__BackingField: 0
+    <ParryPossibility>k__BackingField: 0
+  - <MaxHealth>k__BackingField: 3
+    <DeathVFX>k__BackingField: 2
+    <DeathSFX>k__BackingField: 2
+    <MovementSpeed>k__BackingField: 10
+    <DashSpeed>k__BackingField: 30
+    <DashDuration>k__BackingField: 0.2
+    <DashCooldown>k__BackingField: 1
+    <ParryDuration>k__BackingField: 0.3
+    <ParryCooldown>k__BackingField: 1
+    <Type>k__BackingField: 1
+    <TargetTag>k__BackingField: 5
+    <ObstacleLayer>k__BackingField:
       serializedVersion: 2
-      m_Bits: 0
-    DetectionRadius: 20
-    DashPossibility: 0.2
-    ParryPossibility: 0.2
+      m_Bits: 8
+    <DetectionRadius>k__BackingField: 20
+    <DashPossibility>k__BackingField: 0.2
+    <ParryPossibility>k__BackingField: 0.2

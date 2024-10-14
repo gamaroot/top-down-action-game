@@ -17,7 +17,7 @@ namespace Game
         [SerializeField, ReadOnly] private Color _pinkColor;
 
         public bool IsPinky { get; private set; }
-        private WeaponConfig _weaponConfig;
+        private IWeaponConfig _config;
 
         private void OnValidate()
         {
@@ -36,12 +36,12 @@ namespace Game
 
         private void OnEnable()
         {
-            this.IsPinky = Random.Range(0, 1f) < this._weaponConfig.ChanceOfBeingPinky;
+            this.IsPinky = Random.Range(0, 1f) < this._config.ChanceOfBeingPinky;
 
             ParticleSystem.MainModule main = this._particleSystem.main;
             main.startColor = this.IsPinky ? this._pinkColor : this._originalColor;
 
-            SFX.PlayProjectile(this._weaponConfig.SfxOnShoot);
+            SFX.PlayProjectile(this._config.SfxOnShoot);
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -52,9 +52,9 @@ namespace Game
 
             this.Deactivate();
 
-            SFX.PlayExplosion(this._weaponConfig.SfxOnExplode);
+            SFX.PlayExplosion(this._config.SfxOnExplode);
 
-            ParticleSystem particle = SpawnablePool.SpawnExplosion<ParticleSystem>(this._weaponConfig.ExplosionType);
+            ParticleSystem particle = SpawnablePool.SpawnExplosion<ParticleSystem>(this._config.ExplosionType);
             particle.transform.position = base.transform.position;
 
             ParticleSystem.MainModule main = particle.main;
@@ -62,10 +62,10 @@ namespace Game
             particle.gameObject.SetActive(true);
         }
 
-        public void SetWeaponConfig(WeaponConfig weaponConfig)
+        public void Setup(IWeaponConfig config)
         {
-            this._weaponConfig = weaponConfig;
-            this._damageDealer.LoadConfig(weaponConfig);
+            this._config = config;
+            this._damageDealer.SetDamage(config.Damage);
         }
 
         public void Shoot(Transform origin)
@@ -75,7 +75,7 @@ namespace Game
 
             base.gameObject.SetActive(true);
 
-            this._rigidbody.linearVelocity = origin.forward * this._weaponConfig.ProjectileSpeed;
+            this._rigidbody.linearVelocity = origin.forward * this._config.ProjectileSpeed;
         }
 
         private void Deactivate()

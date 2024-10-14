@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using Unity.Behavior;
 using UnityEngine;
 
 namespace Game
@@ -12,19 +15,22 @@ namespace Game
 
         private static readonly Pool[][] _pools = new Pool[5][];
 
-        private void Awake()
+        public void Init(IGameManager gameManager)
         {
             Transform baseTransform = base.transform;
-            this.CreatePool(0, baseTransform, this._enemyPrefabs);
+            this.CreatePool(0, baseTransform, this._enemyPrefabs, (enemy) =>
+            {
+                enemy.GetComponent<Enemy>().Init(gameManager);
+            });
             this.CreatePool(1, baseTransform, this._projectilePrefabs);
             this.CreatePool(2, baseTransform, this._explosionPrefabs);
             this.CreatePool(3, baseTransform, this._trapPrefabs);
             this.CreatePool(4, baseTransform, this._otherPrefabs);
         }
 
-        public static T SpawnEnemy<T>(SpawnTypeEnemy type, float autoDisableInSeconds = -1f)
+        public static T SpawnEnemy<T>(SpawnTypeEnemy type)
         {
-            return _pools[0][(int)type].BorrowObject<T>(autoDisableInSeconds);
+            return _pools[0][(int)type].BorrowObject<T>();
         }
 
         public static T SpawnProjectile<T>(SpawnTypeProjectile type, float autoDisableInSeconds = -1f)
@@ -58,12 +64,12 @@ namespace Game
             }
         }
 
-        private void CreatePool(int order, Transform baseTransform, GameObject[] prefabs)
+        private void CreatePool(int order, Transform baseTransform, GameObject[] prefabs, Action<GameObject> onObjectCreated = null)
         {
             _pools[order] = new Pool[prefabs.Length];
             for (int index = 0; index < prefabs.Length; index++)
             {
-                _pools[order][index] = new(baseTransform, prefabs[index]);
+                _pools[order][index] = new(baseTransform, prefabs[index], onObjectCreated);
             }
         }
     }

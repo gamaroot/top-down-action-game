@@ -1,4 +1,4 @@
-using System;
+using Game.Database;
 using UnityEngine;
 using Utils;
 
@@ -6,34 +6,29 @@ namespace Game
 {
     public class HealthController : MonoBehaviour
     {
-        [SerializeField, ReadOnly] protected float _maxHealth;
-        [SerializeField, ReadOnly] protected SpawnTypeExplosion _deathVFX;
-        [SerializeField, ReadOnly] protected SFXTypeExplosion _deathSFX;
-
-        public Action DeathListener;
-        public Action RespawnListener;
-        public Action<float, float, float> HealthRecoverListener;
-        public Action<float, float, float> HealthLoseListener;
-
-        public float MissingHealth => this._maxHealth - this.CurrentHealth;
-        public bool IsFullHealth => this.CurrentHealth == this._maxHealth;
+        public float MissingHealth => this.MaxHealth - this.CurrentHealth;
+        public bool IsFullHealth => this.CurrentHealth == this.MaxHealth;
         public bool IsDead => this.CurrentHealth <= 0;
 
-        private float CurrentHealth
+        public float MaxHealth => this._config.MaxHealth;
+
+        public float CurrentHealth
         {
             get => this._currentHealth; 
             set
             {
-                this._currentHealth = Mathf.Clamp(value, 0, this._maxHealth);
+                this._currentHealth = Mathf.Clamp(value, 0, this.MaxHealth);
             }
         }
         private float _currentHealth;
+
+        private ICharacterConfig _config;
 
         private float _lastDamageDealerID;
 
         private void OnEnable()
         {
-            this.CurrentHealth = this._maxHealth;
+            this.CurrentHealth = this.MaxHealth;
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -46,15 +41,18 @@ namespace Game
             }
         }
 
-        public void Respawn()
+        public void Init(ICharacterConfig config)
         {
-            this.RecoverHealth(this._maxHealth);
-            base.gameObject.SetActive(true);
-
-            this.RespawnListener?.Invoke();
+            this._config = config;
         }
 
-        public void RecoverHealth(float amount)
+        public virtual void OnReset()
+        {
+            this.CurrentHealth = this.MaxHealth;
+            base.gameObject.SetActive(true);
+        }
+
+        public virtual void RecoverHealth(float amount)
         {
             if (amount <= 0)
                 return;
@@ -63,15 +61,13 @@ namespace Game
                 amount = this.MissingHealth;
 
             this.CurrentHealth += amount;
-            this.HealthRecoverListener.Invoke(amount, this.CurrentHealth, this._maxHealth);
 
             this.ShowHealthText(amount.ToString(), Color.green);
         }
 
-        private void TakeDamage(float amount)
+        protected virtual void TakeDamage(float amount)
         {
             this.CurrentHealth -= amount;
-            this.HealthLoseListener.Invoke(amount, this.CurrentHealth, this._maxHealth);
 
             this.ShowHealthText(amount.ToString(), Color.red);
 
@@ -86,13 +82,17 @@ namespace Game
 
             base.gameObject.SetActive(false);
 
-            SFX.PlayExplosion(this._deathSFX);
+            SFX.PlayExplosion(this._config.DeathSFX);
 
-            ParticleSystem explosion = SpawnablePool.SpawnExplosion<ParticleSystem>(this._deathVFX);
+            ParticleSystem explosion = SpawnablePool.SpawnExplosion<ParticleSystem>(this._config.DeathVFX);
             explosion.transform.position = base.transform.position;
             explosion.gameObject.SetActive(true);
+        }
 
-            this.DeathListener?.Invoke();
+        public virtual void OnRespawn()
+        {
+            this.RecoverHealth(this.MaxHealth);
+            base.gameObject.SetActive(true);
         }
 
         private void ShowHealthText(string amount, Color color)

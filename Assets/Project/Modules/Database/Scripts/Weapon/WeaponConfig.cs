@@ -1,18 +1,19 @@
 using System;
+using UnityEngine;
 
 namespace Game.Database
 {
     [Serializable]
-    public class WeaponConfig
+    public class WeaponConfig : IWeaponConfig
     {
-        public WeaponType Type;
-        public float Damage = 1f;
-        public float ShootInterval = 0.3f;
-        public float Range = 10f;
-        public SFXTypeProjectile SfxOnShoot;
-        public SFXTypeExplosion SfxOnExplode;
-        public SpawnTypeExplosion ExplosionType;
-        public float ProjectileSpeed = 20f;
-        public float ChanceOfBeingPinky;
+        [field: SerializeField] public WeaponType Type { get; set; }
+        [field: SerializeField] public float Damage { get; set; } = 1f;
+        [field: SerializeField] public float ShootInterval { get; set; } = 0.3f;
+        [field: SerializeField] public float Range { get; set; } = 10f;
+        [field: SerializeField] public SFXTypeProjectile SfxOnShoot { get; set; }
+        [field: SerializeField] public SFXTypeExplosion SfxOnExplode { get; set; }
+        [field: SerializeField] public SpawnTypeExplosion ExplosionType { get; set; }
+        [field: SerializeField] public float ProjectileSpeed { get; set; } = 20f;
+        [field: SerializeField] public float ChanceOfBeingPinky { get; set; }
     }
 }

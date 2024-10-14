@@ -28,7 +28,6 @@ namespace Game
         [SerializeField] private GameObject _textCameraStage;
 
         [Header("Player")]
-        [SerializeField] private PlayerHealthController _player;
         [SerializeField] private GameObject _buttonPlayerHeal;
         [SerializeField] private GameObject _buttonLabelPlayerHeal;
         [SerializeField] private GameObject _buttonLabelPlayerRespawn;
@@ -38,7 +37,7 @@ namespace Game
         [SerializeField] private List<GameObject> _waypoints;
 
         private int _currentActiveCamera;
-        private ToastHandler _toastHandler;
+        private PlayerHealthController _player;
         private readonly DebugUtils _debugUtils = new();
 
         private void OnValidate()
@@ -47,11 +46,16 @@ namespace Game
             this.LoadDropdown<TrapSpawnType>(this._dropdownSpawnableTraps);
         }
 
-        private void Awake()
+        private void OnEnable()
         {
-            this._toastHandler = new CrossSceneReference().GetObjectByType<ToastHandler>();
-            this._player.RespawnListener = () => this._toastHandler.Show("You Respawned!");
-            this._player.DeathListener = () => this._toastHandler.Show("You died!");
+            this._player = new CrossSceneReference().GetObjectByType<PlayerHealthController>();
+            this._player.OnReset();
+        }
+
+        private void OnDisable()
+        {
+            if (this._player)
+                this._player.gameObject.SetActive(false);
         }
 
         private void Update()
@@ -122,7 +126,7 @@ namespace Game
         public void OnPlayerHealButtonClick()
         {
             if (this._player.IsDead)
-                this._player.Respawn();
+                this._player.OnRespawn();
             else
                 this._player.RecoverHealth(this._player.MissingHealth);
         }

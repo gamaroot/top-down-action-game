@@ -5,20 +5,20 @@ using Utils;
 namespace Game.Database
 {
     [Serializable]
-    public class EnemyConfig : CharacterConfig
+    public class EnemyConfig : CharacterConfig, IEnemyConfig
     {
-        public SpawnTypeEnemy Type;
+        [field: SerializeField] public SpawnTypeEnemy Type { get; set; }
 
         // Sensor
-        public Tags TargetTag = Tags.Player;
-        public LayerMask ObstacleLayer;
-        public float DetectionRadius = 20f;
+        [field: SerializeField] public Tags TargetTag { get; set; } = Tags.Player;
+        [field: SerializeField] public LayerMask ObstacleLayer { get; set; }
+        [field: SerializeField] public float DetectionRadius { get; set; } = 20f;
 
         // Movement
-        public float DashPossibility = 0.2f;
+        [field: SerializeField] public float DashPossibility { get; set; } = 0.2f;
 
         // Parry
-        public float ParryPossibility = 0.2f;
+        [field: SerializeField] public float ParryPossibility { get; set; } = 0.2f;
     }
 
 }

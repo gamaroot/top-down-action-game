@@ -14,9 +14,9 @@ namespace Game
             this.ID = Random.value;
         }
 
-        public void LoadConfig(WeaponConfig config)
+        public void SetDamage(float damage)
         {
-            this.Damage = config.Damage;
+            this.Damage = damage;
         }
     }
 }

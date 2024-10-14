@@ -1,3 +1,4 @@
+using Game.Database;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -40,6 +41,11 @@ namespace Game
         {
             if (this._isFirePressed)
                 this.OnFirePressed();
+        }
+
+        public void Init(IWeaponConfig[] config)
+        {
+            this._weapon.Init(config);
         }
 
         private void OnFirePressed()

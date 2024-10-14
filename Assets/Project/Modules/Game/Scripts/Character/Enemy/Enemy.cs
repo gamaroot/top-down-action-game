@@ -1,36 +1,47 @@
+using Game.Database;
 using UnityEngine;
 using Utils;
 
 namespace Game
 {
-    [RequireComponent(typeof(MeshRenderer), typeof(AIMovementController))]
-    public class Enemy : MonoBehaviour
+    [RequireComponent(typeof(AIMovementController), typeof(EnemyHealthController))]
+    public abstract class Enemy : MonoBehaviour
     {
         [Header("Components")]
-        [SerializeField, ReadOnly] public MeshRenderer _meshRenderer;
-        [SerializeField, ReadOnly] public AIMovementController _movement;
-        [SerializeField, ReadOnly] public WeaponController _weapon;
+        [SerializeField, ReadOnly] protected AIMovementController _movementController;
+        [SerializeField, ReadOnly] protected WeaponController _weaponController;
+        [SerializeField, ReadOnly] protected EnemyHealthController _healthController;
 
         protected virtual void OnValidate()
         {
-            if (this._meshRenderer == null)
-                this._meshRenderer = this.GetComponent<MeshRenderer>();
+            if (this._movementController == null)
+                this._movementController = this.GetComponent<AIMovementController>();
 
-            if (this._movement == null)
-                this._movement = this.GetComponent<AIMovementController>();
+            if (this._weaponController == null)
+                this._weaponController = this.GetComponentInChildren<WeaponController>();
 
-            if (this._weapon == null)
-                this._weapon = this.GetComponentInChildren<WeaponController>();
+            if (this._healthController == null)
+                this._healthController = this.GetComponentInChildren<EnemyHealthController>();
+        }
+
+        public void Init(IGameManager gameManager)
+        {
+            this._healthController.Init(gameManager.EnemyConfig[(int)this.Type]);
+
+            if (this._weaponController != null)
+                this._weaponController.Init(gameManager.WeaponConfig);
         }
 
         public void FaceTarget(Vector3 point)
         {
-            this._movement.RotateY(base.transform.position, point);
+            this._movementController.RotateY(base.transform.position, point);
         }
 
         public virtual void OnMove(Vector3 point)
         {
-            this._movement.Move(point);
+            this._movementController.Move(point);
         }
+
+        protected abstract SpawnTypeEnemy Type { get; }
     }
 }

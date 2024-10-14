@@ -1,15 +1,14 @@
 using UnityEngine;
-using Utils;
 
 namespace Game
 {
     public class EnemyKamikaze : Enemy
     {
-        [SerializeField] private EnemyHealthController _healthController;
+        protected override SpawnTypeEnemy Type { get; } = SpawnTypeEnemy.KAMIKAZE;
 
         public void OnCloseToTarget()
         {
-            this._healthController.OnDeath();
+            base._healthController.OnDeath();
         }
     }
 }

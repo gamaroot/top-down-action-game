@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using Utils;
@@ -9,12 +8,11 @@ namespace Game
     {
         [SerializeField] private Canvas _canvas;
         [SerializeField] private Slider _healthBar;
+        [SerializeField] private ToastHandler _toastHandler;
 
         private void Awake()
         {
             this._canvas.worldCamera = CameraHandler.Instance.MainCamera;
-            base.HealthRecoverListener += this.OnHealthRecover;
-            base.HealthLoseListener += this.OnHealthLose;
         }
 
         private void OnDisable()
@@ -22,23 +20,38 @@ namespace Game
             CameraHandler.Instance.StopShake();
         }
 
-        public override void OnDeath()
+        public override void RecoverHealth(float amount)
         {
-            base.OnDeath();
-            // TODO Game over
+            base.RecoverHealth(amount);
+            this._healthBar.value = base.CurrentHealth / base.MaxHealth;
         }
 
-        private void OnHealthRecover(float amount, float currentHealth, float maxHealth)
+        protected override void TakeDamage(float amount)
         {
-            this._healthBar.value = currentHealth / maxHealth;
-        }
-
-        private void OnHealthLose(float amount, float currentHealth, float maxHealth)
-        {
-            this._healthBar.value = currentHealth / maxHealth;
+            base.TakeDamage(amount);
+            this._healthBar.value = base.CurrentHealth / base.MaxHealth;
 
             if (base.gameObject.activeSelf)
                 base.StartCoroutine(CameraHandler.Instance.Shake());
+        }
+
+        public override void OnRespawn()
+        {
+            base.OnRespawn();
+            this._toastHandler.Show("You Respawned!");
+        }
+
+        public override void OnDeath()
+        {
+            base.OnDeath();
+
+            this._toastHandler.Show("You died!");
+        }
+
+        public override void OnReset()
+        {
+            base.OnReset();
+            this._healthBar.value = base.CurrentHealth / base.MaxHealth;
         }
     }
 }

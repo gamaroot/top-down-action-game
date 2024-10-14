@@ -4,18 +4,13 @@ using Utils;
 
 namespace Game
 {
-    public class ParryController : MonoBehaviour
+    public abstract class ParryController : MonoBehaviour
     {
-        [Header("Attributes")]
-        [SerializeField, ReadOnly] private float _duration;
-        [SerializeField, ReadOnly] private float _cooldown;
-
         [Header("Components")]
         [SerializeField, ReadOnly] private GameObject _projectileDeflector;
 
         public bool IsParryActive => this._projectileDeflector.activeSelf;
-
-        private bool CanParry => Time.time - this._lastParryTime > this._cooldown;
+        private bool CanParry => Time.time - this._lastParryTime > this.GetCooldown();
 
         private InputController _inputs;
         private float _lastParryTime;
@@ -24,8 +19,6 @@ namespace Game
         {
             if (this._projectileDeflector == null)
                 this._projectileDeflector = base.GetComponentInChildren<ProjectileDeflector>().gameObject;
-
-            this.LoadConfig();
         }
 
         private void Awake()
@@ -45,6 +38,9 @@ namespace Game
             base.CancelInvoke();
         }
 
+        public abstract float GetCooldown();
+        public abstract float GetDuration();
+
         private void Parry()
         {
             if (!this.CanParry)
@@ -53,30 +49,12 @@ namespace Game
             this._lastParryTime = Time.time;
             this._projectileDeflector.SetActive(true);
 
-            base.Invoke(nameof(this.DeactivateDeflector), this._duration);
+            base.Invoke(nameof(this.DeactivateDeflector), this.GetDuration());
         }
 
         private void DeactivateDeflector()
         {
             this._projectileDeflector.SetActive(false);
-        }
-
-        private void LoadConfig()
-        {
-            if (base.gameObject.CompareTag(GameTags.PLAYER))
-                this.LoadConfig<CharacterConfig>(ProjectPaths.PLAYER_CONFIG_DATABASE);
-            else
-                this.LoadConfig<EnemyConfig>(ProjectPaths.ENEMY_CONFIG_DATABASE);
-        }
-
-        private void LoadConfig<T>(string databasePath) where T : CharacterConfig
-        {
-            var database = Resources.Load<CharacterConfigDatabase<T>>(databasePath);
-            if (database != null)
-            {
-                this._duration = database.Config.MovementSpeed;
-                this._cooldown = database.Config.DashSpeed;
-            }
         }
     }
 }

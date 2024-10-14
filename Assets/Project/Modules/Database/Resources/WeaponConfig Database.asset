@@ -13,21 +13,21 @@ MonoBehaviour:
   m_Name: WeaponConfig Database
   m_EditorClassIdentifier: 
   <Config>k__BackingField:
-  - Type: 0
-    Damage: 10
-    ShootInterval: 0
-    Range: 0
-    SfxOnShoot: -1
-    SfxOnExplode: 0
-    ExplosionType: 0
-    ProjectileSpeed: 0
-    ChanceOfBeingPinky: 0
-  - Type: 1
-    Damage: 1
-    ShootInterval: 0.3
-    Range: 10
-    SfxOnShoot: 0
-    SfxOnExplode: 1
-    ExplosionType: 1
-    ProjectileSpeed: 20
-    ChanceOfBeingPinky: 0.1
+  - <Type>k__BackingField: 0
+    <Damage>k__BackingField: 10
+    <ShootInterval>k__BackingField: 0
+    <Range>k__BackingField: 0
+    <SfxOnShoot>k__BackingField: -1
+    <SfxOnExplode>k__BackingField: 0
+    <ExplosionType>k__BackingField: 0
+    <ProjectileSpeed>k__BackingField: 0
+    <ChanceOfBeingPinky>k__BackingField: 0
+  - <Type>k__BackingField: 1
+    <Damage>k__BackingField: 1
+    <ShootInterval>k__BackingField: 0.3
+    <Range>k__BackingField: 10
+    <SfxOnShoot>k__BackingField: 0
+    <SfxOnExplode>k__BackingField: 1
+    <ExplosionType>k__BackingField: 1
+    <ProjectileSpeed>k__BackingField: 20
+    <ChanceOfBeingPinky>k__BackingField: 0.1
