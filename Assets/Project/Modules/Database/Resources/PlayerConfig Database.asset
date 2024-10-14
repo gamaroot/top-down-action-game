@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: PlayerConfig Database
   m_EditorClassIdentifier: 
   <Config>k__BackingField:
-    MaxHealth: 10
-    DeathVFX: 2
-    DeathSFX: 2
-    MovementSpeed: 10
-    DashSpeed: 30
-    DashDuration: 0.2
-    DashCooldown: 1
-    ParryDuration: 0.3
-    ParryCooldown: 1
+    <MaxHealth>k__BackingField: 10
+    <DeathVFX>k__BackingField: 2
+    <DeathSFX>k__BackingField: 2
+    <MovementSpeed>k__BackingField: 10
+    <DashSpeed>k__BackingField: 30
+    <DashDuration>k__BackingField: 0.2
+    <DashCooldown>k__BackingField: 1
+    <ParryDuration>k__BackingField: 0.3
+    <ParryCooldown>k__BackingField: 1
+    <StatsPointsPerLevel>k__BackingField: 3
+    <XpToNextLevel>k__BackingField: 100
+    <XpToNextLevelFactor>k__BackingField: 1.1

@@ -70,6 +70,7 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerParryController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerShootController.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\UI\UIWorldJumpingText.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerExperienceController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerAimController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Weapon\Bullet.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\ICharacterConfig.cs" />
@@ -111,7 +112,9 @@
     <Compile Include="Assets\Project\Modules\Utils\Scripts\InputFeedback\Vibration.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\EnemyParryController.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerLevelUpDisplay.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Project\Modules\Database\Scripts\Player\PlayerConfig.cs" />
     <Compile Include="Assets\Project\Modules\Debug\Scripts\DebugButton.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\MovementController.cs" />
     <Compile Include="Assets\Project\Modules\Debug\Scripts\DebugUtils.cs" />
@@ -128,6 +131,7 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\WeaponController.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\CameraHandler.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Behavior\StateDisplay.cs" />
+    <Compile Include="Assets\Project\Modules\Database\Scripts\Player\IPlayerConfig.cs" />
     <Compile Include="Assets\Project\Modules\UI\Toast\Scripts\ToastHandler.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Weapon\DamageDealer.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Editor\TagEnumGenerator.cs" />

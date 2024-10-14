@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TableCollectionName: ScreenGame
   m_TableCollectionNameGuidString: 89414a442424dba468165759d652d6eb
-  m_Entries: []
+  m_Entries:
+  - m_Id: 5142092740063232
+    m_Key: txt_level_up
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

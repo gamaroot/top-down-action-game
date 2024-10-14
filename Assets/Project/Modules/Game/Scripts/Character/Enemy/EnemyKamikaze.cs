@@ -8,7 +8,7 @@ namespace Game
 
         public void OnCloseToTarget()
         {
-            base._healthController.OnDeath();
+            base._healthController.OnDeath(true);
         }
     }
 }

@@ -1,4 +1,4 @@
 namespace Game.Database
 {
-    public class PlayerConfigDatabase : CharacterConfigDatabase<CharacterConfig> { }
+    public class PlayerConfigDatabase : CharacterConfigDatabase<PlayerConfig> { }
 }

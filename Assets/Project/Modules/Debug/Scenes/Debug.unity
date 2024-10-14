@@ -3724,7 +3724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80a3c9cd3e80f594bbacd20c9f231471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnLoopInterval: 4
+  _spawnLoopInterval: 3
   _dropdownSpawnableEnemies: {fileID: 1626370988}
   _dropdownSpawnableTraps: {fileID: 1967970756}
   _toggleSpawnLoop: {fileID: 1605469325}

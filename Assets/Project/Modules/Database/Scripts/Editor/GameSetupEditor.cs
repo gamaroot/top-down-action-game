@@ -11,7 +11,7 @@ namespace Game.Database
         private int _tabIndex;
         private readonly string[] _tabs = { "Player", "Enemy", "Weapon" };
 
-        private CharacterConfig _playerConfig = new();
+        private PlayerConfig _playerConfig = new();
         private EnemyConfig[] _enemyConfigs;
         private WeaponConfig[] _weaponConfigs;
 
@@ -43,6 +43,11 @@ namespace Game.Database
 
         private void DrawPlayerTab()
         {
+            // XP
+            this._playerConfig.StatsPointsPerLevel = EditorGUILayout.IntField("Stats Points per Level", this._playerConfig.StatsPointsPerLevel);
+            this._playerConfig.XpToNextLevel = EditorGUILayout.FloatField("XP to Next Level", this._playerConfig.XpToNextLevel);
+            this._playerConfig.XpToNextLevelFactor = EditorGUILayout.FloatField("XP to Next Level Factor", this._playerConfig.XpToNextLevelFactor);
+
             // Health
             this._playerConfig.MaxHealth = EditorGUILayout.FloatField("Max Health", this._playerConfig.MaxHealth);
             this._playerConfig.DeathVFX = (SpawnTypeExplosion)EditorGUILayout.EnumPopup("Death VFX", this._playerConfig.DeathVFX);
@@ -73,6 +78,9 @@ namespace Game.Database
                     continue;
 
                 EditorGUI.indentLevel++;
+
+                // Reward
+                this._enemyConfigs[index].XpReward = EditorGUILayout.FloatField("XP Reward", this._enemyConfigs[index].XpReward);
 
                 // Health
                 this._enemyConfigs[index].MaxHealth = EditorGUILayout.FloatField("Max Health", this._enemyConfigs[index].MaxHealth);

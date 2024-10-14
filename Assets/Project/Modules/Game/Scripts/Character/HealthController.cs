@@ -1,4 +1,5 @@
 using Game.Database;
+using System;
 using UnityEngine;
 using Utils;
 
@@ -6,6 +7,9 @@ namespace Game
 {
     public class HealthController : MonoBehaviour
     {
+        public Action OnDeathListener;
+        public Action OnSelfDestroyListener;
+
         public float MissingHealth => this.MaxHealth - this.CurrentHealth;
         public bool IsFullHealth => this.CurrentHealth == this.MaxHealth;
         public bool IsDead => this.CurrentHealth <= 0;
@@ -75,12 +79,17 @@ namespace Game
                 this.OnDeath();
         }
 
-        public virtual void OnDeath()
+        public void OnDeath(bool hasSelfDestroyed = false)
         {
             if (!base.gameObject.activeSelf)
                 return;
 
             base.gameObject.SetActive(false);
+
+            if (hasSelfDestroyed)
+                this.OnSelfDestroyListener?.Invoke();
+            else
+                this.OnDeathListener?.Invoke();
 
             SFX.PlayExplosion(this._config.DeathSFX);
 
@@ -89,7 +98,7 @@ namespace Game
             explosion.gameObject.SetActive(true);
         }
 
-        public virtual void OnRespawn()
+        public void OnRespawn()
         {
             this.RecoverHealth(this.MaxHealth);
             base.gameObject.SetActive(true);

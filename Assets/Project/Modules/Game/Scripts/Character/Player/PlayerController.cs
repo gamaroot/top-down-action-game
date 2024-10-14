@@ -1,3 +1,4 @@
+using Game.Database;
 using UnityEngine;
 
 namespace Game
@@ -5,6 +6,7 @@ namespace Game
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private PlayerHealthController _healthController;
+        [SerializeField] private PlayerExperienceController _experienceController;
         [SerializeField] private PlayerMovementController _movementController;
         [SerializeField] private PlayerParryController _parryController;
         [SerializeField] private PlayerShootController _shootController;
@@ -13,6 +15,9 @@ namespace Game
         {
             if (this._healthController == null)
                 this._healthController = this.GetComponent<PlayerHealthController>();
+
+            if (this._experienceController == null)
+                this._experienceController = this.GetComponent<PlayerExperienceController>();
 
             if (this._movementController == null)
                 this._movementController = this.GetComponent<PlayerMovementController>();
@@ -27,9 +32,15 @@ namespace Game
         public void Init(IGameManager gameManager)
         {
             this._healthController.Init(gameManager.PlayerConfig);
+            this._experienceController.Init(gameManager.PlayerConfig);
             this._movementController.Init(gameManager.PlayerConfig);
             this._parryController.Init(gameManager.PlayerConfig);
             this._shootController.Init(gameManager.WeaponConfig);
+        }
+
+        public void OnEnemyKill(IEnemyConfig enemy)
+        {
+            this._experienceController.OnEnemyKill(enemy);
         }
     }
 }
