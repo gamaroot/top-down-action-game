@@ -1,17 +1,22 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
+using UnityEditor.Search;
+using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Utils;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Game.Database
 {
     public class GameSetupEditor : EditorWindow
     {
         private int _tabIndex;
-        private readonly string[] _tabs = { "Player", "Enemy", "Weapon" };
+        private readonly string[] _tabs = { "Player", "Enemy", "Weapon", "Map" };
 
         private PlayerConfig _playerConfig = new();
+        private MapConfig _mapConfig = new();
         private EnemyConfig[] _enemyConfigs;
         private WeaponConfig[] _weaponConfigs;
 
@@ -38,7 +43,11 @@ namespace Game.Database
                 case 0: this.DrawPlayerTab(); break;
                 case 1: this.DrawEnemyTab(); break;
                 case 2: this.DrawWeaponTab(); break;
+                case 3: this.DrawMapTab(); break;
             }
+
+            if (GUILayout.Button("Save"))
+                this.SaveData();
         }
 
         private void DrawPlayerTab()
@@ -138,6 +147,45 @@ namespace Game.Database
             }
         }
 
+        private void DrawMapTab()
+        {
+            this._mapConfig.MinRooms = EditorGUILayout.IntField("Min Rooms", this._mapConfig.MinRooms);
+            this._mapConfig.MaxRooms = EditorGUILayout.IntField("Max Rooms", this._mapConfig.MaxRooms);
+
+            EditorGUILayout.LabelField("Room Prefabs", EditorStyles.boldLabel);
+
+            var indicesToRemove = new List<int>(); // List to keep track of indices to remove
+
+            // Create a new list to hold the Room Prefabs
+            for (int index = 0; index < this._mapConfig.RoomPrefabs.Count; index++)
+            {
+                EditorGUILayout.BeginHorizontal();
+
+                // Draw a field for each prefab in the list
+                this._mapConfig.RoomPrefabs[index] = (GameObject)EditorGUILayout.ObjectField($"Prefab {index + 1}", this._mapConfig.RoomPrefabs[index], typeof(GameObject), false);
+
+                // Add "+" button next to the prefab field
+                if (GUILayout.Button("+", GUILayout.Width(25)))
+                {
+                    this._mapConfig.RoomPrefabs.Add(null); // Add a new prefab
+                }
+
+                // Add "-" button next to the prefab field
+                if (GUILayout.Button("-", GUILayout.Width(25)))
+                {
+                    indicesToRemove.Add(index); // Mark index for removal
+                }
+
+                EditorGUILayout.EndHorizontal();
+            }
+
+            // Remove marked prefabs after the loop
+            foreach (int index in indicesToRemove.OrderByDescending(i => i)) // Remove from the end to avoid index shifting
+            {
+                this._mapConfig.RoomPrefabs.RemoveAt(index);
+            }
+        }
+
         private void LoadData()
         {
             this._enemyConfigs = new EnemyConfig[Enum.GetValues(typeof(SpawnTypeEnemy)).Length];
@@ -149,6 +197,7 @@ namespace Game.Database
             this.LoadData(ProjectPaths.PLAYER_CONFIG_DATABASE, ref this._playerConfig);
             this.LoadData(ProjectPaths.ENEMY_CONFIG_DATABASE, ref this._enemyConfigs);
             this.LoadData(ProjectPaths.WEAPON_CONFIG_DATABASE, ref this._weaponConfigs);
+            this.LoadData(ProjectPaths.MAP_CONFIG_DATABASE, ref this._mapConfig);
         }
 
         private void LoadData<T>(string path, ref T configField)
@@ -165,6 +214,24 @@ namespace Game.Database
         private T LoadData<T>(string filename)
         {
             return Resources.Load<GameConfigDatabase<T>>(filename).Config;
+        }
+
+        private void SaveData()
+        {
+            this.SaveData(this._playerConfig, typeof(PlayerConfigDatabase), ProjectPaths.PLAYER_CONFIG_DATABASE);
+            this.SaveData(this._enemyConfigs, typeof(EnemyConfigDatabase), ProjectPaths.ENEMY_CONFIG_DATABASE);
+            this.SaveData(this._weaponConfigs, typeof(WeaponConfigDatabase), ProjectPaths.WEAPON_CONFIG_DATABASE);
+            this.SaveData(this._mapConfig, typeof(MapConfigDatabase), ProjectPaths.MAP_CONFIG_DATABASE);
+
+            AssetDatabase.SaveAssets();
+        }
+
+        private void SaveData<T>(T configData, Type databaseType, string databasePath) where T : class
+        {
+            var configDatabase = ScriptableObject.CreateInstance(databaseType) as GameConfigDatabase<T>;
+            configDatabase.SetData(configData);
+            AssetDatabase.CreateAsset(configDatabase, string.Format(ProjectPaths.DATABASE_PATH, databasePath));
+            AssetDatabase.Refresh();
         }
     }
 }

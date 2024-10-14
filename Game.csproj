@@ -74,6 +74,7 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerAimController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Weapon\Bullet.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\ICharacterConfig.cs" />
+    <Compile Include="Assets\Project\Modules\Database\Scripts\Map\MapConfigDatabase.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\EnemyHealthController.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\RendererEventsListener.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Tags.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\ParryController.cs" />
     <Compile Include="Assets\Project\Modules\UI\Screens\Settings\Scripts\SettingsScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeExplosion.cs" />
+    <Compile Include="Assets\Project\Modules\Database\Scripts\Map\IMapConfig.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Player\PlayerConfigDatabase.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Editor\GameSetupEditor.cs" />
     <Compile Include="Assets\Project\Modules\UI\Screens\Home\Scripts\HomeScreenEvents.cs" />
@@ -142,6 +144,7 @@
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFXTypeOther.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeOther.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\DashHandler.cs" />
+    <Compile Include="Assets\Project\Modules\Database\Scripts\Map\MapConfig.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\AIMovementController.cs" />
     <Compile Include="Assets\Project\Modules\Constants\Scripts\AnimationKeys.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\HealthController.cs" />

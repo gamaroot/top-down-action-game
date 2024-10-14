@@ -7,5 +7,6 @@ namespace Game
         public const string PLAYER_CONFIG_DATABASE = "PlayerConfig Database";
         public const string ENEMY_CONFIG_DATABASE = "EnemyConfig Database";
         public const string WEAPON_CONFIG_DATABASE = "WeaponConfig Database";
+        public const string MAP_CONFIG_DATABASE = "MapConfig Database";
     }
 }
