@@ -166,7 +166,7 @@ namespace Game.Database
                 EditorGUILayout.BeginHorizontal();
 
                 // Draw a field for each prefab in the list
-                this._mapConfig.RoomPrefabs[index] = (GameObject)EditorGUILayout.ObjectField($"Prefab {index + 1}", this._mapConfig.RoomPrefabs[index], typeof(GameObject), false);
+                this._mapConfig.RoomPrefabs[index] = (GameObject)EditorGUILayout.ObjectField($"Room #{index + 1}", this._mapConfig.RoomPrefabs[index], typeof(GameObject), false);
 
                 // Add "+" button next to the prefab field
                 if (GUILayout.Button("+", GUILayout.Width(25)))
