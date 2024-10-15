@@ -151,6 +151,8 @@ namespace Game.Database
         {
             this._mapConfig.MinRooms = EditorGUILayout.IntField("Min Rooms", this._mapConfig.MinRooms);
             this._mapConfig.MaxRooms = EditorGUILayout.IntField("Max Rooms", this._mapConfig.MaxRooms);
+            this._mapConfig.RoomSquaredSize = EditorGUILayout.FloatField("Room Squared Size", this._mapConfig.RoomSquaredSize);
+            this._mapConfig.RoomWallHeight = EditorGUILayout.FloatField("Room Wall Height", this._mapConfig.RoomWallHeight);
 
             EditorGUILayout.LabelField("Room Prefabs", EditorStyles.boldLabel);
 
@@ -166,7 +168,7 @@ namespace Game.Database
                 EditorGUILayout.BeginHorizontal();
 
                 // Draw a field for each prefab in the list
-                this._mapConfig.RoomPrefabs[index] = (GameObject)EditorGUILayout.ObjectField($"Room #{index + 1}", this._mapConfig.RoomPrefabs[index], typeof(GameObject), false);
+                this._mapConfig.RoomPrefabs[index] = (RoomGenerator)EditorGUILayout.ObjectField($"Room #{index + 1}", this._mapConfig.RoomPrefabs[index], typeof(RoomGenerator), false);
 
                 // Add "+" button next to the prefab field
                 if (GUILayout.Button("+", GUILayout.Width(25)))

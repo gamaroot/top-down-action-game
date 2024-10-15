@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Config>k__BackingField:
     <RoomPrefabs>k__BackingField:
-    - {fileID: 0}
+    - {fileID: 7340991271870152126, guid: 2d91d5c32c89ad54fa2395d8c14a0ec2, type: 3}
+    - {fileID: 7340991271870152126, guid: 0a59ae52a738aae40b4ea8dd7c113f99, type: 3}
+    - {fileID: 7340991271870152126, guid: 1dcbd164d9ada03488db5c3806a80cf5, type: 3}
     <MinRooms>k__BackingField: 10
-    <MaxRooms>k__BackingField: 10
+    <MaxRooms>k__BackingField: 20
+    <RoomSquaredSize>k__BackingField: 50
+    <RoomWallHeight>k__BackingField: 5

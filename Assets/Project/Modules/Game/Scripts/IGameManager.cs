@@ -7,6 +7,7 @@ namespace Game
         IPlayerConfig PlayerConfig { get; }
         IEnemyConfig[] EnemyConfig { get; }
         IWeaponConfig[] WeaponConfig { get; }
+        void OnGenerateMap();
         void OnPlayerDeath();
         void OnPlayerRespawn();
         void OnEnemyKill(IEnemyConfig enemy);
