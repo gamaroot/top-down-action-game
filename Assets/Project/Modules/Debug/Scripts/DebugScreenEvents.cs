@@ -22,8 +22,6 @@ namespace Game
         [SerializeField] private Toggle _toggleSpawnLoop;
         [SerializeField] private LayerMask _spawnLayerMaskToAvoid;
 
-        [Header("Cameras")]
-        [SerializeField] private CinemachineCamera[] _cameras;
         [SerializeField] private GameObject _textCameraPlayer;
         [SerializeField] private GameObject _textCameraStage;
 
@@ -37,6 +35,8 @@ namespace Game
         [SerializeField] private List<GameObject> _waypoints;
 
         private int _currentActiveCamera;
+        private readonly CinemachineCamera[] _cameras = new CinemachineCamera[2];
+
         private PlayerHealthController _player;
         private readonly DebugUtils _debugUtils = new();
 
@@ -48,6 +48,10 @@ namespace Game
 
         private void OnEnable()
         {
+            // This is a debug scene, so we can safely not consider the performance here
+            this._cameras[0] = GameObject.FindGameObjectWithTag(GameTags.PLAYER_CAMERA).GetComponent<CinemachineCamera>();
+            this._cameras[1] = GameObject.FindGameObjectWithTag(GameTags.STAGE_CAMERA).GetComponent<CinemachineCamera>();
+
             this._player = new CrossSceneReference().GetObjectByType<PlayerHealthController>();
             this._player.OnReset();
         }
