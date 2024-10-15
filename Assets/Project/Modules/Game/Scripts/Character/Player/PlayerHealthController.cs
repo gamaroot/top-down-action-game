@@ -33,5 +33,10 @@ namespace Game
             base.OnReset();
             this._hpBar.value = base.CurrentHealth / base.MaxHealth;
         }
+        
+        public void ApplyDamage(float amount)
+        {
+            TakeDamage(amount);
+        }
     }
 }
