@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac48b2194f084143a5aaa7d933ee66d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wallMaterial: {fileID: 2100000, guid: e8a2b2e64402f224eadf0d456a22b59f, type: 2}
-  _floorMaterial: {fileID: 2100000, guid: 24f120ed555ec0e48a90ba89ebf8ce00, type: 2}
+  _wallMaterial: {fileID: 2100000, guid: ad4d3afc5d6de499fbdd24d7987dfbf3, type: 2}
+  _floorMaterial: {fileID: 2100000, guid: ad4d3afc5d6de499fbdd24d7987dfbf3, type: 2}
   _wallLayerMask:
     serializedVersion: 2
     m_Bits: 16384
