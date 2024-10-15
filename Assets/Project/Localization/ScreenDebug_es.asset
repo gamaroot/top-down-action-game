@@ -54,6 +54,10 @@ MonoBehaviour:
     m_Localized: Escenario
     m_Metadata:
       m_Items: []
+  - m_Id: 1368829488558080
+    m_Localized: Mapa
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

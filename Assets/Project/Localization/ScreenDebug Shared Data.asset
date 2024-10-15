@@ -51,6 +51,10 @@ MonoBehaviour:
     m_Key: txt_stage_camera
     m_Metadata:
       m_Items: []
+  - m_Id: 1368829488558080
+    m_Key: btn_generate_map
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

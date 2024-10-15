@@ -12,7 +12,6 @@ namespace Game
         [SerializeField] private SpawnablePool _spawnablePool;
         [SerializeField] private PlayerController _playerController;
         [SerializeField] private ToastHandler _toastHandler;
-        [SerializeField] private NavMeshSurface _navMeshSurface;
 
         [Header("Database")]
         [SerializeField, ReadOnly] private PlayerConfigDatabase _playerConfig;
@@ -47,6 +46,8 @@ namespace Game
 
         public void OnGenerateMap()
         {
+            this.DestroyMap();
+
             new MapGenerator().Generate(this._mapConfig.Config, (room) =>
             {
                 RoomGenerator roomGenerator = Instantiate(room.Prefab);
@@ -55,7 +56,11 @@ namespace Game
                 roomGenerator.Generate(room.SquaredSize, room.WallHeight, roomGenerator.transform);
                 roomGenerator.transform.position = new Vector3(room.Position.x, 0, room.Position.y);
             },
-            this._navMeshSurface.BuildNavMesh);
+            () => {
+                new GameObject("NavMeshSurface")
+                    .AddComponent<NavMeshSurface>()
+                    .BuildNavMesh();
+            });
         }
 
         public void OnPlayerDeath()
@@ -71,6 +76,14 @@ namespace Game
         public void OnEnemyKill(IEnemyConfig enemy)
         {
             this._playerController.OnEnemyKill(enemy);
+        }
+
+        private void DestroyMap()
+        {
+            for (int index = 0; index < base.transform.childCount; index++)
+            {
+                Destroy(base.transform.GetChild(index).gameObject);
+            }
         }
     }
 }
