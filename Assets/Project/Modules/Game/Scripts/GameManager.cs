@@ -47,20 +47,7 @@ namespace Game
         public void OnGenerateMap()
         {
             this.DestroyMap();
-
-            new MapGenerator().Generate(this._mapConfig.Config, (room) =>
-            {
-                RoomGenerator roomGenerator = Instantiate(room.Prefab);
-                roomGenerator.name = $"Room #{room.Id}";
-                roomGenerator.transform.SetParent(base.transform);
-                roomGenerator.Generate(room.SquaredSize, room.WallHeight, roomGenerator.transform);
-                roomGenerator.transform.position = new Vector3(room.Position.x, 0, room.Position.y);
-            },
-            () => {
-                new GameObject("NavMeshSurface")
-                    .AddComponent<NavMeshSurface>()
-                    .BuildNavMesh();
-            });
+            new MapGenerator().Generate(this._mapConfig.Config, this.GenerateRoom, this.CreateNavMesh);
         }
 
         public void OnPlayerDeath()
@@ -84,6 +71,22 @@ namespace Game
             {
                 Destroy(base.transform.GetChild(index).gameObject);
             }
+        }
+
+        private void GenerateRoom(RoomConfig room)
+        {
+            RoomGenerator roomGenerator = Instantiate(room.Prefab);
+            roomGenerator.name = $"Room #{room.Id}";
+            roomGenerator.transform.SetParent(base.transform);
+            roomGenerator.Generate(room.SquaredSize, room.WallHeight, roomGenerator.transform);
+            roomGenerator.transform.position = new Vector3(room.Position.x, 0, room.Position.y);
+        }
+
+        private void CreateNavMesh()
+        {
+            var navMesh = new GameObject("NavMeshSurface");
+            navMesh.transform.SetParent(base.transform);
+            navMesh.AddComponent<NavMeshSurface>().BuildNavMesh();
         }
     }
 }
