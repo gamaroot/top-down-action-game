@@ -31,6 +31,7 @@ namespace Game
                 };
 
                 var possibleDirections = new List<Vector2>();
+                int totalDirections = 0;
 
                 // Check in each direction for existing neighbors
                 for (int directionIndex = 0; directionIndex < this._directions.Length; directionIndex++)
@@ -46,6 +47,7 @@ namespace Game
                     else
                     {
                         possibleDirections.Add(direction);
+                        totalDirections++;
                     }
                 }
 
@@ -54,7 +56,7 @@ namespace Game
 
                 this._occupiedPositions.Add(currentPosition);
 
-                currentPosition += possibleDirections[UnityEngine.Random.Range(0, possibleDirections.Count)] * room.SquaredSize;
+                currentPosition += possibleDirections[UnityEngine.Random.Range(0, totalDirections)] * room.SquaredSize;
             }
 
             onComplete.Invoke();
