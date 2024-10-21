@@ -1,3 +1,5 @@
+using Game;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RoomGenerator : MonoBehaviour
@@ -7,7 +9,7 @@ public class RoomGenerator : MonoBehaviour
     [SerializeField] private LayerMask _wallLayerMask;
     [SerializeField] private LayerMask _floorLayerMask;
 
-    public void Generate(float roomSize, float wallHeight, Transform parent)
+    public void Generate(float roomSize, float wallHeight, Transform parent, out List<GameObject> waypoints)
     {
         int floorLayerIndex = Mathf.RoundToInt(Mathf.Log(this._floorLayerMask.value, 2));
         this.CreateFloor(roomSize, parent, floorLayerIndex);
@@ -37,6 +39,8 @@ public class RoomGenerator : MonoBehaviour
         var frontWallScale = new Vector3(roomSize, wallHeight, 1);
         var frontWallRotation = Quaternion.Euler(-90f, 0, 0);
         this.CreateWall(frontWallPosition, frontWallScale, frontWallRotation, parent, wallLayerIndex);
+        
+        waypoints = this.CreateWaypoints(roomSize);
 
         Destroy(this);
     }
@@ -112,5 +116,34 @@ public class RoomGenerator : MonoBehaviour
         wall.transform.position = position;
         wall.transform.rotation = rotation;
         wall.AddComponent<MeshCollider>();
+    }
+
+    private List<GameObject> CreateWaypoints(float roomSize)
+    {
+        var waypointsParent = new GameObject("Waypoints");
+        waypointsParent.transform.SetParent(this.transform, false);
+
+        float roomCorner = roomSize / 2.5f;
+
+        // Define the four corners of the room
+        Vector3[] positions = {
+                new(-roomCorner, 0, -roomCorner), // Bottom left
+                new(roomCorner, 0, -roomCorner),  // Bottom right
+                new(roomCorner, 0, roomCorner),   // Top right
+                new(-roomCorner, 0, roomCorner)   // Top left
+            };
+
+        var waypoints = new List<GameObject>();
+        for (int index = 0; index < 4; index++)
+        {
+            var waypoint = new GameObject($"Waypoint #{index}");
+            waypoint.transform.SetParent(waypointsParent.transform, false);
+            waypoint.transform.position = positions[index];
+            waypoints.Add(waypoint);
+        }
+#if UNITY_EDITOR
+        waypointsParent.AddComponent<DebugWaypoints>();
+#endif
+        return waypoints;
     }
 }

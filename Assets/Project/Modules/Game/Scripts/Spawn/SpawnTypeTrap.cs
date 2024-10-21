@@ -1,6 +1,6 @@
 namespace Game
 {
-    public enum TrapSpawnType
+    public enum SpawnTypeTrap
     {
         SPINNING_SPIKE,
         SPINNING_DOUBLE_SPIKE,

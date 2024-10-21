@@ -4,21 +4,21 @@ namespace Game
 {
     public class PlayerParryController : ParryController
     {
-        private ICharacterConfig _config;
+        private CharacterStats _stats;
 
-        public void Init(ICharacterConfig config)
+        public void Init(CharacterStats stats)
         {
-            this._config = config;
+            this._stats = stats;
         }
 
         public override float GetCooldown()
         {
-            return this._config.ParryCooldown;
+            return this._stats.ParryCooldown;
         }
 
         public override float GetDuration()
         {
-            return this._config.ParryDuration;
+            return this._stats.ParryDuration;
         }
     }
 }

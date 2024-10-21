@@ -11,5 +11,6 @@ namespace Utils
 		GameController,
 		PlayerCamera,
 		Enemy,
+		StageCamera,
 	}
 }

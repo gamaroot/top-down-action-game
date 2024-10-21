@@ -33,6 +33,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-pt-BR
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 34b6500ab8795284c8c647231db4e112
+    m_Address: ScreenCharacterSetup_pt-BR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pt-BR
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 41c43fcabce3ddf41aa442b63782c94f
     m_Address: ScreenLoading_pt-BR
     m_ReadOnly: 1

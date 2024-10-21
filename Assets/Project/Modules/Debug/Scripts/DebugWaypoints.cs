@@ -5,7 +5,6 @@ namespace Game
 {
     public class DebugWaypoints : MonoBehaviour
     {
-#if UNITY_EDITOR
         [SerializeField, ReadOnly] private Transform[] _waypoints;
 
         private void OnValidate()
@@ -30,6 +29,5 @@ namespace Game
                 Debug.DrawLine(currentPoint, nextPoint, Color.yellow);
             }
         }
-#endif
     }
 }

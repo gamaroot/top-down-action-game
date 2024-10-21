@@ -1,7 +1,5 @@
 using DG.Tweening;
 using ScreenNavigation;
-using System;
-using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
@@ -24,6 +22,7 @@ namespace Game
             Application.targetFrameRate = GamePreferences.FPS;
 #endif
             CameraHandler.Load(this._mainCamera, this._cinemachineBrain);
+            Statistics.Initialize();
         }
 
         private void Start()

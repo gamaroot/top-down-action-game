@@ -20,7 +20,7 @@ public partial class ChaseTargetAsKamikazeAction : Action
 
     protected override Status OnUpdate()
     {
-        this.IsTargetOnSight.Value = this.Sensor.Value.Target != null;
+        this.IsTargetOnSight.Value = this.Sensor.Value.IsTargetOnSight;
         if (this.IsTargetOnSight.Value)
         {
             Vector3 targetPosition = this.Sensor.Value.Target.transform.position;

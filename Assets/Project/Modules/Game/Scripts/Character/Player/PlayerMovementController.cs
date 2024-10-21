@@ -11,16 +11,16 @@ namespace Game
         [Header("Components")]
         [SerializeField, ReadOnly] private CharacterController _controller;
 
-        private float MovementSpeed => this._config.MovementSpeed;
-        private float DashSpeed => this._config.DashSpeed;
-        private float DashDuration => this._config.DashDuration;
-        private float DashCooldown => this._config.DashCooldown;
+        private float MovementSpeed => this._stats.MovementSpeed;
+        private float DashSpeed => this._stats.DashSpeed;
+        private float DashDuration => this._stats.DashDuration;
+        private float DashCooldown => this._stats.DashCooldown;
         private Vector3 NormalMovement => this.MovementSpeed * Time.deltaTime * new Vector3(this._move.x, 0, this._move.y);
 
         private Vector2 _move;
         private InputController _inputs;
         private DashHandler _dashHandler;
-        private ICharacterConfig _config;
+        private CharacterStats _stats;
 
         private void OnValidate()
         {
@@ -55,9 +55,9 @@ namespace Game
             this.Move(this._dashHandler.IsDashing ? this._dashHandler.DashMovement : this.NormalMovement);
         }
 
-        public void Init(ICharacterConfig config)
+        public void Init(CharacterStats stats)
         {
-            this._config = config;
+            this._stats = stats;
         }
 
         public override void Move(Vector3 point)

@@ -36,6 +36,11 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71223acc746ee3e45a0bdcb29d9013b5
+    m_Address: Assets/Project/Localization/ScreenCharacterSetup Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 89414a442424dba468165759d652d6eb
     m_Address: Assets/Project/Localization/ScreenGame/ScreenGame Shared Data.asset
     m_ReadOnly: 1

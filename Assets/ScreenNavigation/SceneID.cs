@@ -9,7 +9,7 @@ namespace ScreenNavigation
 		DEBUG,
 		HOME,
 		SETTINGS,
-		LOADOUT_SETUP,
+		CHARACTER_SETUP,
 		LOADING,
 		GAME,
 		INGAME_SETTINGS,

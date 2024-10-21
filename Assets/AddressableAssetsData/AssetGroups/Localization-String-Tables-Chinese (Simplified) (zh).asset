@@ -57,6 +57,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-zh
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ea35a432dda5f7a479f44b4c716347ab
+    m_Address: ScreenCharacterSetup_zh
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f00273ae30167e9498af3f8849a5bfac
     m_Address: ScreenGame_zh
     m_ReadOnly: 1

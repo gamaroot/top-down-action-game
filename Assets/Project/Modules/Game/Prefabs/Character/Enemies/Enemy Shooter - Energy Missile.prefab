@@ -239,16 +239,6 @@ MonoBehaviour:
   _weaponLayerMask:
     serializedVersion: 2
     m_Bits: 512
-  _weaponConfig:
-    Type: 1
-    Damage: 1
-    ShootInterval: 0.3
-    Range: 10
-    SfxOnShoot: 0
-    SfxOnExplode: 1
-    ExplosionType: 1
-    ProjectileSpeed: 20
-    ChanceOfBeingPinky: 0.1
   _shootPoint: {fileID: 525587873716736208}
 --- !u!1 &9036938352783240745
 GameObject:
@@ -305,9 +295,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88fbae9e9082cad4392593562ca5d448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _meshRenderer: {fileID: 948797227930074108}
-  _movement: {fileID: 1306455811818272514}
-  _weapon: {fileID: 6017972843390906605}
+  _movementController: {fileID: 1306455811818272514}
+  _weaponController: {fileID: 6017972843390906605}
+  _healthController: {fileID: 3145143902382942601}
 --- !u!114 &3145143902382942601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,10 +310,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 974009700570e1447b59a0dbddfd488e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 3
-  _deathVFX: 2
-  _deathSFX: 2
-  _type: 1
 --- !u!114 &1306455811818272514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,7 +340,7 @@ MonoBehaviour:
   m_BlackboardVariableOverridesList:
   - rid: 1653337366749512085
   - rid: 1653337366749512086
-  - rid: 8520601897841721927
+  - rid: 8520602083004777292
   references:
     version: 2
     RefIds:
@@ -376,13 +362,13 @@ MonoBehaviour:
           m_Value1: 301352915747845040
         Name: Waypoints
         m_Value: []
-    - rid: 8520601897841721927
+    - rid: 8520602083004777292
       type: {class: 'BlackboardVariable`1[[Utils.Sensor, Game]]', ns: Unity.Behavior,
         asm: Unity.Behavior}
       data:
         GUID:
-          m_Value0: 3444881901789239758
-          m_Value1: 5264362059421579474
+          m_Value0: 15253841260569707979
+          m_Value1: 10923586668352219556
         Name: Sensor
         m_Value: {fileID: 747891489386550706}
 --- !u!195 &7153801489365045476

@@ -10,7 +10,5 @@ namespace Game.Database
         Tags TargetTag { get; }
         LayerMask ObstacleLayer { get; }
         float DetectionRadius { get; }
-        float DashPossibility { get; }
-        float ParryPossibility { get; }
     }
 }

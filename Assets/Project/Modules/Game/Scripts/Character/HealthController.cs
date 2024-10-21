@@ -14,7 +14,7 @@ namespace Game
         public bool IsFullHealth => this.CurrentHealth == this.MaxHealth;
         public bool IsDead => this.CurrentHealth <= 0;
 
-        public float MaxHealth => this._config.MaxHealth;
+        public virtual float MaxHealth => this._config.Stats.MaxHealth;
 
         public float CurrentHealth
         {

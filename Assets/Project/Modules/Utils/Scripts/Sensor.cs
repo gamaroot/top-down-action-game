@@ -10,7 +10,7 @@ namespace Utils
         [SerializeField, ReadOnly] private SphereCollider _sphereCollider;
 
         public GameObject Target { get; private set; }
-        public bool IsTargetOnSightTarget => this.Target != null && this.Target.activeSelf;
+        public bool IsTargetOnSight => this.Target != null && this.Target.activeSelf;
         public bool IsTargetBehindObstacle { get; private set; }
         
         public Vector3 BestShootingPosition { get; private set; }

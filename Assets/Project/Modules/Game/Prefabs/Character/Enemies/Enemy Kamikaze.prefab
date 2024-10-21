@@ -260,7 +260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 974009700570e1447b59a0dbddfd488e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
 --- !u!114 &1306455811818272514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,7 +290,7 @@ MonoBehaviour:
   m_BlackboardVariableOverridesList:
   - rid: 1653337366749512085
   - rid: 1653337366749512086
-  - rid: 8520601897841722002
+  - rid: 8520602083004777291
   references:
     version: 2
     RefIds:
@@ -313,13 +312,13 @@ MonoBehaviour:
           m_Value1: 301352915747845040
         Name: Waypoints
         m_Value: []
-    - rid: 8520601897841722002
+    - rid: 8520602083004777291
       type: {class: 'BlackboardVariable`1[[Utils.Sensor, Game]]', ns: Unity.Behavior,
         asm: Unity.Behavior}
       data:
         GUID:
-          m_Value0: 2925816279917505334
-          m_Value1: 8731543058368213204
+          m_Value0: 13473948678437864013
+          m_Value1: 15163105823739792116
         Name: Sensor
         m_Value: {fileID: 2191498822432452884}
 --- !u!195 &7153801489365045476

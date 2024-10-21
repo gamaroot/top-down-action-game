@@ -21,7 +21,7 @@ public partial class ShootTargetAction : Action
 
     protected override Status OnUpdate()
     {
-        this.IsTargetOnSight.Value = this.Sensor.Value.IsTargetOnSightTarget;
+        this.IsTargetOnSight.Value = this.Sensor.Value.IsTargetOnSight;
         if (this.IsTargetOnSight.Value)
         {
             if (this.Sensor.Value.IsTargetBehindObstacle)

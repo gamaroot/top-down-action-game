@@ -1,6 +1,6 @@
+using DG.Tweening.Core.Easing;
 using Game.Database;
-using System;
-using Unity.AI.Navigation;
+using ScreenNavigation;
 using UnityEngine;
 using Utils;
 
@@ -23,6 +23,10 @@ namespace Game
         public IEnemyConfig[] EnemyConfig => this._enemyConfig.Config;
         public IWeaponConfig[] WeaponConfig => this._weaponConfig.Config;
 
+        public GameState GameState => this._gameStateHandler.GameState;
+
+        private GameStateHandler _gameStateHandler;
+
         private void OnValidate()
         {
             if (this._playerConfig == null)
@@ -38,16 +42,32 @@ namespace Game
                 this._mapConfig = Resources.Load<MapConfigDatabase>(ProjectPaths.MAP_CONFIG_DATABASE);
         }
 
-        private void Awake()
+        private void Start()
         {
+            this._gameStateHandler = new();
             this._spawnablePool.Init(this);
-            this._playerController.Init(this);
+
+            SceneNavigator.Instance.AddListenerOnScreenStateChange(this.OnSceneChanged);
         }
 
-        public void OnGenerateMap()
+        private void OnDestroy()
         {
-            this.DestroyMap();
-            new MapGenerator().Generate(this._mapConfig.Config, this.GenerateRoom, this.CreateNavMesh);
+            this.OnGameQuit();
+        }
+
+        public void OnPlayerStateUpdate(PlayerState playerState)
+        {
+            this._gameStateHandler.GameState.PlayerState = playerState;
+        }
+
+        public void OnPlayerReceivedXp(float xp)
+        {
+            this._gameStateHandler.GameState.PlayerState.XP += xp;
+        }
+
+        public void OnPlayerLevelUp()
+        {
+            this._gameStateHandler.GameState.PlayerState.Level++;
         }
 
         public void OnPlayerDeath()
@@ -65,28 +85,39 @@ namespace Game
             this._playerController.OnEnemyKill(enemy);
         }
 
-        private void DestroyMap()
+        private void OnGameStart()
         {
-            for (int index = 0; index < base.transform.childCount; index++)
+            // Randomize seed
+            int seed = Random.Range(0, int.MaxValue);
+            Random.InitState(seed);
+            this._gameStateHandler.GameState.Seed = seed;
+
+            // Generate map
+            new MapGenerator().Generate(this._mapConfig.Config, base.transform);
+
+            this._playerController.Activate(true, this);
+        }
+
+        private void OnGameQuit()
+        {
+            this._gameStateHandler.Save();
+            Statistics.Instance.OnGameQuit();
+
+            this._playerController.Activate(false, this);
+        }
+
+        private void OnSceneChanged(SceneID sceneID, SceneState sceneState)
+        {
+            switch (sceneID)
             {
-                Destroy(base.transform.GetChild(index).gameObject);
+                case SceneID.GAME:
+                case SceneID.DEBUG:
+                    if (sceneState == SceneState.LOADING)
+                        this.OnGameStart();
+                    else if (sceneState == SceneState.UNLOADED)
+                        this.OnGameQuit();
+                    break;
             }
-        }
-
-        private void GenerateRoom(RoomConfig room)
-        {
-            RoomGenerator roomGenerator = Instantiate(room.Prefab);
-            roomGenerator.name = $"Room #{room.Id}";
-            roomGenerator.transform.SetParent(base.transform);
-            roomGenerator.Generate(room.SquaredSize, room.WallHeight, roomGenerator.transform);
-            roomGenerator.transform.position = new Vector3(room.Position.x, 0, room.Position.y);
-        }
-
-        private void CreateNavMesh()
-        {
-            var navMesh = new GameObject("NavMeshSurface");
-            navMesh.transform.SetParent(base.transform);
-            navMesh.AddComponent<NavMeshSurface>().BuildNavMesh();
         }
     }
 }

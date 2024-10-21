@@ -1,4 +1,6 @@
+using DG.Tweening.Core.Easing;
 using Game.Database;
+using System;
 using UnityEngine;
 
 namespace Game
@@ -29,18 +31,27 @@ namespace Game
                 this._shootController = this.GetComponent<PlayerShootController>();
         }
 
-        public void Init(IGameManager gameManager)
-        {
-            this._healthController.Init(gameManager.PlayerConfig);
-            this._experienceController.Init(gameManager.PlayerConfig);
-            this._movementController.Init(gameManager.PlayerConfig);
-            this._parryController.Init(gameManager.PlayerConfig);
-            this._shootController.Init(gameManager.WeaponConfig);
-        }
-
         public void OnEnemyKill(IEnemyConfig enemy)
         {
             this._experienceController.OnEnemyKill(enemy);
+        }
+
+        public void Activate(bool isActive, IGameManager gameManager)
+        {
+            if (gameObject == null)
+                return;
+
+            if (isActive)
+            {
+                CharacterStats stats = gameManager.GameState.PlayerState.GetStats(gameManager.PlayerConfig);
+
+                this._healthController.Init(gameManager.PlayerConfig, stats);
+                this._experienceController.Init(gameManager);
+                this._movementController.Init(stats);
+                this._parryController.Init(stats);
+                this._shootController.Init(gameManager.WeaponConfig);
+            }
+            base.gameObject.gameObject.SetActive(isActive);
         }
     }
 }

@@ -13,12 +13,12 @@ namespace Game
 
         public override float GetCooldown()
         {
-            return this._config.ParryCooldown;
+            return this._config.Stats.ParryCooldown;
         }
 
         public override float GetDuration()
         {
-            return this._config.ParryDuration;
+            return this._config.Stats.ParryDuration;
         }
     }
 }

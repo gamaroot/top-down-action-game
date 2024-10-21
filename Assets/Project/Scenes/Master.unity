@@ -907,7 +907,6 @@ MonoBehaviour:
   _spawnablePool: {fileID: 8375850774422968510}
   _playerController: {fileID: 1507386640}
   _toastHandler: {fileID: 803079425}
-  _navMeshSurface: {fileID: 0}
   _playerConfig: {fileID: 11400000, guid: ed9e07694c1798840b171e5b4dad025d, type: 2}
   _enemyConfig: {fileID: 11400000, guid: c02e866a3ec42114cb87bcf8821708c1, type: 2}
   _weaponConfig: {fileID: 11400000, guid: b83d9cf39c6ff304b9487a00e421f526, type: 2}

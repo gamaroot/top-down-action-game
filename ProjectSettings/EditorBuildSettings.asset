@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Project/Scenes/Settings.unity
     guid: fb1b02ddaabad9545999bb7a4fcf2046
   - enabled: 1
-    path: Assets/Project/Scenes/Loadout Setup.unity
+    path: Assets/Project/Scenes/Character Setup.unity
     guid: bb289e8b538d2c24298ae5d2e47c1828
   - enabled: 1
     path: Assets/Project/Scenes/Loading.unity

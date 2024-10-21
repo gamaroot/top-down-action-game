@@ -13,15 +13,16 @@ MonoBehaviour:
   m_Name: EnemyConfig Database
   m_EditorClassIdentifier: 
   <Config>k__BackingField:
-  - <MaxHealth>k__BackingField: 5
+  - <Stats>k__BackingField:
+      MaxHealth: 6
+      MovementSpeed: 9
+      DashSpeed: 0
+      DashDuration: 0
+      DashCooldown: 0
+      ParryDuration: 0
+      ParryCooldown: 0
     <DeathVFX>k__BackingField: 0
     <DeathSFX>k__BackingField: 0
-    <MovementSpeed>k__BackingField: 10
-    <DashSpeed>k__BackingField: 0
-    <DashDuration>k__BackingField: 0
-    <DashCooldown>k__BackingField: 0
-    <ParryDuration>k__BackingField: 0
-    <ParryCooldown>k__BackingField: 0
     <Type>k__BackingField: 0
     <XpReward>k__BackingField: 15
     <TargetTag>k__BackingField: 5
@@ -29,17 +30,16 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 8
     <DetectionRadius>k__BackingField: 20
-    <DashPossibility>k__BackingField: 0
-    <ParryPossibility>k__BackingField: 0
-  - <MaxHealth>k__BackingField: 3
+  - <Stats>k__BackingField:
+      MaxHealth: 4
+      MovementSpeed: 9
+      DashSpeed: 0
+      DashDuration: 0
+      DashCooldown: 0
+      ParryDuration: 0
+      ParryCooldown: 0
     <DeathVFX>k__BackingField: 2
     <DeathSFX>k__BackingField: 2
-    <MovementSpeed>k__BackingField: 10
-    <DashSpeed>k__BackingField: 30
-    <DashDuration>k__BackingField: 0.2
-    <DashCooldown>k__BackingField: 1
-    <ParryDuration>k__BackingField: 0.3
-    <ParryCooldown>k__BackingField: 1
     <Type>k__BackingField: 1
     <XpReward>k__BackingField: 20
     <TargetTag>k__BackingField: 5
@@ -47,5 +47,3 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 8
     <DetectionRadius>k__BackingField: 20
-    <DashPossibility>k__BackingField: 0.2
-    <ParryPossibility>k__BackingField: 0.2

@@ -43,7 +43,7 @@ namespace Game
             return _pools[2][(int)type].BorrowObject<T>(autoDisableInSeconds);
         }
 
-        public static T SpawnTrap<T>(TrapSpawnType type, float autoDisableInSeconds = -1f)
+        public static T SpawnTrap<T>(SpawnTypeTrap type, float autoDisableInSeconds = -1f)
         {
             return _pools[3][(int)type].BorrowObject<T>(autoDisableInSeconds);
         }

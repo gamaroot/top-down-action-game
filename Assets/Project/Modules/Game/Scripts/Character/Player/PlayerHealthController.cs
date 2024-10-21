@@ -1,3 +1,4 @@
+using Game.Database;
 using UnityEngine;
 using UnityEngine.UI;
 using Utils;
@@ -7,6 +8,10 @@ namespace Game
     public class PlayerHealthController : HealthController
     {
         [SerializeField] private Slider _hpBar;
+
+        public override float MaxHealth => this._overridenStats.MaxHealth;
+
+        private CharacterStats _overridenStats;
 
         private void OnDisable()
         {
@@ -34,9 +39,15 @@ namespace Game
             this._hpBar.value = base.CurrentHealth / base.MaxHealth;
         }
         
+        public void Init(ICharacterConfig config, CharacterStats overridenStats)
+        {
+            this._overridenStats = overridenStats;
+            base.Init(config);
+        }
+
         public void ApplyDamage(float amount)
         {
-            TakeDamage(amount);
+            base.TakeDamage(amount);
         }
     }
 }

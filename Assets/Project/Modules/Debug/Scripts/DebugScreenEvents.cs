@@ -44,7 +44,7 @@ namespace Game
         private void OnValidate()
         {
             this.LoadDropdown<SpawnTypeEnemy>(this._dropdownSpawnableEnemies);
-            this.LoadDropdown<TrapSpawnType>(this._dropdownSpawnableTraps);
+            this.LoadDropdown<SpawnTypeTrap>(this._dropdownSpawnableTraps);
         }
 
         private void OnEnable()
@@ -52,8 +52,8 @@ namespace Game
             this._gameManager = new CrossSceneReference().GetObjectByType<GameManager>();
 
             // This is a debug scene, so we can safely not consider the performance here
-            this._cameras[0] = GameObject.FindGameObjectWithTag(GameTags.PLAYER_CAMERA).GetComponent<CinemachineCamera>();
-            this._cameras[1] = GameObject.FindGameObjectWithTag(GameTags.STAGE_CAMERA).GetComponent<CinemachineCamera>();
+            this._cameras[0] = GameObject.FindGameObjectWithTag(Tags.PlayerCamera.ToString()).GetComponent<CinemachineCamera>();
+            this._cameras[1] = GameObject.FindGameObjectWithTag(Tags.StageCamera.ToString()).GetComponent<CinemachineCamera>();
 
             this._player = new CrossSceneReference().GetObjectByType<PlayerHealthController>();
             this._player.OnReset();
@@ -83,7 +83,7 @@ namespace Game
             CinemachineCamera nextCamera = this._cameras[this._currentActiveCamera];
             nextCamera.Priority = 1;
 
-            bool isPlayerCamera = nextCamera.CompareTag(GameTags.PLAYER_CAMERA);
+            bool isPlayerCamera = nextCamera.CompareTag(Tags.PlayerCamera.ToString());
             this._textCameraPlayer.SetActive(isPlayerCamera);
             this._textCameraStage.SetActive(!isPlayerCamera);
         }
@@ -95,13 +95,11 @@ namespace Game
                 spawnType = (SpawnTypeEnemy)UnityEngine.Random.Range(0, Enum.GetValues(typeof(SpawnTypeEnemy)).Length);
             else
                 spawnType = (SpawnTypeEnemy)(this._dropdownSpawnableEnemies.value - 1);
-            
-            Transform spawn = SpawnablePool.SpawnEnemy<Transform>(spawnType);
-            spawn.position = this._debugUtils.GetRandomCircularPosition(this._player.transform.position, 15f, 10f, 5f, this._spawnLayerMaskToAvoid);
 
-            BehaviorGraphAgent enemy = spawn.GetComponent<BehaviorGraphAgent>();
+            BehaviorGraphAgent spawn = SpawnablePool.SpawnEnemy<BehaviorGraphAgent>(spawnType);
+            spawn.transform.position = this._debugUtils.GetRandomCircularPosition(this._player.transform.position, 15f, 10f, 5f, this._spawnLayerMaskToAvoid);
             spawn.gameObject.SetActive(true);
-            enemy.BlackboardReference.SetVariableValue("Waypoints", this._waypoints);
+            spawn.BlackboardReference.SetVariableValue("Waypoints", this._waypoints);
         }
 
         public void OnSpawnLoopToggleClick()
@@ -118,11 +116,11 @@ namespace Game
 
         public void OnSpawnTrapButtonClick()
         {
-            TrapSpawnType spawnType;
+            SpawnTypeTrap spawnType;
             if (this._dropdownSpawnableTraps.value == 0)
-                spawnType = (TrapSpawnType)UnityEngine.Random.Range(0, Enum.GetValues(typeof(TrapSpawnType)).Length);
+                spawnType = (SpawnTypeTrap)UnityEngine.Random.Range(0, Enum.GetValues(typeof(SpawnTypeTrap)).Length);
             else
-                spawnType = (TrapSpawnType)(this._dropdownSpawnableTraps.value - 1);
+                spawnType = (SpawnTypeTrap)(this._dropdownSpawnableTraps.value - 1);
 
             Transform spawn = SpawnablePool.SpawnTrap<Transform>(spawnType);
             spawn.position = this._debugUtils.GetRandomCircularPosition(Vector3.zero, 15f, 10f, 5f, this._spawnLayerMaskToAvoid);
@@ -132,7 +130,10 @@ namespace Game
 
         public void OnGenerateMapButtonClick()
         {
-            this._gameManager.OnGenerateMap();
+            // Access the private field using reflection
+            this._gameManager.GetType()
+                             .GetMethod("GenerateMap")
+                             .Invoke(this._gameManager, null);
         }
 
         public void OnPlayerHealButtonClick()
