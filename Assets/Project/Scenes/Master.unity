@@ -654,6 +654,8 @@ MonoBehaviour:
   _firstScene: 2
   _mainCamera: {fileID: 330585545}
   _cinemachineBrain: {fileID: 330585548}
+  _playerCamera: {fileID: 1090631208}
+  _mapCamera: {fileID: 262931811}
 --- !u!4 &887099279
 Transform:
   m_ObjectHideFlags: 0

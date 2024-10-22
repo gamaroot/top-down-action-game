@@ -82,6 +82,7 @@ namespace Game
 
         public void OnEnemyKill(IEnemyConfig enemy)
         {
+            Statistics.Instance.OnEnemyKilled();
             this._playerController.OnEnemyKill(enemy);
         }
 

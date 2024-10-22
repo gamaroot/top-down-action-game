@@ -10,17 +10,24 @@ namespace Utils
 
         public Camera MainCamera { get; private set; }
         public CinemachineBrain Brain { get; private set; }
-
-        private CinemachineBasicMultiChannelPerlin _perlinNoise;
+        public CinemachineCamera PlayerCamera { get; private set; }
+        public CinemachineCamera MapCamera { get; private set; }
 
         public static CameraHandler Instance { get; private set; }
 
-        public static void Load(Camera mainCamera, CinemachineBrain brain)
+        private CinemachineBasicMultiChannelPerlin _perlinNoise;
+
+        public static void Load(Camera mainCamera, 
+                                CinemachineBrain brain,
+                                CinemachineCamera playerCamera, 
+                                CinemachineCamera mapCamera)
         {
             Instance = new CameraHandler
             {
                 MainCamera = mainCamera,
-                Brain = brain
+                Brain = brain,
+                PlayerCamera = playerCamera,
+                MapCamera = mapCamera
             };
         }
 
@@ -29,7 +36,8 @@ namespace Utils
             if (this._perlinNoise == null)
                 this._perlinNoise = ((CinemachineCamera)this.Brain.ActiveVirtualCamera).GetComponent<CinemachineBasicMultiChannelPerlin>();
 
-            this._perlinNoise.enabled = true;
+            if (this._perlinNoise != null) // Yes, it can be null when switching cameras
+                this._perlinNoise.enabled = true;
 
             yield return new WaitForSeconds(SHAKE_DURATION);
 

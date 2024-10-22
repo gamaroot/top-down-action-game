@@ -19,6 +19,22 @@ MonoBehaviour:
     m_Key: txt_level_up
     m_Metadata:
       m_Items: []
+  - m_Id: 8129735256764416
+    m_Key: txt_map_view
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8133004913864704
+    m_Key: txt_map_total_enemies_defeated
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8133055836909568
+    m_Key: txt_map_highest_combo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8133103719084032
+    m_Key: txt_map_run_time
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

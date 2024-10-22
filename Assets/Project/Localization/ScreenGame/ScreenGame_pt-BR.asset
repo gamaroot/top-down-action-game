@@ -22,6 +22,22 @@ MonoBehaviour:
     m_Localized: "Subiu de n\xEDvel!"
     m_Metadata:
       m_Items: []
+  - m_Id: 8129735256764416
+    m_Localized: "Visualiza\xE7\xE3o de Mapa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8133103719084032
+    m_Localized: Tempo Decorrido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8133055836909568
+    m_Localized: Maior Combo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8133004913864704
+    m_Localized: Inimigos Derrotados
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

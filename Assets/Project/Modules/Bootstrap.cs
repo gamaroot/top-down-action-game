@@ -12,6 +12,8 @@ namespace Game
         [SerializeField] private SceneID _firstScene;
         [SerializeField] private Camera _mainCamera;
         [SerializeField] private CinemachineBrain _cinemachineBrain;
+        [SerializeField] private CinemachineCamera _playerCamera;
+        [SerializeField] private CinemachineCamera _mapCamera;
 
         private void Awake()
         {
@@ -21,7 +23,7 @@ namespace Game
 #else
             Application.targetFrameRate = GamePreferences.FPS;
 #endif
-            CameraHandler.Load(this._mainCamera, this._cinemachineBrain);
+            CameraHandler.Load(this._mainCamera, this._cinemachineBrain, this._playerCamera, this._mapCamera);
             Statistics.Initialize();
         }
 

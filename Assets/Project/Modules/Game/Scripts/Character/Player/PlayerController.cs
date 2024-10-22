@@ -1,7 +1,7 @@
-using DG.Tweening.Core.Easing;
 using Game.Database;
-using System;
+using Unity.Cinemachine;
 using UnityEngine;
+using Utils;
 
 namespace Game
 {
@@ -12,6 +12,10 @@ namespace Game
         [SerializeField] private PlayerMovementController _movementController;
         [SerializeField] private PlayerParryController _parryController;
         [SerializeField] private PlayerShootController _shootController;
+
+        private InputController _input;
+
+        private int _killStreak;
 
         private void OnValidate()
         {
@@ -31,14 +35,36 @@ namespace Game
                 this._shootController = this.GetComponent<PlayerShootController>();
         }
 
+        private void Awake()
+        {
+            this._input = new InputController();
+            this._input.Player.Map.performed += _ => this.SwitchCamera();
+        }
+
+        private void OnEnable()
+        {
+            this._input.Enable();
+        }
+
+        private void OnDisable()
+        {
+            this._input.Disable();
+        }
+
         public void OnEnemyKill(IEnemyConfig enemy)
         {
             this._experienceController.OnEnemyKill(enemy);
+
+            this._killStreak++;
+            Statistics.Instance.OnEnemyKilled();
+            Statistics.Instance.OnComboFinished(this._killStreak);
+
+            base.Invoke(nameof(this.OnComboFinished), 3f);
         }
 
         public void Activate(bool isActive, IGameManager gameManager)
         {
-            if (gameObject == null)
+            if (this == null)
                 return;
 
             if (isActive)
@@ -52,6 +78,20 @@ namespace Game
                 this._shootController.Init(gameManager.WeaponConfig);
             }
             base.gameObject.gameObject.SetActive(isActive);
+        }
+
+        private void SwitchCamera()
+        {
+            CinemachineCamera playerCamera = CameraHandler.Instance.PlayerCamera;
+            playerCamera.Priority = playerCamera.Priority == 0 ? 1 : 0;
+
+            CinemachineCamera mapCamera = CameraHandler.Instance.MapCamera;
+            mapCamera.Priority = mapCamera.Priority == 0 ? 1 : 0;
+        }
+
+        private void OnComboFinished()
+        {
+            this._killStreak = 0;
         }
     }
 }
