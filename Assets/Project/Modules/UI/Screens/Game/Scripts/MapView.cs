@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using Utils;
 
 namespace Game
 {
@@ -9,10 +10,23 @@ namespace Game
         [SerializeField] private TextMeshProUGUI _txtHighestCombo;
         [SerializeField] private TextMeshProUGUI _txtTimeElapsed;
 
+        private GameManager _gameManager;
+
+        private void Awake()
+        {
+            this._gameManager = new CrossSceneReference().GetObjectByType<GameManager>();
+        }
+
         private void OnEnable()
         {
             this._txtEnemiesDefeated.text = Statistics.Instance.TotalEnemiesKilled.ToString();
             this._txtHighestCombo.text = Statistics.Instance.HighestCombo.ToString();
+            this._gameManager.OnMapVisibilityChange(true);
+        }
+
+        private void OnDisable()
+        {
+            this._gameManager.OnMapVisibilityChange(false);
         }
 
         private void Update()

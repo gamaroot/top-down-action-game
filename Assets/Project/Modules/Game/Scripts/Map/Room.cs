@@ -7,10 +7,13 @@ using Utils;
 namespace Game
 {
     [RequireComponent(typeof(BoxCollider))]
-    public class Room : MonoBehaviour
+    public class Room : MonoBehaviour, IRoom
     {
         [SerializeField, ReadOnly] private BoxCollider _collider;
         [SerializeField] private GameObject _spawnerParent;
+
+        public bool HasVisited { get; private set; }
+        public bool IsPlayerHere { get; private set; }
 
         public int Id { get; private set; }
         public bool[] Neighbors { get; private set; }
@@ -23,6 +26,31 @@ namespace Game
         {
             if (this._collider == null)
                 this._collider = base.GetComponent<BoxCollider>();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.activeSelf &&
+                other.CompareTag(Tags.Player.ToString()))
+            {
+                Debug.Log($"Player entered room #{this.Id}");
+                this._content.SetActive(true);
+                this.HasVisited = true;
+                this.IsPlayerHere = true;
+
+                this.SpawnEnemies();
+                this.SpawnTraps();
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag(Tags.Player.ToString()))
+            {
+                this.IsPlayerHere = false;
+                Debug.Log($"Player left room #{this.Id}");
+                this.Hide();
+            }
         }
 
         public void Init(int id, float squaredSize, bool[] neighbors, List<GameObject> waypoints, GameObject content,
@@ -38,26 +66,21 @@ namespace Game
             this._collider.size = new Vector3(squaredSize, 1f, squaredSize);
         }
 
-        private void OnTriggerEnter(Collider other)
+        public void ShowIfVisited()
         {
-            if (other.gameObject.activeSelf &&
-                other.CompareTag(Tags.Player.ToString()))
-            {
-                Debug.Log($"Player entered room #{this.Id}");
+            if (this.HasVisited)
                 this._content.SetActive(true);
-                
-                this.SpawnEnemies();
-                this.SpawnTraps();
-            }
         }
 
-        private void OnTriggerExit(Collider other)
+        public void HideIfPlayerIsNotHere()
         {
-            if (other.CompareTag(Tags.Player.ToString()))
-            {
-                Debug.Log($"Player left room #{this.Id}");
+            if (!this.IsPlayerHere)
                 this._content.SetActive(false);
-            }
+        }
+
+        private void Hide()
+        {
+            this._content.SetActive(false);
         }
 
         private void SpawnEnemies()

@@ -26,6 +26,7 @@ namespace Game
         public GameState GameState => this._gameStateHandler.GameState;
 
         private GameStateHandler _gameStateHandler;
+        private IRoom[] _rooms;
 
         private void OnValidate()
         {
@@ -86,6 +87,20 @@ namespace Game
             this._playerController.OnEnemyKill(enemy);
         }
 
+        public void OnMapVisibilityChange(bool visible)
+        {
+            for (int index = 0; index < this._rooms.Length; index++)
+            {
+                if (this._rooms == null) // Prevent null reference exception
+                    break;
+
+                if (visible)
+                    this._rooms[index].ShowIfVisited();
+                else
+                    this._rooms[index].HideIfPlayerIsNotHere();
+            }
+        }
+
         private void OnGameStart()
         {
             // Randomize seed
@@ -94,7 +109,7 @@ namespace Game
             this._gameStateHandler.GameState.Seed = seed;
 
             // Generate map
-            new MapGenerator().Generate(this._mapConfig.Config, base.transform);
+            this._rooms = new MapGenerator().Generate(this._mapConfig.Config, base.transform);
 
             this._playerController.Activate(true, this);
         }
@@ -104,6 +119,7 @@ namespace Game
             this._gameStateHandler.Save();
             Statistics.Instance.OnGameQuit();
 
+            this._rooms = null;
             this._playerController.Activate(false, this);
         }
 

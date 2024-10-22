@@ -12,9 +12,9 @@ namespace Game
 
         private readonly HashSet<Vector2> _occupiedPositions = new();
 
-        private GameObject[] _roomsMesh;
+        private IRoom[] _rooms;
 
-        public void Generate(IMapConfig config, Transform parent)
+        public IRoom[] Generate(IMapConfig config, Transform parent)
         {
             this.DestroyMap(parent);
 
@@ -23,7 +23,7 @@ namespace Game
             int totalRooms = UnityEngine.Random.Range(config.MinRooms, config.MaxRooms);
             var rooms = new RoomData[totalRooms];
 
-            this._roomsMesh = new GameObject[totalRooms];
+            this._rooms = new Room[totalRooms];
 
             for (int index = 0; index < totalRooms; index++)
             {
@@ -77,25 +77,28 @@ namespace Game
             }
 
             this.CreateNavMesh(parent);
+
+            return this._rooms;
         }
 
-        private void GenerateRoom(RoomData room, Transform parent)
+        private void GenerateRoom(RoomData data, Transform parent)
         {
-            RoomGenerator roomGenerator = MonoBehaviour.Instantiate(room.Prefab);
-            roomGenerator.name = $"Room #{room.Id}";
+            RoomGenerator roomGenerator = MonoBehaviour.Instantiate(data.Prefab);
+            roomGenerator.name = $"Room #{data.Id}";
             roomGenerator.transform.SetParent(parent);
 
             var contentParent = new GameObject($"Content");
             contentParent.transform.SetParent(roomGenerator.transform);
 
-            roomGenerator.Generate(room.SquaredSize, room.WallHeight, contentParent.transform, out List<GameObject> waypoints);
-            roomGenerator.transform.position = new Vector3(room.Position.x, 0, room.Position.y);
+            roomGenerator.Generate(data.SquaredSize, data.WallHeight, contentParent.transform, out List<GameObject> waypoints);
+            roomGenerator.transform.position = new Vector3(data.Position.x, 0, data.Position.y);
 
-            var spawnConfig = new SpawnerGenerator().GenerateSpawnConfig(room);
+            var spawnConfig = new SpawnerGenerator().GenerateSpawnConfig(data);
 
-            roomGenerator.GetComponent<Room>().Init(room.Id, room.SquaredSize, room.Neighbors, waypoints, contentParent, spawnConfig);
+            Room room = roomGenerator.GetComponent<Room>();
+            room.Init(data.Id, data.SquaredSize, data.Neighbors, waypoints, contentParent, spawnConfig);
 
-            this._roomsMesh[room.Id] = contentParent;
+            this._rooms[data.Id] = room;
         }
 
         private void CreateNavMesh(Transform parent)
@@ -104,9 +107,9 @@ namespace Game
             navMesh.transform.SetParent(parent);
             navMesh.AddComponent<NavMeshSurface>().BuildNavMesh();
 
-            for (int index = 1; index < this._roomsMesh.Length; index++)
+            for (int index = 0; index < this._rooms.Length; index++)
             {
-                this._roomsMesh[index].SetActive(false);
+                this._rooms[index].HideIfPlayerIsNotHere();
             }
         }
 

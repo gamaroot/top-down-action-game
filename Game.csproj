@@ -159,6 +159,7 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\DashHandler.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Map\MapConfig.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\AIMovementController.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Map\IRoom.cs" />
     <Compile Include="Assets\Project\Modules\UI\Screens\Game\Scripts\GameScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\Constants\Scripts\AnimationKeys.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\HealthController.cs" />
