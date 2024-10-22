@@ -53,6 +53,18 @@ namespace Game
             SceneNavigator.Instance.LoadAdditiveSceneAsync(SceneID.CHARACTER_SETUP, SceneID.GAME);
         }
 
+        // 0: MaxHealth, 1: MovementSpeed, 2: DashCooldown, 3: ParryCooldown
+        public void OnAddStatButtonClick(int statIndex)
+        {
+            this._sliders[statIndex].value++;
+        }
+
+        // 0: MaxHealth, 1: MovementSpeed, 2: DashCooldown, 3: ParryCooldown
+        public void OnRemoveStatButtonClick(int statIndex)
+        {
+            this._sliders[statIndex].value--;
+        }
+
         private void OnSliderChange(int statIndex, float value)
         {
             if (value == this._sliderValues[statIndex]) return;
