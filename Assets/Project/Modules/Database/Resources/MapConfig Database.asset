@@ -26,7 +26,7 @@ MonoBehaviour:
       MinTraps: 1
       MaxTraps: 5
       TrapPool: 00000000010000000200000003000000
-    - Prefab: {fileID: 7340991271870152126, guid: 0a59ae52a738aae40b4ea8dd7c113f99,
+    - Prefab: {fileID: 7340991271870152126, guid: f8e78a8d3e7b80c4497ffd145305214b,
         type: 3}
       MinEnemies: 1
       MaxEnemies: 5
@@ -34,7 +34,7 @@ MonoBehaviour:
       MinTraps: 1
       MaxTraps: 5
       TrapPool: 00000000010000000200000003000000
-    - Prefab: {fileID: 7340991271870152126, guid: 1dcbd164d9ada03488db5c3806a80cf5,
+    - Prefab: {fileID: 7340991271870152126, guid: e61ec3c201eb44349be26e0dd8712d9a,
         type: 3}
       MinEnemies: 1
       MaxEnemies: 5

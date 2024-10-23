@@ -4,118 +4,45 @@ using UnityEngine;
 
 public class RoomGenerator : MonoBehaviour
 {
-    [SerializeField] private Material _wallMaterial;
-    [SerializeField] private Material _floorMaterial;
-    [SerializeField] private LayerMask _wallLayerMask;
-    [SerializeField] private LayerMask _floorLayerMask;
+    [SerializeField] private GameObject _parent;
 
-    public void Generate(float roomSize, float wallHeight, Transform parent, out List<GameObject> waypoints)
+    // 0: front, 1: back, 2: left, 3: right
+    [SerializeField] private GameObject[] _walls;
+    [SerializeField] private GameObject[] _doors;
+    [SerializeField] private GameObject[] _wallsWithDoor;
+
+    public Room Generate(RoomData data)
     {
-        int floorLayerIndex = Mathf.RoundToInt(Mathf.Log(this._floorLayerMask.value, 2));
-        this.CreateFloor(roomSize, parent, floorLayerIndex);
+        base.transform.localScale = new Vector3(data.SquaredSize, data.WallHeight, data.SquaredSize);
+        base.transform.position = new Vector3(data.Position.x, (data.WallHeight - 1f) / 2f, data.Position.y);
 
-        int wallLayerIndex = Mathf.RoundToInt(Mathf.Log(this._wallLayerMask.value, 2));
+        List<GameObject> existingDoors = new();
+        for (int index = 0; index < this._walls.Length; index++)
+        {
+            int neighborId = data.NeighborsID[index];
+            bool hasNeighbor = neighborId != -1;
 
-        // Left wall
-        var leftWallPosition = new Vector3(-roomSize / 2f, wallHeight / 2f, 0);
-        var leftWallScale = new Vector3(wallHeight, roomSize, 1);
-        var leftWallRotation = Quaternion.Euler(0, 0, -90f);
-        this.CreateWall(leftWallPosition, leftWallScale, leftWallRotation, parent, wallLayerIndex);
+            GameObject wall = this._walls[index];
+            wall.SetActive(!hasNeighbor);
+            
+            GameObject wallWithDoor = this._wallsWithDoor[index];
+            wallWithDoor.SetActive(hasNeighbor);
 
-        // Right wall
-        var rightWallPosition = new Vector3(roomSize / 2f, wallHeight / 2f, 0);
-        var rightWallScale = new Vector3(wallHeight, roomSize, 1);
-        var rightWallRotation = Quaternion.Euler(0, 0, 90f);
-        this.CreateWall(rightWallPosition, rightWallScale, rightWallRotation, parent, wallLayerIndex);
-
-        // Back wall
-        var backWallPosition = new Vector3(0, wallHeight / 2f, -roomSize / 2f);
-        var backWallScale = new Vector3(roomSize, wallHeight, 1);
-        var backWallRotation = Quaternion.Euler(90f, 0, 0);
-        this.CreateWall(backWallPosition, backWallScale, backWallRotation, parent, wallLayerIndex);
-
-        // Front wall
-        var frontWallPosition = new Vector3(0, wallHeight / 2f, roomSize / 2f);
-        var frontWallScale = new Vector3(roomSize, wallHeight, 1);
-        var frontWallRotation = Quaternion.Euler(-90f, 0, 0);
-        this.CreateWall(frontWallPosition, frontWallScale, frontWallRotation, parent, wallLayerIndex);
-        
-        waypoints = this.CreateWaypoints(roomSize);
+            GameObject door = this._doors[index];
+            if (hasNeighbor && neighborId < data.Id)
+                door.SetActive(false);
+            else
+                existingDoors.Add(door);
+        }
 
         Destroy(this);
-    }
 
-    private void CreateFloor(float roomSize, Transform parent, int layerMask)
-    {
-        var floor = new GameObject("Floor");
-        floor.transform.SetParent(parent);
-        floor.layer = layerMask;
-
-        MeshFilter meshFilter = floor.AddComponent<MeshFilter>();
-        MeshRenderer meshRenderer = floor.AddComponent<MeshRenderer>();
-
-        meshRenderer.material = _floorMaterial;
-
-        // Create a quad for the floor
-        var mesh = new Mesh();
-        var vertices = new Vector3[4]
-        {
-            new Vector3(-roomSize / 2f, 0, -roomSize / 2f), // Bottom left
-            new Vector3(roomSize / 2f, 0, -roomSize / 2f), // Bottom right
-            new Vector3(roomSize / 2f, 0, roomSize / 2f), // Top right
-            new Vector3(-roomSize / 2f, 0, roomSize / 2f) // Top left
-        };
-
-        int[] triangles = new int[6]
-        {
-            0, 2, 1, // First triangle
-            0, 3, 2  // Second triangle
-        };
-
-        mesh.vertices = vertices;
-        mesh.triangles = triangles;
-        mesh.RecalculateNormals();
-
-        meshFilter.mesh = mesh;
-        floor.AddComponent<MeshCollider>();
-    }
-
-    private void CreateWall(Vector3 position, Vector3 scale, Quaternion rotation, Transform parent, int layerMask)
-    {
-        var wall = new GameObject("Wall");
-        wall.transform.SetParent(parent, false);
-        wall.layer = layerMask;
-
-        MeshFilter meshFilter = wall.AddComponent<MeshFilter>();
-        MeshRenderer meshRenderer = wall.AddComponent<MeshRenderer>();
-
-        meshRenderer.material = _wallMaterial;
-
-        // Create a quad for the wall
-        var mesh = new Mesh();
-        var vertices = new Vector3[4]
-        {
-            new Vector3(-0.5f * scale.x, 0, -0.5f * scale.y), // Bottom left
-            new Vector3(0.5f * scale.x, 0, -0.5f * scale.y),  // Bottom right
-            new Vector3(0.5f * scale.x, 0, 0.5f * scale.y),   // Top right
-            new Vector3(-0.5f * scale.x, 0, 0.5f * scale.y)   // Top left
-        };
-
-        int[] triangles = new int[6]
-        {
-            0, 2, 1, // First triangle
-            0, 3, 2  // Second triangle
-        };
-
-        mesh.vertices = vertices;
-        mesh.triangles = triangles;
-        mesh.RecalculateNormals();
-
-        meshFilter.mesh = mesh;
-
-        wall.transform.position = position;
-        wall.transform.rotation = rotation;
-        wall.AddComponent<MeshCollider>();
+        return base.gameObject.GetComponent<Room>()
+                                .Init(data.Id,
+                                      existingDoors.ToArray(), 
+                                      this.CreateWaypoints(data.SquaredSize), 
+                                      this._parent, 
+                                      new SpawnerGenerator().GenerateSpawnConfig(data));
     }
 
     private List<GameObject> CreateWaypoints(float roomSize)

@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using Unity.Behavior;
 using UnityEngine;
 
 namespace Game

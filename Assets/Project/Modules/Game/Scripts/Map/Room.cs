@@ -9,24 +9,18 @@ namespace Game
     [RequireComponent(typeof(BoxCollider))]
     public class Room : MonoBehaviour, IRoom
     {
-        [SerializeField, ReadOnly] private BoxCollider _collider;
-        [SerializeField] private GameObject _spawnerParent;
-
         public bool HasVisited { get; private set; }
         public bool IsPlayerHere { get; private set; }
 
         public int Id { get; private set; }
-        public bool[] Neighbors { get; private set; }
 
+        private int _totalEnemies;
+        private int _killedEnemies;
+
+        private GameObject[] _doors;
         private GameObject _content;
         private List<GameObject> _waypoints;
         private Tuple<SpawnConfig<SpawnTypeEnemy>[], SpawnConfig<SpawnTypeTrap>[]> _spawnConfig;
-
-        private void OnValidate()
-        {
-            if (this._collider == null)
-                this._collider = base.GetComponent<BoxCollider>();
-        }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -49,21 +43,29 @@ namespace Game
             {
                 this.IsPlayerHere = false;
                 Debug.Log($"Player left room #{this.Id}");
-                this.Hide();
+                this.HideIfNotVisited();
             }
         }
 
-        public void Init(int id, float squaredSize, bool[] neighbors, List<GameObject> waypoints, GameObject content,
+        public Room Init(int id, GameObject[] doors, List<GameObject> waypoints, GameObject content,
                          Tuple<SpawnConfig<SpawnTypeEnemy>[], SpawnConfig<SpawnTypeTrap>[]> spawnConfig)
         {
             this.Id = id;
-            this.Neighbors = neighbors;
+            this._doors = doors;
 
             this._content = content;
             this._waypoints = waypoints;
             this._spawnConfig = spawnConfig;
 
-            this._collider.size = new Vector3(squaredSize, 1f, squaredSize);
+            return this;
+        }
+
+        public void OpenAllDoors()
+        {
+            for (int index = 0; index < this._doors.Length; index++)
+            {
+                this._doors[index].SetActive(false);
+            }
         }
 
         public void ShowIfVisited()
@@ -78,14 +80,16 @@ namespace Game
                 this._content.SetActive(false);
         }
 
-        private void Hide()
+        private void HideIfNotVisited()
         {
-            this._content.SetActive(false);
+            if (!this.HasVisited)
+                this._content.SetActive(false);
         }
 
         private void SpawnEnemies()
         {
-            for (int index = 0; index < this._spawnConfig.Item1.Length; index++)
+            this._totalEnemies = this._spawnConfig.Item1.Length;
+            for (int index = 0; index < this._totalEnemies; index++)
             {
                 var config = this._spawnConfig.Item1[index];
                 var spawn = SpawnablePool.SpawnEnemy<BehaviorGraphAgent>(config.Type);
@@ -93,8 +97,21 @@ namespace Game
                 spawn.transform.position = config.Position;
                 spawn.gameObject.SetActive(true);
                 spawn.BlackboardReference.SetVariableValue("Waypoints", this._waypoints);
+
+                var enemyHealthController = spawn.GetComponent<HealthController>();
+                void OnEnemyKilled()
+                {
+                    enemyHealthController.OnDeathListener -= OnEnemyKilled;
+                    if (++this._killedEnemies == this._totalEnemies)
+                    {
+                        this.OpenAllDoors();
+                    }
+                }
+                enemyHealthController.OnDeathListener += OnEnemyKilled;
             }
         }
+
+        
 
         private void SpawnTraps()
         {
