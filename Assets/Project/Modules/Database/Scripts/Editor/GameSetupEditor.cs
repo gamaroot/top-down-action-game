@@ -211,8 +211,33 @@ namespace Game.Database
 
                 this._mapConfig.RoomConfigs[index].Prefab = (RoomGenerator)EditorGUILayout.ObjectField("Prefab", this._mapConfig.RoomConfigs[index].Prefab, typeof(RoomGenerator), false);
 
-                this.DrawEnemySpawnProperties(index);
-                this.DrawTrapSpawnProperties(index);
+                if (this._mapConfig.RoomConfigs[index].Prefab.Type != RoomType.BASIC)
+                    this._mapConfig.RoomConfigs[index].MinRoomsBefore = EditorGUILayout.IntField("Min Rooms Before", this._mapConfig.RoomConfigs[index].MinRoomsBefore);
+
+
+                if (this._mapConfig.RoomConfigs[index].Prefab.Type != RoomType.BOSS)
+                {
+                    this._mapConfig.RoomConfigs[index].IsUnique = EditorGUILayout.Toggle("Is Unique", this._mapConfig.RoomConfigs[index].IsUnique);
+
+                    this.DrawEnemySpawnProperties(index);
+                    this.DrawTrapSpawnProperties(index);
+                }
+                else
+                {
+                    this._mapConfig.RoomConfigs[index].IsUnique = true;
+                    EditorGUILayout.LabelField("Is Unique", "True");
+                    
+                    EditorGUILayout.BeginHorizontal();
+                    EditorGUILayout.LabelField("Enemy", GUILayout.Width(135f));
+
+                    if (this._mapConfig.RoomConfigs[index].EnemyPool.Count == 0)
+                        this._mapConfig.RoomConfigs[index].EnemyPool = new();
+                    else if (this._mapConfig.RoomConfigs[index].EnemyPool.Count > 1)
+                        this._mapConfig.RoomConfigs[index].EnemyPool = new() { this._mapConfig.RoomConfigs[index].EnemyPool[0] };
+
+                    this._mapConfig.RoomConfigs[index].EnemyPool[0] = (SpawnTypeEnemy)EditorGUILayout.EnumPopup(this._mapConfig.RoomConfigs[index].EnemyPool[0]);
+                    EditorGUILayout.EndHorizontal();
+                }
 
                 EditorGUI.indentLevel--;
             }

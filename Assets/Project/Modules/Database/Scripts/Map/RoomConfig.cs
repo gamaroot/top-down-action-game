@@ -8,6 +8,9 @@ namespace Game.Database
     {
         public RoomGenerator Prefab;
 
+        public bool IsUnique;
+        public int MinRoomsBefore;
+
         public int MinEnemies = 1;
         public int MaxEnemies = 5;
         public List<SpawnTypeEnemy> EnemyPool = new();

@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac48b2194f084143a5aaa7d933ee66d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Type>k__BackingField: 2
   _parent: {fileID: 2963066724456866343}
   _walls:
   - {fileID: 7598389684401326811}

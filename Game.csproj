@@ -127,6 +127,7 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\GameManager.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Player\PlayerConfig.cs" />
     <Compile Include="Assets\Project\Modules\Debug\Scripts\DebugButton.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Map\RoomType.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\MovementController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Map\RoomGenerator.cs" />
     <Compile Include="Assets\Project\Modules\Debug\Scripts\DebugUtils.cs" />

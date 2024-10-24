@@ -20,6 +20,8 @@ MonoBehaviour:
     <RoomConfigs>k__BackingField:
     - Prefab: {fileID: 7340991271870152126, guid: 2d91d5c32c89ad54fa2395d8c14a0ec2,
         type: 3}
+      IsUnique: 0
+      MinRoomsBefore: 0
       MinEnemies: 1
       MaxEnemies: 5
       EnemyPool: 0000000001000000
@@ -28,6 +30,8 @@ MonoBehaviour:
       TrapPool: 00000000010000000200000003000000
     - Prefab: {fileID: 7340991271870152126, guid: f8e78a8d3e7b80c4497ffd145305214b,
         type: 3}
+      IsUnique: 0
+      MinRoomsBefore: 0
       MinEnemies: 1
       MaxEnemies: 5
       EnemyPool: 0000000001000000
@@ -36,9 +40,11 @@ MonoBehaviour:
       TrapPool: 00000000010000000200000003000000
     - Prefab: {fileID: 7340991271870152126, guid: e61ec3c201eb44349be26e0dd8712d9a,
         type: 3}
+      IsUnique: 1
+      MinRoomsBefore: 5
       MinEnemies: 1
       MaxEnemies: 5
-      EnemyPool: 0000000001000000
+      EnemyPool: 01000000
       MinTraps: 1
       MaxTraps: 5
       TrapPool: 00000000010000000200000003000000

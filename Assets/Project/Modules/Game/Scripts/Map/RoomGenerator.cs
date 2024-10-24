@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RoomGenerator : MonoBehaviour
 {
+    [field: SerializeField] public RoomType Type { get; private set; }
+
     [SerializeField] private GameObject _parent;
 
     // 0: front, 1: back, 2: left, 3: right
