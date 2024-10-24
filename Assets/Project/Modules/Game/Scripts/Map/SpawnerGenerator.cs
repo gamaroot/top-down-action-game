@@ -8,54 +8,55 @@ namespace Game
     {
         public Tuple<SpawnConfig<SpawnTypeEnemy>[], SpawnConfig<SpawnTypeTrap>[]> GenerateSpawnConfig(RoomData config)
         {
-            var enemies = new SpawnConfig<SpawnTypeEnemy>[config.TotalEnemies];
-            var traps = new SpawnConfig<SpawnTypeTrap>[config.TotalTraps];
+            var enemies = this.GenerateSpawnConfigForType(config.TotalEnemies, config.EnemyPool, 
+                                                          config.SquaredSize, config.Position);
 
+            var traps = this.GenerateSpawnConfigForType(config.TotalTraps, config.TrapPool, 
+                                                        config.SquaredSize, config.Position);
+
+            return new Tuple<SpawnConfig<SpawnTypeEnemy>[], SpawnConfig<SpawnTypeTrap>[]>(enemies, traps);
+        }
+
+        private SpawnConfig<T>[] GenerateSpawnConfigForType<T>(int total, List<T> pool, float roomSize, Vector2 roomPosition)
+        {
+            var configs = new SpawnConfig<T>[total];
             var usedPositions = new List<Vector3>();
             float minDistanceBetweenObjects = 2f; // Minimum distance to avoid overlap
 
-            // Spawn enemies
-            for (int index = 0; index < config.TotalEnemies; index++)
+            for (int index = 0; index < total; index++)
             {
-                SpawnTypeEnemy type = config.EnemyPool[UnityEngine.Random.Range(0, config.EnemyPool.Count)];
-                Vector3 position = this.GetNonOverlappingPosition(config.SquaredSize, usedPositions, minDistanceBetweenObjects);
+                T type = pool[UnityEngine.Random.Range(0, pool.Count)];
+                Vector3 position = this.GetNonOverlappingPosition(roomSize, roomPosition, usedPositions, minDistanceBetweenObjects);
 
-                enemies[index] = new SpawnConfig<SpawnTypeEnemy>
+                configs[index] = new SpawnConfig<T>
                 {
                     Type = type,
                     Position = position
                 };
+
                 usedPositions.Add(position);
             }
 
-            // Spawn traps
-            for (int index = 0; index < config.TotalTraps; index++)
-            {
-                SpawnTypeTrap type = config.TrapPool[UnityEngine.Random.Range(0, config.TrapPool.Count)];
-                Vector3 position = this.GetNonOverlappingPosition(config.SquaredSize, usedPositions, minDistanceBetweenObjects);
-
-                traps[index] = new SpawnConfig<SpawnTypeTrap>
-                {
-                    Type = type,
-                    Position = position
-                };
-                usedPositions.Add(position);
-            }
-
-            return new(enemies, traps);
+            return configs;
         }
 
-        private Vector3 GetNonOverlappingPosition(float roomSize, List<Vector3> usedPositions, float minDistance)
+        private Vector3 GetNonOverlappingPosition(float roomSize, Vector2 roomPosition, List<Vector3> usedPositions, float minDistance)
         {
             Vector3 newPosition;
             bool isPositionValid;
+            float margin = roomSize * 0.2f; // 20% margin from the sides
+            float minX = (-roomSize / 2f) + margin;
+            float maxX = (roomSize / 2f) - margin;
+            float minZ = (-roomSize / 2f) + margin;
+            float maxZ = (roomSize / 2f) - margin;
+
             do
             {
-                // Random position within the room bounds
+                // Randomize position within the adjusted bounds, considering the room position
                 newPosition = new Vector3(
-                    UnityEngine.Random.Range(-roomSize / 2f, roomSize / 2f),
+                    UnityEngine.Random.Range(minX, maxX) + roomPosition.x,
                     0,
-                    UnityEngine.Random.Range(-roomSize / 2f, roomSize / 2f)
+                    UnityEngine.Random.Range(minZ, maxZ) + roomPosition.y
                 );
 
                 // Check if this position is far enough from all previously used positions
