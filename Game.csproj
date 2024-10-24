@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Project\Modules\Game\Scripts\Persistance\Statistics\Statistics.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Persistance\Statistics\StatisticsData.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Enemy\EnenyConfigDatabase.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnablePool.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Behavior\EnemyState.cs" />

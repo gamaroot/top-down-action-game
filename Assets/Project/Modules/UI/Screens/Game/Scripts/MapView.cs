@@ -19,8 +19,8 @@ namespace Game
 
         private void OnEnable()
         {
-            this._txtEnemiesDefeated.text = Statistics.Instance.TotalEnemiesKilled.ToString();
-            this._txtHighestCombo.text = Statistics.Instance.HighestCombo.ToString();
+            this._txtEnemiesDefeated.text = Statistics.Instance.CurrentRunData.TotalEnemiesKilled.ToString();
+            this._txtHighestCombo.text = Statistics.Instance.CurrentRunData.HighestCombo.ToString();
             this._gameManager.OnMapVisibilityChange(true);
         }
 
