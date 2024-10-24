@@ -13,8 +13,6 @@ namespace Game
         [SerializeField] private PlayerParryController _parryController;
         [SerializeField] private PlayerShootController _shootController;
 
-        private InputController _input;
-
         private int _killStreak;
 
         private void OnValidate()
@@ -33,22 +31,6 @@ namespace Game
 
             if (this._shootController == null)
                 this._shootController = this.GetComponent<PlayerShootController>();
-        }
-
-        private void Awake()
-        {
-            this._input = new InputController();
-            this._input.Player.Map.performed += _ => this.SwitchCamera();
-        }
-
-        private void OnEnable()
-        {
-            this._input.Enable();
-        }
-
-        private void OnDisable()
-        {
-            this._input.Disable();
         }
 
         public void OnEnemyKill(IEnemyConfig enemy)
@@ -78,15 +60,6 @@ namespace Game
                 this._shootController.Init(gameManager.WeaponConfig);
             }
             base.gameObject.gameObject.SetActive(isActive);
-        }
-
-        private void SwitchCamera()
-        {
-            CinemachineCamera playerCamera = CameraHandler.Instance.PlayerCamera;
-            playerCamera.Priority = playerCamera.Priority == 0 ? 1 : 0;
-
-            CinemachineCamera mapCamera = CameraHandler.Instance.MapCamera;
-            mapCamera.Priority = mapCamera.Priority == 0 ? 1 : 0;
         }
 
         private void OnComboFinished()

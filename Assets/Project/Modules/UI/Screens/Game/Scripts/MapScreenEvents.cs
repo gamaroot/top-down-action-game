@@ -1,5 +1,6 @@
-using DG.Tweening.Core.Easing;
+using Unity.Cinemachine;
 using UnityEngine;
+using Utils;
 
 namespace Game
 {
@@ -30,11 +31,22 @@ namespace Game
         private void OnMapTriggered()
         {
             bool isMapVisible = !this.IsMapVisible;
+            this.SwitchCamera(isMapVisible);
+
             if (isMapVisible)
             {
                 this._mapAnimator.gameObject.SetActive(true);
             }
             this._mapAnimator.SetBool(AnimationKeys.VISIBLE, isMapVisible);
+        }
+
+        private void SwitchCamera(bool isMapVisible)
+        {
+            CinemachineCamera playerCamera = CameraHandler.Instance.PlayerCamera;
+            playerCamera.Priority = isMapVisible ? 0 : 1;
+
+            CinemachineCamera mapCamera = CameraHandler.Instance.MapCamera;
+            mapCamera.Priority = isMapVisible ? 1 : 0;
         }
     }
 }
