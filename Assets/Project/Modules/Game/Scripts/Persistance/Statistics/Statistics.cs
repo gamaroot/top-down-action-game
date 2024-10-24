@@ -29,7 +29,7 @@ namespace Game
         public void OnEnemyKilled()
         {
             this.CurrentRunData.TotalEnemiesKilled++;
-            this.LifetimeData.TotalEnemiesKilled += this.CurrentRunData.TotalEnemiesKilled;
+            this.LifetimeData.TotalEnemiesKilled ++;
             PlayerPrefs.SetInt(PlayerPrefsKeys.STATISTICS_TOTAL_ENEMIES_KILLED_KEY, this.LifetimeData.TotalEnemiesKilled);
             PlayerPrefs.Save();
 
@@ -39,7 +39,7 @@ namespace Game
         public void OnPlayerDeath()
         {
             this.CurrentRunData.TotalPlayerDeaths++;
-            this.LifetimeData.TotalPlayerDeaths += this.CurrentRunData.TotalPlayerDeaths;
+            this.LifetimeData.TotalPlayerDeaths++;
             PlayerPrefs.SetInt(PlayerPrefsKeys.STATISTICS_TOTAL_PLAYER_DEATHS_KEY, this.LifetimeData.TotalPlayerDeaths);
             PlayerPrefs.Save();
 

@@ -15,15 +15,39 @@ namespace Game
         {
             this._gameManager = gameManager;
 
-            this.AddExperience(0, false);
+            this.SetupUI();
         }
+
+        private void SetupUI()
+        {
+            float currentXp = this._gameManager.GameState.PlayerState.XP;
+            int currentLevel = this._gameManager.GameState.PlayerState.Level;
+
+            float xpToNextLevel = this._gameManager.PlayerConfig.GetXpToNextLevel(currentLevel);
+            float remainingExperience = currentXp - xpToNextLevel;
+
+            while (remainingExperience >= 0)
+            {
+                this._xpBar.value = 0;
+                this._gameManager.OnPlayerLevelUp();
+
+                // Update XP for the next loop iteration
+                currentXp = remainingExperience;
+                currentLevel = this._gameManager.GameState.PlayerState.Level;
+                xpToNextLevel = this._gameManager.PlayerConfig.GetXpToNextLevel(currentLevel);
+                remainingExperience = currentXp - xpToNextLevel;
+            }
+
+            this._xpBar.value = currentXp / xpToNextLevel;
+        }
+
 
         public void OnEnemyKill(IEnemyConfig enemy)
         {
             this.AddExperience(enemy.XpReward);
         }
 
-        private void AddExperience(float xp, bool displayFeedback = true)
+        private void AddExperience(float xp)
         {
             float currentXp = this._gameManager.GameState.PlayerState.XP;
             currentXp += xp;
@@ -38,17 +62,15 @@ namespace Game
                 this._gameManager.OnPlayerLevelUp();
                 this._gameManager.OnPlayerReceivedXp(remainingExperience);
 
-                if (displayFeedback)
-                    this.OnLevelUp();
+                this.OnLevelUp();
 
-                this.AddExperience(remainingExperience, displayFeedback);
+                this.AddExperience(remainingExperience);
             }
             else
             {
                 this._xpBar.value = currentXp / xpToNextLevel;
                 this._gameManager.OnPlayerReceivedXp(xp);
             }
-
         }
 
         private void OnLevelUp()
