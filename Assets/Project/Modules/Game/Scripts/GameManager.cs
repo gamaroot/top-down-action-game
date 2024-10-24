@@ -68,6 +68,7 @@ namespace Game
 
         public void OnPlayerLevelUp()
         {
+            this._gameStateHandler.GameState.PlayerState.XP = 0;
             this._gameStateHandler.GameState.PlayerState.Level++;
         }
 
