@@ -29,11 +29,15 @@ namespace Game
             {
                 Debug.Log($"Player entered room #{this.Id}");
                 this._content.SetActive(true);
-                this.HasVisited = true;
                 this.IsPlayerHere = true;
+
+                if (this.HasVisited)
+                    return;
 
                 this.SpawnEnemies();
                 this.SpawnTraps();
+
+                this.HasVisited = true;
             }
         }
 
@@ -82,8 +86,7 @@ namespace Game
 
         private void HideIfNotVisited()
         {
-            if (!this.HasVisited)
-                this._content.SetActive(false);
+            this._content.SetActive(false);
         }
 
         private void SpawnEnemies()
