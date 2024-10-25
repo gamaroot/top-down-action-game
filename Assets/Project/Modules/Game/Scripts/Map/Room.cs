@@ -104,13 +104,13 @@ namespace Game
                 var enemyHealthController = spawn.GetComponent<HealthController>();
                 void OnEnemyKilled()
                 {
-                    enemyHealthController.OnDeathListener -= OnEnemyKilled;
+                    enemyHealthController.Listener.OnDeath -= OnEnemyKilled;
                     if (++this._killedEnemies == this._totalEnemies)
                     {
                         this.OpenAllDoors();
                     }
                 }
-                enemyHealthController.OnDeathListener += OnEnemyKilled;
+                enemyHealthController.Listener.OnDeath += OnEnemyKilled;
             }
         }
 

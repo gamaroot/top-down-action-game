@@ -5,7 +5,7 @@ namespace Game.Database
     [Serializable]
     public struct CharacterStats
     {
-        public float MaxHealth;
+        public int MaxHealth;
 
         // Movement
         public float MovementSpeed;

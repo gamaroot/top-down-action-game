@@ -28,7 +28,7 @@ namespace Game
         {
             IEnemyConfig enemyConfig = gameManager.EnemyConfig[(int)this.Type];
             this._healthController.Init(enemyConfig);
-            this._healthController.OnDeathListener = () => gameManager.OnEnemyKill(enemyConfig);
+            this._healthController.Listener.OnDeath = () => gameManager.OnEnemyKill(enemyConfig);
 
             if (this._weaponController != null)
                 this._weaponController.Init(gameManager.WeaponConfig);

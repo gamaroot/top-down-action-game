@@ -78,7 +78,7 @@ namespace Game.Database
             var newStats = this._playerConfig.Stats;
 
             EditorGUILayout.LabelField("[Basic]", EditorStyles.boldLabel);
-            newStats.MaxHealth = EditorGUILayout.FloatField("Max Health", newStats.MaxHealth);
+            newStats.MaxHealth = EditorGUILayout.IntField("Max Health", newStats.MaxHealth);
             newStats.MovementSpeed = EditorGUILayout.FloatField("Movement Speed", newStats.MovementSpeed);
 
             EditorGUILayout.Space();
@@ -100,6 +100,20 @@ namespace Game.Database
             this._playerConfig.XpToNextLevelFactor = EditorGUILayout.FloatField("XP to Next Level Factor", this._playerConfig.XpToNextLevelFactor);
             this._playerConfig.InitialStatsPoints = EditorGUILayout.IntField("Initial Stats Points", this._playerConfig.InitialStatsPoints);
             this._playerConfig.StatsPointsPerLevel = EditorGUILayout.IntField("Stats Points per Level", this._playerConfig.StatsPointsPerLevel);
+
+            var newExtraStatsPerPoint = this._playerConfig.ExtraStatsPerPoint;
+
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("[Stats per Point]", EditorStyles.boldLabel);
+            newExtraStatsPerPoint.MaxHealth = EditorGUILayout.IntField("Max Health", newExtraStatsPerPoint.MaxHealth);
+            newExtraStatsPerPoint.MovementSpeed = EditorGUILayout.FloatField("Movement Speed", newExtraStatsPerPoint.MovementSpeed);
+            newExtraStatsPerPoint.DashSpeed = EditorGUILayout.FloatField("Dash Speed", newExtraStatsPerPoint.DashSpeed);
+            newExtraStatsPerPoint.DashDuration = EditorGUILayout.FloatField("Dash Duration", newExtraStatsPerPoint.DashDuration);
+            newExtraStatsPerPoint.DashCooldown = EditorGUILayout.FloatField("Dash Cooldown", newExtraStatsPerPoint.DashCooldown);
+            newExtraStatsPerPoint.ParryDuration = EditorGUILayout.FloatField("Parry Duration", newExtraStatsPerPoint.ParryDuration);
+            newExtraStatsPerPoint.ParryCooldown = EditorGUILayout.FloatField("Parry Cooldown", newExtraStatsPerPoint.ParryCooldown);
+
+            this._playerConfig.ExtraStatsPerPoint = newExtraStatsPerPoint;
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("[Others]", EditorStyles.boldLabel);
@@ -123,8 +137,7 @@ namespace Game.Database
 
                 EditorGUILayout.LabelField("[Basic]", EditorStyles.boldLabel);
                 this._enemyConfigs[index].XpReward = EditorGUILayout.FloatField("XP Reward", this._enemyConfigs[index].XpReward);
-                newStats.MaxHealth = EditorGUILayout.FloatField("Max Health", newStats.MaxHealth);
-                newStats.MaxHealth = EditorGUILayout.FloatField("Max Health", this._enemyConfigs[index].Stats.MaxHealth);
+                newStats.MaxHealth = EditorGUILayout.IntField("Max Health", this._enemyConfigs[index].Stats.MaxHealth);
                 newStats.MovementSpeed = EditorGUILayout.FloatField("Movement Speed", this._enemyConfigs[index].Stats.MovementSpeed);
 
                 EditorGUILayout.Space();
@@ -160,7 +173,7 @@ namespace Game.Database
 
                 EditorGUI.indentLevel++;
 
-                this._weaponConfigs[index].Damage = EditorGUILayout.FloatField("Damage", this._weaponConfigs[index].Damage);
+                this._weaponConfigs[index].Damage = EditorGUILayout.IntField("Damage", this._weaponConfigs[index].Damage);
                 this._weaponConfigs[index].ShootInterval = EditorGUILayout.FloatField("Shoot Interval", this._weaponConfigs[index].ShootInterval);
                 this._weaponConfigs[index].Range = EditorGUILayout.FloatField("Range", this._weaponConfigs[index].Range);
                 this._weaponConfigs[index].ProjectileSpeed = EditorGUILayout.FloatField("Projectile Speed", this._weaponConfigs[index].ProjectileSpeed);

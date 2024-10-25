@@ -1,19 +1,24 @@
 using Game.Database;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Game
 {
     public class PlayerExperienceController : MonoBehaviour
     {
-        [SerializeField] private Slider _xpBar;
         [SerializeField] private PlayerLevelUpDisplay _levelUpDisplay;
+
         private IGameManager _gameManager;
+
+        private float xpToNextLevel;
 
         public void Init(IGameManager gameManager)
         {
             this._gameManager = gameManager;
-            this.UpdateXp(this._gameManager.GameState.PlayerState.XP, this._gameManager.GameState.PlayerState.Level);
+
+            int currentLevel = this._gameManager.GameState.PlayerState.Level;
+            this.xpToNextLevel = this._gameManager.PlayerConfig.GetXpToNextLevel(currentLevel);
+
+            this.UpdateXp(this._gameManager.GameState.PlayerState.XP);
         }
 
         public void OnEnemyKill(IEnemyConfig enemy)
@@ -24,29 +29,32 @@ namespace Game
 
         private void AddExperience(float xp)
         {
-            this._gameManager.OnPlayerReceivedXp(xp);
-            this.UpdateXp(this._gameManager.GameState.PlayerState.XP, this._gameManager.GameState.PlayerState.Level);
+            this.UpdateXp(this._gameManager.GameState.PlayerState.XP + xp);
         }
 
-        private void UpdateXp(float currentXp, int currentLevel)
+        private void UpdateXp(float currentXp)
         {
-            float xpToNextLevel = _gameManager.PlayerConfig.GetXpToNextLevel(currentLevel);
-            float remainingExperience = currentXp - xpToNextLevel;
+            float remainingExperience = currentXp - this.xpToNextLevel;
 
-            while (remainingExperience >= 0)
+            if (remainingExperience < 0)
             {
-                this._xpBar.value = 0;
-
-                this._levelUpDisplay.OnShow();
-                this._gameManager.OnPlayerLevelUp();
-
-                currentXp = remainingExperience;
-                currentLevel = this._gameManager.GameState.PlayerState.Level;
-                xpToNextLevel = this._gameManager.PlayerConfig.GetXpToNextLevel(currentLevel);
-                remainingExperience = currentXp - xpToNextLevel;
+                this._gameManager.OnPlayerXpUpdated(currentXp, this.xpToNextLevel);
+                return;
             }
 
-            this._xpBar.value = currentXp / xpToNextLevel;
+            do
+            {
+                currentXp = remainingExperience;
+                int currentLevel = this._gameManager.GameState.PlayerState.Level;
+                this.xpToNextLevel = this._gameManager.PlayerConfig.GetXpToNextLevel(currentLevel);
+                remainingExperience = currentXp - this.xpToNextLevel;
+
+                this._levelUpDisplay.OnShow();
+                this._gameManager.OnPlayerLevelUp(this.xpToNextLevel);
+            } 
+            while (remainingExperience >= 0);
+
+            this._gameManager.OnPlayerXpUpdated(currentXp, this.xpToNextLevel);
         }
     }
 }

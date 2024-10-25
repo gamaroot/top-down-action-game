@@ -38,6 +38,10 @@ MonoBehaviour:
     m_Localized: Enemigos Eliminados
     m_Metadata:
       m_Items: []
+  - m_Id: 9254971923787776
+    m_Localized: Nivel {0}
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

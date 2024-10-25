@@ -1,5 +1,4 @@
 using Game.Database;
-using System;
 using UnityEngine;
 using Utils;
 
@@ -7,16 +6,15 @@ namespace Game
 {
     public class HealthController : MonoBehaviour
     {
-        public Action OnDeathListener;
-        public Action OnSelfDestroyListener;
+        public CharacterHealthEvents Listener = new();
 
-        public float MissingHealth => this.MaxHealth - this.CurrentHealth;
+        public int MissingHealth => this.MaxHealth - this.CurrentHealth;
         public bool IsFullHealth => this.CurrentHealth == this.MaxHealth;
         public bool IsDead => this.CurrentHealth <= 0;
 
-        public virtual float MaxHealth => this._config.Stats.MaxHealth;
+        public virtual int MaxHealth => this._config.Stats.MaxHealth;
 
-        public float CurrentHealth
+        public int CurrentHealth
         {
             get => this._currentHealth; 
             set
@@ -24,10 +22,9 @@ namespace Game
                 this._currentHealth = Mathf.Clamp(value, 0, this.MaxHealth);
             }
         }
-        private float _currentHealth;
+        private int _currentHealth;
 
         private ICharacterConfig _config;
-
         private float _lastDamageDealerID;
 
         private void OnEnable()
@@ -50,13 +47,13 @@ namespace Game
             this._config = config;
         }
 
-        public virtual void OnReset()
+        protected void OnReset()
         {
             this.CurrentHealth = this.MaxHealth;
             base.gameObject.SetActive(true);
         }
 
-        public virtual void RecoverHealth(float amount)
+        protected void RecoverHealth(int amount)
         {
             if (amount <= 0)
                 return;
@@ -67,13 +64,17 @@ namespace Game
             this.CurrentHealth += amount;
 
             this.ShowHealthText(amount.ToString(), Color.green);
+
+            this.Listener.OnRecoverHealth?.Invoke();
         }
 
-        protected virtual void TakeDamage(float amount)
+        protected virtual void TakeDamage(int amount)
         {
             this.CurrentHealth -= amount;
 
             this.ShowHealthText(amount.ToString(), Color.red);
+
+            this.Listener.OnLoseHealth?.Invoke();
 
             if (this.CurrentHealth <= 0)
                 this.OnDeath();
@@ -87,9 +88,9 @@ namespace Game
             base.gameObject.SetActive(false);
 
             if (hasSelfDestroyed)
-                this.OnSelfDestroyListener?.Invoke();
+                this.Listener.OnSelfDestroy?.Invoke();
             else
-                this.OnDeathListener?.Invoke();
+                this.Listener.OnDeath?.Invoke();
 
             SFX.PlayExplosion(this._config.DeathSFX);
 
@@ -98,7 +99,7 @@ namespace Game
             explosion.gameObject.SetActive(true);
         }
 
-        public void OnRespawn()
+        protected void OnRespawn()
         {
             this.RecoverHealth(this.MaxHealth);
             base.gameObject.SetActive(true);

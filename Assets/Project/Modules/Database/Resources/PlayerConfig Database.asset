@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Config>k__BackingField:
     <Stats>k__BackingField:
-      MaxHealth: 10
+      MaxHealth: 3
       MovementSpeed: 10
       DashSpeed: 30
       DashDuration: 0.2
@@ -26,9 +26,9 @@ MonoBehaviour:
     <InitialStatsPoints>k__BackingField: 3
     <StatsPointsPerLevel>k__BackingField: 2
     <ExtraStatsPerPoint>k__BackingField:
-      MaxHealth: 2
-      MovementSpeed: 1
-      DashSpeed: 1
+      MaxHealth: 1
+      MovementSpeed: 0.1
+      DashSpeed: 0.1
       DashDuration: 0.1
       DashCooldown: -0.1
       ParryDuration: 0.1

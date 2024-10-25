@@ -56,7 +56,7 @@ namespace Game
             this._cameras[1] = GameObject.FindGameObjectWithTag(Tags.StageCamera.ToString()).GetComponent<CinemachineCamera>();
 
             this._player = new CrossSceneReference().GetObjectByType<PlayerHealthController>();
-            this._player.OnReset();
+            this._gameManager.GetType().GetMethod("OnReset").Invoke(this._player, null);
         }
 
         private void OnDisable()
@@ -130,18 +130,15 @@ namespace Game
 
         public void OnGenerateMapButtonClick()
         {
-            // Access the private field using reflection
-            this._gameManager.GetType()
-                             .GetMethod("GenerateMap")
-                             .Invoke(this._gameManager, null);
+            this._gameManager.GetType().GetMethod("GenerateMap").Invoke(this._gameManager, null);
         }
 
         public void OnPlayerHealButtonClick()
         {
             if (this._player.IsDead)
-                this._player.OnRespawn();
+                this._gameManager.GetType().GetMethod("OnRespawn").Invoke(this._player, null);
             else
-                this._player.RecoverHealth(this._player.MissingHealth);
+                this._gameManager.GetType().GetMethod("RecoverHealth").Invoke(this._player, new object[] { this._player.MissingHealth });
         }
 
         public void OnQuitButtonClick()

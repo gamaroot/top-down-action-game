@@ -1,8 +1,9 @@
-using DG.Tweening.Core.Easing;
 using Game.Database;
 using ScreenNavigation;
+using System;
 using UnityEngine;
 using Utils;
+using static UnityEngine.EventSystems.EventTrigger;
 
 namespace Game
 {
@@ -18,6 +19,10 @@ namespace Game
         [SerializeField, ReadOnly] private EnemyConfigDatabase _enemyConfig;
         [SerializeField, ReadOnly] private WeaponConfigDatabase _weaponConfig;
         [SerializeField, ReadOnly] private MapConfigDatabase _mapConfig;
+
+        public Action<int, int> OnPlayerHealthUpdateListener { get; set; }
+        public Action<float, float> OnPlayerXpUpdateListener { get; set; }
+        public Action<int> OnPlayerLevelUpdateListener { get; set; }
 
         public IPlayerConfig PlayerConfig => this._playerConfig.Config;
         public IEnemyConfig[] EnemyConfig => this._enemyConfig.Config;
@@ -56,30 +61,37 @@ namespace Game
             this.OnGameQuit();
         }
 
-        public void OnPlayerStateUpdate(PlayerState playerState)
+        public void OnPlayerStateUpdated(PlayerState playerState)
         {
             this._gameStateHandler.GameState.PlayerState = playerState;
         }
 
-        public void OnPlayerReceivedXp(float xp)
+        public void OnPlayerHealthUpdated(int currenHealth, int maxHealth)
         {
-            this._gameStateHandler.GameState.PlayerState.XP += xp;
+            this._gameStateHandler.GameState.PlayerState.CurrentHealth = currenHealth;
+            this.OnPlayerHealthUpdateListener.Invoke(currenHealth, maxHealth);
         }
 
-        public void OnPlayerLevelUp()
+        public void OnPlayerXpUpdated(float xp, float xpToNextLevel)
+        {
+            Debug.Log($"Updating XP {xp} / {xpToNextLevel}");
+            this._gameStateHandler.GameState.PlayerState.XP = xp;
+
+            this.OnPlayerXpUpdateListener.Invoke(xp, xpToNextLevel);
+        }
+
+        public void OnPlayerLevelUp(float nextLevelXp)
         {
             this._gameStateHandler.GameState.PlayerState.XP = 0;
-            this._gameStateHandler.GameState.PlayerState.Level++;
+            int newLevel = ++this._gameStateHandler.GameState.PlayerState.Level;
+
+            this.OnPlayerXpUpdateListener.Invoke(0, nextLevelXp);
+            this.OnPlayerLevelUpdateListener.Invoke(newLevel);
         }
 
         public void OnPlayerDeath()
         {
-            this._toastHandler.Show("You died!");
-        }
-
-        public void OnPlayerRespawn()
-        {
-            this._toastHandler.Show("You Respawned!");
+            SceneNavigator.Instance.LoadAdditiveSceneAsync(SceneID.GAME_OVER);
         }
 
         public void OnEnemyKill(IEnemyConfig enemy)
@@ -104,13 +116,16 @@ namespace Game
         private void OnGameStart()
         {
             // Randomize seed
-            int seed = Random.Range(0, int.MaxValue);
-            Random.InitState(seed);
+            int seed = UnityEngine.Random.Range(0, int.MaxValue);
+            UnityEngine.Random.InitState(seed);
             this._gameStateHandler.GameState.Seed = seed;
 
             // Generate map
             this._rooms = new MapGenerator().Generate(this._mapConfig.Config, base.transform);
+        }
 
+        private void OnGameReady()
+        {
             this._playerController.Activate(true, this);
         }
 
@@ -129,10 +144,18 @@ namespace Game
             {
                 case SceneID.GAME:
                 case SceneID.DEBUG:
-                    if (sceneState == SceneState.LOADING)
-                        this.OnGameStart();
-                    else if (sceneState == SceneState.UNLOADED)
-                        this.OnGameQuit();
+                    switch (sceneState)
+                    {
+                        case SceneState.LOADING:
+                            this.OnGameStart();
+                            break;
+                        case SceneState.ANIMATING_SHOW:
+                            this.OnGameReady();
+                            break;
+                        case SceneState.UNLOADED:
+                            this.OnGameQuit();
+                            break;
+                    }
                     break;
             }
         }

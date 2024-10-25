@@ -1,5 +1,4 @@
 using Game.Database;
-using Unity.Cinemachine;
 using UnityEngine;
 using Utils;
 
@@ -53,7 +52,14 @@ namespace Game
             {
                 CharacterStats stats = gameManager.GameState.PlayerState.GetStats(gameManager.PlayerConfig);
 
-                this._healthController.Init(gameManager.PlayerConfig, stats);
+                this._healthController.Init(gameManager.PlayerConfig, stats, new CharacterHealthEvents
+                {
+                    OnLoseHealth = () => this.OnLoseHealth(gameManager),
+                    OnRecoverHealth = () => this.OnRecoverHealth(gameManager),
+                    OnDeath = () => gameManager.OnPlayerDeath(),
+                });
+                gameManager.OnPlayerHealthUpdated(this._healthController.MaxHealth, this._healthController.MaxHealth);
+
                 this._experienceController.Init(gameManager);
                 this._movementController.Init(stats);
                 this._parryController.Init(stats);
@@ -65,6 +71,19 @@ namespace Game
         private void OnComboFinished()
         {
             this._killStreak = 0;
+        }
+
+        private void OnLoseHealth(IGameManager gameManager)
+        {
+            gameManager.OnPlayerHealthUpdated(this._healthController.CurrentHealth, this._healthController.MaxHealth);
+
+            if (base.gameObject.activeSelf)
+                base.StartCoroutine(CameraHandler.Instance.Shake());
+        }
+
+        public void OnRecoverHealth(IGameManager gameManager)
+        {
+            gameManager.OnPlayerHealthUpdated(this._healthController.CurrentHealth, this._healthController.MaxHealth);
         }
     }
 }

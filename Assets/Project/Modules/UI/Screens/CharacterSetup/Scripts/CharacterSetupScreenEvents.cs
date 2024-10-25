@@ -44,7 +44,7 @@ namespace Game
 
         public void OnStartButtonClick()
         {
-            this._gameManager.OnPlayerStateUpdate(new PlayerState
+            this._gameManager.OnPlayerStateUpdated(new PlayerState
             {
                 Level = this._gameManager.GameState.PlayerState.Level,
                 XP = this._gameManager.GameState.PlayerState.XP,

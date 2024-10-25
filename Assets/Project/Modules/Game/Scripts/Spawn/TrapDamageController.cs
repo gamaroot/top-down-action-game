@@ -4,8 +4,8 @@ namespace Game
 {
     public class TrapDamageController : MonoBehaviour
     {
-        [SerializeField] private float damageAmount = 1f; 
-        [SerializeField] private float damageInterval = 1f;  
+        [SerializeField] private int damageAmount = 1; 
+        [SerializeField] private int damageInterval = 1;  
         private float lastDamageTime; 
         private bool hasTriggered = false;
 
