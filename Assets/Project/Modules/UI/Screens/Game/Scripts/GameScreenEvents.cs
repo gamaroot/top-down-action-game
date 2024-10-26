@@ -29,7 +29,8 @@ namespace Game
             this._gameManager.OnPlayerXpUpdateListener += this.OnXpUpdated;
             this._gameManager.OnPlayerLevelUpdateListener += this.OnLevelUpdated;
 
-            this._baseLevelText = LocalizationSettings.StringDatabase.GetLocalizedString("ScreenGame", "txt_level");
+            this._baseLevelText = LocalizationSettings.StringDatabase.GetLocalizedString(LocalizationKeys.SCREEN_GAME, 
+                                                                                         LocalizationKeys.SCREEN_GAME_TXT_LEVEL);
             this.OnLevelUpdated(this._gameManager.GameState.PlayerState.Level);
         }
 
