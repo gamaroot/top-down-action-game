@@ -35,7 +35,12 @@ namespace Game
         {
             bool isOn = GamePreferences.SoundVolume > 0;
             isOn = !isOn;
-            GamePreferences.SoundVolume = isOn ? this._currentSoundVolume : 0;
+
+            float turnedOnVolume = this._currentSoundVolume;
+            if (turnedOnVolume == 0)
+                turnedOnVolume = 1f;
+
+            GamePreferences.SoundVolume = isOn ? turnedOnVolume : 0;
 
             this.UpdateToggle(this._toggleSound, isOn);
         }
@@ -44,7 +49,11 @@ namespace Game
         {
             bool isOn = GamePreferences.MusicVolume > 0;
             isOn = !isOn;
-            GamePreferences.MusicVolume = isOn ? this._currentMusicVolume : 0;
+
+            float turnedOnVolume = this._currentMusicVolume;
+            if (turnedOnVolume == 0)
+                turnedOnVolume = 1f;
+            GamePreferences.MusicVolume = isOn ? turnedOnVolume : 0;
 
             this.UpdateToggle(this._toggleMusic, isOn);
         }
