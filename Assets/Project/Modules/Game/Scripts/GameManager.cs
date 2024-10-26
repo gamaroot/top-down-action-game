@@ -91,7 +91,7 @@ namespace Game
 
         public void OnPlayerDeath()
         {
-            SceneNavigator.Instance.LoadAdditiveSceneAsync(SceneID.GAME_OVER);
+            //SceneNavigator.Instance.LoadAdditiveSceneAsync(SceneID.GAME_OVER);
         }
 
         public void OnEnemyKill(IEnemyConfig enemy)
@@ -136,6 +136,10 @@ namespace Game
 
             this._rooms = null;
             this._playerController.Activate(false, this);
+            for (int index = 0; index < base.transform.childCount; index++)
+            {
+                Destroy(base.transform.GetChild(index).gameObject);
+            }
         }
 
         private void OnSceneChanged(SceneID sceneID, SceneState sceneState)

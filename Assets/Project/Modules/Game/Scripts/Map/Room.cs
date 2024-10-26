@@ -96,7 +96,6 @@ namespace Game
             {
                 var config = this._spawnConfig.Item1[index];
                 var spawn = SpawnablePool.SpawnEnemy<BehaviorGraphAgent>(config.Type);
-                spawn.transform.SetParent(this._content.transform);
                 spawn.transform.position = config.Position;
                 spawn.gameObject.SetActive(true);
                 spawn.BlackboardReference.SetVariableValue("Waypoints", this._waypoints);
@@ -122,7 +121,6 @@ namespace Game
             {
                 var config = this._spawnConfig.Item2[index];
                 var spawn = SpawnablePool.SpawnTrap<Transform>(config.Type);
-                spawn.SetParent(this._content.transform);
                 spawn.position = config.Position;
             }
         }

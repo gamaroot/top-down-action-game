@@ -96,6 +96,7 @@
     <Compile Include="Assets\Project\Modules\UI\Screens\Settings\Scripts\SettingsScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\TrapDamageController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeExplosion.cs" />
+    <Compile Include="Assets\Project\Modules\Utils\Scripts\InputFeedback\ClickFeedback.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Map\IMapConfig.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Player\PlayerConfigDatabase.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Editor\GameSetupEditor.cs" />
@@ -147,6 +148,7 @@
     <Compile Include="Assets\Project\Modules\Utils\Scripts\UI\UIFollower.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Pooling\PoolingObject.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\WeaponController.cs" />
+    <Compile Include="Assets\Project\Modules\UI\Screens\InGameSettings\Scripts\InGameSettingsScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\CameraHandler.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Behavior\StateDisplay.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Player\IPlayerConfig.cs" />
@@ -154,7 +156,6 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Weapon\DamageDealer.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Editor\TagEnumGenerator.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\EnemyShooter.cs" />
-    <Compile Include="Assets\Project\Modules\Utils\Scripts\InputFeedback\ButtonFeedback.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\CharacterConfig.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Behavior\ShootTarget.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFXTypeOther.cs" />

@@ -1,7 +1,6 @@
 using DG.Tweening;
 using ScreenNavigation;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game
@@ -14,8 +13,6 @@ namespace Game
         [HideInInspector]
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private AudioClip[] _playlist;
-
-        private readonly List<int> _toPlay = new();
 
         private void OnValidate()
         {

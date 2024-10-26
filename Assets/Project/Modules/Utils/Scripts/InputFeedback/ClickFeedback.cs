@@ -1,11 +1,9 @@
 using UnityEngine;
-using UnityEngine.UI;
 using Utils;
 
 namespace Game
 {
-    [RequireComponent(typeof(Button))]
-    public class ButtonFeedback : MonoBehaviour
+    public class ClickFeedback : MonoBehaviour
     {
         public void OnClick()
         {
