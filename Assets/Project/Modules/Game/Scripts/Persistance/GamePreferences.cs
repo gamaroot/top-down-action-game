@@ -36,7 +36,7 @@ namespace Game
 
         public static int FPS
         {
-            get => PlayerPrefs.GetInt(FPS_KEY, 120);
+            get => PlayerPrefs.GetInt(FPS_KEY, 60);
             set
             {
                 Application.targetFrameRate = value;

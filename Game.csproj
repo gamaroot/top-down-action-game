@@ -96,6 +96,7 @@
     <Compile Include="Assets\Project\Modules\UI\Screens\Settings\Scripts\SettingsScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\TrapDamageController.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Extension\ReflectionUtils.cs" />
+    <Compile Include="Assets\Project\Modules\UI\Screens\GameOver\Scripts\GameOverScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeExplosion.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\InputFeedback\ClickFeedback.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Map\IMapConfig.cs" />
