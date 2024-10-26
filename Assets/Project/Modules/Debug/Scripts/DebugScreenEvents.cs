@@ -8,6 +8,7 @@ using Unity.Cinemachine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using Utils;
+using UnityEngine.Localization.Settings;
 
 namespace Game
 {
@@ -22,13 +23,21 @@ namespace Game
         [SerializeField] private Toggle _toggleSpawnLoop;
         [SerializeField] private LayerMask _spawnLayerMaskToAvoid;
 
-        [SerializeField] private GameObject _textCameraPlayer;
-        [SerializeField] private GameObject _textCameraStage;
-
         [Header("Player")]
         [SerializeField] private GameObject _buttonPlayerHeal;
         [SerializeField] private GameObject _buttonLabelPlayerHeal;
         [SerializeField] private GameObject _buttonLabelPlayerRespawn;
+
+        [Header("HUD")]
+        [SerializeField] private string _heartIcon;
+
+        [SerializeField] private Slider _sliderHp;
+        [SerializeField] private TextMeshProUGUI _txtHealthBack;
+        [SerializeField] private TextMeshProUGUI _txtHealthFront;
+
+        [SerializeField] private Slider _sliderXp;
+        [SerializeField] private TextMeshProUGUI _txtLevelBack;
+        [SerializeField] private TextMeshProUGUI _txtLevelFront;
 
         [Header("Others")]
         [SerializeField] private GameObject _iconGamepad;
@@ -37,7 +46,8 @@ namespace Game
         private int _currentActiveCamera;
         private readonly CinemachineCamera[] _cameras = new CinemachineCamera[2];
 
-        private IGameManager _gameManager;
+        private string _baseLevelText;
+        private GameManager _gameManager;
         private PlayerHealthController _player;
         private readonly DebugUtils _debugUtils = new();
 
@@ -47,7 +57,7 @@ namespace Game
             this.LoadDropdown<SpawnTypeTrap>(this._dropdownSpawnableTraps);
         }
 
-        private void OnEnable()
+        private void Awake()
         {
             this._gameManager = new CrossSceneReference().GetObjectByType<GameManager>();
 
@@ -56,10 +66,17 @@ namespace Game
             this._cameras[1] = GameObject.FindGameObjectWithTag(Tags.StageCamera.ToString()).GetComponent<CinemachineCamera>();
 
             this._player = new CrossSceneReference().GetObjectByType<PlayerHealthController>();
-            this._gameManager.GetType().GetMethod("OnReset").Invoke(this._player, null);
+
+            this._gameManager.OnPlayerHealthUpdateListener += this.OnHealthUpdated;
+            this._gameManager.OnPlayerXpUpdateListener += this.OnXpUpdated;
+            this._gameManager.OnPlayerLevelUpdateListener += this.OnLevelUpdated;
+
+            this._baseLevelText = LocalizationSettings.StringDatabase.GetLocalizedString(LocalizationKeys.SCREEN_GAME,
+                                                                                         LocalizationKeys.SCREEN_GAME_TXT_LEVEL);
+            this.OnLevelUpdated(this._gameManager.GameState.PlayerState.Level);
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             if (this._player)
                 this._player.gameObject.SetActive(false);
@@ -68,7 +85,6 @@ namespace Game
         private void Update()
         {
             this._iconGamepad.SetActive(Gamepad.current != null);
-
             this.UpdatePlayerHealButton();
         }
 
@@ -82,10 +98,6 @@ namespace Game
             }
             CinemachineCamera nextCamera = this._cameras[this._currentActiveCamera];
             nextCamera.Priority = 1;
-
-            bool isPlayerCamera = nextCamera.CompareTag(Tags.PlayerCamera.ToString());
-            this._textCameraPlayer.SetActive(isPlayerCamera);
-            this._textCameraStage.SetActive(!isPlayerCamera);
         }
 
         public void OnSpawnEnemyButtonClick()
@@ -105,13 +117,9 @@ namespace Game
         public void OnSpawnLoopToggleClick()
         {
             if (this._toggleSpawnLoop.isOn)
-            {
                 this.InvokeRepeating(nameof(this.OnSpawnEnemyButtonClick), 0f, this._spawnLoopInterval);
-            }
             else
-            {
                 this.CancelInvoke(nameof(this.OnSpawnEnemyButtonClick));
-            }
         }
 
         public void OnSpawnTrapButtonClick()
@@ -128,23 +136,12 @@ namespace Game
             spawn.gameObject.SetActive(true);
         }
 
-        public void OnGenerateMapButtonClick()
-        {
-            this._gameManager.GetType().GetMethod("GenerateMap").Invoke(this._gameManager, null);
-        }
-
         public void OnPlayerHealButtonClick()
         {
             if (this._player.IsDead)
-                this._gameManager.GetType().GetMethod("OnRespawn").Invoke(this._player, null);
+                this._player.CallNonPublicMethod("OnRespawn");
             else
-                this._gameManager.GetType().GetMethod("RecoverHealth").Invoke(this._player, new object[] { this._player.MissingHealth });
-        }
-
-        public void OnQuitButtonClick()
-        {
-            SceneNavigator.Instance.LoadAdditiveSceneAsync(SceneID.DEBUG, SceneID.HOME);
-            SpawnablePool.DisableAll();
+                this._player.CallNonPublicMethod("RecoverHealth", new object[] { this._player.MissingHealth });
         }
 
         private void LoadDropdown<T>(TMP_Dropdown dropdown)
@@ -182,6 +179,39 @@ namespace Game
                 this._buttonLabelPlayerHeal.SetActive(false);
                 this._buttonLabelPlayerRespawn.SetActive(false);
             }
+        }
+
+        private void OnXpUpdated(float xp, float xpToNextLevel)
+        {
+            this._sliderXp.maxValue = xpToNextLevel;
+            this._sliderXp.value = xp;
+        }
+
+        private void OnHealthUpdated(int currentHealth, int maxHealth)
+        {
+            this._sliderHp.maxValue = maxHealth;
+            this._sliderHp.value = currentHealth;
+
+            string maxHearts = string.Empty;
+            string currentHearts = string.Empty;
+            for (int index = 0; index < maxHealth; index++)
+            {
+                maxHearts += this._heartIcon;
+
+                if (index < currentHealth)
+                    currentHearts += this._heartIcon;
+            }
+
+            this._txtHealthBack.text = maxHearts;
+            this._txtHealthFront.text = currentHearts;
+        }
+
+        private void OnLevelUpdated(int level)
+        {
+            string text = string.Format(this._baseLevelText, level);
+
+            this._txtLevelBack.text = text;
+            this._txtLevelFront.text = text;
         }
     }
 }

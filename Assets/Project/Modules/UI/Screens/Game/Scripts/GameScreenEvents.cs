@@ -19,8 +19,6 @@ namespace Game
         [SerializeField] private TextMeshProUGUI _txtLevelBack;
         [SerializeField] private TextMeshProUGUI _txtLevelFront;
 
-        [SerializeField] private Animator _btnSettingsAnimator;
-
         private IGameManager _gameManager;
         private string _baseLevelText;
 
@@ -35,17 +33,6 @@ namespace Game
             this._baseLevelText = LocalizationSettings.StringDatabase.GetLocalizedString(LocalizationKeys.SCREEN_GAME, 
                                                                                          LocalizationKeys.SCREEN_GAME_TXT_LEVEL);
             this.OnLevelUpdated(this._gameManager.GameState.PlayerState.Level);
-        }
-
-        public void OnSettingsButtonClick()
-        {
-            bool visible = !this._btnSettingsAnimator.GetBool(AnimationKeys.VISIBLE);
-            this._btnSettingsAnimator.SetBool(AnimationKeys.VISIBLE, visible);
-
-            if (visible)
-                SceneNavigator.Instance.LoadAdditiveSceneAsync(SceneID.INGAME_SETTINGS, true);
-            else
-                SceneNavigator.Instance.UnloadSceneAsync(SceneID.INGAME_SETTINGS);
         }
 
         private void OnXpUpdated(float xp, float xpToNextLevel)

@@ -47,12 +47,6 @@ namespace Game
             this._config = config;
         }
 
-        protected void OnReset()
-        {
-            this.CurrentHealth = this.MaxHealth;
-            base.gameObject.SetActive(true);
-        }
-
         protected void RecoverHealth(int amount)
         {
             if (amount <= 0)

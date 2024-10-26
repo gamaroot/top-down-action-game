@@ -134,6 +134,8 @@ namespace Game
             this._gameStateHandler.Save();
             Statistics.Instance.OnGameQuit();
 
+            SpawnablePool.DisableAll();
+
             this._rooms = null;
             this._playerController.Activate(false, this);
             for (int index = 0; index < base.transform.childCount; index++)

@@ -51,8 +51,10 @@ namespace Game
 
         public void OnEscapeButtonClick()
         {
+            SceneID currentScene = SceneNavigator.Instance.IsSceneOpened(SceneID.GAME) ? SceneID.GAME : SceneID.DEBUG;
+
             SceneNavigator.Instance.UnloadSceneAsync(SceneID.INGAME_SETTINGS);
-            SceneNavigator.Instance.LoadAdditiveSceneAsync(SceneID.GAME, SceneID.HOME);
+            SceneNavigator.Instance.LoadAdditiveSceneAsync(currentScene, SceneID.HOME);
         }
 
         private void UpdateToggle(Image toggle, bool isOn)
