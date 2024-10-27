@@ -27,8 +27,20 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-ja
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3fdcb2eeea8516e47aac2e23371cc546
+    m_Address: ScreenGameOver_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5788f5bba8e80c24e9245d1ea9133a1a
     m_Address: ScreenHome_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 70cd5e9322313d449994eeb58bf6a6a0
+    m_Address: ScreenGameMap_ja
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ja

@@ -12,6 +12,8 @@ namespace Game
         [SerializeField] private PlayerParryController _parryController;
         [SerializeField] private PlayerShootController _shootController;
 
+        public bool IsDead => this._healthController.IsDead;
+
         private int _killStreak;
 
         private void OnValidate()

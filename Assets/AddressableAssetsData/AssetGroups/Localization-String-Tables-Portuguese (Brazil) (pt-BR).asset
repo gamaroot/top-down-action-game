@@ -45,6 +45,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-pt-BR
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 741c7d309a5cb924282d3dbb9cdaef1b
+    m_Address: ScreenGameOver_pt-BR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pt-BR
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8074a25cb40436a47a24dfa89ee079ec
     m_Address: ScreenSettings_pt-BR
     m_ReadOnly: 1
@@ -65,6 +71,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: be3df1a5726d2cf42a20e72cc84f752a
     m_Address: ScreenInGameSettings_pt-BR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pt-BR
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: caf820062b93e544f95a31981513b771
+    m_Address: ScreenGameMap_pt-BR
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-pt-BR

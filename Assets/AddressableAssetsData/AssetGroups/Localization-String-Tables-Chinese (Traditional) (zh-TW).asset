@@ -57,8 +57,20 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-zh-TW
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6da38ff02071ad040af5077d6deabf2e
+    m_Address: ScreenGameOver_zh-TW
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-TW
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7174ee894e0e4eb4db4fbdb5ed23f11b
     m_Address: ScreenDebug_zh-TW
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-TW
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dd8e3c34e7864634ea1415d112f60d35
+    m_Address: ScreenGameMap_zh-TW
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-zh-TW

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Game
@@ -6,7 +7,6 @@ namespace Game
     {
         public StatisticsData CurrentRunData { get; private set; }
         public StatisticsData LifetimeData { get; private set; }
-        public float TotalPlayTimeInSeconds { get; private set; }
 
         public static void Initialize()
         {
@@ -17,12 +17,14 @@ namespace Game
                 {
                     TotalEnemiesKilled = PlayerPrefs.GetInt(PlayerPrefsKeys.STATISTICS_TOTAL_ENEMIES_KILLED_KEY),
                     TotalPlayerDeaths = PlayerPrefs.GetInt(PlayerPrefsKeys.STATISTICS_TOTAL_PLAYER_DEATHS_KEY),
-                    HighestCombo = PlayerPrefs.GetInt(PlayerPrefsKeys.STATISTICS_HIGHEST_COMBO_KEY)
-                },
-                TotalPlayTimeInSeconds = float.Parse(PlayerPrefs.GetString(PlayerPrefsKeys.STATISTICS_TOTAL_PLAYTIME_IN_SECONDS_KEY, "0")),
+                    HighestCombo = PlayerPrefs.GetInt(PlayerPrefsKeys.STATISTICS_HIGHEST_COMBO_KEY),
+                    TotalPlayTimeInSeconds = float.Parse(PlayerPrefs.GetString(PlayerPrefsKeys.STATISTICS_TOTAL_PLAYTIME_IN_SECONDS_KEY, "0"))
+                }
             };
         }
         public static Statistics Instance;
+
+        public DateTime LevelStartTime { get; private set; }
 
         private Statistics() { }
 
@@ -41,36 +43,24 @@ namespace Game
             this.CurrentRunData.TotalPlayerDeaths++;
             this.LifetimeData.TotalPlayerDeaths++;
             PlayerPrefs.SetInt(PlayerPrefsKeys.STATISTICS_TOTAL_PLAYER_DEATHS_KEY, this.LifetimeData.TotalPlayerDeaths);
-            PlayerPrefs.Save();
 
             Debug.Log($"TotalPlayerDeaths -> Current: {this.CurrentRunData.TotalPlayerDeaths} / Lifetime: {this.LifetimeData.TotalPlayerDeaths}");
+
+
+            PlayerPrefs.Save();
         }
 
-        public void OnGameQuit()
+        public void OnGameStart()
         {
-            this.TotalPlayTimeInSeconds += Time.realtimeSinceStartup;
-            PlayerPrefs.SetString(PlayerPrefsKeys.STATISTICS_TOTAL_PLAYTIME_IN_SECONDS_KEY, this.TotalPlayTimeInSeconds.ToString());
-            PlayerPrefs.Save();
-
-            Debug.Log($"TotalPlayTimeInSeconds -> Lifetime: {this.TotalPlayTimeInSeconds}");
+            this.LevelStartTime = DateTime.Now;
         }
 
-        public void OnMatchEnd(int totalXP)
+        public void OnGameOver(float totalXP)
         {
-            if (totalXP <= this.CurrentRunData.MaxXpInRun)
-                return;
+            this.UpdateTotalPlayTime();
+            this.UpdateMaxXpInRun(totalXP);
 
-            this.CurrentRunData.MaxXpInRun = totalXP;
-
-            if (totalXP <= this.LifetimeData.MaxXpInRun)
-                return;
-
-            this.LifetimeData.MaxXpInRun = totalXP;
-
-            PlayerPrefs.SetInt(PlayerPrefsKeys.STATISTICS_TOTAL_MAX_XP_IN_RUN_KEY, this.LifetimeData.MaxXpInRun);
             PlayerPrefs.Save();
-
-            Debug.Log($"MaxXpInRun -> Current: {this.CurrentRunData.MaxXpInRun} / Lifetime: {this.LifetimeData.MaxXpInRun}");
         }
 
         public void OnComboFinished(int killStreak)
@@ -80,15 +70,40 @@ namespace Game
 
             this.CurrentRunData.HighestCombo = killStreak;
 
-            if (killStreak <= this.LifetimeData.HighestCombo)
-                return;
-
-            this.LifetimeData.HighestCombo = killStreak;
-
+            if (killStreak > this.LifetimeData.HighestCombo)
+            {
+                this.LifetimeData.HighestCombo = killStreak;
+            }
             PlayerPrefs.SetInt(PlayerPrefsKeys.STATISTICS_HIGHEST_COMBO_KEY, this.LifetimeData.HighestCombo);
             PlayerPrefs.Save();
 
             Debug.Log($"HighestCombo -> Current: {this.CurrentRunData.HighestCombo} / Lifetime: {this.LifetimeData.HighestCombo}");
+        }
+
+        private void UpdateTotalPlayTime()
+        {
+            double timeSinceLevelLoad = (DateTime.Now - this.LevelStartTime).TotalSeconds;
+            this.CurrentRunData.TotalPlayTimeInSeconds = timeSinceLevelLoad;
+            this.LifetimeData.TotalPlayTimeInSeconds += timeSinceLevelLoad;
+            PlayerPrefs.SetString(PlayerPrefsKeys.STATISTICS_TOTAL_PLAYTIME_IN_SECONDS_KEY, this.LifetimeData.TotalPlayTimeInSeconds.ToString());
+
+            Debug.Log($"TotalPlayTimeInSeconds -> Current: {this.CurrentRunData.TotalPlayTimeInSeconds} / Lifetime: {this.LifetimeData.TotalPlayTimeInSeconds}");
+        }
+
+        private void UpdateMaxXpInRun(float totalXP)
+        {
+            if (totalXP <= this.CurrentRunData.MaxXpInRun)
+                return;
+
+            this.CurrentRunData.MaxXpInRun = totalXP;
+
+            if (totalXP > this.LifetimeData.MaxXpInRun)
+            {
+                this.LifetimeData.MaxXpInRun = totalXP;
+            }
+            PlayerPrefs.SetFloat(PlayerPrefsKeys.STATISTICS_TOTAL_MAX_XP_IN_RUN_KEY, this.LifetimeData.MaxXpInRun);
+
+            Debug.Log($"MaxXpInRun -> Current: {this.CurrentRunData.MaxXpInRun} / Lifetime: {this.LifetimeData.MaxXpInRun}");
         }
     }
 }

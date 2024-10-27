@@ -5,6 +5,7 @@
         public int TotalEnemiesKilled;
         public int TotalPlayerDeaths;
         public int HighestCombo;
-        public int MaxXpInRun;
+        public float MaxXpInRun;
+        public double TotalPlayTimeInSeconds;
     }
 }

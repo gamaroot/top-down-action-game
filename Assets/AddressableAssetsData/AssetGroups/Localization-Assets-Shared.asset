@@ -41,6 +41,11 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7c0ef71dbe073c84cac2bca7e40fefdc
+    m_Address: Assets/Project/Localization/ScreenGameMap Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 89414a442424dba468165759d652d6eb
     m_Address: Assets/Project/Localization/ScreenGame/ScreenGame Shared Data.asset
     m_ReadOnly: 1
@@ -48,6 +53,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c53fbb0b7c7d521418f6402edc37b2d3
     m_Address: Assets/Project/Localization/ScreenSettings/ScreenSettings Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d435ce79b4bf58b4abc0c752f387169d
+    m_Address: Assets/Project/Localization/ScreenGameOver Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

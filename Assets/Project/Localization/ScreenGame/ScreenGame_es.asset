@@ -22,22 +22,6 @@ MonoBehaviour:
     m_Localized: "\xA1Subiste de nivel!"
     m_Metadata:
       m_Items: []
-  - m_Id: 8129735256764416
-    m_Localized: Vista del Mapa
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8133103719084032
-    m_Localized: Tiempo Transcurrido
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8133055836909568
-    m_Localized: "Combo M\xE1s Alto"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8133004913864704
-    m_Localized: Enemigos Eliminados
-    m_Metadata:
-      m_Items: []
   - m_Id: 9254971923787776
     m_Localized: Nivel {0}
     m_Metadata:

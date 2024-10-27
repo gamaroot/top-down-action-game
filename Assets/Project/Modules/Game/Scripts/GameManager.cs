@@ -91,7 +91,14 @@ namespace Game
 
         public void OnPlayerDeath()
         {
-            //SceneNavigator.Instance.LoadAdditiveSceneAsync(SceneID.GAME_OVER);
+            Statistics.Instance.OnPlayerDeath();
+            Statistics.Instance.OnGameOver(this._gameStateHandler.GameState.PlayerState.XpGained);
+
+            int previousLevel = this._gameStateHandler.GameState.PlayerState.InitialLevel;
+            int currentLevel = this._gameStateHandler.GameState.PlayerState.Level;
+
+            SceneNavigator.Instance.SetSceneParams(SceneID.GAME_OVER, (previousLevel, currentLevel));
+            SceneNavigator.Instance.LoadAdditiveSceneAsync(SceneID.GAME, SceneID.GAME_OVER);
         }
 
         public void OnEnemyKill(IEnemyConfig enemy)
@@ -122,7 +129,9 @@ namespace Game
 
             // Generate map
             this._rooms = new MapGenerator().Generate(this._mapConfig.Config, base.transform);
-        }
+            
+            this._gameStateHandler.OnGameStart();
+            Statistics.Instance.OnGameStart();        }
 
         private void OnGameReady()
         {
@@ -132,8 +141,10 @@ namespace Game
         private void OnGameQuit()
         {
             this._gameStateHandler.Save();
-            Statistics.Instance.OnGameQuit();
-
+            if (!this._playerController.IsDead)
+            {
+                Statistics.Instance.OnGameOver(this._gameStateHandler.GameState.PlayerState.XpGained);
+            }
             SpawnablePool.DisableAll();
 
             this._rooms = null;

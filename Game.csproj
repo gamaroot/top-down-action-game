@@ -127,8 +127,8 @@
     <Compile Include="Assets\Project\Modules\Utils\Scripts\InputFeedback\Vibration.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Map\Room.cs" />
-    <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\EnemyParryController.cs" />
     <Compile Include="Assets\Project\Modules\UI\Screens\InGameSettings\Scripts\InGameSettingsButton.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\EnemyParryController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerLevelUpDisplay.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\GameManager.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Player\PlayerConfig.cs" />

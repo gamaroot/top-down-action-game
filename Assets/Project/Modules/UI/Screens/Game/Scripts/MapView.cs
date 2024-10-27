@@ -1,4 +1,6 @@
+using System;
 using TMPro;
+using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 using Utils;
 
@@ -31,9 +33,14 @@ namespace Game
 
         private void Update()
         {
-            int totalSeconds = (int)Time.timeSinceLevelLoad;
-            string formattedMinutesAndSeconds = string.Format("{0:00}:{1:00}", (int)totalSeconds / 60, (int)totalSeconds % 60);
-            this._txtTimeElapsed.text = formattedMinutesAndSeconds;
+            double totalSeconds = (DateTime.Now - Statistics.Instance.LevelStartTime).TotalSeconds;
+            int minutes = (int)totalSeconds / 60;
+            int seconds = (int)totalSeconds % 60;
+            int milliseconds = (int)((totalSeconds - (int)totalSeconds) * 1000);
+
+            string formattedTime = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
+
+            this._txtTimeElapsed.text = formattedTime;
         }
 
         // Called by the Animator

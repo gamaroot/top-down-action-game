@@ -22,22 +22,6 @@ MonoBehaviour:
     m_Localized: Level up!
     m_Metadata:
       m_Items: []
-  - m_Id: 8129735256764416
-    m_Localized: Map View
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8133004913864704
-    m_Localized: 'Enemies Defeated '
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8133055836909568
-    m_Localized: Highest Combo
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8133103719084032
-    m_Localized: Time Elapsed
-    m_Metadata:
-      m_Items: []
   - m_Id: 9254971923787776
     m_Localized: Level {0}
     m_Metadata:

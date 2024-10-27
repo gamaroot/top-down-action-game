@@ -6,11 +6,21 @@ namespace Game
     [Serializable]
     public class PlayerState
     {
+        public int InitialLevel;
         public int Level;
+        public float InitialXP;
         public float XP;
 
         public float CurrentHealth;
         public int[] ExtraStats;
+
+        public float XpGained => this.XP - this.InitialXP;
+
+        public void Init()
+        {
+            this.InitialXP = this.XP;
+            this.InitialLevel = this.Level;
+        }
 
         public CharacterStats GetStats(IPlayerConfig playerConfig)
         {

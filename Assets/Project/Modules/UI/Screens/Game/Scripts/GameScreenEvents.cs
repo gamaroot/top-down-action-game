@@ -31,7 +31,7 @@ namespace Game
             this._gameManager.OnPlayerLevelUpdateListener += this.OnLevelUpdated;
 
             this._baseLevelText = LocalizationSettings.StringDatabase.GetLocalizedString(LocalizationKeys.SCREEN_GAME, 
-                                                                                         LocalizationKeys.SCREEN_GAME_TXT_LEVEL);
+                                                                                         LocalizationKeys.TXT_LEVEL);
             this.OnLevelUpdated(this._gameManager.GameState.PlayerState.Level);
         }
 

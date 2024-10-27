@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: ScreenGameMap
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: 7c0ef71dbe073c84cac2bca7e40fefdc, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: 2b4eb2e4fd5d7e542a16209a781c074b, type: 2}
+  - {fileID: 11400000, guid: aeb048ffab8da1249a01554179cb21ce, type: 2}
+  - {fileID: 11400000, guid: c627bb41434342246a2d10319002a04f, type: 2}
+  - {fileID: 11400000, guid: dd8e3c34e7864634ea1415d112f60d35, type: 2}
+  - {fileID: 11400000, guid: caf820062b93e544f95a31981513b771, type: 2}
+  - {fileID: 11400000, guid: 91d602459783ff04aa5e86e4228b169f, type: 2}
+  - {fileID: 11400000, guid: 70cd5e9322313d449994eeb58bf6a6a0, type: 2}
+  m_Extensions: []
+  m_Group: String Table
+  references:
+    version: 2
+    RefIds: []

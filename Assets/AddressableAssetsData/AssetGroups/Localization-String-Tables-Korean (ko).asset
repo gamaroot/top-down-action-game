@@ -39,6 +39,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-ko
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 91d602459783ff04aa5e86e4228b169f
+    m_Address: ScreenGameMap_ko
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ba994d754e2f7ba46a5c39111d898b5e
     m_Address: PopupApplicationQuit_ko
     m_ReadOnly: 1
@@ -53,6 +59,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ca212d6db62bdbf4a824771a0b1b2d3d
     m_Address: ScreenDebug_ko
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cd6f8a0f5c82e4844aac287f9aec5264
+    m_Address: ScreenGameOver_ko
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ko

@@ -17,12 +17,9 @@ namespace Game
                 this.GameState = new();
         }
 
-        public GameState Load()
+        public void OnGameStart()
         {
-            string gameStateJson = PlayerPrefs.GetString(PlayerPrefsKeys.SAVED_GAME_KEY);
-            Debug.Log($"GameState - LOAD: {gameStateJson}");
-
-            return this.GameState = JsonConvert.DeserializeObject<GameState>(gameStateJson);
+            this.GameState.PlayerState.Init();
         }
 
         public void Save()
@@ -35,12 +32,12 @@ namespace Game
             PlayerPrefs.Save();
         }
 
-        public void DeleteSavedGame()
+        private void Load()
         {
-            PlayerPrefs.DeleteKey(PlayerPrefsKeys.SAVED_GAME_KEY);
-            PlayerPrefs.Save();
+            string gameStateJson = PlayerPrefs.GetString(PlayerPrefsKeys.SAVED_GAME_KEY);
+            Debug.Log($"GameState - LOAD: {gameStateJson}");
 
-            Debug.Log("GameState - DELETED");
+            this.GameState = JsonConvert.DeserializeObject<GameState>(gameStateJson);
         }
     }
 }
