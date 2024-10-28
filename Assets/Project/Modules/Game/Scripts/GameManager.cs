@@ -130,7 +130,10 @@ namespace Game
             this._rooms = new MapGenerator().Generate(this._mapConfig.Config, base.transform);
             
             this._gameStateHandler.OnGameStart();
-            Statistics.Instance.OnGameStart();        }
+            Statistics.Instance.OnGameStart();
+
+            this._playerController.ResetToDefaultPosition();
+        }
 
         private void OnGameReady()
         {

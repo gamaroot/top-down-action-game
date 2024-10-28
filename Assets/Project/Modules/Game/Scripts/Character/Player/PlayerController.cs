@@ -6,6 +6,7 @@ namespace Game
 {
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField] private Vector3 _defaultPosition;
         [SerializeField] private PlayerHealthController _healthController;
         [SerializeField] private PlayerExperienceController _experienceController;
         [SerializeField] private PlayerMovementController _movementController;
@@ -18,6 +19,9 @@ namespace Game
 
         private void OnValidate()
         {
+            if (this._defaultPosition == Vector3.zero)
+                this._defaultPosition = base.transform.position;
+
             if (this._healthController == null)
                 this._healthController = this.GetComponent<PlayerHealthController>();
 
@@ -70,6 +74,16 @@ namespace Game
             base.gameObject.gameObject.SetActive(isActive);
         }
 
+        public void ResetToDefaultPosition()
+        {
+            base.transform.position = this._defaultPosition;
+        }
+
+        public void OnRecoverHealth(IGameManager gameManager)
+        {
+            gameManager.OnPlayerHealthUpdated(this._healthController.CurrentHealth, this._healthController.MaxHealth);
+        }
+
         private void OnComboFinished()
         {
             this._killStreak = 0;
@@ -81,11 +95,6 @@ namespace Game
 
             if (base.gameObject.activeSelf)
                 base.StartCoroutine(CameraHandler.Instance.Shake());
-        }
-
-        public void OnRecoverHealth(IGameManager gameManager)
-        {
-            gameManager.OnPlayerHealthUpdated(this._healthController.CurrentHealth, this._healthController.MaxHealth);
         }
     }
 }
