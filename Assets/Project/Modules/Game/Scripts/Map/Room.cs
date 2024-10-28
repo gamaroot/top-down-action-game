@@ -13,6 +13,9 @@ namespace Game
         public bool IsPlayerHere { get; private set; }
 
         public int Id { get; private set; }
+        public RoomType Type { get; private set; }
+        public Vector3 Position => base.transform.position;
+        public float Size => base.transform.localScale.x;
 
         private int _totalEnemies;
         private int _killedEnemies;
@@ -51,10 +54,11 @@ namespace Game
             }
         }
 
-        public Room Init(int id, GameObject[] doors, List<GameObject> waypoints, GameObject content,
+        public Room Init(int id, RoomType type, GameObject[] doors, List<GameObject> waypoints, GameObject content,
                          Tuple<SpawnConfig<SpawnTypeEnemy>[], SpawnConfig<SpawnTypeTrap>[]> spawnConfig)
         {
             this.Id = id;
+            this.Type = type;
             this._doors = doors;
 
             this._content = content;

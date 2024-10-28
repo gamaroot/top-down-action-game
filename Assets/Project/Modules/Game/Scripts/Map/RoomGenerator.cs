@@ -41,6 +41,7 @@ public class RoomGenerator : MonoBehaviour
 
         return base.gameObject.GetComponent<Room>()
                                 .Init(data.Id,
+                                      this.Type,
                                       existingDoors.ToArray(), 
                                       this.CreateWaypoints(data.SquaredSize), 
                                       this._parent, 

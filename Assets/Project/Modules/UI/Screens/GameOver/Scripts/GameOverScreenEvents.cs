@@ -1,5 +1,6 @@
 using ScreenNavigation;
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
@@ -8,6 +9,9 @@ namespace Game
 {
     public class GameOverScreenEvents : MonoBehaviour
     {
+        [SerializeField] private RectTransform _mapDisplay;
+        [SerializeField] private CanvasRoomDisplay _roomDisplayPrefab;
+
         [SerializeField] private TextMeshProUGUI _txtLevel;
         [SerializeField] private TextMeshProUGUI _txtEnemiesDefeated;
         [SerializeField] private TextMeshProUGUI _txtHighestCombo;
@@ -17,10 +21,14 @@ namespace Game
         {
             StatisticsData data = Statistics.Instance.CurrentRunData;
 
+            (int previousLevel, int currentLevel, IRoom[] rooms) = ((int, int, IRoom[]))SceneNavigator.Instance.GetSceneParams(SceneID.GAME_OVER);
+
+            this.CreateMap(rooms);
+
             this.UpdateEnemiesDefeated(data);
             this.UpdateHighestCombo(data);
             this.UpdateRunTime(data);
-            this.UpdateLevelProgress(data);
+            this.UpdateLevelProgress(data, previousLevel, currentLevel);
         }
 
         public void OnPlayButtonClick()
@@ -31,6 +39,45 @@ namespace Game
         public void OnQuitButtonClick()
         {
             SceneNavigator.Instance.LoadAdditiveSceneAsync(SceneID.GAME_OVER, SceneID.HOME);
+        }
+
+        private void CreateMap(IRoom[] rooms)
+        {
+            var displays = new CanvasRoomDisplay[rooms.Length];
+            for (int index = 0; index < rooms.Length; index++)
+            {
+                CanvasRoomDisplay room = Instantiate(this._roomDisplayPrefab);
+                room.transform.SetParent(this._mapDisplay);
+                room.Setup(rooms[index]);
+                displays[index] = room;
+            }
+
+            float minX = float.MaxValue;
+            float minY = float.MaxValue;
+            float maxX = float.MinValue;
+            float maxY = float.MinValue;
+
+            foreach (CanvasRoomDisplay display in displays)
+            {
+                var corners = new Vector3[4];
+                display.RectTransform.GetWorldCorners(corners);
+
+                // Update bounds
+                minX = Mathf.Min(minX, corners[0].x);
+                minY = Mathf.Min(minY, corners[0].y);
+                maxX = Mathf.Max(maxX, corners[2].x);
+                maxY = Mathf.Max(maxY, corners[2].y);
+            }
+            var boundingCenter = new Vector3((minX + maxX) / 2, (minY + maxY) / 2, 0);
+            Vector3 canvasCenter = this._mapDisplay.position;
+
+            // Calculate the offset needed to center the bounding box
+            Vector3 offset = canvasCenter - boundingCenter;
+
+            foreach (CanvasRoomDisplay display in displays)
+            {
+                display.transform.position += offset;
+            }
         }
 
         private void UpdateEnemiesDefeated(StatisticsData data)
@@ -59,10 +106,8 @@ namespace Game
             this._txtTimeElapsed.text = string.Format(localizedText, formattedTime);
         }
 
-        private void UpdateLevelProgress(StatisticsData data)
+        private void UpdateLevelProgress(StatisticsData data, int previousLevel, int currentLevel)
         {
-            (int previousLevel, int currentLevel) = ((int, int))SceneNavigator.Instance.GetSceneParams(SceneID.GAME_OVER);
-
             string txtLevel;
             bool hasLeveledUp = currentLevel > previousLevel;
             if (hasLeveledUp)

@@ -731,6 +731,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5a7e044c8d47ca49b54ae342707bbe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mapDisplay: {fileID: 1870159136}
+  _roomDisplayPrefab: {fileID: 2976342550644641648, guid: 77d5b3849f7cc8e46a4d5c05b69ea757,
+    type: 3}
   _txtLevel: {fileID: 98256017}
   _txtEnemiesDefeated: {fileID: 80315743}
   _txtHighestCombo: {fileID: 1916681714}
@@ -1120,7 +1123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.16078432, g: 0.16078432, b: 0.16078432, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

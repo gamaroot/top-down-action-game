@@ -3,7 +3,6 @@ using ScreenNavigation;
 using System;
 using UnityEngine;
 using Utils;
-using static UnityEngine.EventSystems.EventTrigger;
 
 namespace Game
 {
@@ -97,7 +96,7 @@ namespace Game
             int previousLevel = this._gameStateHandler.GameState.PlayerState.InitialLevel;
             int currentLevel = this._gameStateHandler.GameState.PlayerState.Level;
 
-            SceneNavigator.Instance.SetSceneParams(SceneID.GAME_OVER, (previousLevel, currentLevel));
+            SceneNavigator.Instance.SetSceneParams(SceneID.GAME_OVER, (previousLevel, currentLevel, this._rooms));
             SceneNavigator.Instance.LoadAdditiveSceneAsync(SceneID.GAME, SceneID.GAME_OVER);
         }
 

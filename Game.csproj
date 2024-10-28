@@ -105,6 +105,7 @@
     <Compile Include="Assets\Project\Modules\UI\Screens\Home\Scripts\HomeScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\UI\Toast\Scripts\Toast.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\SFXTypeExplosion.cs" />
+    <Compile Include="Assets\Project\Modules\UI\Screens\GameOver\Scripts\CanvasRoomDisplay.cs" />
     <Compile Include="Assets\Project\Modules\UI\Toast\Scripts\ToastType.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\CrossSceneReference.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\CharacterStats.cs" />
