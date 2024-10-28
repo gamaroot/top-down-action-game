@@ -72,7 +72,9 @@ namespace Game
         {
             for (int index = 0; index < this._doors.Length; index++)
             {
-                this._doors[index].SetActive(false);
+                GameObject door = this._doors[index];
+                if (door)
+                    door.SetActive(false);
             }
         }
 
