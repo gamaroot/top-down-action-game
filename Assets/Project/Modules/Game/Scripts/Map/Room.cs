@@ -128,6 +128,7 @@ namespace Game
                 var config = this._spawnConfig.Item2[index];
                 var spawn = SpawnablePool.SpawnTrap<Transform>(config.Type);
                 spawn.position = config.Position;
+                spawn.gameObject.SetActive(true);
             }
         }
     }
