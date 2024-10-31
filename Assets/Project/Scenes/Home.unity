@@ -1504,8 +1504,8 @@ GameObject:
   - component: {fileID: 2070883199}
   - component: {fileID: 2070883203}
   - component: {fileID: 2070883202}
-  - component: {fileID: 2070883201}
   - component: {fileID: 2070883200}
+  - component: {fileID: 2070883201}
   m_Layer: 5
   m_Name: Button Debug
   m_TagString: Untagged
