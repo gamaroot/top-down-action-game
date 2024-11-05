@@ -131,13 +131,6 @@ namespace Game
             
             this._gameStateHandler.OnGameStart();
             Statistics.Instance.OnGameStart();
-
-            this._playerController.ResetToDefaultPosition();
-        }
-
-        private void OnGameReady()
-        {
-            this._playerController.Activate(true, this);
         }
 
         private void OnGameQuit()
@@ -150,7 +143,6 @@ namespace Game
             SpawnablePool.DisableAll();
 
             this._rooms = null;
-            this._playerController.Activate(false, this);
             for (int index = 0; index < base.transform.childCount; index++)
             {
                 Destroy(base.transform.GetChild(index).gameObject);
@@ -162,21 +154,43 @@ namespace Game
             switch (sceneID)
             {
                 case SceneID.GAME:
-                case SceneID.DEBUG:
                     switch (sceneState)
                     {
                         case SceneState.LOADING:
                             this.OnGameStart();
                             break;
                         case SceneState.ANIMATING_SHOW:
-                            this.OnGameReady();
+                            this.ActivatePlayerControl();
                             break;
                         case SceneState.UNLOADED:
                             this.OnGameQuit();
+                            this.DeactivatePlayerControl();
+                            break;
+                    }
+                    break;
+                case SceneID.DEBUG:
+                    switch (sceneState)
+                    {
+                        case SceneState.ANIMATING_SHOW:
+                            this.ActivatePlayerControl();
+                            break;
+                        case SceneState.UNLOADED:
+                            this.DeactivatePlayerControl();
                             break;
                     }
                     break;
             }
+        }
+
+        private void ActivatePlayerControl()
+        {
+            this._playerController.ResetToDefaultPosition();
+            this._playerController.Activate(true, this);
+        }
+
+        private void DeactivatePlayerControl()
+        {
+            this._playerController.Activate(false, this);
         }
     }
 }
