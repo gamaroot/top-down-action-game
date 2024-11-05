@@ -26,6 +26,7 @@ namespace Game
         private void OnDisable()
         {
             this._input.Disable();
+            this.SwitchCamera(isMapVisible: false);
         }
 
         private void OnMapTriggered()
