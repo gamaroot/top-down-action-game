@@ -12,6 +12,7 @@ namespace Game
         [SerializeField] private SpawnablePool _spawnablePool;
         [SerializeField] private PlayerController _playerController;
         [SerializeField] private ToastHandler _toastHandler;
+        [SerializeField] private VFX _vfx;
 
         [Header("Database")]
         [SerializeField, ReadOnly] private PlayerConfigDatabase _playerConfig;
@@ -71,6 +72,16 @@ namespace Game
             this.OnPlayerHealthUpdateListener.Invoke(currenHealth, maxHealth);
         }
 
+        public void OnPlayerRecoverHealth(float healthPercentage)
+        {
+            this._vfx.ShowHealLayer(healthPercentage);
+        }
+
+        public void OnPlayerLoseHealth(float healthPercentage)
+        {
+            this._vfx.ShowDamageLayer(healthPercentage);
+        }
+
         public void OnPlayerXpUpdated(float xp, float xpToNextLevel)
         {
             Debug.Log($"Updating XP {xp} / {xpToNextLevel}");
@@ -95,6 +106,9 @@ namespace Game
 
             int previousLevel = this._gameStateHandler.GameState.PlayerState.InitialLevel;
             int currentLevel = this._gameStateHandler.GameState.PlayerState.Level;
+
+            if (SceneNavigator.Instance.IsSceneOpened(SceneID.DEBUG))
+                return;
 
             SceneNavigator.Instance.SetSceneParams(SceneID.GAME_OVER, (previousLevel, currentLevel, this._rooms));
             SceneNavigator.Instance.LoadAdditiveSceneAsync(SceneID.GAME, SceneID.GAME_OVER);

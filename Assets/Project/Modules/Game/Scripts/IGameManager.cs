@@ -16,6 +16,8 @@ namespace Game
 
         void OnPlayerStateUpdated(PlayerState playerStats);
         void OnPlayerHealthUpdated(int currenHealth, int maxHealth);
+        void OnPlayerLoseHealth(float healthPercentage);
+        void OnPlayerRecoverHealth(float healthPercentage);
         void OnPlayerXpUpdated(float xp, float xpToNextLevel);
         void OnPlayerLevelUp(float xpToNextLevel);
         void OnPlayerDeath();
