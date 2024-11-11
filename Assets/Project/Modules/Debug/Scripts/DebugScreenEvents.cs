@@ -31,7 +31,6 @@ namespace Game
         [Header("HUD")]
         [SerializeField] private string _heartIcon;
 
-        [SerializeField] private Slider _sliderHp;
         [SerializeField] private TextMeshProUGUI _txtHealthBack;
         [SerializeField] private TextMeshProUGUI _txtHealthFront;
 
@@ -189,9 +188,6 @@ namespace Game
 
         private void OnHealthUpdated(int currentHealth, int maxHealth)
         {
-            this._sliderHp.maxValue = maxHealth;
-            this._sliderHp.value = currentHealth;
-
             string maxHearts = string.Empty;
             string currentHearts = string.Empty;
             for (int index = 0; index < maxHealth; index++)

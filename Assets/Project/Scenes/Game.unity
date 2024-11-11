@@ -312,18 +312,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 0
---- !u!114 &208396658 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3431663298956672948, guid: c400cbe1b4f5c1a4a906e318865705fd,
-    type: 3}
-  m_PrefabInstance: {fileID: 3369064603206140802}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &303007020
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,7 +1280,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _heartIcon: "\u2665"
-  _sliderHp: {fileID: 208396658}
   _txtHealthBack: {fileID: 920372371}
   _txtHealthFront: {fileID: 1745243121}
   _sliderXp: {fileID: 1033362630}
@@ -1980,12 +1967,12 @@ PrefabInstance:
     - target: {fileID: 7173849667825492485, guid: c400cbe1b4f5c1a4a906e318865705fd,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7173849667825492485, guid: c400cbe1b4f5c1a4a906e318865705fd,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
