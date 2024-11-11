@@ -25,6 +25,8 @@ namespace Game
         [SerializeField] private Ease _healLayerEase;
 
         private Tween _tweenVignette;
+
+        private Bloom _bloomLayer;
         private Vignette _vignetteLayer;
         private ChromaticAberration _chromaticAberrationLayer;
 
@@ -33,6 +35,7 @@ namespace Game
         private void Awake()
         {
             this._fullScreenFX = this._urpAsset.rendererFeatures[1];
+            this._postProcess.profile.TryGet<Bloom>(out this._bloomLayer);
             this._postProcess.profile.TryGet<Vignette>(out this._vignetteLayer);
             this._postProcess.profile.TryGet<ChromaticAberration>(out this._chromaticAberrationLayer);
         }
@@ -42,7 +45,7 @@ namespace Game
             this._vignetteLayer.color.value = this._damageLayerColor;
             this.AnimateVignetteLayer(this._damageLayerIntensity, this._damageLayerDuration, this._damageLayerEase);
 
-            this.SetChromaticAberrationLayer(healthPercentage);
+            this.UpdateCriticalDamageLayer(healthPercentage);
         }
 
         public void ShowHealLayer(float healthPercentage)
@@ -50,7 +53,7 @@ namespace Game
             this._vignetteLayer.color.value = this._healLayerColor;
             this.AnimateVignetteLayer(this._healLayerIntensity, this._healLayerDuration, this._healLayerEase);
 
-            this.SetChromaticAberrationLayer(healthPercentage);
+            this.UpdateCriticalDamageLayer(healthPercentage);
         }
 
         public void DisableAll()
@@ -82,13 +85,17 @@ namespace Game
                     });
         }
 
-        private void SetChromaticAberrationLayer(float intensity)
+        private void UpdateCriticalDamageLayer(float healthPercentage)
         {
-            this._fullScreenFX.SetActive(intensity > 0 && intensity <= 0.5f);
-            this._fullScreenFXMaterial.SetFloat("_VignetteIntensity", 1f - intensity);
+            float intensity = 1f - healthPercentage;
+
+            this._bloomLayer.tint.value = Color.Lerp(Color.white, Color.red, intensity);
 
             this._chromaticAberrationLayer.active = intensity != 0;
-            this._chromaticAberrationLayer.intensity.value = 1f - intensity;
+            this._chromaticAberrationLayer.intensity.value = intensity;
+
+            this._fullScreenFX.SetActive(intensity > 0 && intensity <= 0.5f);
+            this._fullScreenFXMaterial.SetFloat("_VignetteIntensity", intensity);
         }
     }
 }
