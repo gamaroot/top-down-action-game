@@ -59,10 +59,10 @@ Material:
     - _NoiseScale: 10
     - _NoiseSpeed: 2
     - _NoiteSpread: 2
-    - _VignetteIntensity: 0
+    - _VignetteIntensity: 1
     - _VignettePower: 9
     m_Colors:
-    - _Color: {r: 1.9999999, g: 0.3333333, b: 0, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _NoiseTiling: {r: 1, g: 1, b: 0, a: 0}
     - _NoiseVelocity: {r: 0, g: 0.2, b: 0, a: 0}
   m_BuildTextureStacks: []
