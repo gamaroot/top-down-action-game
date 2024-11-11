@@ -94,8 +94,8 @@ namespace Game
             this._chromaticAberrationLayer.active = intensity != 0;
             this._chromaticAberrationLayer.intensity.value = intensity;
 
-            this._fullScreenFX.SetActive(intensity > 0 && intensity <= 0.5f);
-            this._fullScreenFXMaterial.SetFloat("_VignetteIntensity", intensity);
+            this._fullScreenFX.SetActive(intensity > 0 && intensity > 0.7f);
+            this._fullScreenFXMaterial.SetFloat("_VignetteIntensity", Mathf.Clamp(intensity, 0.8f, 1f));
         }
     }
 }
