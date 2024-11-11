@@ -82,7 +82,7 @@ namespace Game
         public void OnRecoverHealth(IGameManager gameManager)
         {
             gameManager.OnPlayerHealthUpdated(this._healthController.CurrentHealth, this._healthController.MaxHealth);
-            gameManager.OnPlayerRecoverHealth(this._healthController.CurrentHealth / this._healthController.MaxHealth);
+            gameManager.OnPlayerRecoverHealth((float)this._healthController.CurrentHealth / (float)this._healthController.MaxHealth);
         }
 
         private void OnComboFinished()
@@ -93,7 +93,7 @@ namespace Game
         private void OnLoseHealth(IGameManager gameManager)
         {
             gameManager.OnPlayerHealthUpdated(this._healthController.CurrentHealth, this._healthController.MaxHealth);
-            gameManager.OnPlayerLoseHealth(this._healthController.CurrentHealth / this._healthController.MaxHealth);
+            gameManager.OnPlayerLoseHealth((float)this._healthController.CurrentHealth / (float)this._healthController.MaxHealth);
 
             if (base.gameObject.activeSelf)
                 base.StartCoroutine(CameraHandler.Instance.Shake());

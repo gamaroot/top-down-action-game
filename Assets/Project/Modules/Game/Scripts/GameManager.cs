@@ -149,6 +149,8 @@ namespace Game
 
         private void OnGameQuit()
         {
+            this._vfx.DisableAll();
+
             this._gameStateHandler.Save();
             if (!this._playerController.IsDead)
             {

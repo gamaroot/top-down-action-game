@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _postProcess: {fileID: 3615825343788288462}
+  _urpAsset: {fileID: 11400000, guid: c40be3174f62c4acf8c1216858c64956, type: 2}
+  _fullScreenFXMaterial: {fileID: 2100000, guid: c1a86aaf2b392eb40bdbe620ca6e3861,
+    type: 2}
   _damageLayerIntensity: 0.5
   _damageLayerColor: {r: 1, g: 0, b: 0, a: 1}
   _damageLayerDuration: 0.3
