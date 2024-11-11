@@ -101,7 +101,7 @@ namespace Game.Database
             this._playerConfig.InitialStatsPoints = EditorGUILayout.IntField("Initial Stats Points", this._playerConfig.InitialStatsPoints);
             this._playerConfig.StatsPointsPerLevel = EditorGUILayout.IntField("Stats Points per Level", this._playerConfig.StatsPointsPerLevel);
 
-            var newExtraStatsPerPoint = this._playerConfig.ExtraStatsPerPoint;
+            CharacterStats newExtraStatsPerPoint = this._playerConfig.ExtraStatsPerPoint;
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("[Stats per Point]", EditorStyles.boldLabel);
@@ -114,6 +114,17 @@ namespace Game.Database
             newExtraStatsPerPoint.ParryCooldown = EditorGUILayout.FloatField("Parry Cooldown", newExtraStatsPerPoint.ParryCooldown);
 
             this._playerConfig.ExtraStatsPerPoint = newExtraStatsPerPoint;
+
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("[Limit Stats Points]", EditorStyles.boldLabel);
+            this._playerConfig.MaxPointsForStats[0] = EditorGUILayout.IntField("Max Health", this._playerConfig.MaxPointsForStats[0]);
+            this._playerConfig.MaxPointsForStats[1] = EditorGUILayout.IntField("Movement Speed", this._playerConfig.MaxPointsForStats[1]);
+            this._playerConfig.MaxPointsForStats[2] = EditorGUILayout.IntField("Dash Speed", this._playerConfig.MaxPointsForStats[2]);
+            this._playerConfig.MaxPointsForStats[3] = EditorGUILayout.IntField("Dash Duration", this._playerConfig.MaxPointsForStats[3]);
+            this._playerConfig.MaxPointsForStats[4] = EditorGUILayout.IntField("Dash Cooldown", this._playerConfig.MaxPointsForStats[4]);
+            this._playerConfig.MaxPointsForStats[5] = EditorGUILayout.IntField("Parry Duration", this._playerConfig.MaxPointsForStats[5]);
+            this._playerConfig.MaxPointsForStats[6] = EditorGUILayout.IntField("Parry Cooldown", this._playerConfig.MaxPointsForStats[6]);
+
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("[Others]", EditorStyles.boldLabel);

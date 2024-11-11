@@ -7,7 +7,7 @@ namespace Game.Database
         CharacterStats ExtraStatsPerPoint { get; }
         float GetXpToNextLevel(int level);
         int GetTotalStatsPoints(int level);
-        float GetStatByIndex(int index);
-        float GetStatPerPointByIndex(int index);
+        (float, float) GetStatsConfigByIndex(int index);
+        float GetMaxPointsForStatsByIndex(int index);
     }
 }

@@ -1,4 +1,5 @@
 using ScreenNavigation;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -99,8 +100,9 @@ namespace Game
             for (int index = 0; index < this._sliders.Length; index++)
             {
                 int assignedPoints = this._assignedStatPoints[index];
-                
-                this._sliders[index].maxValue = maxSliderValue;
+
+                float maxPoints = this._gameManager.PlayerConfig.GetMaxPointsForStatsByIndex(index);
+                this._sliders[index].maxValue = Mathf.Clamp(maxSliderValue, 0, maxPoints);
                 this._sliders[index].value = assignedPoints;
                 this._sliderValues[index] = this._sliders[index].value;
 
@@ -113,8 +115,7 @@ namespace Game
 
         private void UpdateStatText(int statIndex)
         {
-            float baseStat = this._gameManager.PlayerConfig.GetStatByIndex(statIndex);
-            float statsPerPoints = this._gameManager.PlayerConfig.GetStatPerPointByIndex(statIndex);
+            (float baseStat, float statsPerPoints) = this._gameManager.PlayerConfig.GetStatsConfigByIndex(statIndex);
             float points = this._sliders[statIndex].value;
 
             float statValue = baseStat + (points * statsPerPoints);
