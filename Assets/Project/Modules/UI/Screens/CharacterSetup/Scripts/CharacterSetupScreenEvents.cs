@@ -25,6 +25,8 @@ namespace Game
 
         private readonly float[] _sliderValues = new float[4]; // Store the values of the 4 sliders
 
+        private InputController _input;
+
         private void Awake()
         {
             this._gameManager = new CrossSceneReference().GetObjectByType<GameManager>();
@@ -32,6 +34,9 @@ namespace Game
             this._availableStatPoints = this._gameManager.PlayerConfig.GetTotalStatsPoints(this._gameManager.GameState.PlayerState.Level);
 
             this.ConfigureUI();
+
+            this._input = new InputController();
+            this._input.UI.Close.performed += _ => this.OnCloseButtonClick();
         }
 
         private void Start()
@@ -41,6 +46,16 @@ namespace Game
                 int indexRef = index; // Capture loop variable for delegate
                 this._sliders[index].onValueChanged.AddListener(value => this.OnSliderChange(indexRef, value));
             }
+        }
+
+        private void OnEnable()
+        {
+            this._input.Enable();
+        }
+
+        private void OnDisable()
+        {
+            this._input.Disable();
         }
 
         public void OnStartButtonClick()
@@ -120,6 +135,11 @@ namespace Game
 
             float statValue = baseStat + (points * statsPerPoints);
             this._statTexts[statIndex].text = statValue.ToString();
+        }
+
+        public void OnCloseButtonClick()
+        {
+            SceneNavigator.Instance.LoadAdditiveSceneAsync(SceneID.CHARACTER_SETUP, SceneID.HOME);
         }
     }
 }

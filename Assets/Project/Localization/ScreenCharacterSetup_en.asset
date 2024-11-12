@@ -46,6 +46,14 @@ MonoBehaviour:
     m_Localized: Parry Cooldown
     m_Metadata:
       m_Items: []
+  - m_Id: 10141563818221568
+    m_Localized: PLAY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10141951355133952
+    m_Localized: EXIT
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

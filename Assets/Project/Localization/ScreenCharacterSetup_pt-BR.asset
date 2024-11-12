@@ -46,6 +46,14 @@ MonoBehaviour:
     m_Localized: Recarga de Parry
     m_Metadata:
       m_Items: []
+  - m_Id: 10141563818221568
+    m_Localized: JOGAR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10141951355133952
+    m_Localized: SAIR
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
