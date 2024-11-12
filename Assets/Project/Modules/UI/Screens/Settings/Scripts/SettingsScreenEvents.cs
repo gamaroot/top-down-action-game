@@ -18,6 +18,14 @@ namespace Game
         private Tween _tweenFPSSelector;
         private float _fpsSelectorAnchor;
 
+        private InputController _input;
+
+        private void Awake()
+        {
+            this._input = new InputController();
+            this._input.UI.Close.performed += _ => this.OnCloseButtonClick();
+        }
+
         private void Start()
         {
             this._sliderSoundVolume.value = GamePreferences.SoundVolume;
@@ -40,6 +48,16 @@ namespace Game
             }, GamePreferences.FPS);
 
             this._textVersion.text = Application.version.ToString();
+        }
+
+        private void OnEnable()
+        {
+            this._input.Enable();
+        }
+
+        private void OnDisable()
+        {
+            this._input.Disable();
         }
 
         public void OnCloseButtonClick()
