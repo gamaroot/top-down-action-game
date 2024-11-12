@@ -149,8 +149,6 @@ namespace Game
 
         private void OnGameQuit()
         {
-            this._vfx.DisableAll();
-
             this._gameStateHandler.Save();
             if (!this._playerController.IsDead)
             {
@@ -181,6 +179,8 @@ namespace Game
                         case SceneState.UNLOADED:
                             this.OnGameQuit();
                             this.DeactivatePlayerControl();
+
+                            this._vfx.DisableAll();
                             break;
                     }
                     break;

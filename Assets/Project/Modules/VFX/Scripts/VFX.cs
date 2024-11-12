@@ -60,6 +60,14 @@ namespace Game
         {
             this._tweenVignette?.Kill();
             this._fullScreenFX.SetActive(false);
+
+            this._bloomLayer.tint.value = Color.white;
+
+            this._vignetteLayer.intensity.value = 0;
+            this._vignetteLayer.active = false;
+
+            this._chromaticAberrationLayer.intensity.value = 0;
+            this._chromaticAberrationLayer.active = false;
         }
 
         private void AnimateVignetteLayer(float intensity, float duration, Ease ease)
