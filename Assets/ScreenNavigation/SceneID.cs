@@ -14,5 +14,6 @@ namespace ScreenNavigation
 		GAME,
 		INGAME_SETTINGS,
 		GAME_OVER,
-	}
+        CREDITS
+    }
 }

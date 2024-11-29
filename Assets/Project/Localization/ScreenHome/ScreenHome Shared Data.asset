@@ -23,6 +23,10 @@ MonoBehaviour:
     m_Key: btn_settings
     m_Metadata:
       m_Items: []
+  - m_Id: 21924388377751552
+    m_Key: btn_credits
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

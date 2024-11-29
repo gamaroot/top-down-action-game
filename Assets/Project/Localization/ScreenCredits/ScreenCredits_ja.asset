@@ -17,7 +17,55 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 4dd3436d0c3c97746b8cecfecd87f416, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 21902911167295488
+    m_Localized: "\u30B2\u30FC\u30E0\u958B\u767A\u30C1\u30FC\u30E0"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21903198783303680
+    m_Localized: "\u30A2\u30FC\u30C8\uFF06\u30C7\u30B6\u30A4\u30F3\u30C1\u30FC\u30E0"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21905223872966656
+    m_Localized: "\u30C4\u30FC\u30EB\uFF06\u30A2\u30BB\u30C3\u30C8"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21905431323242496
+    m_Localized: "\u7279\u5225\u306A\u611F\u8B1D"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21905649624182784
+    m_Localized: "<size=70%>\u306E\u30B2\u30FC\u30E0</size>\nPIXEL PURGE STUDIO"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21912931883839488
+    m_Localized: "\u958B\u767A\u8005"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21913019142139904
+    m_Localized: "\u30C6\u30AF\u30CB\u30AB\u30EB\u30A2\u30FC\u30C6\u30A3\u30B9\u30C8"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21916940417921024
+    m_Localized: "\u6559\u54E1\u30A2\u30C9\u30D0\u30A4\u30B6\u30FC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21917552744361984
+    m_Localized: "\u30B5\u30DD\u30FC\u30C8"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21918331039412224
+    m_Localized: "\u30B2\u30FC\u30E0\u30A8\u30F3\u30B8\u30F3"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21919224937869312
+    m_Localized: "\u30B2\u30FC\u30E0\u30A2\u30BB\u30C3\u30C8"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21920701811027968
+    m_Localized: "\u30B9\u30AD\u30C3\u30D7 >>"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

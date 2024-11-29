@@ -17,7 +17,57 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 4dd3436d0c3c97746b8cecfecd87f416, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 21902911167295488
+    m_Localized: EQUIPO DE DESARROLLO DE JUEGOS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21903198783303680
+    m_Localized: "EQUIPO DE ARTE Y DISE\xD1O"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21905223872966656
+    m_Localized: HERRAMIENTAS Y RECURSOS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21905431323242496
+    m_Localized: AGRADECIMIENTOS ESPECIALES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21905649624182784
+    m_Localized: '<size=70%>UN JUEGO DE</size>
+
+      PIXEL PURGE STUDIO'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21912931883839488
+    m_Localized: DESARROLLADOR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21913019142139904
+    m_Localized: "ARTISTA T\xC9CNICO"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21916940417921024
+    m_Localized: "ASESOR ACAD\xC9MICO"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21917552744361984
+    m_Localized: SOPORTE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21918331039412224
+    m_Localized: MOTOR DE JUEGO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21919224937869312
+    m_Localized: ASSET DE JUEGO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21920701811027968
+    m_Localized: CERRAR >>
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

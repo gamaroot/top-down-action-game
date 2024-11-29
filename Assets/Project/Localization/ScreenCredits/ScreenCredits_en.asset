@@ -17,7 +17,57 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 4dd3436d0c3c97746b8cecfecd87f416, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 21902911167295488
+    m_Localized: GAME DEVELOPMENT TEAM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21903198783303680
+    m_Localized: ART & DESIGN TEAM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21905431323242496
+    m_Localized: SPECIAL THANKS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21905223872966656
+    m_Localized: TOOLS & ASSETS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21905649624182784
+    m_Localized: '<size=70%>A GAME BY</size>
+
+      PIXEL PURGE STUDIO'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21912931883839488
+    m_Localized: DEVELOPER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21913019142139904
+    m_Localized: TECH ARTIST
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21916940417921024
+    m_Localized: FACULTY ADVISOR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21917552744361984
+    m_Localized: SUPPORT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21918331039412224
+    m_Localized: GAME ENGINE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21919224937869312
+    m_Localized: GAME ASSET
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21920701811027968
+    m_Localized: SKIP >>
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

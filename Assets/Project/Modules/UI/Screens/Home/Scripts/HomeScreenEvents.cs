@@ -16,6 +16,11 @@ namespace Game
         {
             SceneNavigator.Instance.LoadAdditiveSceneAsync(SceneID.HOME, SceneID.SETTINGS);
         }
+
+        public void OnCreditsClick()
+        {
+            SceneNavigator.Instance.LoadAdditiveSceneAsync(SceneID.HOME, SceneID.CREDITS);
+        }
         #endregion
     }
 }

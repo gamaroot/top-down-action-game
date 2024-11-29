@@ -26,6 +26,10 @@ MonoBehaviour:
     m_Localized: AJUSTES
     m_Metadata:
       m_Items: []
+  - m_Id: 21924388377751552
+    m_Localized: "CR\xC9DITOS"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

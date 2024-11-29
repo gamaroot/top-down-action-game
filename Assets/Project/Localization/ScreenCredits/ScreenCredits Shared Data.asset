@@ -14,7 +14,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TableCollectionName: ScreenCredits
   m_TableCollectionNameGuidString: 4dd3436d0c3c97746b8cecfecd87f416
-  m_Entries: []
+  m_Entries:
+  - m_Id: 21902911167295488
+    m_Key: txt_credits_game_dev_team
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21903198783303680
+    m_Key: txt_credits_art_design_team
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21905223872966656
+    m_Key: txt_credits_tools_assets
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21905431323242496
+    m_Key: txt_credits_special_thanks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21905649624182784
+    m_Key: txt_credits_game_by
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21912931883839488
+    m_Key: txt_credits_dev
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21913019142139904
+    m_Key: txt_credits_tech_artist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21916940417921024
+    m_Key: txt_credits_faculty_advisor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21917552744361984
+    m_Key: txt_credits_support
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21918331039412224
+    m_Key: txt_credits_game_engine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21919224937869312
+    m_Key: txt_credits_game_asset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21920701811027968
+    m_Key: btn_skip
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

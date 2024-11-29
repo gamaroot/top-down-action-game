@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Project/Scenes/Game Over.unity
     guid: b772f3fea82be884ca1005928d279c94
+  - enabled: 1
+    path: Assets/Project/Scenes/Credits.unity
+    guid: b531087da545c984f8282015c6fe8174
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 06343199f786fdd4a8f10e4618bb2374,
       type: 2}
