@@ -1,5 +1,4 @@
 using ScreenNavigation;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
