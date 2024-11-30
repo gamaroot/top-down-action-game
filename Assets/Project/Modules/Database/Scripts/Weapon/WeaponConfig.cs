@@ -14,6 +14,5 @@ namespace Game.Database
         [field: SerializeField] public SFXTypeExplosion SfxOnExplode { get; set; }
         [field: SerializeField] public SpawnTypeExplosion ExplosionType { get; set; }
         [field: SerializeField] public float ProjectileSpeed { get; set; } = 20f;
-        [field: SerializeField] public float ChanceOfBeingPinky { get; set; }
     }
 }

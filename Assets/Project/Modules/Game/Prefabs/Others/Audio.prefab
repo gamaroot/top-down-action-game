@@ -42,7 +42,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435047698766939487}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c424cff2488f0f84eb654c60fae68d82, type: 3}
   m_Name: 
@@ -66,10 +66,25 @@ MonoBehaviour:
   - {fileID: 6232345519844320643, guid: 5cddfc4dd13645041b21ae9a14dea1c1, type: 3}
   _projectileSfxPrefabs:
   - {fileID: 6232345519844320643, guid: 81c65b00b5df7054bbfd691f49482393, type: 3}
+  - {fileID: 6232345519844320643, guid: 60dedb0d3a7c83a43a07494fba6db2c4, type: 3}
+  - {fileID: 6232345519844320643, guid: bed987587dcb29049aa4622aa1e674f3, type: 3}
+  - {fileID: 6232345519844320643, guid: c0b011bfcba0d0c48abd2c94f18d0fee, type: 3}
+  - {fileID: 6232345519844320643, guid: 437065311304a94478a2ea974c4d53fd, type: 3}
+  - {fileID: 6232345519844320643, guid: b104e36500045ae4a84717940d9d1ec7, type: 3}
+  - {fileID: 6232345519844320643, guid: d04aebd28f210b54797fd8f094ebfcf0, type: 3}
+  - {fileID: 6232345519844320643, guid: 0594ead7df1cfb545b16563033aa0c1c, type: 3}
   _explosionSfxPrefabs:
   - {fileID: 6232345519844320643, guid: ab895169c4ccf3142bccc973fa187c6b, type: 3}
   - {fileID: 6232345519844320643, guid: fcb06c5c0c4b52e459aa70e6b236eaa5, type: 3}
   - {fileID: 6232345519844320643, guid: fadd76bf1f05cc14da79d3ffba3c600c, type: 3}
+  - {fileID: 6232345519844320643, guid: 5bb46598804f513468f9d1d3e2a38448, type: 3}
+  - {fileID: 6232345519844320643, guid: dec11b51f0a1ff847bb8b6cf5582b63e, type: 3}
+  - {fileID: 6232345519844320643, guid: 8c3b4822478f16f4aa9a7815e6b86601, type: 3}
+  - {fileID: 6232345519844320643, guid: 9208c4018d8bb9348bd4cfa4a1d58449, type: 3}
+  - {fileID: 6232345519844320643, guid: ee034f133a97fa941bb85aa6636bcf2f, type: 3}
+  - {fileID: 6232345519844320643, guid: a99f9c07fe8989c44a664feec64f4796, type: 3}
+  - {fileID: 6232345519844320643, guid: 7b30ac6c1c9745b418f0d6628fc663c4, type: 3}
+  - {fileID: 6232345519844320643, guid: f30e82025dbf3b348a92bdb39c602e12, type: 3}
   _otherSfxPrefabs:
   - {fileID: 6232345519844320643, guid: 28d427be75c992344a3f96230959678f, type: 3}
   - {fileID: 6232345519844320643, guid: 5d471314ac2739240b2e7bd09cd03f57, type: 3}

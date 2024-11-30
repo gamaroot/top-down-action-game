@@ -7,7 +7,6 @@ namespace Game
     public class PlayerAimController : MonoBehaviour
     {
         [Header("Attributes")]
-        [SerializeField] private float _rotationSpeed = 10f;
         [SerializeField] private LayerMask _groundLayerMask;
 
         private void Update()

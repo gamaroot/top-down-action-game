@@ -998,6 +998,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: Audio
       objectReference: {fileID: 0}
+    - target: {fileID: 4689902827515598904, guid: b3627d78b00089745aaadea6d58ed508,
+        type: 3}
+      propertyPath: _projectileSfxPrefabs.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4689902827515598904, guid: b3627d78b00089745aaadea6d58ed508,
+        type: 3}
+      propertyPath: '_explosionSfxPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6232345519844320643, guid: fadd76bf1f05cc14da79d3ffba3c600c,
+        type: 3}
+    - target: {fileID: 4689902827515598904, guid: b3627d78b00089745aaadea6d58ed508,
+        type: 3}
+      propertyPath: '_explosionSfxPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6232345519844320643, guid: ab895169c4ccf3142bccc973fa187c6b,
+        type: 3}
+    - target: {fileID: 4689902827515598904, guid: b3627d78b00089745aaadea6d58ed508,
+        type: 3}
+      propertyPath: '_explosionSfxPrefabs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 6232345519844320643, guid: fcb06c5c0c4b52e459aa70e6b236eaa5,
+        type: 3}
+    - target: {fileID: 4689902827515598904, guid: b3627d78b00089745aaadea6d58ed508,
+        type: 3}
+      propertyPath: '_projectileSfxPrefabs.Array.data[8]'
+      value: 
+      objectReference: {fileID: 6232345519844320643, guid: 0f65d45b69da48a40913cb505e29237e,
+        type: 3}
     - target: {fileID: 7473649823050092034, guid: b3627d78b00089745aaadea6d58ed508,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1047,11 +1076,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8358713076012240547, guid: b3627d78b00089745aaadea6d58ed508,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1195,11 +1219,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spawnables
-      objectReference: {fileID: 0}
-    - target: {fileID: 8244331601106842761, guid: f2a53efdd5098974b871f831042b4348,
-        type: 3}
-      propertyPath: _trapPrefabs.Array.size
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

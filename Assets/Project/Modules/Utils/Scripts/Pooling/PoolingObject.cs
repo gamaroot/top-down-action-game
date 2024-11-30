@@ -9,6 +9,9 @@ namespace Game
 
         private void OnEnable()
         {
+            if (this._pool == null) // Game is being closed
+                return;
+
             base.transform.SetParent(this._pool.GetParent());
 
             if (this._autoDisableTimer > 0)

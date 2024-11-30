@@ -8,39 +8,22 @@ namespace Game
     public class Bullet : MonoBehaviour
     {
         [Header("Components")]
-        [SerializeField, ReadOnly] private ParticleSystem _particleSystem;
         [SerializeField, ReadOnly] private Rigidbody _rigidbody;
         [SerializeField, ReadOnly] private DamageDealer _damageDealer;
 
-        [Header("Others")]
-        [SerializeField, ReadOnly] private Color _originalColor;
-        [SerializeField, ReadOnly] private Color _pinkColor;
-
-        public bool IsPinky { get; private set; }
         private IWeaponConfig _config;
 
         private void OnValidate()
         {
-            if (this._particleSystem == null)
-                this._particleSystem = this.GetComponent<ParticleSystem>();
-
             if (this._rigidbody == null)
                 this._rigidbody = base.GetComponent<Rigidbody>();
 
             if (this._damageDealer == null)
                 this._damageDealer = base.GetComponent<DamageDealer>();
-
-            this._originalColor = this._particleSystem.main.startColor.color;
-            this._pinkColor = Color.magenta;
         }
 
         private void OnEnable()
         {
-            this.IsPinky = Random.Range(0, 1f) < this._config.ChanceOfBeingPinky;
-
-            ParticleSystem.MainModule main = this._particleSystem.main;
-            main.startColor = this.IsPinky ? this._pinkColor : this._originalColor;
-
             SFX.PlayProjectile(this._config.SfxOnShoot);
         }
 
@@ -56,9 +39,6 @@ namespace Game
 
             ParticleSystem particle = SpawnablePool.SpawnExplosion<ParticleSystem>(this._config.ExplosionType);
             particle.transform.position = base.transform.position;
-
-            ParticleSystem.MainModule main = particle.main;
-            main.startColor = this._particleSystem.main.startColor;
             particle.gameObject.SetActive(true);
         }
 

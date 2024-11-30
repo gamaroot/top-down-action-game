@@ -84,7 +84,6 @@ namespace Game
                     })
                     .OnUpdate(() =>
                     {
-                        Debug.LogWarning($"currentValue: {currentValue}");
                         this._vignetteLayer.intensity.value = currentValue;
                     })
                     .OnComplete(() =>

@@ -163,7 +163,6 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\EnemyShooter.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\CharacterConfig.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Behavior\ShootTarget.cs" />
-    <Compile Include="Assets\Project\Modules\Audio\Scripts\SFXTypeOther.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeOther.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Map\MapGenerator.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\DashHandler.cs" />

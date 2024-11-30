@@ -7,7 +7,6 @@ namespace Game
         [SerializeField] private GameObject[] _uiSfxPrefabs;
         [SerializeField] private GameObject[] _projectileSfxPrefabs;
         [SerializeField] private GameObject[] _explosionSfxPrefabs;
-        [SerializeField] private GameObject[] _otherSfxPrefabs;
 
         private readonly static Pool[][] _pools = new Pool[4][];
 
@@ -17,7 +16,6 @@ namespace Game
             this.CreatePool(0, baseTransform, this._uiSfxPrefabs);
             this.CreatePool(1, baseTransform, this._projectileSfxPrefabs);
             this.CreatePool(2, baseTransform, this._explosionSfxPrefabs);
-            this.CreatePool(3, baseTransform, this._otherSfxPrefabs);
         }
 
         public static void PlayUI(SFXTypeUI type)
@@ -33,11 +31,6 @@ namespace Game
         public static void PlayExplosion(SFXTypeExplosion type)
         {
             Play(2, (int)type);
-        }
-
-        public static void PlayOther(SFXTypeOther type)
-        {
-            Play(3, (int)type);
         }
 
         private static void Play(int order, int type)
