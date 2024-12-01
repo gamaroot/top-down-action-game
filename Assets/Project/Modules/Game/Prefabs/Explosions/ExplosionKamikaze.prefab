@@ -29025,6 +29025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 798c8432ee237834c9f9be89b0c1e924, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Damage>k__BackingField: 5
 --- !u!198 &135917828757736830
 ParticleSystem:
   m_ObjectHideFlags: 0

@@ -47,10 +47,6 @@ MonoBehaviour:
     m_Key: btn_play
     m_Metadata:
       m_Items: []
-  - m_Id: 10141951355133952
-    m_Key: btn_exit
-    m_Metadata:
-      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

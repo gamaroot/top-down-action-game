@@ -5,7 +5,7 @@ namespace Game
     public class DamageDealer : MonoBehaviour
     {
         public float ID { get; private set; }
-        public int Damage { get; private set; }
+        [field: SerializeField] public int Damage { get; private set; }
 
         private void OnEnable()
         {
