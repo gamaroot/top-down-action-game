@@ -7,7 +7,8 @@ namespace Game
     [RequireComponent(typeof(AIMovementController), typeof(EnemyHealthController))]
     public abstract class Enemy : MonoBehaviour
     {
-        [Header("Components")]
+        [SerializeField] private SpawnTypeEnemy _type;
+
         [SerializeField, ReadOnly] protected AIMovementController _movementController;
         [SerializeField, ReadOnly] protected WeaponController _weaponController;
         [SerializeField, ReadOnly] protected EnemyHealthController _healthController;
@@ -26,12 +27,11 @@ namespace Game
 
         public void Init(IGameManager gameManager)
         {
-            IEnemyConfig enemyConfig = gameManager.EnemyConfig[(int)this.Type];
-            this._healthController.Init(enemyConfig);
-            this._healthController.Listener.OnDeath = () => gameManager.OnEnemyKill(enemyConfig);
+            IEnemyConfig config = gameManager.EnemyConfig[(int)this._type];
+            this._healthController.Init(config, config.Type == SpawnTypeEnemy.KAMIKAZE);
+            this._healthController.Listener.OnDeath = () => gameManager.OnEnemyKill(config);
 
-            if (this._weaponController != null)
-                this._weaponController.Init(gameManager.WeaponConfig);
+            this._weaponController?.Init(gameManager.WeaponConfig);
         }
 
         public void FaceTarget(Vector3 point)
@@ -43,7 +43,5 @@ namespace Game
         {
             this._movementController.Move(point);
         }
-
-        protected abstract SpawnTypeEnemy Type { get; }
     }
 }

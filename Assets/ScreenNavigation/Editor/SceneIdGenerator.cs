@@ -1,5 +1,6 @@
-using UnityEditor;
+#if UNITY_EDITOR
 using UnityEngine;
+using UnityEditor;
 
 public class SceneIdGenerator : MonoBehaviour
 {
@@ -35,3 +36,4 @@ public class SceneIdGenerator : MonoBehaviour
         Debug.Log("SceneID.cs updated with current scenes!");
     }
 }
+#endif

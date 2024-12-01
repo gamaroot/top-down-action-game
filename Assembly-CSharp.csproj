@@ -212,6 +212,7 @@
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_ColorRGB.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\2dxfx_AL\_2dxFX_AL_Lightning.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\2dxfx_AL\_2dxFX_AL_Pixel8bitsBW.cs" />
+    <Compile Include="Assets\BehaviorIL2CPPTypes.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_SkyCloud.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\2dxfx_AL\_2dxFX_AL_BurningFX.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\2dxfx_AL\_2dxFX_AL_Outline.cs" />
@@ -516,6 +517,7 @@
     <None Include="Assets\SampleAssets\VFX\2DxFX\ExtraShaders\Shader\Additive.shader" />
     <None Include="Assets\SampleAssets\VFX\2DxFX\Resources\2dxfx_AL\_2dxFX_AL_MetalFX.shader" />
     <None Include="Assets\SampleAssets\VFX\2DxFX\Resources\_2dxFX_GrassMultiFX.shader" />
+    <None Include="Assets\link.xml" />
     <None Include="Assets\SampleAssets\VFX\2DxFX\ExtraShaders\Shader\Animated_Twist.shader" />
     <None Include="Assets\SampleAssets\VFX\SineVFX\Volumetric3DLasers\Resources\Shaders\ParticleDistortedCenter.shader" />
     <None Include="Assets\SampleAssets\VFX\2DxFX\Resources\_2dxFX_BlurHQ.shader" />

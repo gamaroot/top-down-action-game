@@ -77,6 +77,7 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Weapon\Bullet.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\ICharacterConfig.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Map\MapConfigDatabase.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Behavior\AvoidBulletAction.cs" />
     <Compile Include="Assets\Project\Modules\UI\Screens\CharacterSetup\Scripts\CharacterSetupScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\EnemyHealthController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\CharacterHealthEvents.cs" />
@@ -97,19 +98,16 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\TrapDamageController.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Extension\ReflectionUtils.cs" />
     <Compile Include="Assets\Project\Modules\UI\Screens\GameOver\Scripts\GameOverScreenEvents.cs" />
-    <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeExplosion.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\InputFeedback\ClickFeedback.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Map\IMapConfig.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Player\PlayerConfigDatabase.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Editor\GameSetupEditor.cs" />
     <Compile Include="Assets\Project\Modules\UI\Screens\Home\Scripts\HomeScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\UI\Toast\Scripts\Toast.cs" />
-    <Compile Include="Assets\Project\Modules\Audio\Scripts\SFXTypeExplosion.cs" />
     <Compile Include="Assets\Project\Modules\UI\Screens\GameOver\Scripts\CanvasRoomDisplay.cs" />
     <Compile Include="Assets\Project\Modules\UI\Toast\Scripts\ToastType.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\CrossSceneReference.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\CharacterStats.cs" />
-    <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypeProjectile.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Weapon\IWeaponConfig.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerHealthController.cs" />
     <Compile Include="Assets\Project\Modules\Constants\Scripts\ProjectPaths.cs" />
@@ -125,7 +123,6 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Weapon\WeaponType.cs" />
     <Compile Include="Assets\Project\Modules\Debug\Scripts\DebugScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Enemy\EnemyConfig.cs" />
-    <Compile Include="Assets\Project\Modules\Audio\Scripts\SFXTypeProjectile.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\InputFeedback\Vibration.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Map\Room.cs" />
@@ -179,6 +176,7 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\EnemyKamikaze.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Persistance\GameState\PlayerState.cs" />
     <Compile Include="Assets\Project\Modules\UI\Screens\Credits\Scripts\CreditsScreenEvents.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Map\MapExitPortal.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Map\RoomConfig.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1277,12 +1275,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

@@ -10,9 +10,6 @@ namespace Game.Database
         [field: SerializeField] public int Damage { get; set; } = 1;
         [field: SerializeField] public float ShootInterval { get; set; } = 0.3f;
         [field: SerializeField] public float Range { get; set; } = 10f;
-        [field: SerializeField] public SFXTypeProjectile SfxOnShoot { get; set; }
-        [field: SerializeField] public SFXTypeExplosion SfxOnExplode { get; set; }
-        [field: SerializeField] public SpawnTypeExplosion ExplosionType { get; set; }
         [field: SerializeField] public float ProjectileSpeed { get; set; } = 20f;
     }
 }

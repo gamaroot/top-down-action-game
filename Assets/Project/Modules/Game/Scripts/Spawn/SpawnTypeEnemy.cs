@@ -3,6 +3,7 @@ namespace Game
     public enum SpawnTypeEnemy
     {
         KAMIKAZE,
-        SHOOTER_ENERGY_MISSILE,
+        SHOOTER_PLASMA,
+        BOSS_0,
     }
 }

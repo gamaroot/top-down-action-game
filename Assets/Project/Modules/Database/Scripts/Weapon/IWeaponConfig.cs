@@ -6,9 +6,6 @@ namespace Game.Database
         int Damage { get; }
         float ShootInterval { get; }
         float Range { get; }
-        SFXTypeProjectile SfxOnShoot { get; }
-        SFXTypeExplosion SfxOnExplode { get; }
-        SpawnTypeExplosion ExplosionType { get; }
         float ProjectileSpeed { get; }
     }
 }

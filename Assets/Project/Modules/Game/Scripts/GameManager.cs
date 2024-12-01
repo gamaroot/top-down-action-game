@@ -99,19 +99,15 @@ namespace Game
             this.OnPlayerLevelUpdateListener.Invoke(newLevel);
         }
 
+        public void OnPlayerEscape()
+        {
+            this.HandleGameEnd();
+        }
+
         public void OnPlayerDeath()
         {
             Statistics.Instance.OnPlayerDeath();
-            Statistics.Instance.OnGameOver(this._gameStateHandler.GameState.PlayerState.XpGained);
-
-            int previousLevel = this._gameStateHandler.GameState.PlayerState.InitialLevel;
-            int currentLevel = this._gameStateHandler.GameState.PlayerState.Level;
-
-            if (SceneNavigator.Instance.IsSceneOpened(SceneID.DEBUG))
-                return;
-
-            SceneNavigator.Instance.SetSceneParams(SceneID.GAME_OVER, (previousLevel, currentLevel, this._rooms));
-            SceneNavigator.Instance.LoadAdditiveSceneAsync(SceneID.GAME, SceneID.GAME_OVER);
+            this.HandleGameEnd();
         }
 
         public void OnEnemyKill(IEnemyConfig enemy)
@@ -131,6 +127,20 @@ namespace Game
                 else
                     this._rooms[index].HideIfPlayerIsNotHere();
             }
+        }
+
+        private void HandleGameEnd()
+        {
+            Statistics.Instance.OnGameOver(this._gameStateHandler.GameState.PlayerState.XpGained);
+
+            int previousLevel = this._gameStateHandler.GameState.PlayerState.InitialLevel;
+            int currentLevel = this._gameStateHandler.GameState.PlayerState.Level;
+
+            if (SceneNavigator.Instance.IsSceneOpened(SceneID.DEBUG))
+                return;
+
+            SceneNavigator.Instance.SetSceneParams(SceneID.GAME_OVER, (previousLevel, currentLevel, this._rooms));
+            SceneNavigator.Instance.LoadAdditiveSceneAsync(SceneID.GAME, SceneID.GAME_OVER);
         }
 
         private void OnGameStart()

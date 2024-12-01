@@ -1,5 +1,6 @@
 using Game.Database;
 using UnityEngine;
+using Utils;
 
 namespace Game
 {
@@ -7,6 +8,7 @@ namespace Game
     {
         [Header("Attributes")]
         [SerializeField] private WeaponType _weaponType;
+        [SerializeField] private Tags _weaponTag;
         [SerializeField] private LayerMask _weaponLayerMask;
 
         [Header("Components")]
@@ -42,7 +44,8 @@ namespace Game
 
         public void Shoot()
         {
-            Bullet bullet = SpawnablePool.SpawnProjectile<Bullet>(SpawnTypeProjectile.ENERGY_MISSILE);
+            Bullet bullet = SpawnablePool.SpawnBullet(this._weaponType);
+            bullet.tag = this._weaponTag.ToString();
             bullet.gameObject.layer = this._weaponLayerIndex;
             bullet.Setup(this._config);
             bullet.Shoot(this._shootPoint);

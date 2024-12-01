@@ -6,8 +6,11 @@ namespace Utils
     public class Sensor : MonoBehaviour
     {
         [SerializeField] private Tags _targetTag = Tags.Player;
+        [SerializeField] private Tags _enemyBulletTag = Tags.PlayerBullet;
         [SerializeField] private LayerMask _obstacleLayer;
         [SerializeField, ReadOnly] private SphereCollider _sphereCollider;
+
+        public Transform IncomingBullet { get; private set; }
 
         public GameObject Target { get; private set; }
         public bool IsTargetOnSight => this.Target != null && this.Target.activeSelf;
@@ -39,6 +42,27 @@ namespace Utils
             {
                 this.Target = collider.gameObject;
                 Debug.Log($"Sensor: \"{base.name}\" detected \"{collider.name}\"");
+            }
+            else if (collider.CompareTag(this._enemyBulletTag.ToString()))
+            {
+                // Checks if collider is going to the direction of the sensor
+                Vector3 direction = (collider.transform.position - base.transform.position).normalized;
+                float dot = Vector3.Dot(direction, base.transform.forward);
+
+                // If the dot product is positive, the bullet is coming towards the sensor
+                if (dot > 0)
+                {
+                    if (this.IncomingBullet != null)
+                    {
+                        // If there's already an incoming bullet, compare the distance
+                        float distanceToNewBullet = Vector3.Distance(base.transform.position, collider.transform.position);
+                        float distanceToOldBullet = Vector3.Distance(base.transform.position, this.IncomingBullet.position);
+                        if (distanceToNewBullet > distanceToOldBullet)
+                            return;
+                    }
+                    this.IncomingBullet = collider.transform;
+                    Debug.Log($"Sensor: \"{base.name}\" detected an incoming bullet \"{collider.name}\"");
+                }
             }
         }
 

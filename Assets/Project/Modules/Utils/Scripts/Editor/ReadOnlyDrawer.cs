@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 using Utils;
@@ -13,3 +14,4 @@ public class ReadOnlyDrawer : PropertyDrawer
         GUI.enabled = true; // Re-enable editing for other fields
     }
 }
+#endif

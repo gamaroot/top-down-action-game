@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7224569242903238685
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7099176212647519680}
+  - component: {fileID: 8244331601106842761}
+  m_Layer: 0
+  m_Name: Spawnables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &7099176212647519680
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7224569242903238685}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8244331601106842761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7224569242903238685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c157c16b3b71b3242a13caf2054820a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _deathPrefab: {fileID: 1266414787855183226, guid: 5c0c3c32f177ae34c9a62152f631c6de,
+    type: 3}
+  _kamikazePrefab: {fileID: 6697703107581756453, guid: 41e6666412e91814eb7e2441033e132c,
+    type: 3}
+  _enemyPrefabs:
+  - {fileID: 9036938352783240745, guid: 6d87a44cab9fb3648acdbfe14508f5e8, type: 3}
+  - {fileID: 9036938352783240745, guid: 78c3dbd8f65962a4f8f79255fb731ec4, type: 3}
+  - {fileID: 9036938352783240745, guid: 5992afc3c46ea5f4fba618969e490535, type: 3}
+  _bulletPrefabs:
+  - {fileID: 8041255665691112014, guid: 0158f8d842891eb449a461898b092704, type: 3}
+  - {fileID: 147436, guid: 8b6bbccf40391c04fafefce2fcc7a143, type: 3}
+  - {fileID: 160792, guid: f1ed26554a26fb34281ceb0fd4e700af, type: 3}
+  - {fileID: 169190, guid: 2e002cee4ba14114cbe643db10f2a27c, type: 3}
+  - {fileID: 1989749297337968, guid: cce23e04c77d46448b13027e4d39c07f, type: 3}
+  - {fileID: 180214, guid: 2ba55992df31d2e4f984abc9898c2bff, type: 3}
+  - {fileID: 183996, guid: eb058855a62282a46a26c2de3324e52b, type: 3}
+  - {fileID: 150356, guid: 8db946152af2cf342ba622c86ebf4a94, type: 3}
+  - {fileID: 104164, guid: 17a84a50866dd0f479337a1e9f93fbcb, type: 3}
+  _bulletImpactPrefabs:
+  - {fileID: 1873985756121678, guid: 3b417d6889c0b9f4383809bb58ebe1a9, type: 3}
+  - {fileID: 130848, guid: ccb7926d519a61d4fa98afc39de2ac9a, type: 3}
+  - {fileID: 153912, guid: c163791ed2d99ff408dbed51f8aecc91, type: 3}
+  - {fileID: 134664, guid: 349d0ea15fe3e3c46a061da4a7015c2f, type: 3}
+  - {fileID: 1938031414114752, guid: 238940c9f2150e0429692e0f0947a3bd, type: 3}
+  - {fileID: 1678425991723802, guid: 5d440356b8df10c4d899eab961b02d05, type: 3}
+  - {fileID: 111992, guid: af1f87a0e63281646b12b15224831dc4, type: 3}
+  - {fileID: 1282100793984216, guid: 10390e176235fd8428a54ae279d76a9c, type: 3}
+  - {fileID: 169216, guid: 6a475445bff8f074db7d40f5f37e4868, type: 3}
+  _trapPrefabs:
+  - {fileID: 3720952991487081650, guid: f6ea72370e8af4e47b9f7409d0f4bbf8, type: 3}
+  - {fileID: 7750034016938775924, guid: 330c992fb7fad6c4486724ed053a2d82, type: 3}
+  - {fileID: 4585351776358199094, guid: 6486bf66ec268c74d85d33b550e2d9cc, type: 3}
+  - {fileID: 7630919769153759379, guid: b460bd9e54a08f041bf88a23712fd8a6, type: 3}
+  _otherPrefabs:
+  - {fileID: 7815843732655380410, guid: 74c2faa695ddc6f4aa2e4e71d740f2a6, type: 3}
+  - {fileID: 7815843732655380410, guid: 69a79b5b50e81064f8021b8387f97477, type: 3}
+  - {fileID: 4019034124310788045, guid: 3af59cf2b804ec346a4e2d7fc5afd4cb, type: 3}

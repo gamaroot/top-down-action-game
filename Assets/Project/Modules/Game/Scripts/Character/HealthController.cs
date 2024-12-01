@@ -86,11 +86,15 @@ namespace Game
             else
                 this.Listener.OnDeath?.Invoke();
 
-            SFX.PlayExplosion(this._config.DeathSFX);
+            this.OnSpawnDeathFX();
+        }
 
-            ParticleSystem explosion = SpawnablePool.SpawnExplosion<ParticleSystem>(this._config.DeathVFX);
-            explosion.transform.position = base.transform.position;
-            explosion.gameObject.SetActive(true);
+        protected virtual void OnSpawnDeathFX()
+        {
+            SFX.PlayDeath();
+            GameObject vfx = SpawnablePool.SpawnDeath();
+            vfx.transform.position = base.transform.position;
+            vfx.gameObject.SetActive(true);
         }
 
         protected void OnRespawn()

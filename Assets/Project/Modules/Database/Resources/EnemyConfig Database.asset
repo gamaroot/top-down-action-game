@@ -21,15 +21,13 @@ MonoBehaviour:
       DashCooldown: 0
       ParryDuration: 0
       ParryCooldown: 0
-    <DeathVFX>k__BackingField: 1
-    <DeathSFX>k__BackingField: 1
     <Type>k__BackingField: 0
-    <XpReward>k__BackingField: 10
+    <XpReward>k__BackingField: 1
     <TargetTag>k__BackingField: 5
     <ObstacleLayer>k__BackingField:
       serializedVersion: 2
       m_Bits: 8
-    <DetectionRadius>k__BackingField: 20
+    <DetectionRadius>k__BackingField: 10
   - <Stats>k__BackingField:
       MaxHealth: 4
       MovementSpeed: 9
@@ -38,12 +36,25 @@ MonoBehaviour:
       DashCooldown: 0
       ParryDuration: 0
       ParryCooldown: 0
-    <DeathVFX>k__BackingField: 0
-    <DeathSFX>k__BackingField: 0
     <Type>k__BackingField: 1
-    <XpReward>k__BackingField: 20
+    <XpReward>k__BackingField: 2
     <TargetTag>k__BackingField: 5
     <ObstacleLayer>k__BackingField:
       serializedVersion: 2
       m_Bits: 8
-    <DetectionRadius>k__BackingField: 20
+    <DetectionRadius>k__BackingField: 10
+  - <Stats>k__BackingField:
+      MaxHealth: 20
+      MovementSpeed: 10
+      DashSpeed: 0
+      DashDuration: 0
+      DashCooldown: 0
+      ParryDuration: 0
+      ParryCooldown: 0
+    <Type>k__BackingField: 2
+    <XpReward>k__BackingField: 50
+    <TargetTag>k__BackingField: 5
+    <ObstacleLayer>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 8
+    <DetectionRadius>k__BackingField: 50

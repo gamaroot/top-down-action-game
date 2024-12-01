@@ -14,90 +14,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Config>k__BackingField:
   - <Type>k__BackingField: 0
-    <Damage>k__BackingField: 10
-    <ShootInterval>k__BackingField: 0
-    <Range>k__BackingField: 0
-    <SfxOnShoot>k__BackingField: -1
-    <SfxOnExplode>k__BackingField: 0
-    <ExplosionType>k__BackingField: 0
-    <ProjectileSpeed>k__BackingField: 0
-  - <Type>k__BackingField: 1
     <Damage>k__BackingField: 1
-    <ShootInterval>k__BackingField: 0.3
+    <ShootInterval>k__BackingField: 0.4
     <Range>k__BackingField: 10
-    <SfxOnShoot>k__BackingField: 0
-    <SfxOnExplode>k__BackingField: 2
-    <ExplosionType>k__BackingField: 2
+    <ProjectileSpeed>k__BackingField: 20
+  - <Type>k__BackingField: 1
+    <Damage>k__BackingField: 2
+    <ShootInterval>k__BackingField: 0.5
+    <Range>k__BackingField: 10
     <ProjectileSpeed>k__BackingField: 20
   - <Type>k__BackingField: 2
-    <Damage>k__BackingField: 1
-    <ShootInterval>k__BackingField: 0.3
+    <Damage>k__BackingField: 2
+    <ShootInterval>k__BackingField: 0.5
     <Range>k__BackingField: 10
-    <SfxOnShoot>k__BackingField: 1
-    <SfxOnExplode>k__BackingField: 3
-    <ExplosionType>k__BackingField: 3
     <ProjectileSpeed>k__BackingField: 20
   - <Type>k__BackingField: 3
     <Damage>k__BackingField: 1
     <ShootInterval>k__BackingField: 0.3
     <Range>k__BackingField: 10
-    <SfxOnShoot>k__BackingField: 2
-    <SfxOnExplode>k__BackingField: 4
-    <ExplosionType>k__BackingField: 4
     <ProjectileSpeed>k__BackingField: 20
   - <Type>k__BackingField: 4
-    <Damage>k__BackingField: 1
-    <ShootInterval>k__BackingField: 0.3
+    <Damage>k__BackingField: 2
+    <ShootInterval>k__BackingField: 0.5
     <Range>k__BackingField: 10
-    <SfxOnShoot>k__BackingField: 3
-    <SfxOnExplode>k__BackingField: 5
-    <ExplosionType>k__BackingField: 5
     <ProjectileSpeed>k__BackingField: 20
   - <Type>k__BackingField: 5
-    <Damage>k__BackingField: 1
-    <ShootInterval>k__BackingField: 0.3
+    <Damage>k__BackingField: 3
+    <ShootInterval>k__BackingField: 0.6
     <Range>k__BackingField: 10
-    <SfxOnShoot>k__BackingField: 4
-    <SfxOnExplode>k__BackingField: 6
-    <ExplosionType>k__BackingField: 6
-    <ProjectileSpeed>k__BackingField: 20
-  - <Type>k__BackingField: 5
-    <Damage>k__BackingField: 1
-    <ShootInterval>k__BackingField: 0.3
-    <Range>k__BackingField: 10
-    <SfxOnShoot>k__BackingField: 4
-    <SfxOnExplode>k__BackingField: 6
-    <ExplosionType>k__BackingField: 6
     <ProjectileSpeed>k__BackingField: 20
   - <Type>k__BackingField: 6
-    <Damage>k__BackingField: 1
-    <ShootInterval>k__BackingField: 0.3
+    <Damage>k__BackingField: 4
+    <ShootInterval>k__BackingField: 0.7
     <Range>k__BackingField: 10
-    <SfxOnShoot>k__BackingField: 5
-    <SfxOnExplode>k__BackingField: 7
-    <ExplosionType>k__BackingField: 7
     <ProjectileSpeed>k__BackingField: 20
   - <Type>k__BackingField: 7
-    <Damage>k__BackingField: 1
-    <ShootInterval>k__BackingField: 0.3
+    <Damage>k__BackingField: 4
+    <ShootInterval>k__BackingField: 0.7
     <Range>k__BackingField: 10
-    <SfxOnShoot>k__BackingField: 6
-    <SfxOnExplode>k__BackingField: 8
-    <ExplosionType>k__BackingField: 8
     <ProjectileSpeed>k__BackingField: 20
   - <Type>k__BackingField: 8
-    <Damage>k__BackingField: 1
-    <ShootInterval>k__BackingField: 0.3
+    <Damage>k__BackingField: 4
+    <ShootInterval>k__BackingField: 0.7
     <Range>k__BackingField: 10
-    <SfxOnShoot>k__BackingField: 7
-    <SfxOnExplode>k__BackingField: 9
-    <ExplosionType>k__BackingField: 9
-    <ProjectileSpeed>k__BackingField: 20
-  - <Type>k__BackingField: 9
-    <Damage>k__BackingField: 1
-    <ShootInterval>k__BackingField: 0.3
-    <Range>k__BackingField: 10
-    <SfxOnShoot>k__BackingField: 8
-    <SfxOnExplode>k__BackingField: 10
-    <ExplosionType>k__BackingField: 10
     <ProjectileSpeed>k__BackingField: 20

@@ -21,6 +21,7 @@ namespace Game
         void OnPlayerXpUpdated(float xp, float xpToNextLevel);
         void OnPlayerLevelUp(float xpToNextLevel);
         void OnPlayerDeath();
+        void OnPlayerEscape();
         void OnEnemyKill(IEnemyConfig enemy);
         void OnMapVisibilityChange(bool visible);
     }

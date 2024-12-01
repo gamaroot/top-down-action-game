@@ -1,7 +1,7 @@
+#if UNITY_EDITOR
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 using Utils;
@@ -124,12 +124,6 @@ namespace Game.Database
             this._playerConfig.MaxPointsForStats[4] = EditorGUILayout.IntField("Dash Cooldown", this._playerConfig.MaxPointsForStats[4]);
             this._playerConfig.MaxPointsForStats[5] = EditorGUILayout.IntField("Parry Duration", this._playerConfig.MaxPointsForStats[5]);
             this._playerConfig.MaxPointsForStats[6] = EditorGUILayout.IntField("Parry Cooldown", this._playerConfig.MaxPointsForStats[6]);
-
-
-            EditorGUILayout.Space();
-            EditorGUILayout.LabelField("[Others]", EditorStyles.boldLabel);
-            this._playerConfig.DeathVFX = (SpawnTypeExplosion)EditorGUILayout.EnumPopup("Death VFX", this._playerConfig.DeathVFX);
-            this._playerConfig.DeathSFX = (SFXTypeExplosion)EditorGUILayout.EnumPopup("Death SFX", this._playerConfig.DeathSFX);
         }
 
         private void DrawEnemyTab()
@@ -137,7 +131,7 @@ namespace Game.Database
             for (int index = 0; index < this._enemyConfigs.Length; index++)
             {
                 if (this._enemyConfigs[index] == null) this._enemyConfigs[index] = new();
-                this._enemyFoldouts[index] = EditorGUILayout.Foldout(this._enemyFoldouts[index], $"Enemy: {this._enemyConfigs[index].Type}", true);
+                this._enemyFoldouts[index] = EditorGUILayout.Foldout(this._enemyFoldouts[index], this._enemyConfigs[index].Type.ToString(), true);
 
                 if (!this._enemyFoldouts[index])
                     continue;
@@ -158,11 +152,6 @@ namespace Game.Database
                 this._enemyConfigs[index].ObstacleLayer = (LayerMask)layer;
                 this._enemyConfigs[index].DetectionRadius = EditorGUILayout.FloatField("Detection Radius", this._enemyConfigs[index].DetectionRadius);
 
-                EditorGUILayout.Space();
-                EditorGUILayout.LabelField("[Others]", EditorStyles.boldLabel);
-                this._enemyConfigs[index].DeathVFX = (SpawnTypeExplosion)EditorGUILayout.EnumPopup("Death VFX", this._enemyConfigs[index].DeathVFX);
-                this._enemyConfigs[index].DeathSFX = (SFXTypeExplosion)EditorGUILayout.EnumPopup("Death SFX", this._enemyConfigs[index].DeathSFX);
-
                 this._enemyConfigs[index].Stats = newStats;
 
                 EditorGUI.indentLevel--;
@@ -177,7 +166,7 @@ namespace Game.Database
                 if (this._weaponConfigs[index] == null)
                     this._weaponConfigs[index] = new();
 
-                this._weaponFoldouts[index] = EditorGUILayout.Foldout(this._weaponFoldouts[index], $"Weapon: {this._weaponConfigs[index].Type}", true);
+                this._weaponFoldouts[index] = EditorGUILayout.Foldout(this._weaponFoldouts[index], this._weaponConfigs[index].Type.ToString(), true);
 
                 if (!this._weaponFoldouts[index])
                     continue;
@@ -216,7 +205,8 @@ namespace Game.Database
                 EditorGUILayout.Space();
 
                 EditorGUILayout.BeginHorizontal();
-                this._roomFoldouts[index] = EditorGUILayout.Foldout(this._roomFoldouts[index], $"[Room #{index + 1}]", true, EditorStyles.boldLabel);
+
+                this._roomFoldouts[index] = EditorGUILayout.Foldout(this._roomFoldouts[index], $"Room {index + 1}", true, EditorStyles.boldLabel);
 
                 if (GUILayout.Button("-", GUILayout.Width(30)))
                     indicesToRemove.Add(this._mapConfig.RoomConfigs.Count - 1);
@@ -233,16 +223,23 @@ namespace Game.Database
 
                 EditorGUI.indentLevel++;
 
+                RoomType type = this._mapConfig.RoomConfigs[index].Prefab.Type;
+
+                EditorGUILayout.LabelField("Type", type.ToString());
+
                 this._mapConfig.RoomConfigs[index].Prefab = (RoomGenerator)EditorGUILayout.ObjectField("Prefab", this._mapConfig.RoomConfigs[index].Prefab, typeof(RoomGenerator), false);
 
-                if (this._mapConfig.RoomConfigs[index].Prefab.Type != RoomType.BASIC)
+                if (type == RoomType.EXIT)
+                    continue;
+
+                if (type != RoomType.BASIC)
                     this._mapConfig.RoomConfigs[index].MinRoomsBefore = EditorGUILayout.IntField("Min Rooms Before", this._mapConfig.RoomConfigs[index].MinRoomsBefore);
 
-
-                if (this._mapConfig.RoomConfigs[index].Prefab.Type != RoomType.BOSS)
+                if (type != RoomType.BOSS)
                 {
                     this._mapConfig.RoomConfigs[index].IsUnique = EditorGUILayout.Toggle("Is Unique", this._mapConfig.RoomConfigs[index].IsUnique);
 
+                    this.DrawHealthSpawnProperties(index);
                     this.DrawEnemySpawnProperties(index);
                     this.DrawTrapSpawnProperties(index);
                 }
@@ -282,6 +279,9 @@ namespace Game.Database
             EditorGUILayout.LabelField("Max", GUILayout.Width(40f));
             this._mapConfig.RoomConfigs[roomIndex].MaxTraps = EditorGUILayout.IntField(this._mapConfig.RoomConfigs[roomIndex].MaxTraps, GUILayout.Width(50f));
             EditorGUILayout.EndHorizontal();
+
+            if (this._mapConfig.RoomConfigs[roomIndex].MaxTraps == 0)
+                return;
 
             var indicesToRemove = new List<int>();
 
@@ -325,10 +325,13 @@ namespace Game.Database
             this._mapConfig.RoomConfigs[roomIndex].MaxEnemies = EditorGUILayout.IntField(this._mapConfig.RoomConfigs[roomIndex].MaxEnemies, GUILayout.Width(50f));
             EditorGUILayout.EndHorizontal();
 
+            if (this._mapConfig.RoomConfigs[roomIndex].MaxEnemies == 0)
+                return;
+
             var indicesToRemove = new List<int>();
 
             if (this._mapConfig.RoomConfigs[roomIndex].EnemyPool.Count == 0)
-                this._mapConfig.RoomConfigs[roomIndex].EnemyPool.Add(SpawnTypeEnemy.SHOOTER_ENERGY_MISSILE);
+                this._mapConfig.RoomConfigs[roomIndex].EnemyPool.Add(SpawnTypeEnemy.SHOOTER_PLASMA);
 
             this._enemySpawnFoldout = EditorGUILayout.Foldout(this._enemySpawnFoldout, "Types:", true);
 
@@ -345,7 +348,7 @@ namespace Game.Database
                     indicesToRemove.Add(this._mapConfig.RoomConfigs[roomIndex].EnemyPool.Count - 1);
 
                 if (GUILayout.Button("+", GUILayout.Width(30)))
-                    this._mapConfig.RoomConfigs[roomIndex].EnemyPool.Add(SpawnTypeEnemy.SHOOTER_ENERGY_MISSILE);
+                    this._mapConfig.RoomConfigs[roomIndex].EnemyPool.Add(SpawnTypeEnemy.SHOOTER_PLASMA);
 
                 EditorGUILayout.EndHorizontal();
             }
@@ -354,12 +357,24 @@ namespace Game.Database
                 this._mapConfig.RoomConfigs[roomIndex].EnemyPool.RemoveAt(index);
         }
 
+        private void DrawHealthSpawnProperties(int roomIndex)
+        {
+            EditorGUILayout.Space();
+            EditorGUILayout.Space();
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Health", GUILayout.Width(80f));
+            EditorGUILayout.LabelField("Min", GUILayout.Width(40f));
+            this._mapConfig.RoomConfigs[roomIndex].MinHealthItems = EditorGUILayout.IntField(this._mapConfig.RoomConfigs[roomIndex].MinHealthItems, GUILayout.Width(50f));
+            EditorGUILayout.LabelField("Max", GUILayout.Width(40f));
+            this._mapConfig.RoomConfigs[roomIndex].MaxHealthItems = EditorGUILayout.IntField(this._mapConfig.RoomConfigs[roomIndex].MaxHealthItems, GUILayout.Width(50f));
+            EditorGUILayout.EndHorizontal();
+        }
+
         private void LoadData()
         {
-            this._enemyConfigs = new EnemyConfig[Enum.GetValues(typeof(SpawnTypeEnemy)).Length];
-            this._weaponConfigs = new WeaponConfig[Enum.GetValues(typeof(WeaponType)).Length];
-            this._enemyFoldouts = new bool[this._enemyConfigs.Length];
-            this._weaponFoldouts = new bool[this._weaponConfigs.Length];
+            this._enemyFoldouts = new bool[Enum.GetValues(typeof(SpawnTypeEnemy)).Length];
+            this._weaponFoldouts = new bool[Enum.GetValues(typeof(WeaponType)).Length];
 
             this._playerConfig = this.LoadData<PlayerConfig>(ProjectPaths.PLAYER_CONFIG_DATABASE);
             this._enemyConfigs = this.LoadData<EnemyConfig[]>(ProjectPaths.ENEMY_CONFIG_DATABASE);
@@ -390,3 +405,4 @@ namespace Game.Database
         }
     }
 }
+#endif

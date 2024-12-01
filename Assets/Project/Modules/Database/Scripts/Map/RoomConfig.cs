@@ -18,5 +18,8 @@ namespace Game.Database
         public int MinTraps = 1;
         public int MaxTraps = 5;
         public List<SpawnTypeTrap> TrapPool = new();
+
+        public int MinHealthItems = 0;
+        public int MaxHealthItems = 3;
     }
 }

@@ -18,49 +18,47 @@ namespace Game
             int totalRooms = Random.Range(config.MinRooms, config.MaxRooms);
             var roomsData = new RoomData[totalRooms];
             var possibleRoomConfigs = new List<int>(config.RoomConfigs.Count);
-            bool hasGeneratedAtLeastOneBossRoom = false;
-
-            this._rooms = new Room[totalRooms];
+            bool hasGeneratedBossRoom = false;
 
             for (int index = 0; index < config.RoomConfigs.Count; index++)
-                possibleRoomConfigs.Add(index);
+            {
+                if (config.RoomConfigs[index].MinRoomsBefore == 0)
+                    possibleRoomConfigs.Add(index);
+            }
 
-            var currentPosition = Vector2.zero;
+            this._rooms = new Room[totalRooms];
+            Vector2 currentPosition = Vector2.zero;
 
+            // Generate room data
             for (int index = 0; index < totalRooms; index++)
             {
-                var possibleDirections = this.GetAvailableDirections(currentPosition, config.RoomSquaredSize);
+                List<Vector2> availableDirections = this.GetAvailableDirections(currentPosition, config.RoomSquaredSize);
+                RoomConfig roomConfig = this.SelectRoomConfig(config, possibleRoomConfigs, index, totalRooms, ref hasGeneratedBossRoom);
 
-                int randomRoomConfig = Random.Range(0, possibleRoomConfigs.Count);
-                RoomConfig roomConfig = config.RoomConfigs[randomRoomConfig];
-
-                bool isLastRoom = index == totalRooms - 1;
-                if (isLastRoom && !hasGeneratedAtLeastOneBossRoom)
-                    roomConfig = config.RoomConfigs.Find(room => room.Prefab.Type == RoomType.BOSS);
-
-                if (roomConfig.Prefab.Type == RoomType.BOSS && roomConfig.MinRoomsBefore > index)
-                {
-                    roomConfig = config.RoomConfigs[Random.Range(0, config.RoomConfigs.Count)];
-                    hasGeneratedAtLeastOneBossRoom = true;
-                }
-
+                // Mark unique rooms to avoid reuse
                 if (roomConfig.IsUnique)
-                    possibleRoomConfigs.Remove(randomRoomConfig);
+                    possibleRoomConfigs.Remove(config.RoomConfigs.IndexOf(roomConfig));
 
                 roomsData[index] = this.CreateRoomData(index, roomConfig, currentPosition, config);
                 this._occupiedPositions[currentPosition] = index;
-                currentPosition += possibleDirections.Count > 0 ? 
-                                            possibleDirections[Random.Range(0, possibleDirections.Count)] * config.RoomSquaredSize : 
-                                            Vector2.zero;
+
+                currentPosition += availableDirections.Count > 0
+                                        ? availableDirections[Random.Range(0, availableDirections.Count)] * config.RoomSquaredSize
+                                        : Vector2.zero;
+
+                this.UpdateAvailableConfigs(config, possibleRoomConfigs, index);
             }
 
+            // Generate and place rooms
             for (int index = 0; index < totalRooms; index++)
             {
                 this.UpdateNeighbors(roomsData[index], config.RoomSquaredSize);
                 this.GenerateRoom(roomsData[index], parent);
             }
 
+            // Finalize by creating navigation mesh
             this.CreateNavMesh(parent);
+
             return this._rooms;
         }
 
@@ -88,6 +86,7 @@ namespace Game
                 WallHeight = config.RoomWallHeight,
                 Position = position,
                 NeighborsID = new int[4] { -1, -1, -1, -1 },
+                TotalHealthItems = Random.Range(roomConfig.MinHealthItems, roomConfig.MaxHealthItems),
                 TotalEnemies = Random.Range(roomConfig.MinEnemies, roomConfig.MaxEnemies),
                 EnemyPool = roomConfig.EnemyPool,
                 TotalTraps = Random.Range(roomConfig.MinTraps, roomConfig.MaxTraps),
@@ -102,6 +101,32 @@ namespace Game
                 Vector2 neighborPosition = roomData.Position + (this._directions[index] * roomSize);
                 if (this._occupiedPositions.ContainsKey(neighborPosition))
                     roomData.NeighborsID[index] = this._occupiedPositions[neighborPosition];
+            }
+        }
+
+        private RoomConfig SelectRoomConfig(IMapConfig config, List<int> possibleConfigs, int currentIndex, int totalRooms, ref bool hasGeneratedBossRoom)
+        {
+            if (currentIndex == totalRooms - 1)
+                return config.RoomConfigs[config.RoomConfigs.Count - 1];
+
+            if (currentIndex == totalRooms - 2 && !hasGeneratedBossRoom)
+            {
+                hasGeneratedBossRoom = true;
+                return config.RoomConfigs.Find(rc => rc.Prefab.Type == RoomType.BOSS);
+            }
+
+            int randomIndex = Random.Range(0, possibleConfigs.Count);
+            return config.RoomConfigs[possibleConfigs[randomIndex]];
+        }
+
+        private void UpdateAvailableConfigs(IMapConfig config, List<int> possibleConfigs, int currentIndex)
+        {
+            for (int index = 0; index < config.RoomConfigs.Count; index++)
+            {
+                if (!possibleConfigs.Contains(index) && config.RoomConfigs[index].MinRoomsBefore == currentIndex + 1)
+                {
+                    possibleConfigs.Add(index);
+                }
             }
         }
 

@@ -107,7 +107,7 @@ namespace Game
             else
                 spawnType = (SpawnTypeEnemy)(this._dropdownSpawnableEnemies.value - 1);
 
-            BehaviorGraphAgent spawn = SpawnablePool.SpawnEnemy<BehaviorGraphAgent>(spawnType);
+            BehaviorGraphAgent spawn = SpawnablePool.SpawnEnemy(spawnType);
             spawn.transform.position = this._debugUtils.GetRandomCircularPosition(this._player.transform.position, 15f, 10f, 5f, this._spawnLayerMaskToAvoid);
             spawn.gameObject.SetActive(true);
             spawn.BlackboardReference.SetVariableValue("Waypoints", this._waypoints);
@@ -129,10 +129,9 @@ namespace Game
             else
                 spawnType = (SpawnTypeTrap)(this._dropdownSpawnableTraps.value - 1);
 
-            Transform spawn = SpawnablePool.SpawnTrap<Transform>(spawnType);
-            spawn.position = this._debugUtils.GetRandomCircularPosition(Vector3.zero, 15f, 10f, 5f, this._spawnLayerMaskToAvoid);
-
-            spawn.gameObject.SetActive(true);
+            GameObject spawn = SpawnablePool.SpawnTrap(spawnType);
+            spawn.transform.position = this._debugUtils.GetRandomCircularPosition(Vector3.zero, 15f, 10f, 5f, this._spawnLayerMaskToAvoid);
+            spawn.SetActive(true);
         }
 
         public void OnPlayerHealButtonClick()

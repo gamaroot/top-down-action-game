@@ -12,5 +12,8 @@ namespace Utils
 		PlayerCamera,
 		Enemy,
 		StageCamera,
+		PlayerBullet,
+		EnemyBullet,
+		ExitPortal,
 	}
 }

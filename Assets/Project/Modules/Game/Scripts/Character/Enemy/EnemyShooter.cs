@@ -5,8 +5,6 @@ namespace Game
     [RequireComponent(typeof(MeshRenderer), typeof(AIMovementController))]
     public class EnemyShooter : Enemy
     {
-        protected override SpawnTypeEnemy Type { get; } = SpawnTypeEnemy.SHOOTER_ENERGY_MISSILE;
-
         public override void OnMove(Vector3 point)
         {
             this._movementController.SetStoppingDistance(base._weaponController.Range);

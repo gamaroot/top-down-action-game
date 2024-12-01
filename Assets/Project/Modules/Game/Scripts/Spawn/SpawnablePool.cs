@@ -1,54 +1,70 @@
 using System;
+using Unity.Behavior;
 using UnityEngine;
 
 namespace Game
 {
     public class SpawnablePool : MonoBehaviour
     {
+        [SerializeField] private GameObject _deathPrefab;
+        [SerializeField] private GameObject _kamikazePrefab;
         [SerializeField] private GameObject[] _enemyPrefabs;
-        [SerializeField] private GameObject[] _projectilePrefabs;
-        [SerializeField] private GameObject[] _explosionPrefabs;
+        [SerializeField] private GameObject[] _bulletPrefabs;
+        [SerializeField] private GameObject[] _bulletImpactPrefabs;
         [SerializeField] private GameObject[] _trapPrefabs;
         [SerializeField] private GameObject[] _otherPrefabs;
 
-        private static readonly Pool[][] _pools = new Pool[5][];
+        private static readonly Pool[][] _pools = new Pool[7][];
 
         public void Init(IGameManager gameManager)
         {
             Transform baseTransform = base.transform;
-            this.CreatePool(0, baseTransform, this._enemyPrefabs, (enemy) =>
+            this.CreatePool(0, baseTransform, this._deathPrefab);
+            this.CreatePool(1, baseTransform, this._kamikazePrefab);
+
+            this.CreatePool(2, baseTransform, this._enemyPrefabs, (enemy) =>
             {
                 enemy.GetComponent<Enemy>().Init(gameManager);
             });
-            this.CreatePool(1, baseTransform, this._projectilePrefabs);
-            this.CreatePool(2, baseTransform, this._explosionPrefabs);
-            this.CreatePool(3, baseTransform, this._trapPrefabs);
-            this.CreatePool(4, baseTransform, this._otherPrefabs);
+            this.CreatePool(3, baseTransform, this._bulletPrefabs);
+            this.CreatePool(4, baseTransform, this._bulletImpactPrefabs);
+            this.CreatePool(5, baseTransform, this._trapPrefabs);
+            this.CreatePool(6, baseTransform, this._otherPrefabs);
         }
 
-        public static T SpawnEnemy<T>(SpawnTypeEnemy type)
+        public static GameObject SpawnDeath()
         {
-            return _pools[0][(int)type].BorrowObject<T>();
+            return _pools[0][0].BorrowObject();
         }
 
-        public static T SpawnProjectile<T>(SpawnTypeProjectile type, float autoDisableInSeconds = -1f)
+        public static GameObject SpawnKamikaze()
         {
-            return _pools[1][(int)type].BorrowObject<T>(autoDisableInSeconds);
+            return _pools[1][0].BorrowObject();
         }
 
-        public static T SpawnExplosion<T>(SpawnTypeExplosion type, float autoDisableInSeconds = -1f)
+        public static BehaviorGraphAgent SpawnEnemy(SpawnTypeEnemy type)
         {
-            return _pools[2][(int)type].BorrowObject<T>(autoDisableInSeconds);
+            return _pools[2][(int)type].BorrowObject<BehaviorGraphAgent>();
         }
 
-        public static T SpawnTrap<T>(SpawnTypeTrap type, float autoDisableInSeconds = -1f)
+        public static Bullet SpawnBullet(WeaponType type)
         {
-            return _pools[3][(int)type].BorrowObject<T>(autoDisableInSeconds);
+            return _pools[3][(int)type].BorrowObject<Bullet>();
+        }
+
+        public static GameObject SpawnBulletImpact(WeaponType type)
+        {
+            return _pools[4][(int)type].BorrowObject();
+        }
+
+        public static GameObject SpawnTrap(SpawnTypeTrap type)
+        {
+            return _pools[5][(int)type].BorrowObject();
         }
 
         public static T SpawnOther<T>(SpawnTypeOther type, float autoDisableInSeconds = -1f)
         {
-            return _pools[4][(int)type].BorrowObject<T>(autoDisableInSeconds);
+            return _pools[6][(int)type].BorrowObject<T>(autoDisableInSeconds);
         }
 
         public static void DisableAll()
@@ -69,6 +85,12 @@ namespace Game
             {
                 _pools[order][index] = new(baseTransform, prefabs[index], onObjectCreated);
             }
+        }
+
+        private void CreatePool(int order, Transform baseTransform, GameObject prefabs, Action<GameObject> onObjectCreated = null)
+        {
+            _pools[order] = new Pool[1];
+            _pools[order][0] = new(baseTransform, prefabs, onObjectCreated);
         }
     }
 }

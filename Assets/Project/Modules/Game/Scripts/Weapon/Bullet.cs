@@ -24,7 +24,7 @@ namespace Game
 
         private void OnEnable()
         {
-            SFX.PlayProjectile(this._config.SfxOnShoot);
+            SFX.PlayBullet(this._config.Type);
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -35,11 +35,11 @@ namespace Game
 
             this.Deactivate();
 
-            SFX.PlayExplosion(this._config.SfxOnExplode);
+            SFX.PlayBulletImpact(this._config.Type);
 
-            ParticleSystem particle = SpawnablePool.SpawnExplosion<ParticleSystem>(this._config.ExplosionType);
-            particle.transform.position = base.transform.position;
-            particle.gameObject.SetActive(true);
+            GameObject vfx = SpawnablePool.SpawnBulletImpact(this._config.Type);
+            vfx.transform.position = base.transform.position;
+            vfx.gameObject.SetActive(true);
         }
 
         public void Setup(IWeaponConfig config)

@@ -7,7 +7,8 @@ namespace Game
     {
         [field: SerializeField] public RectTransform RectTransform { get; private set; }
         [SerializeField] private Image _image;
-        [SerializeField] private Color[] _colors = new[] { Color.blue, Color.green, Color.red };
+        
+        private readonly Color[] _colors = new[] { Color.blue, Color.green, Color.red, Color.grey };
 
         public Transform Setup(IRoom room)
         {

@@ -38,6 +38,8 @@ namespace Game
             this._postProcess.profile.TryGet<Bloom>(out this._bloomLayer);
             this._postProcess.profile.TryGet<Vignette>(out this._vignetteLayer);
             this._postProcess.profile.TryGet<ChromaticAberration>(out this._chromaticAberrationLayer);
+
+            this._fullScreenFX.SetActive(false);
         }
 
         public void ShowDamageLayer(float healthPercentage)

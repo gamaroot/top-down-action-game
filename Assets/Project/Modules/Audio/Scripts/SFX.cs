@@ -4,33 +4,47 @@ namespace Game
 {
     public class SFX : MonoBehaviour
     {
+        [SerializeField] private GameObject _deathSfxPrefab;
+        [SerializeField] private GameObject _kamikazeSfxPrefab;
         [SerializeField] private GameObject[] _uiSfxPrefabs;
-        [SerializeField] private GameObject[] _projectileSfxPrefabs;
-        [SerializeField] private GameObject[] _explosionSfxPrefabs;
+        [SerializeField] private GameObject[] _bulletSfxPrefabs;
+        [SerializeField] private GameObject[] _bullectImpactSfxPrefabs;
 
-        private readonly static Pool[][] _pools = new Pool[4][];
+        private readonly static Pool[][] _pools = new Pool[5][];
 
         private void Awake()
         {
             Transform baseTransform = base.transform;
-            this.CreatePool(0, baseTransform, this._uiSfxPrefabs);
-            this.CreatePool(1, baseTransform, this._projectileSfxPrefabs);
-            this.CreatePool(2, baseTransform, this._explosionSfxPrefabs);
+            this.CreatePool(0, baseTransform, this._deathSfxPrefab);
+            this.CreatePool(1, baseTransform, this._kamikazeSfxPrefab);
+            this.CreatePool(2, baseTransform, this._uiSfxPrefabs);
+            this.CreatePool(3, baseTransform, this._bulletSfxPrefabs);
+            this.CreatePool(4, baseTransform, this._bullectImpactSfxPrefabs);
+        }
+
+        public static void PlayDeath()
+        {
+            Play(0, 0);
+        }
+
+        public static void PlayKamikaze()
+        {
+            Play(1, 0);
         }
 
         public static void PlayUI(SFXTypeUI type)
         {
-            Play(0, (int)type);
-        }
-
-        public static void PlayProjectile(SFXTypeProjectile type)
-        {
-            Play(1, (int)type);
-        }
-
-        public static void PlayExplosion(SFXTypeExplosion type)
-        {
             Play(2, (int)type);
+        }
+
+        public static void PlayBullet(WeaponType type)
+        {
+            Play(3, (int)type);
+        }
+
+        public static void PlayBulletImpact(WeaponType type)
+        {
+            Play(4, (int)type);
         }
 
         private static void Play(int order, int type)
@@ -52,6 +66,12 @@ namespace Game
             {
                 _pools[order][index] = new(baseTransform, prefabs[index]);
             }
+        }
+
+        private void CreatePool(int order, Transform baseTransform, GameObject prefab)
+        {
+            _pools[order] = new Pool[1];
+            _pools[order][0] = new(baseTransform, prefab);
         }
     }
 }

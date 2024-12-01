@@ -1,3 +1,4 @@
+using System;
 using Unity.Cinemachine;
 using UnityEngine;
 using Utils;
@@ -31,6 +32,9 @@ namespace Game
 
         private void OnMapTriggered()
         {
+            if (this.CanTriggerMap())
+                return;
+
             bool isMapVisible = !this.IsMapVisible;
             this.SwitchCamera(isMapVisible);
 
@@ -39,6 +43,17 @@ namespace Game
                 this._mapAnimator.gameObject.SetActive(true);
             }
             this._mapAnimator.SetBool(AnimationKeys.VISIBLE, isMapVisible);
+        }
+
+        private bool CanTriggerMap()
+        {
+            // Ignore the input when an animation is transitioning
+            if (this._mapAnimator.IsInTransition(0))
+                return true;
+
+            // Ignore the input when an animation didn't complete 75% of its duration
+            float animationTime = this._mapAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+            return animationTime > 0 && animationTime < 0.75f;
         }
 
         private void SwitchCamera(bool isMapVisible)

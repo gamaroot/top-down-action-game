@@ -26,25 +26,43 @@ MonoBehaviour:
       MaxEnemies: 5
       EnemyPool: 0000000001000000
       MinTraps: 1
-      MaxTraps: 5
+      MaxTraps: 8
       TrapPool: 00000000010000000200000003000000
+      MinHealthItems: 0
+      MaxHealthItems: 1
     - Prefab: {fileID: 7340991271870152126, guid: f8e78a8d3e7b80c4497ffd145305214b,
         type: 3}
       IsUnique: 0
-      MinRoomsBefore: 0
+      MinRoomsBefore: 1
       MinEnemies: 1
-      MaxEnemies: 5
-      EnemyPool: 0000000001000000
-      MinTraps: 1
-      MaxTraps: 5
-      TrapPool: 00000000010000000200000003000000
+      MaxEnemies: 1
+      EnemyPool: 01000000
+      MinTraps: 0
+      MaxTraps: 0
+      TrapPool: 02000000
+      MinHealthItems: 2
+      MaxHealthItems: 10
     - Prefab: {fileID: 7340991271870152126, guid: e61ec3c201eb44349be26e0dd8712d9a,
         type: 3}
       IsUnique: 1
       MinRoomsBefore: 5
       MinEnemies: 1
-      MaxEnemies: 5
-      EnemyPool: 01000000
+      MaxEnemies: 1
+      EnemyPool: 02000000
       MinTraps: 1
-      MaxTraps: 5
+      MaxTraps: 8
       TrapPool: 00000000010000000200000003000000
+      MinHealthItems: 2
+      MaxHealthItems: 5
+    - Prefab: {fileID: 7340991271870152126, guid: 62ec3a41b993ce843a4752f8eac78fcd,
+        type: 3}
+      IsUnique: 1
+      MinRoomsBefore: 999
+      MinEnemies: 0
+      MaxEnemies: 0
+      EnemyPool: 
+      MinTraps: 0
+      MaxTraps: 0
+      TrapPool: 00000000010000000200000003000000
+      MinHealthItems: 0
+      MaxHealthItems: 0

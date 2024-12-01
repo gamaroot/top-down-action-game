@@ -14,6 +14,8 @@ namespace Game
         // 0: front, 1: back, 2: left, 3: right
         public int[] NeighborsID;
 
+        public int TotalHealthItems;
+
         public int TotalEnemies;
         public List<SpawnTypeEnemy> EnemyPool;
 

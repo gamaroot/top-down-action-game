@@ -21,7 +21,7 @@ namespace Game
         private int _killedEnemies;
 
         private GameObject[] _doors;
-        private GameObject _content;
+        private List<GameObject> _content;
         private List<GameObject> _waypoints;
         private Tuple<SpawnConfig<SpawnTypeEnemy>[], SpawnConfig<SpawnTypeTrap>[]> _spawnConfig;
 
@@ -31,7 +31,7 @@ namespace Game
                 other.CompareTag(Tags.Player.ToString()))
             {
                 Debug.Log($"Player entered room #{this.Id}");
-                this._content.SetActive(true);
+                this.SetContentVisible(true);
                 this.IsPlayerHere = true;
 
                 if (this.HasVisited)
@@ -57,11 +57,12 @@ namespace Game
         public Room Init(int id, RoomType type, GameObject[] doors, List<GameObject> waypoints, GameObject content,
                          Tuple<SpawnConfig<SpawnTypeEnemy>[], SpawnConfig<SpawnTypeTrap>[]> spawnConfig)
         {
+            this._content = new List<GameObject> { content };
+
             this.Id = id;
             this.Type = type;
             this._doors = doors;
 
-            this._content = content;
             this._waypoints = waypoints;
             this._spawnConfig = spawnConfig;
 
@@ -81,18 +82,18 @@ namespace Game
         public void ShowIfVisited()
         {
             if (this.HasVisited)
-                this._content.SetActive(true);
+                this.SetContentVisible(true);
         }
 
         public void HideIfPlayerIsNotHere()
         {
             if (!this.IsPlayerHere)
-                this._content.SetActive(false);
+                this.SetContentVisible(false);
         }
 
         private void HideIfNotVisited()
         {
-            this._content.SetActive(false);
+            this.SetContentVisible(false);
         }
 
         private void SpawnEnemies()
@@ -100,8 +101,9 @@ namespace Game
             this._totalEnemies = this._spawnConfig.Item1.Length;
             for (int index = 0; index < this._totalEnemies; index++)
             {
-                var config = this._spawnConfig.Item1[index];
-                var spawn = SpawnablePool.SpawnEnemy<BehaviorGraphAgent>(config.Type);
+                SpawnConfig<SpawnTypeEnemy> config = this._spawnConfig.Item1[index];
+
+                BehaviorGraphAgent spawn = SpawnablePool.SpawnEnemy(config.Type);
                 spawn.transform.position = config.Position;
                 spawn.gameObject.SetActive(true);
                 spawn.BlackboardReference.SetVariableValue("Waypoints", this._waypoints);
@@ -114,8 +116,11 @@ namespace Game
                     {
                         this.OpenAllDoors();
                     }
+                    this._content.Remove(spawn.gameObject);
                 }
                 enemyHealthController.Listener.OnDeath += OnEnemyKilled;
+
+                this._content.Add(spawn.gameObject);
             }
         }
 
@@ -125,11 +130,19 @@ namespace Game
         {
             for (int index = 0; index < this._spawnConfig.Item2.Length; index++)
             {
-                var config = this._spawnConfig.Item2[index];
-                var spawn = SpawnablePool.SpawnTrap<Transform>(config.Type);
-                spawn.position = config.Position;
-                spawn.gameObject.SetActive(true);
+                SpawnConfig<SpawnTypeTrap> config = this._spawnConfig.Item2[index];
+
+                GameObject spawn = SpawnablePool.SpawnTrap(config.Type);
+                spawn.transform.position = config.Position;
+                spawn.SetActive(true);
+
+                this._content.Add(spawn.gameObject);
             }
+        }
+
+        private void SetContentVisible(bool isVisible)
+        {
+            this._content.ForEach(obj => obj.SetActive(isVisible));
         }
     }
 }

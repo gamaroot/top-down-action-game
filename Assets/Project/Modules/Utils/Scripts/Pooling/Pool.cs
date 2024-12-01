@@ -30,6 +30,15 @@ namespace Game
             this.AddObjectsToPool(this.ExpandedPoolSize);
         }
 
+        public GameObject BorrowObject()
+        {
+            this.EnsurePoolHasObjects();
+
+            GameObject obj = this._pool.Pop();
+            this._onObjectActivated?.Invoke(obj);
+            return obj;
+        }
+
         public T BorrowObject<T>(float autoDisableInSeconds = -1f)
         {
             this.EnsurePoolHasObjects();

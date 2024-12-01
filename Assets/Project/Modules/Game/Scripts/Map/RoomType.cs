@@ -4,6 +4,7 @@
     {
         BASIC,
         TREASURE,
-        BOSS
+        BOSS,
+        EXIT,
     }
 }

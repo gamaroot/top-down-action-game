@@ -21,8 +21,6 @@ MonoBehaviour:
       DashCooldown: 1
       ParryDuration: 0.3
       ParryCooldown: 1
-    <DeathVFX>k__BackingField: 2
-    <DeathSFX>k__BackingField: 2
     <InitialStatsPoints>k__BackingField: 3
     <StatsPointsPerLevel>k__BackingField: 2
     <ExtraStatsPerPoint>k__BackingField:
@@ -33,6 +31,6 @@ MonoBehaviour:
       DashCooldown: -0.1
       ParryDuration: 0.1
       ParryCooldown: -0.1
-    <MaxPointsForStats>k__BackingField: 07000000140000000a00000005000000050000000500000005000000
+    <MaxPointsForStats>k__BackingField: 0c000000140000000a00000005000000050000000500000005000000
     <BaseLevelUpXp>k__BackingField: 100
     <XpToNextLevelFactor>k__BackingField: 1.1
