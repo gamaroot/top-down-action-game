@@ -37,6 +37,9 @@ namespace Game
                 if (this.HasVisited)
                     return;
 
+                if (this.Type == RoomType.BOSS)
+                    BGM.PlayMusic(BGMType.BOSS);
+
                 this.SpawnEnemies();
                 this.SpawnTraps();
 
@@ -48,6 +51,9 @@ namespace Game
         {
             if (other.CompareTag(Tags.Player.ToString()))
             {
+                if (this.Type == RoomType.BOSS)
+                    BGM.PlayMusic(BGMType.GAMEPLAY);
+
                 this.IsPlayerHere = false;
                 Debug.Log($"Player left room #{this.Id}");
                 this.HideIfNotVisited();

@@ -24,7 +24,7 @@ namespace Game
 
         public static float MusicVolume
         {
-            get => PlayerPrefs.GetFloat(MUSIC_LEVEL_KEY, 1f);
+            get => PlayerPrefs.GetFloat(MUSIC_LEVEL_KEY, 0.3f);
             set
             {
                 PlayerPrefs.SetFloat(MUSIC_LEVEL_KEY, value);

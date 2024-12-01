@@ -20,6 +20,12 @@
         },
         {
             "m_Id": "cc9a73703d744954ab0f4bec16f696ad"
+        },
+        {
+            "m_Id": "2d831d47c3a94caca17f290915dea94b"
+        },
+        {
+            "m_Id": "29065e84e69342a593c5f22e72f3377b"
         }
     ],
     "m_Keywords": [],
@@ -993,6 +999,34 @@
 }
 
 {
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "29065e84e69342a593c5f22e72f3377b",
+    "m_Guid": {
+        "m_GuidSerialized": "b23136a9-a736-4ea3-98b0-33634c250a77"
+    },
+    "m_Name": "PixelationY",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "PixelationY",
+    "m_DefaultReferenceName": "_PixelationY",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 50.0,
+    "m_FloatType": 0,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
+    }
+}
+
+{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.PowerNode",
     "m_ObjectId": "2a4ad529ab1f449d96092cbb50d139ab",
@@ -1091,6 +1125,34 @@
         "e31": 0.0,
         "e32": 0.0,
         "e33": 1.0
+    }
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "2d831d47c3a94caca17f290915dea94b",
+    "m_Guid": {
+        "m_GuidSerialized": "fc20de2f-8068-4e12-ace9-256246a6ef8f"
+    },
+    "m_Name": "PixelationX",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "PixelationX",
+    "m_DefaultReferenceName": "_PixelationX",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 50.0,
+    "m_FloatType": 0,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
     }
 }
 
@@ -2129,7 +2191,7 @@
     "m_ObjectId": "aa2d5be3e85c40c5a5188d7e21d3c150",
     "m_Title": "NOISE",
     "m_Position": {
-        "x": -1372.0,
+        "x": -1372.0001220703125,
         "y": 446.0
     }
 }
@@ -2408,6 +2470,12 @@
         },
         {
             "m_Id": "210aadb34e504e7e8d4d19b3e53db828"
+        },
+        {
+            "m_Id": "2d831d47c3a94caca17f290915dea94b"
+        },
+        {
+            "m_Id": "29065e84e69342a593c5f22e72f3377b"
         }
     ]
 }
@@ -2481,8 +2549,8 @@
     "m_ObjectId": "c41028a574484510a98f5bb485ae4cdd",
     "m_Title": "VIGNETTE",
     "m_Position": {
-        "x": -1825.0,
-        "y": -36.0
+        "x": -1825.0001220703125,
+        "y": -36.000030517578128
     }
 }
 

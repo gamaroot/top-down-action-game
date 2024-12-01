@@ -10,14 +10,19 @@ namespace Game
     {
         private const float AUDIO_FADE_DURATION = 1f;
 
-        [HideInInspector]
-        [SerializeField] private AudioSource _audioSource;
-        [SerializeField] private AudioClip[] _playlist;
+        private static AudioClip[] _playlist;
+        private static AudioSource _audioSource;
 
-        private void OnValidate()
+        private static BGMType _currentMusic;
+
+        private void Awake()
         {
-            if (this._audioSource == null)
-                this._audioSource = base.GetComponent<AudioSource>();
+            _playlist = new AudioClip[]
+            {
+                Resources.Load<AudioClip>($"bgm_{BGMType.GAMEPLAY}".ToLower()),
+                Resources.Load<AudioClip>($"bgm_{BGMType.BOSS}".ToLower()),
+            };
+            _audioSource = base.GetComponent<AudioSource>();
         }
 
         private IEnumerator Start()
@@ -26,61 +31,73 @@ namespace Game
 
             GamePreferences.OnMusicVolumeChange = this.OnMusicPrefChange;
 
-            if (GamePreferences.MusicVolume > 0)
+            SceneNavigator.Instance.AddListenerOnScreenStateChange((sceneID, state) =>
             {
-                SceneNavigator.Instance.AddListenerOnScreenStateChange((sceneID, state) =>
-                {
-                    if (state == SceneState.LOADED)
-                    {
-                        switch (sceneID)
-                        {
-                            case SceneID.HOME:
-                                this.PlayMusic(BGMType.MENU);
-                                break;
+                if (sceneID != SceneID.GAME || GamePreferences.MusicVolume == 0)
+                    return;
 
-                                // TODO: Add more cases for other scenes
-                        }
-                    }
-                });
-            }
+                if (state == SceneState.LOADING)
+                {
+                    PlayMusic(BGMType.GAMEPLAY);
+                }
+                else if (state == SceneState.UNLOADED)
+                {
+                    this.PauseMusic();
+                }
+            });
         }
 
         private void OnMusicPrefChange(float volume)
         {
-            this._audioSource.volume = volume;
+            _audioSource.volume = volume;
 
-            if (volume > 0 && !this._audioSource.isPlaying)
-                this._audioSource.Play();
-            else if (volume == 0 && this._audioSource.isPlaying)
-                this._audioSource.Pause();
-        }
-
-        private void PlayMusic(BGMType type)
-        {
-            if (!this.IsMusicEnabled())
+            if (_currentMusic == BGMType.NONE)
                 return;
 
-            this._audioSource.loop = true;
+            if (volume > 0 && !_audioSource.isPlaying)
+                _audioSource.Play();
+            else if (volume == 0 && _audioSource.isPlaying)
+                _audioSource.Pause();
+        }
 
-            if (this._audioSource.isPlaying)
+        public static void PlayMusic(BGMType type)
+        {
+            if (IsMusicMuted() || _currentMusic == type)
+                return;
+
+            _audioSource.loop = true;
+
+            _audioSource.DOKill();
+            if (_audioSource.isPlaying)
             {
-                this._audioSource.DOFade(0, AUDIO_FADE_DURATION)
-                                 .OnComplete(() => this.ChangeMusic(type));
+                _audioSource.DOFade(0, AUDIO_FADE_DURATION)
+                                 .OnComplete(() => ChangeMusic(type));
             } else {
-                this.ChangeMusic(type);
+                ChangeMusic(type);
             }
+            _currentMusic = type;
         }
 
-        private void ChangeMusic(BGMType type)
+        private void PauseMusic()
         {
-            this._audioSource.clip = this._playlist[(int)type];
-            this._audioSource.Play();
-            this._audioSource.DOFade(1f, AUDIO_FADE_DURATION);
+            _currentMusic = BGMType.NONE;
+
+            _audioSource.DOKill();
+            _audioSource.DOFade(0, AUDIO_FADE_DURATION)
+                             .OnComplete(_audioSource.Pause);
         }
 
-        private bool IsMusicEnabled()
+        private static void ChangeMusic(BGMType type)
         {
-            return GamePreferences.MusicVolume > 0;
+            _audioSource.clip = _playlist[(int)type];
+            _audioSource.Play();
+
+            _audioSource.DOFade(1f, AUDIO_FADE_DURATION);
+        }
+
+        private static bool IsMusicMuted()
+        {
+            return GamePreferences.MusicVolume == 0;
         }
     }
 }

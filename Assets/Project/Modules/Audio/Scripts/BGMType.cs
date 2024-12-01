@@ -2,10 +2,8 @@ namespace Game
 {
     public enum BGMType
     {
-        MENU,
+        NONE,
         GAMEPLAY,
-        GAME_OVER,
         BOSS,
-        CREDITS
     }
 }
