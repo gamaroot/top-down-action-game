@@ -23,7 +23,7 @@ namespace Game
         private GameObject[] _doors;
         private List<GameObject> _content;
         private List<GameObject> _waypoints;
-        private Tuple<SpawnConfig<SpawnTypeEnemy>[], SpawnConfig<SpawnTypeTrap>[]> _spawnConfig;
+        private Tuple<SpawnConfig<SpawnTypeEnemy>[], SpawnConfig<SpawnTypeTrap>[], SpawnConfig<SpawnTypePickup>[]> _spawnConfig;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -42,6 +42,7 @@ namespace Game
 
                 this.SpawnEnemies();
                 this.SpawnTraps();
+                this.SpawnPickups();
 
                 this.HasVisited = true;
             }
@@ -61,7 +62,7 @@ namespace Game
         }
 
         public Room Init(int id, RoomType type, GameObject[] doors, List<GameObject> waypoints, GameObject content,
-                         Tuple<SpawnConfig<SpawnTypeEnemy>[], SpawnConfig<SpawnTypeTrap>[]> spawnConfig)
+                         Tuple<SpawnConfig<SpawnTypeEnemy>[], SpawnConfig<SpawnTypeTrap>[], SpawnConfig<SpawnTypePickup>[]> spawnConfig)
         {
             this._content = new List<GameObject> { content };
 
@@ -130,8 +131,6 @@ namespace Game
             }
         }
 
-        
-
         private void SpawnTraps()
         {
             for (int index = 0; index < this._spawnConfig.Item2.Length; index++)
@@ -142,6 +141,18 @@ namespace Game
                 spawn.transform.position = config.Position;
                 spawn.SetActive(true);
 
+                this._content.Add(spawn.gameObject);
+            }
+        }
+
+        private void SpawnPickups()
+        {
+            for (int index = 0; index < this._spawnConfig.Item3.Length; index++)
+            {
+                SpawnConfig<SpawnTypePickup> config = this._spawnConfig.Item3[index];
+                GameObject spawn = SpawnablePool.SpawnPickup(config.Type);
+                spawn.transform.position = config.Position;
+                spawn.SetActive(true);
                 this._content.Add(spawn.gameObject);
             }
         }

@@ -23,6 +23,7 @@ namespace Game.Database
         private bool[] _roomFoldouts;
         private bool _enemySpawnFoldout;
         private bool _trapSpawnFoldout;
+        private bool _pickupSpawnFoldout;
 
         [MenuItem("Tools/Game Setup")]
         public static void ShowWindow()
@@ -239,7 +240,7 @@ namespace Game.Database
                 {
                     this._mapConfig.RoomConfigs[index].IsUnique = EditorGUILayout.Toggle("Is Unique", this._mapConfig.RoomConfigs[index].IsUnique);
 
-                    this.DrawHealthSpawnProperties(index);
+                    this.DrawPickupSpawnProperties(index);
                     this.DrawEnemySpawnProperties(index);
                     this.DrawTrapSpawnProperties(index);
                 }
@@ -357,18 +358,49 @@ namespace Game.Database
                 this._mapConfig.RoomConfigs[roomIndex].EnemyPool.RemoveAt(index);
         }
 
-        private void DrawHealthSpawnProperties(int roomIndex)
+        private void DrawPickupSpawnProperties(int roomIndex)
         {
             EditorGUILayout.Space();
             EditorGUILayout.Space();
 
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Health", GUILayout.Width(80f));
+            EditorGUILayout.LabelField("Pickup Items", GUILayout.Width(80f));
             EditorGUILayout.LabelField("Min", GUILayout.Width(40f));
-            this._mapConfig.RoomConfigs[roomIndex].MinHealthItems = EditorGUILayout.IntField(this._mapConfig.RoomConfigs[roomIndex].MinHealthItems, GUILayout.Width(50f));
+            this._mapConfig.RoomConfigs[roomIndex].MinPickupItems = EditorGUILayout.IntField(this._mapConfig.RoomConfigs[roomIndex].MinPickupItems, GUILayout.Width(50f));
             EditorGUILayout.LabelField("Max", GUILayout.Width(40f));
-            this._mapConfig.RoomConfigs[roomIndex].MaxHealthItems = EditorGUILayout.IntField(this._mapConfig.RoomConfigs[roomIndex].MaxHealthItems, GUILayout.Width(50f));
+            this._mapConfig.RoomConfigs[roomIndex].MaxPickupItems = EditorGUILayout.IntField(this._mapConfig.RoomConfigs[roomIndex].MaxPickupItems, GUILayout.Width(50f));
             EditorGUILayout.EndHorizontal();
+
+            if (this._mapConfig.RoomConfigs[roomIndex].MaxPickupItems == 0)
+                return;
+
+            var indicesToRemove = new List<int>();
+
+            if (this._mapConfig.RoomConfigs[roomIndex].PickupItemsPool.Count == 0)
+                this._mapConfig.RoomConfigs[roomIndex].PickupItemsPool.Add(SpawnTypePickup.HEART);
+
+            this._pickupSpawnFoldout = EditorGUILayout.Foldout(this._pickupSpawnFoldout, "Types:", true);
+
+            if (!this._pickupSpawnFoldout)
+                return;
+
+            int count = this._mapConfig.RoomConfigs[roomIndex].PickupItemsPool.Count;
+            for (int index = 0; index < count; index++)
+            {
+                EditorGUILayout.BeginHorizontal();
+                this._mapConfig.RoomConfigs[roomIndex].PickupItemsPool[index] = (SpawnTypePickup)EditorGUILayout.EnumPopup(this._mapConfig.RoomConfigs[roomIndex].PickupItemsPool[index]);
+
+                if (GUILayout.Button("-", GUILayout.Width(30)))
+                    indicesToRemove.Add(this._mapConfig.RoomConfigs[roomIndex].PickupItemsPool.Count - 1);
+
+                if (GUILayout.Button("+", GUILayout.Width(30)))
+                    this._mapConfig.RoomConfigs[roomIndex].PickupItemsPool.Add(SpawnTypePickup.HEART);
+
+                EditorGUILayout.EndHorizontal();
+            }
+
+            foreach (var index in indicesToRemove.OrderByDescending(i => i))
+                this._mapConfig.RoomConfigs[roomIndex].PickupItemsPool.RemoveAt(index);
         }
 
         private void LoadData()

@@ -77,6 +77,8 @@ MonoBehaviour:
   - {fileID: 7750034016938775924, guid: 330c992fb7fad6c4486724ed053a2d82, type: 3}
   - {fileID: 4585351776358199094, guid: 6486bf66ec268c74d85d33b550e2d9cc, type: 3}
   - {fileID: 7630919769153759379, guid: b460bd9e54a08f041bf88a23712fd8a6, type: 3}
+  _pickupPrefabs:
+  - {fileID: 483206499346428735, guid: 5b2694d3c779c2b429384954db45078f, type: 3}
   _otherPrefabs:
   - {fileID: 7815843732655380410, guid: 74c2faa695ddc6f4aa2e4e71d740f2a6, type: 3}
   - {fileID: 7815843732655380410, guid: 69a79b5b50e81064f8021b8387f97477, type: 3}

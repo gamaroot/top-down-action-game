@@ -6,7 +6,7 @@ namespace Game
 {
     public class SpawnerGenerator
     {
-        public Tuple<SpawnConfig<SpawnTypeEnemy>[], SpawnConfig<SpawnTypeTrap>[]> GenerateSpawnConfig(RoomData config)
+        public Tuple<SpawnConfig<SpawnTypeEnemy>[], SpawnConfig<SpawnTypeTrap>[], SpawnConfig<SpawnTypePickup>[]> GenerateSpawnConfig(RoomData config)
         {
             var enemies = this.GenerateSpawnConfigForType(config.TotalEnemies, config.EnemyPool, 
                                                           config.SquaredSize, config.Position);
@@ -14,7 +14,10 @@ namespace Game
             var traps = this.GenerateSpawnConfigForType(config.TotalTraps, config.TrapPool, 
                                                         config.SquaredSize, config.Position);
 
-            return new Tuple<SpawnConfig<SpawnTypeEnemy>[], SpawnConfig<SpawnTypeTrap>[]>(enemies, traps);
+            var pickups = this.GenerateSpawnConfigForType(config.TotalPickups, config.PickupsPool,
+                                                        config.SquaredSize, config.Position);
+
+            return new Tuple<SpawnConfig<SpawnTypeEnemy>[], SpawnConfig<SpawnTypeTrap>[], SpawnConfig<SpawnTypePickup>[]>(enemies, traps, pickups);
         }
 
         private SpawnConfig<T>[] GenerateSpawnConfigForType<T>(int total, List<T> pool, float roomSize, Vector2 roomPosition)

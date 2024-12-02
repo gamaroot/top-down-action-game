@@ -86,11 +86,12 @@ namespace Game
                 WallHeight = config.RoomWallHeight,
                 Position = position,
                 NeighborsID = new int[4] { -1, -1, -1, -1 },
-                TotalHealthItems = Random.Range(roomConfig.MinHealthItems, roomConfig.MaxHealthItems),
+                TotalPickups = Random.Range(roomConfig.MinPickupItems, roomConfig.MaxPickupItems),
                 TotalEnemies = Random.Range(roomConfig.MinEnemies, roomConfig.MaxEnemies),
                 EnemyPool = roomConfig.EnemyPool,
                 TotalTraps = Random.Range(roomConfig.MinTraps, roomConfig.MaxTraps),
-                TrapPool = roomConfig.TrapPool
+                TrapPool = roomConfig.TrapPool,
+                PickupsPool = roomConfig.PickupItemsPool
             };
         }
 

@@ -19,7 +19,8 @@ namespace Game.Database
         public int MaxTraps = 5;
         public List<SpawnTypeTrap> TrapPool = new();
 
-        public int MinHealthItems = 0;
-        public int MaxHealthItems = 3;
+        public int MinPickupItems = 0;
+        public int MaxPickupItems = 3;
+        public List<SpawnTypePickup> PickupItemsPool = new();
     }
 }

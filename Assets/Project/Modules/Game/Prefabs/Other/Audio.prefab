@@ -47,9 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c424cff2488f0f84eb654c60fae68d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 8445418398199776538}
-  _playlist:
-  - {fileID: 8300000, guid: 6b34a65ee0b4110439b7dccd5d299c65, type: 3}
 --- !u!114 &4689902827515598904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,6 +85,8 @@ MonoBehaviour:
   - {fileID: 6232345519844320643, guid: a99f9c07fe8989c44a664feec64f4796, type: 3}
   - {fileID: 6232345519844320643, guid: 7b30ac6c1c9745b418f0d6628fc663c4, type: 3}
   - {fileID: 6232345519844320643, guid: f30e82025dbf3b348a92bdb39c602e12, type: 3}
+  _pickupSfxPrefabs:
+  - {fileID: 6232345519844320643, guid: b9481c5cb1ec7f04c911b350c88721f7, type: 3}
 --- !u!82 &8445418398199776538
 AudioSource:
   m_ObjectHideFlags: 0

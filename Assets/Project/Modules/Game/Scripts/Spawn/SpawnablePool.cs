@@ -12,9 +12,10 @@ namespace Game
         [SerializeField] private GameObject[] _bulletPrefabs;
         [SerializeField] private GameObject[] _bulletImpactPrefabs;
         [SerializeField] private GameObject[] _trapPrefabs;
+        [SerializeField] private GameObject[] _pickupPrefabs;
         [SerializeField] private GameObject[] _otherPrefabs;
 
-        private static readonly Pool[][] _pools = new Pool[7][];
+        private static readonly Pool[][] _pools = new Pool[8][];
 
         public void Init(IGameManager gameManager)
         {
@@ -29,7 +30,8 @@ namespace Game
             this.CreatePool(3, baseTransform, this._bulletPrefabs);
             this.CreatePool(4, baseTransform, this._bulletImpactPrefabs);
             this.CreatePool(5, baseTransform, this._trapPrefabs);
-            this.CreatePool(6, baseTransform, this._otherPrefabs);
+            this.CreatePool(6, baseTransform, this._pickupPrefabs);
+            this.CreatePool(7, baseTransform, this._otherPrefabs);
         }
 
         public static GameObject SpawnDeath()
@@ -62,9 +64,14 @@ namespace Game
             return _pools[5][(int)type].BorrowObject();
         }
 
+        public static GameObject SpawnPickup(SpawnTypePickup type)
+        {
+            return _pools[6][(int)type].BorrowObject();
+        }
+
         public static T SpawnOther<T>(SpawnTypeOther type, float autoDisableInSeconds = -1f)
         {
-            return _pools[6][(int)type].BorrowObject<T>(autoDisableInSeconds);
+            return _pools[7][(int)type].BorrowObject<T>(autoDisableInSeconds);
         }
 
         public static void DisableAll()

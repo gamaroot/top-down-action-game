@@ -70,6 +70,7 @@
     <Compile Include="Assets\Project\Modules\Audio\Scripts\BGM.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Weapon\WeaponSetupDatabase.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerParryController.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnTypePickup.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerShootController.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\UI\UIWorldJumpingText.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerExperienceController.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Weapon\Bullet.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\ICharacterConfig.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Map\MapConfigDatabase.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Pickup\PickupHealer.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Behavior\AvoidBulletAction.cs" />
     <Compile Include="Assets\Project\Modules\UI\Screens\CharacterSetup\Scripts\CharacterSetupScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\EnemyHealthController.cs" />

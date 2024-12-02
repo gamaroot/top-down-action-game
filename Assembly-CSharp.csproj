@@ -560,7 +560,6 @@
     <None Include="Assets\SampleAssets\VFX\2DxFX\Resources\_2dxFX_Lightning.shader" />
     <None Include="Assets\SampleAssets\VFX\2DxFX\Resources\_2dxFX_Blur.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
-    <None Include="Assets\AddressableAssetsData\link.xml" />
     <None Include="Assets\SampleAssets\VFX\2DxFX\ExtraShaders\Shader\Glitch.shader" />
     <None Include="Assets\SampleAssets\VFX\2DxFX\Resources\_2dxFX_LightningBolt.shader" />
     <None Include="Assets\SampleAssets\VFX\2DxFX\Resources\_2dxFX_PlasmaRainbow.shader" />

@@ -42,6 +42,14 @@ namespace Game
             }
         }
 
+        private void OnTriggerEnter(Collider collider)
+        {
+            if (collider.gameObject.TryGetComponent(out PickupHealer pickupHealer))
+            {
+                this.RecoverHealth(pickupHealer.Heal);
+            }
+        }
+
         public void Init(ICharacterConfig config)
         {
             this._config = config;
