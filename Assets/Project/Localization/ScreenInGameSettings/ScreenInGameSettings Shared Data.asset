@@ -14,7 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TableCollectionName: ScreenInGameSettings
   m_TableCollectionNameGuidString: dbc9f7fddef0e9c43aa596e68db5c2b8
-  m_Entries: []
+  m_Entries:
+  - m_Id: 22959334806548480
+    m_Key: txt_sound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22959353928380416
+    m_Key: txt_music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22959373113126912
+    m_Key: txt_main_menu
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

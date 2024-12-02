@@ -1,4 +1,5 @@
 using Game.Database;
+using System;
 using UnityEngine;
 using Utils;
 
@@ -83,6 +84,11 @@ namespace Game
         {
             gameManager.OnPlayerHealthUpdated(this._healthController.CurrentHealth, this._healthController.MaxHealth);
             gameManager.OnPlayerRecoverHealth((float)this._healthController.CurrentHealth / (float)this._healthController.MaxHealth);
+        }
+
+        public void SetInputEnabled(bool inputEnabled)
+        {
+            this._movementController.enabled = inputEnabled;
         }
 
         private void OnComboFinished()

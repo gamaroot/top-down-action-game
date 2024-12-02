@@ -11,6 +11,8 @@ namespace Game
     {
         [Header("UI Controllers")]
         [SerializeField] private Slider[] _sliders; // 0: MaxHealth, 1: MovementSpeed, 2: DashCooldown, 3: ParryCooldown
+        [SerializeField] private Button[] _sliderNegativeButtons; // 0: MaxHealth, 1: MovementSpeed, 2: DashCooldown, 3: ParryCooldown
+        [SerializeField] private Button[] _sliderPositiveButtons; // 0: MaxHealth, 1: MovementSpeed, 2: DashCooldown, 3: ParryCooldown
         [SerializeField] private Slider _sliderXP;
 
         [Header("UI Values")]
@@ -46,6 +48,7 @@ namespace Game
                 int indexRef = index; // Capture loop variable for delegate
                 this._sliders[index].onValueChanged.AddListener(value => this.OnSliderChange(indexRef, value));
             }
+            this.UpdateAssignButtons();
         }
 
         private void OnEnable()
@@ -81,14 +84,21 @@ namespace Game
             this._sliders[statIndex].value--;
         }
 
+        public void OnCloseButtonClick()
+        {
+            SceneNavigator.Instance.LoadAdditiveSceneAsync(SceneID.CHARACTER_SETUP, SceneID.HOME);
+        }
+
         private void OnSliderChange(int statIndex, float value)
         {
             if (value == this._sliderValues[statIndex]) return;
 
             int diff = (int)(value - this._sliderValues[statIndex]);
+
             if (diff > this._availableStatPoints)
             {
                 this._sliders[statIndex].value = this._sliderValues[statIndex];
+                this.UpdateAssignButtons();
                 return;
             }
 
@@ -98,6 +108,8 @@ namespace Game
 
             this._sliderValues[statIndex] = value;
             this.UpdateStatText(statIndex);
+
+            this.UpdateAssignButtons();
         }
 
         private void ConfigureUI()
@@ -137,9 +149,13 @@ namespace Game
             this._statTexts[statIndex].text = statValue.ToString();
         }
 
-        public void OnCloseButtonClick()
+        private void UpdateAssignButtons()
         {
-            SceneNavigator.Instance.LoadAdditiveSceneAsync(SceneID.CHARACTER_SETUP, SceneID.HOME);
+            for (int index = 0; index < this._sliderNegativeButtons.Length; index++)
+            {
+                this._sliderPositiveButtons[index].interactable = this._availableStatPoints > 0 && this._sliders[index].value < this._sliders[index].maxValue;
+                this._sliderNegativeButtons[index].interactable = this._assignedStatPoints[index] > 0;
+            }
         }
     }
 }

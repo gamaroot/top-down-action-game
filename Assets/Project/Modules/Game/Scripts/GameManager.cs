@@ -115,13 +115,19 @@ namespace Game
             this._playerController.OnEnemyKill(enemy);
         }
 
+        public void SetInputEnabled(bool inputEnabled)
+        {
+            Time.timeScale = inputEnabled ? 1f : 0f;
+            this._playerController.SetInputEnabled(inputEnabled);
+        }
+
         public void OnMapVisibilityChange(bool visible)
         {
+            if (this._rooms == null) // Prevent null reference exception
+                return;
+
             for (int index = 0; index < this._rooms.Length; index++)
             {
-                if (this._rooms == null) // Prevent null reference exception
-                    break;
-
                 if (visible)
                     this._rooms[index].ShowIfVisited();
                 else
@@ -159,6 +165,7 @@ namespace Game
 
         private void OnGameQuit()
         {
+            this.SetInputEnabled(true);
             this._gameStateHandler.Save();
             if (!this._playerController.IsDead)
             {

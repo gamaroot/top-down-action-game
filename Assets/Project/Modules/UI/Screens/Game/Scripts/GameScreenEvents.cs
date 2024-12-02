@@ -1,4 +1,5 @@
 using ScreenNavigation;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
@@ -18,11 +19,18 @@ namespace Game
         [SerializeField] private TextMeshProUGUI _txtLevelBack;
         [SerializeField] private TextMeshProUGUI _txtLevelFront;
 
+        [SerializeField] private Animator _btnSettingsAnimator;
+
         private IGameManager _gameManager;
         private string _baseLevelText;
 
+        private InputController _input;
+
         private void Awake()
         {
+            this._input = new InputController();
+            this._input.UI.Start.performed += _ => this.OnMenuButtonClick();
+
             this._gameManager = new CrossSceneReference().GetObjectByType<GameManager>();
 
             this._gameManager.OnPlayerHealthUpdateListener += this.OnHealthUpdated;
@@ -32,6 +40,16 @@ namespace Game
             this._baseLevelText = LocalizationSettings.StringDatabase.GetLocalizedString(LocalizationKeys.SCREEN_GAME, 
                                                                                          LocalizationKeys.TXT_LEVEL);
             this.OnLevelUpdated(this._gameManager.GameState.PlayerState.Level);
+        }
+
+        private void OnEnable()
+        {
+            this._input.Enable();
+        }
+
+        private void OnDisable()
+        {
+            this._input.Disable();
         }
 
         private void OnXpUpdated(float xp, float xpToNextLevel)
@@ -62,6 +80,19 @@ namespace Game
 
             this._txtLevelBack.text = text;
             this._txtLevelFront.text = text;
+        }
+
+        public void OnMenuButtonClick()
+        {
+            bool visible = !this._btnSettingsAnimator.GetBool(AnimationKeys.VISIBLE);
+            this._btnSettingsAnimator.SetBool(AnimationKeys.VISIBLE, visible);
+
+            if (visible)
+                SceneNavigator.Instance.LoadAdditiveSceneAsync(SceneID.INGAME_SETTINGS);
+            else
+                SceneNavigator.Instance.UnloadSceneAsync(SceneID.INGAME_SETTINGS);
+
+            this._gameManager.SetInputEnabled(!visible);
         }
     }
 }

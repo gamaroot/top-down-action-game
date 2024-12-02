@@ -28,7 +28,6 @@ namespace Game
 
         private Bloom _bloomLayer;
         private Vignette _vignetteLayer;
-        private ChromaticAberration _chromaticAberrationLayer;
 
         private ScriptableRendererFeature _fullScreenFX;
 
@@ -37,7 +36,6 @@ namespace Game
             this._fullScreenFX = this._urpAsset.rendererFeatures[1];
             this._postProcess.profile.TryGet<Bloom>(out this._bloomLayer);
             this._postProcess.profile.TryGet<Vignette>(out this._vignetteLayer);
-            this._postProcess.profile.TryGet<ChromaticAberration>(out this._chromaticAberrationLayer);
 
             this._fullScreenFX.SetActive(false);
         }
@@ -67,9 +65,6 @@ namespace Game
 
             this._vignetteLayer.intensity.value = 0;
             this._vignetteLayer.active = false;
-
-            this._chromaticAberrationLayer.intensity.value = 0;
-            this._chromaticAberrationLayer.active = false;
         }
 
         private void AnimateVignetteLayer(float intensity, float duration, Ease ease)
@@ -99,9 +94,6 @@ namespace Game
             float intensity = 1f - healthPercentage;
 
             this._bloomLayer.tint.value = Color.Lerp(Color.white, Color.red, intensity);
-
-            this._chromaticAberrationLayer.active = intensity != 0;
-            this._chromaticAberrationLayer.intensity.value = intensity;
 
             this._fullScreenFX.SetActive(intensity > 0 && intensity > 0.7f);
             this._fullScreenFXMaterial.SetFloat("_VignetteIntensity", Mathf.Clamp(intensity, 0.8f, 1f));

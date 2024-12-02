@@ -24,5 +24,6 @@ namespace Game
         void OnPlayerEscape();
         void OnEnemyKill(IEnemyConfig enemy);
         void OnMapVisibilityChange(bool visible);
+        void SetInputEnabled(bool inputEnabled);
     }
 }

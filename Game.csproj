@@ -128,8 +128,8 @@
     <Compile Include="Assets\Project\Modules\Utils\Scripts\InputFeedback\Vibration.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Map\Room.cs" />
-    <Compile Include="Assets\Project\Modules\UI\Screens\InGameSettings\Scripts\InGameSettingsButton.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\EnemyParryController.cs" />
+    <Compile Include="Assets\Project\Modules\Utils\Scripts\UI\UIDropdownScroller.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerLevelUpDisplay.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\GameManager.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Player\PlayerConfig.cs" />
@@ -140,6 +140,7 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Map\RoomGenerator.cs" />
     <Compile Include="Assets\Project\Modules\Debug\Scripts\DebugUtils.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Map\RoomData.cs" />
+    <Compile Include="Assets\Project\Modules\Utils\Scripts\UI\UINavigationSetup.cs" />
     <Compile Include="Assets\Project\Modules\Audio\Scripts\BGMType.cs" />
     <Compile Include="Assets\Project\Modules\InputSettings\InputController.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\Extension\StringFormatUtils.cs" />

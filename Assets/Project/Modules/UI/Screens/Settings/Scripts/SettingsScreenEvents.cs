@@ -2,9 +2,7 @@ using DG.Tweening;
 using ScreenNavigation;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
-using Utils;
 
 namespace Game
 {
@@ -12,8 +10,8 @@ namespace Game
     {
         [SerializeField] private Slider _sliderSoundVolume, _sliderMusicVolume;
         [SerializeField] private TextMeshProUGUI _textSoundVolume, _textMusicVolume, _textVersion;
-        [SerializeField] private TMP_Dropdown _dropdownLanguage;
         [SerializeField] private RectTransform _fpsSelector;
+        [SerializeField] private TMP_Dropdown _dropdownLanguage;
 
         private Tween _tweenFPSSelector;
         private float _fpsSelectorAnchor;
@@ -38,7 +36,6 @@ namespace Game
             this._sliderMusicVolume.onValueChanged.AddListener(this.OnUpdateMusicVolume);
 
             this._dropdownLanguage.value = GamePreferences.LanguageIndex;
-            this._dropdownLanguage.onValueChanged.AddListener(_ => this.OnUpdateLanguage());
 
             this.UpdateFPSSelector(GamePreferences.FPS switch
             {
@@ -90,13 +87,6 @@ namespace Game
         public void On120FPSButtonClick()
         {
             this.UpdateFPSSelector(2f, 120);
-        }
-
-        private void OnUpdateLanguage()
-        {
-            int index = this._dropdownLanguage.value;
-            GamePreferences.LanguageIndex = index;
-            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[index];
         }
 
         private void UpdateFPSSelector(float index, int fps)

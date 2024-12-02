@@ -52,6 +52,7 @@ namespace Game
         {
             // Check if the gamepad is not connected and the pointer is over a UI element
             if (Gamepad.current == null &&
+                EventSystem.current != null && 
                 EventSystem.current.IsPointerOverGameObject())
             {
                 return;
