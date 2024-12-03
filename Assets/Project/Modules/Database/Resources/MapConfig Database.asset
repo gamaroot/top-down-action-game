@@ -37,7 +37,7 @@ MonoBehaviour:
       MinRoomsBefore: 1
       MinEnemies: 10
       MaxEnemies: 20
-      EnemyPool: 01000000
+      EnemyPool: 0100000000000000
       MinTraps: 0
       MaxTraps: 0
       TrapPool: 02000000

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Game
@@ -7,6 +8,8 @@ namespace Game
         public bool CanDash { get; private set; } = true;
         public bool IsDashing { get; private set; }
         public Vector3 DashMovement { get; private set; }
+        public Action OnDashStart { private get; set; }
+        public Action OnDashEnd { private get; set; }
 
         private readonly float _dashSpeed;
         private readonly float _dashDuration;
@@ -31,6 +34,8 @@ namespace Game
             this.CanDash = false;
             this.IsDashing = true;
 
+            this.OnDashStart.Invoke();
+
             this._dashStartTime = Time.time;  // Set the start time of the dash
             this._dashDirection = new Vector3(dashInput.x, 0, dashInput.y).normalized;
 
@@ -40,7 +45,6 @@ namespace Game
 
         public void OnUpdate()
         {
-
             if (this.IsDashing)
             {
                 float dashElapsedTime = Time.time - this._dashStartTime;
@@ -53,6 +57,7 @@ namespace Game
                 {
                     // Dash ended
                     this.IsDashing = false;
+                    this.OnDashEnd.Invoke();
                 }
                 return;
             }

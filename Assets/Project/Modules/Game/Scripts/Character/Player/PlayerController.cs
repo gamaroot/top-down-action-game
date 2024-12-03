@@ -1,13 +1,21 @@
 using Game.Database;
-using System;
 using UnityEngine;
 using Utils;
+using static UnityEngine.Rendering.STP;
 
 namespace Game
 {
     public class PlayerController : MonoBehaviour
     {
+        [Header("Attributes")]
         [SerializeField] private Vector3 _defaultPosition;
+        [SerializeField] private LayerMask _defaultLayerMask;
+        [SerializeField] private Color _defaultPlayerMaterialColor;
+
+        [Header("Components")]
+        [SerializeField] private Material _playerMaterial;
+
+        [Header("Controllers")]
         [SerializeField] private PlayerHealthController _healthController;
         [SerializeField] private PlayerExperienceController _experienceController;
         [SerializeField] private PlayerMovementController _movementController;
@@ -20,8 +28,16 @@ namespace Game
 
         private void OnValidate()
         {
+            this._defaultLayerMask = 1 << base.gameObject.layer;
+
             if (this._defaultPosition == Vector3.zero)
                 this._defaultPosition = base.transform.position;
+
+            if (this._playerMaterial == null)
+                this._playerMaterial = base.GetComponent<MeshRenderer>().material;
+
+            if (this._defaultPlayerMaterialColor == Color.clear)
+                this._defaultPlayerMaterialColor = this._playerMaterial.color;
 
             if (this._healthController == null)
                 this._healthController = this.GetComponent<PlayerHealthController>();
@@ -68,9 +84,14 @@ namespace Game
                 gameManager.OnPlayerHealthUpdated(this._healthController.MaxHealth, this._healthController.MaxHealth);
 
                 this._experienceController.Init(gameManager);
-                this._movementController.Init(stats);
                 this._parryController.Init(stats);
                 this._shootController.Init(gameManager.WeaponConfig);
+                this._movementController.Init(stats, 
+                                              () => this.ActivateInvincibility(gameManager.PlayerConfig.InvincibilityLayerMask), 
+                                              this.DeactivateInvincibility);
+
+                this.ActivateInvincibility(gameManager.PlayerConfig.InvincibilityLayerMask,
+                                           gameManager.PlayerConfig.SpawnInvincibilityDuration);
             }
             base.gameObject.gameObject.SetActive(isActive);
         }
@@ -106,6 +127,31 @@ namespace Game
 
             if (base.gameObject.activeSelf)
                 base.StartCoroutine(CameraHandler.Instance.Shake());
+        }
+
+        public void ActivateInvincibility(LayerMask invincibilityLayerMask)
+        {
+            this._playerMaterial.color = Color.clear;
+            this.UpdateLayerMask(invincibilityLayerMask);
+        }
+
+        public void ActivateInvincibility(LayerMask invincibilityLayerMask, float spawnInvincibilityDuration)
+        {
+            this.ActivateInvincibility(invincibilityLayerMask);
+
+            base.CancelInvoke(nameof(this.DeactivateInvincibility));
+            base.Invoke(nameof(this.DeactivateInvincibility), spawnInvincibilityDuration);
+        }
+
+        public void DeactivateInvincibility()
+        {
+            this._playerMaterial.color = this._defaultPlayerMaterialColor;
+            this.UpdateLayerMask(this._defaultLayerMask);
+        }
+
+        private void UpdateLayerMask(LayerMask layerMask)
+        {
+            base.gameObject.layer = Mathf.RoundToInt(Mathf.Log(layerMask.value, 2));
         }
     }
 }

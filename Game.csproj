@@ -126,6 +126,7 @@
     <Compile Include="Assets\Project\Modules\Debug\Scripts\DebugScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Enemy\EnemyConfig.cs" />
     <Compile Include="Assets\Project\Modules\Utils\Scripts\InputFeedback\Vibration.cs" />
+    <Compile Include="Assets\Project\Modules\Utils\Scripts\Editor\LayerEnumGenerator.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Player\PlayerController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Map\Room.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\EnemyParryController.cs" />
@@ -177,6 +178,7 @@
     <Compile Include="Assets\Project\Modules\Database\Scripts\GameConfigDatabase.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Weapon\ProjectileDeflector.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Enemy\EnemyKamikaze.cs" />
+    <Compile Include="Assets\Project\Modules\Utils\Scripts\Layers.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Persistance\GameState\PlayerState.cs" />
     <Compile Include="Assets\Project\Modules\UI\Screens\Credits\Scripts\CreditsScreenEvents.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Map\MapExitPortal.cs" />

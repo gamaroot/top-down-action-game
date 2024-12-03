@@ -873,10 +873,10 @@ MonoBehaviour:
   _playerController: {fileID: 1507386640}
   _toastHandler: {fileID: 803079425}
   _vfx: {fileID: 918518097}
-  _playerConfig: {fileID: 0}
-  _enemyConfig: {fileID: 0}
-  _weaponConfig: {fileID: 0}
-  _mapConfig: {fileID: 0}
+  _playerConfig: {fileID: 11400000, guid: ed9e07694c1798840b171e5b4dad025d, type: 2}
+  _enemyConfig: {fileID: 11400000, guid: c02e866a3ec42114cb87bcf8821708c1, type: 2}
+  _weaponConfig: {fileID: 11400000, guid: b83d9cf39c6ff304b9487a00e421f526, type: 2}
+  _mapConfig: {fileID: 11400000, guid: a4d06bb09ff2e7549bc18d4afa166fca, type: 2}
 --- !u!4 &1507386632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4391291159302818654, guid: 07f8804b87c939b4a88e277ca159fad4,
@@ -895,6 +895,132 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e078649949be59a4f8c1092805bde5f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!21 &1523890069
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_Player (Instance) (Instance)
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _ALPHAPREMULTIPLY_ON
+  - _SPECULAR_SETUP
+  - _SURFACE_TYPE_TRANSPARENT
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  - DepthOnly
+  - SHADOWCASTER
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AddPrecomputedVelocity: 0
+    - _AlphaClip: 0
+    - _AlphaToMask: 0
+    - _Blend: 0
+    - _BlendModePreserveSpecular: 1
+    - _BumpScale: 1
+    - _ClearCoatMask: 0
+    - _ClearCoatSmoothness: 0
+    - _Cull: 2
+    - _Cutoff: 0.5
+    - _DetailAlbedoMapScale: 1
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 10
+    - _DstBlendAlpha: 10
+    - _EnvironmentReflections: 1
+    - _GlossMapScale: 0
+    - _Glossiness: 0
+    - _GlossyReflections: 0
+    - _Metallic: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.005
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _Smoothness: 0
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _SrcBlendAlpha: 1
+    - _Surface: 1
+    - _WorkflowMode: 0
+    - _ZWrite: 0
+    m_Colors:
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!1001 &1196204070102730513
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1021,16 +1147,66 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4594500914236323488, guid: 07f8804b87c939b4a88e277ca159fad4,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1523890069}
     - target: {fileID: 6232202900844893240, guid: 07f8804b87c939b4a88e277ca159fad4,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232202900844893240, guid: 07f8804b87c939b4a88e277ca159fad4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232202900844893240, guid: 07f8804b87c939b4a88e277ca159fad4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7296282807849043748, guid: 07f8804b87c939b4a88e277ca159fad4,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585545}
+    - target: {fileID: 8636255350843070537, guid: 07f8804b87c939b4a88e277ca159fad4,
+        type: 3}
+      propertyPath: _playerMaterial
+      value: 
+      objectReference: {fileID: 1523890069}
+    - target: {fileID: 8636255350843070537, guid: 07f8804b87c939b4a88e277ca159fad4,
+        type: 3}
+      propertyPath: _defaultPlayerMaterialColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636255350843070537, guid: 07f8804b87c939b4a88e277ca159fad4,
+        type: 3}
+      propertyPath: _defaultPlayerMaterialColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636255350843070537, guid: 07f8804b87c939b4a88e277ca159fad4,
+        type: 3}
+      propertyPath: _defaultPlayerMaterialColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636255350843070537, guid: 07f8804b87c939b4a88e277ca159fad4,
+        type: 3}
+      propertyPath: _defaultPlayerMaterialColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9168013467310338679, guid: 07f8804b87c939b4a88e277ca159fad4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9168013467310338679, guid: 07f8804b87c939b4a88e277ca159fad4,
+        type: 3}
+      propertyPath: _defaultLayerMask.m_Bits
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

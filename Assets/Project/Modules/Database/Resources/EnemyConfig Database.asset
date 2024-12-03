@@ -37,7 +37,7 @@ MonoBehaviour:
       ParryDuration: 0
       ParryCooldown: 0
     <Type>k__BackingField: 1
-    <XpReward>k__BackingField: 1
+    <XpReward>k__BackingField: 2
     <TargetTag>k__BackingField: 5
     <ObstacleLayer>k__BackingField:
       serializedVersion: 2

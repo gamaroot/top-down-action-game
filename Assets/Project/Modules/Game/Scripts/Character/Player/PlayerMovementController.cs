@@ -1,4 +1,5 @@
 using Game.Database;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Utils;
@@ -30,8 +31,6 @@ namespace Game
 
         private void Awake()
         {
-            this._dashHandler = new(this.DashSpeed, this.DashDuration, this.DashCooldown);
-
             this._inputs = new InputController();
             this._inputs.Player.Move.performed += context => this._move = context.ReadValue<Vector2>();
             this._inputs.Player.Move.canceled += context => this._move = Vector2.zero;
@@ -55,9 +54,15 @@ namespace Game
             this.Move(this._dashHandler.IsDashing ? this._dashHandler.DashMovement : this.NormalMovement);
         }
 
-        public void Init(CharacterStats stats)
+        public void Init(CharacterStats stats, Action onDashStartListener, Action onDashEndListener)
         {
             this._stats = stats;
+
+            this._dashHandler = new(this.DashSpeed, this.DashDuration, this.DashCooldown)
+            {
+                OnDashStart = onDashStartListener,
+                OnDashEnd = onDashEndListener
+            };
         }
 
         public override void Move(Vector3 point)

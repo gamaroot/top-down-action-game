@@ -190,7 +190,7 @@ namespace Game
                         case SceneState.LOADING:
                             this.OnGameStart();
                             break;
-                        case SceneState.ANIMATING_SHOW:
+                        case SceneState.LOADED:
                             this.ActivatePlayerControl();
                             break;
                         case SceneState.UNLOADED:

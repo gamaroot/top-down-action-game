@@ -21,6 +21,10 @@ MonoBehaviour:
       DashCooldown: 1
       ParryDuration: 0.5
       ParryCooldown: 1
+    <InvincibilityLayerMask>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 131072
+    <SpawnInvincibilityDuration>k__BackingField: 2
     <InitialStatsPoints>k__BackingField: 0
     <StatsPointsPerLevel>k__BackingField: 2
     <ExtraStatsPerPoint>k__BackingField:
