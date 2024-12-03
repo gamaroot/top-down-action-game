@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Utils
 {
-    public class UIDropdownScroller : MonoBehaviour
+    public class UIDropdownScroller : MonoBehaviour, ISelectHandler
     {
         private ScrollRect _scrollRect;
         private float _scrollPosition = 1f;
@@ -20,7 +21,7 @@ namespace Utils
             this._scrollPosition = 1f - ((float)childIndex / childCount);
         }
 
-        public void OnSelect(int _)
+        public void OnSelect(BaseEventData _)
         {
             if (this._scrollRect)
                 this._scrollRect.verticalScrollbar.value = this._scrollPosition;
