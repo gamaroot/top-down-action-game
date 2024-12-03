@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using Utils;
 
@@ -11,13 +12,14 @@ namespace Game
 
             Vibration.StartHapticFeedback();
             
-            string invokeMethod = nameof(this.StopVibration);
-            base.CancelInvoke(invokeMethod);
-            base.Invoke(invokeMethod, 0.1f);
+            base.StopCoroutine(this.StopVibration());
+            base.StartCoroutine(this.StopVibration());
         }
 
-        private void StopVibration()
+        private IEnumerator StopVibration()
         {
+            yield return new WaitForSecondsRealtime(0.1f);
+
             Vibration.Stop();
         }
     }
