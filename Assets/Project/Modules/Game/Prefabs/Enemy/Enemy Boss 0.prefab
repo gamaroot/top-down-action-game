@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ef9b45a1a32fab42aad47f88cea2a86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponType: 6
+  _weaponType: 3
   _weaponTag: 11
   _weaponLayerMask:
     serializedVersion: 2

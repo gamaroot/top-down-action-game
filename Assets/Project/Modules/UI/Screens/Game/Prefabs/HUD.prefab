@@ -1067,18 +1067,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1345637500308872390, guid: 406a214f0b70a2c4c97b66e577a2d9f9,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 92355726541255022}
-    - target: {fileID: 1345637500308872390, guid: 406a214f0b70a2c4c97b66e577a2d9f9,
-        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnClick
+      value: OnMenuButtonClick
       objectReference: {fileID: 0}
     - target: {fileID: 1345637500308872390, guid: 406a214f0b70a2c4c97b66e577a2d9f9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Game.InGameSettingsButton, Game
+      value: Game.GameScreenEvents, Game
       objectReference: {fileID: 0}
     - target: {fileID: 3727822095508934847, guid: 406a214f0b70a2c4c97b66e577a2d9f9,
         type: 3}
@@ -1185,43 +1180,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button InGame Settings
       objectReference: {fileID: 0}
+    - target: {fileID: 7449741051455631127, guid: 406a214f0b70a2c4c97b66e577a2d9f9,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7159030251714523505, guid: 406a214f0b70a2c4c97b66e577a2d9f9,
-        type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 92355726541255022}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 406a214f0b70a2c4c97b66e577a2d9f9, type: 3}
 --- !u!224 &698229945220348103 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3727822095508934847, guid: 406a214f0b70a2c4c97b66e577a2d9f9,
-    type: 3}
-  m_PrefabInstance: {fileID: 4182575348351740024}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6436349801448053001 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7159030251714523505, guid: 406a214f0b70a2c4c97b66e577a2d9f9,
-    type: 3}
-  m_PrefabInstance: {fileID: 4182575348351740024}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &92355726541255022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6436349801448053001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6248e5c61ee96749becde60bcf8e740, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _btnSettingsAnimator: {fileID: 6731106944639551343}
---- !u!95 &6731106944639551343 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7449741051455631127, guid: 406a214f0b70a2c4c97b66e577a2d9f9,
     type: 3}
   m_PrefabInstance: {fileID: 4182575348351740024}
   m_PrefabAsset: {fileID: 0}

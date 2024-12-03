@@ -2123,23 +2123,7 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1454760034}
-    - target: {fileID: 2929543398917764286, guid: c400cbe1b4f5c1a4a906e318865705fd,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnMenuButtonClick
-      objectReference: {fileID: 0}
-    - target: {fileID: 2929543398917764286, guid: c400cbe1b4f5c1a4a906e318865705fd,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Game.GameScreenEvents, Game
-      objectReference: {fileID: 0}
-    - target: {fileID: 6731106944639551343, guid: c400cbe1b4f5c1a4a906e318865705fd,
-        type: 3}
-      propertyPath: m_UpdateMode
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 92355726541255022, guid: c400cbe1b4f5c1a4a906e318865705fd, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

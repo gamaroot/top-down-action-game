@@ -30,9 +30,9 @@ MonoBehaviour:
     <ProjectileSpeed>k__BackingField: 20
   - <Type>k__BackingField: 3
     <Damage>k__BackingField: 1
-    <ShootInterval>k__BackingField: 0.3
+    <ShootInterval>k__BackingField: 0.5
     <Range>k__BackingField: 10
-    <ProjectileSpeed>k__BackingField: 20
+    <ProjectileSpeed>k__BackingField: 40
   - <Type>k__BackingField: 4
     <Damage>k__BackingField: 2
     <ShootInterval>k__BackingField: 0.5
@@ -47,7 +47,7 @@ MonoBehaviour:
     <Damage>k__BackingField: 4
     <ShootInterval>k__BackingField: 0.7
     <Range>k__BackingField: 10
-    <ProjectileSpeed>k__BackingField: 20
+    <ProjectileSpeed>k__BackingField: 30
   - <Type>k__BackingField: 7
     <Damage>k__BackingField: 4
     <ShootInterval>k__BackingField: 0.7

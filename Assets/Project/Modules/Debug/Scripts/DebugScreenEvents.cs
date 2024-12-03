@@ -38,6 +38,8 @@ namespace Game
         [SerializeField] private TextMeshProUGUI _txtLevelBack;
         [SerializeField] private TextMeshProUGUI _txtLevelFront;
 
+        [SerializeField] private Animator _btnSettingsAnimator;
+
         [Header("Others")]
         [SerializeField] private GameObject _iconGamepad;
         [SerializeField] private List<GameObject> _waypoints;
@@ -85,6 +87,19 @@ namespace Game
         {
             this._iconGamepad.SetActive(Gamepad.current != null);
             this.UpdatePlayerHealButton();
+        }
+
+        public void OnMenuButtonClick()
+        {
+            bool visible = !this._btnSettingsAnimator.GetBool(AnimationKeys.VISIBLE);
+            this._btnSettingsAnimator.SetBool(AnimationKeys.VISIBLE, visible);
+
+            if (visible)
+                SceneNavigator.Instance.LoadAdditiveSceneAsync(SceneID.INGAME_SETTINGS);
+            else
+                SceneNavigator.Instance.UnloadSceneAsync(SceneID.INGAME_SETTINGS);
+
+            this._gameManager.SetInputEnabled(!visible);
         }
 
         public void OnCameraButtonClick()
