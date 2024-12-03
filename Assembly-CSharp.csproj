@@ -537,6 +537,7 @@
     <None Include="Assets\SampleAssets\VFX\2DxFX\Resources\2dxfx_AL\_2dxFX_AL_Frozen.shader" />
     <None Include="Assets\SampleAssets\VFX\2DxFX\Resources\2dxfx_AL\_2dxFX_AL_Pixel.shader" />
     <None Include="Assets\SampleAssets\VFX\SineVFX\Volumetric3DLasers\Resources\Shaders\NEW\NEWLaserLayerOpaque.shader" />
+    <None Include="Assets\AddressableAssetsData\link.xml" />
     <None Include="Assets\SampleAssets\VFX\2DxFX\ExtraShaders\Shader\ShinyFX.shader" />
     <None Include="Assets\SampleAssets\VFX\2DxFX\ExtraShaders\Shader\Threshold.shader" />
     <None Include="Assets\SampleAssets\VFX\SineVFX\Volumetric3DLasers\Resources\Shaders\NEW\NEWLaserLayerAlphaBlended.shader" />

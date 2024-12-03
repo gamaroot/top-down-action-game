@@ -13,7 +13,7 @@ namespace Game
         private static AudioClip[] _playlist;
         private static AudioSource _audioSource;
 
-        private static BGMType _currentMusic;
+        private static BGMType _currentMusic = BGMType.NONE;
 
         private void Awake()
         {

@@ -2,7 +2,7 @@ namespace Game
 {
     public enum BGMType
     {
-        NONE,
+        NONE = -1,
         GAMEPLAY,
         BOSS,
     }
