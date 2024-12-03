@@ -88,6 +88,9 @@ namespace Game
 
         public void SetInputEnabled(bool inputEnabled)
         {
+            if (this == null)
+                return;
+
             this._movementController.enabled = inputEnabled;
         }
 

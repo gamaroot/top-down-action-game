@@ -22,27 +22,27 @@ MonoBehaviour:
         type: 3}
       IsUnique: 0
       MinRoomsBefore: 0
-      MinEnemies: 1
-      MaxEnemies: 5
+      MinEnemies: 5
+      MaxEnemies: 8
       EnemyPool: 0000000001000000
       MinTraps: 1
-      MaxTraps: 8
+      MaxTraps: 5
       TrapPool: 00000000010000000200000003000000
       MinPickupItems: 0
-      MaxPickupItems: 3
+      MaxPickupItems: 5
       PickupItemsPool: 00000000
     - Prefab: {fileID: 7340991271870152126, guid: f8e78a8d3e7b80c4497ffd145305214b,
         type: 3}
       IsUnique: 0
       MinRoomsBefore: 1
-      MinEnemies: 1
-      MaxEnemies: 1
+      MinEnemies: 10
+      MaxEnemies: 20
       EnemyPool: 01000000
       MinTraps: 0
       MaxTraps: 0
       TrapPool: 02000000
-      MinPickupItems: 0
-      MaxPickupItems: 3
+      MinPickupItems: 5
+      MaxPickupItems: 15
       PickupItemsPool: 00000000
     - Prefab: {fileID: 7340991271870152126, guid: e61ec3c201eb44349be26e0dd8712d9a,
         type: 3}

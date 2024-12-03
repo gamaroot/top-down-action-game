@@ -873,10 +873,10 @@ MonoBehaviour:
   _playerController: {fileID: 1507386640}
   _toastHandler: {fileID: 803079425}
   _vfx: {fileID: 918518097}
-  _playerConfig: {fileID: 11400000, guid: ed9e07694c1798840b171e5b4dad025d, type: 2}
-  _enemyConfig: {fileID: 11400000, guid: c02e866a3ec42114cb87bcf8821708c1, type: 2}
-  _weaponConfig: {fileID: 11400000, guid: b83d9cf39c6ff304b9487a00e421f526, type: 2}
-  _mapConfig: {fileID: 11400000, guid: a4d06bb09ff2e7549bc18d4afa166fca, type: 2}
+  _playerConfig: {fileID: 0}
+  _enemyConfig: {fileID: 0}
+  _weaponConfig: {fileID: 0}
+  _mapConfig: {fileID: 0}
 --- !u!4 &1507386632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4391291159302818654, guid: 07f8804b87c939b4a88e277ca159fad4,
@@ -1031,8 +1031,7 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585545}
-    m_RemovedComponents:
-    - {fileID: 4145685737540136366, guid: 07f8804b87c939b4a88e277ca159fad4, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Config>k__BackingField:
   - <Stats>k__BackingField:
-      MaxHealth: 6
+      MaxHealth: 4
       MovementSpeed: 9
       DashSpeed: 0
       DashDuration: 0
@@ -29,7 +29,7 @@ MonoBehaviour:
       m_Bits: 8
     <DetectionRadius>k__BackingField: 10
   - <Stats>k__BackingField:
-      MaxHealth: 4
+      MaxHealth: 2
       MovementSpeed: 9
       DashSpeed: 0
       DashDuration: 0
@@ -37,7 +37,7 @@ MonoBehaviour:
       ParryDuration: 0
       ParryCooldown: 0
     <Type>k__BackingField: 1
-    <XpReward>k__BackingField: 2
+    <XpReward>k__BackingField: 1
     <TargetTag>k__BackingField: 5
     <ObstacleLayer>k__BackingField:
       serializedVersion: 2

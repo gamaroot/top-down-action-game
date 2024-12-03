@@ -21,6 +21,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 39e57d6b95bc5124a85da22af89371f8
+    m_Address: Russian (ru)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 758699e3c48da5f489ed2e63bd572303
     m_Address: Chinese (Traditional) (zh-TW)
     m_ReadOnly: 1
@@ -41,6 +47,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ab5e8885b91a55d4e86fe223180ce8a3
     m_Address: English (en)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b03e74f5486b464449b818a3ef6b5113
+    m_Address: Hindi (hi)
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale

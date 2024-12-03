@@ -61,7 +61,7 @@ Material:
     - _NoiteSpread: 2
     - _PixelationX: 50
     - _PixelationY: 50
-    - _VignetteIntensity: 1
+    - _VignetteIntensity: 0.8
     - _VignettePower: 9
     m_Colors:
     - _Color: {r: 0, g: 0, b: 0, a: 1}

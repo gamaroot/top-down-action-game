@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: ca2cfb59f4a7e384dbbc29bc8d6124d3
   m_currentHash:
     serializedVersion: 2
-    Hash: 6c8291165be076105f9ccdf49f146d9a
+    Hash: 00000000000000000000000000000000
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -63,12 +63,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 517019b1e37466045a8337222c04eda9, type: 2}
   - {fileID: 11400000, guid: b489ededa3f3bc3499aea9d26416dfba, type: 2}
   - {fileID: 11400000, guid: 827efa60612189947a2369c1cc902519, type: 2}
+  - {fileID: 11400000, guid: 1c8ba099710a63247919d60e3573741b, type: 2}
   - {fileID: 11400000, guid: 94a3b055707b7184fb265867ca93bfc6, type: 2}
   - {fileID: 11400000, guid: 15a57aa8d61208041a2f6f18396b2176, type: 2}
   - {fileID: 11400000, guid: 6fdc5397efe4e1b4b882755f3964262a, type: 2}
   - {fileID: 11400000, guid: bacd4205e1ba6e648a751de09d74eed6, type: 2}
   - {fileID: 11400000, guid: bed9cd2513e179742872760bd871d76f, type: 2}
   - {fileID: 11400000, guid: 4f2e595bdd9f8844ba851eabf2114182, type: 2}
+  - {fileID: 11400000, guid: 2130a9d0fa30d264eb589957899edad1, type: 2}
   m_BuildSettings:
     m_LogResourceManagerExceptions: 1
     m_BundleBuildPath: Temp/com.unity.addressables/AssetBundles
@@ -116,6 +118,8 @@ MonoBehaviour:
     - Locale-zh-TW
     - Locale-pt-BR
     - Locale-zh
+    - Locale-hi
+    - Locale-ru
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 89cdfcbc0bd79c04ba63b33fbc7fa27a, type: 2}

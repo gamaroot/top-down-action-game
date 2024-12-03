@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-String-Tables-Hindi (hi)
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-String-Tables-Hindi (hi)
+  m_GUID: 372397abc4094a3428401856ec0ffba0
+  m_SerializeEntries:
+  - m_GUID: 0764c84d311e81f448055d61764d76f7
+    m_Address: ScreenGameMap_hi
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b0e748ce102c4f4682bbfdbf1f18d58
+    m_Address: ScreenGame_hi
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5e3cd942c8155a147bc83c4fd4148038
+    m_Address: ScreenCharacterSetup_hi
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d4f0dd670420d64d91fca5461570a88
+    m_Address: ScreenHome_hi
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7d5b9b54d74116943a8d97c77df9ebc2
+    m_Address: ScreenLoading_hi
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 988262923d023f7498da8026f3138598
+    m_Address: ScreenDebug_hi
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a56a47630b905114a9407399ea169da8
+    m_Address: ScreenInGameSettings_hi
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b0ad7356640e39240829059f0854ff5b
+    m_Address: ScreenSettings_hi
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b1f1ccb44be649743a8b72b16363f0a3
+    m_Address: ScreenGameOver_hi
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c4e049463acdd9d4e9078b0018035d5f
+    m_Address: ScreenCredits_hi
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f56704f743f26c14b87f2a2f1254392a
+    m_Address: PopupApplicationQuit_hi
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: 511de9b718b93e742b8567941cb05a30, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c1b0fb5eb8ef3f24d971687766f60adb, type: 2}
+    - {fileID: 11400000, guid: e08477808096da54f9c5a14b026baaa5, type: 2}

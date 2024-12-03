@@ -2,6 +2,7 @@ using DG.Tweening;
 using ScreenNavigation;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
 namespace Game
@@ -36,6 +37,7 @@ namespace Game
             this._sliderMusicVolume.onValueChanged.AddListener(this.OnUpdateMusicVolume);
 
             this._dropdownLanguage.value = GamePreferences.LanguageIndex;
+            this._dropdownLanguage.onValueChanged.AddListener(_ => this.OnUpdateLanguage());
 
             this.UpdateFPSSelector(GamePreferences.FPS switch
             {
@@ -87,6 +89,13 @@ namespace Game
         public void On120FPSButtonClick()
         {
             this.UpdateFPSSelector(2f, 120);
+        }
+
+        private void OnUpdateLanguage()
+        {
+            int index = this._dropdownLanguage.value;
+            GamePreferences.LanguageIndex = index;
+            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[index];
         }
 
         private void UpdateFPSSelector(float index, int fps)

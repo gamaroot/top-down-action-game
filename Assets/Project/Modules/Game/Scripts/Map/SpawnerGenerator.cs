@@ -23,8 +23,8 @@ namespace Game
         private SpawnConfig<T>[] GenerateSpawnConfigForType<T>(int total, List<T> pool, float roomSize, Vector2 roomPosition)
         {
             var configs = new SpawnConfig<T>[total];
-            var usedPositions = new List<Vector3>();
-            float minDistanceBetweenObjects = 2f; // Minimum distance to avoid overlap
+            var usedPositions = new List<Vector3> { Vector3.zero };
+            float minDistanceBetweenObjects = 5f; // Minimum distance to avoid overlap
 
             for (int index = 0; index < total; index++)
             {

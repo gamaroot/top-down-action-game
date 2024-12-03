@@ -19,9 +19,9 @@ MonoBehaviour:
       DashSpeed: 30
       DashDuration: 0.2
       DashCooldown: 1
-      ParryDuration: 0.3
+      ParryDuration: 0.5
       ParryCooldown: 1
-    <InitialStatsPoints>k__BackingField: 3
+    <InitialStatsPoints>k__BackingField: 0
     <StatsPointsPerLevel>k__BackingField: 2
     <ExtraStatsPerPoint>k__BackingField:
       MaxHealth: 1
