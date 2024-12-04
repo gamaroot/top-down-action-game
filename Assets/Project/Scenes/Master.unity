@@ -1167,15 +1167,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585545}
-    - target: {fileID: 8711983250215041083, guid: 07f8804b87c939b4a88e277ca159fad4,
+    - target: {fileID: 8695416358846947010, guid: 07f8804b87c939b4a88e277ca159fad4,
         type: 3}
-      propertyPath: m_Drag
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 8711983250215041083, guid: 07f8804b87c939b4a88e277ca159fad4,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 3
+      propertyPath: m_Height
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,14 +1,17 @@
 using Game.Database;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using Utils;
 
 namespace Game
 {
+    [RequireComponent(typeof(CharacterController))]
     public class PlayerMovementController : MovementController
     {
         [Header("Components")]
-        [SerializeField] private Rigidbody _rigidbody;
+        [SerializeField, ReadOnly] private CharacterController _controller;
 
         [Header("Events")]
         [SerializeField] private UnityEvent _onDashStart;
@@ -18,20 +21,25 @@ namespace Game
         private float DashSpeed => this._stats.DashSpeed;
         private float DashDuration => this._stats.DashDuration;
         private float DashCooldown => this._stats.DashCooldown;
-        private Vector3 NormalMovement => this.MovementSpeed * Time.fixedDeltaTime * new Vector3(this._move.x, 0, this._move.y);
+        private Vector3 NormalMovement => this.MovementSpeed * Time.deltaTime * new Vector3(this._move.x, 0, this._move.y);
 
         private Vector2 _move;
         private InputController _inputs;
         private DashHandler _dashHandler;
         private CharacterStats _stats;
 
+        private float _fixedPosY;
+
         private void OnValidate()
         {
-            this._rigidbody ??= base.GetComponent<Rigidbody>();
+            if (this._controller == null)
+                this._controller = base.GetComponent<CharacterController>();
         }
 
         private void Awake()
         {
+            this._fixedPosY = base.transform.position.y;
+
             this._inputs = new InputController();
             this._inputs.Player.Move.performed += context => this._move = context.ReadValue<Vector2>();
             this._inputs.Player.Move.canceled += context => this._move = Vector2.zero;
@@ -48,9 +56,12 @@ namespace Game
             this._inputs.Disable();
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             this._dashHandler.OnUpdate();
+
+            Vector3 currentPosition = this._controller.transform.position;
+            this._controller.transform.position = new Vector3(0.5f, currentPosition.y, currentPosition.z);
 
             this.Move(this._dashHandler.IsDashing ? this._dashHandler.DashMovement : this.NormalMovement);
         }
@@ -71,8 +82,10 @@ namespace Game
             if (point == Vector3.zero)
                 return;
 
-            this._rigidbody.linearVelocity = Vector3.zero;
-            this._rigidbody.MovePosition(this._rigidbody.position + point);
+            Vector3 currentPosition = base.transform.position;
+            this._controller.transform.position = new Vector3(currentPosition.x, this._fixedPosY, currentPosition.z);
+
+            this._controller.Move(point);
         }
 
         private void OnDashPressed()
