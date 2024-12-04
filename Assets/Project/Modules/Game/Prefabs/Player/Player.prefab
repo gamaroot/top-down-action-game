@@ -49,6 +49,52 @@ MonoBehaviour:
   _groundLayerMask:
     serializedVersion: 2
     m_Bits: 2048
+--- !u!1 &938410632862123527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6602738914842348420}
+  - component: {fileID: 2186039121321407342}
+  m_Layer: 6
+  m_Name: Ghost Trail
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &6602738914842348420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938410632862123527}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4391291159302818654}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2186039121321407342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938410632862123527}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbdbaa98c5a61f040b916a57c1ec76fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnInterval: 0.05
+  _lifetime: 0.25
 --- !u!1 &1497143613068502858
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,6 +282,7 @@ GameObject:
   - component: {fileID: 3510508411092861242}
   - component: {fileID: 6506597236912290912}
   - component: {fileID: 3881110480958020077}
+  - component: {fileID: 5740206538838092888}
   - component: {fileID: 8295479494289561504}
   - component: {fileID: 2330986922002403453}
   - component: {fileID: 7473983449790668343}
@@ -260,6 +307,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6602738914842348420}
   - {fileID: 799378099481839320}
   - {fileID: 2196065786789720094}
   - {fileID: 22358461574755743}
@@ -278,11 +326,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultPosition: {x: -2, y: 0.5, z: 2.5}
+  _ghostTrail: {fileID: 0}
   _healthController: {fileID: 9168013467310338679}
   _experienceController: {fileID: 3881110480958020077}
   _movementController: {fileID: 4392599432013812452}
   _parryController: {fileID: 6506597236912290912}
   _shootController: {fileID: 3510508411092861242}
+  _invincibilityController: {fileID: 5740206538838092888}
 --- !u!114 &9168013467310338679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,6 +358,60 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controller: {fileID: 2330986922002403453}
+  _onDashStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5740206538838092888}
+        m_TargetAssemblyTypeName: Game.InvincibilityController, Game
+        m_MethodName: ActivateInvincibility
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2186039121321407342}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  _onDashEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5740206538838092888}
+        m_TargetAssemblyTypeName: Game.InvincibilityController, Game
+        m_MethodName: DeactivateInvincibility
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2186039121321407342}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3510508411092861242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,6 +451,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelUpDisplay: {fileID: 1546469401509154784}
+--- !u!114 &5740206538838092888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6232202900844893240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15ee493c4107824db781aa2436b7ba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _invincibilityLayerMask:
+    serializedVersion: 2
+    m_Bits: 131072
+  _defaultPlayerMaterialColor: {r: 1, g: 1, b: 1, a: 1}
+  _playerMaterial: {fileID: 0}
 --- !u!135 &8295479494289561504
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -424,7 +548,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f83e026c13145824cae96d4ee705abe1, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

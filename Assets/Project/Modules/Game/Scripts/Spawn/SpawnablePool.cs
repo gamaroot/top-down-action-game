@@ -8,6 +8,7 @@ namespace Game
     {
         [SerializeField] private GameObject _deathPrefab;
         [SerializeField] private GameObject _kamikazePrefab;
+        [SerializeField] private GameObject _playerGhostTrailPrefab;
         [SerializeField] private GameObject[] _enemyPrefabs;
         [SerializeField] private GameObject[] _bulletPrefabs;
         [SerializeField] private GameObject[] _bulletImpactPrefabs;
@@ -15,23 +16,24 @@ namespace Game
         [SerializeField] private GameObject[] _pickupPrefabs;
         [SerializeField] private GameObject[] _otherPrefabs;
 
-        private static readonly Pool[][] _pools = new Pool[8][];
+        private static readonly Pool[][] _pools = new Pool[9][];
 
         public void Init(IGameManager gameManager)
         {
             Transform baseTransform = base.transform;
             this.CreatePool(0, baseTransform, this._deathPrefab);
             this.CreatePool(1, baseTransform, this._kamikazePrefab);
+            this.CreatePool(2, baseTransform, this._playerGhostTrailPrefab);
 
-            this.CreatePool(2, baseTransform, this._enemyPrefabs, (enemy) =>
+            this.CreatePool(3, baseTransform, this._enemyPrefabs, (enemy) =>
             {
                 enemy.GetComponent<Enemy>().Init(gameManager);
             });
-            this.CreatePool(3, baseTransform, this._bulletPrefabs);
-            this.CreatePool(4, baseTransform, this._bulletImpactPrefabs);
-            this.CreatePool(5, baseTransform, this._trapPrefabs);
-            this.CreatePool(6, baseTransform, this._pickupPrefabs);
-            this.CreatePool(7, baseTransform, this._otherPrefabs);
+            this.CreatePool(4, baseTransform, this._bulletPrefabs);
+            this.CreatePool(5, baseTransform, this._bulletImpactPrefabs);
+            this.CreatePool(6, baseTransform, this._trapPrefabs);
+            this.CreatePool(7, baseTransform, this._pickupPrefabs);
+            this.CreatePool(8, baseTransform, this._otherPrefabs);
         }
 
         public static GameObject SpawnDeath()
@@ -44,34 +46,39 @@ namespace Game
             return _pools[1][0].BorrowObject();
         }
 
+        public static MeshRenderer SpawnPlayerGhostTrail()
+        {
+            return _pools[2][0].BorrowObject<MeshRenderer>();
+        }
+
         public static BehaviorGraphAgent SpawnEnemy(SpawnTypeEnemy type)
         {
-            return _pools[2][(int)type].BorrowObject<BehaviorGraphAgent>();
+            return _pools[3][(int)type].BorrowObject<BehaviorGraphAgent>();
         }
 
         public static Bullet SpawnBullet(WeaponType type)
         {
-            return _pools[3][(int)type].BorrowObject<Bullet>();
+            return _pools[4][(int)type].BorrowObject<Bullet>();
         }
 
         public static GameObject SpawnBulletImpact(WeaponType type)
         {
-            return _pools[4][(int)type].BorrowObject();
+            return _pools[5][(int)type].BorrowObject();
         }
 
         public static GameObject SpawnTrap(SpawnTypeTrap type)
         {
-            return _pools[5][(int)type].BorrowObject();
+            return _pools[6][(int)type].BorrowObject();
         }
 
         public static GameObject SpawnPickup(SpawnTypePickup type)
         {
-            return _pools[6][(int)type].BorrowObject();
+            return _pools[7][(int)type].BorrowObject();
         }
 
         public static T SpawnOther<T>(SpawnTypeOther type, float autoDisableInSeconds = -1f)
         {
-            return _pools[7][(int)type].BorrowObject<T>(autoDisableInSeconds);
+            return _pools[8][(int)type].BorrowObject<T>(autoDisableInSeconds);
         }
 
         public static void DisableAll()

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game
 {
@@ -8,8 +9,8 @@ namespace Game
         public bool CanDash { get; private set; } = true;
         public bool IsDashing { get; private set; }
         public Vector3 DashMovement { get; private set; }
-        public Action OnDashStart { private get; set; }
-        public Action OnDashEnd { private get; set; }
+        public UnityEvent OnDashStart { private get; set; }
+        public UnityEvent OnDashEnd { private get; set; }
 
         private readonly float _dashSpeed;
         private readonly float _dashDuration;

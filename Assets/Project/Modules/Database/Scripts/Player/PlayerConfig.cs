@@ -6,7 +6,6 @@ namespace Game.Database
     [Serializable]
     public class PlayerConfig : CharacterConfig, IPlayerConfig
     {
-        [field: SerializeField] public LayerMask InvincibilityLayerMask { get; set; }
         [field: SerializeField] public float SpawnInvincibilityDuration { get; set; } = 3f;
         [field: SerializeField] public int InitialStatsPoints { get; set; } = 3;
         [field: SerializeField] public int StatsPointsPerLevel { get; set; } = 2;

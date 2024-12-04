@@ -48,6 +48,8 @@ MonoBehaviour:
     type: 3}
   _kamikazePrefab: {fileID: 373255474852878632, guid: 8ca4f538eb5dbcc4ea7540cd451a31b8,
     type: 3}
+  _playerGhostTrailPrefab: {fileID: 6275605590480203035, guid: 8fc6baf6d0c32e74586c38e70f9665b9,
+    type: 3}
   _enemyPrefabs:
   - {fileID: 9036938352783240745, guid: 6d87a44cab9fb3648acdbfe14508f5e8, type: 3}
   - {fileID: 9036938352783240745, guid: 78c3dbd8f65962a4f8f79255fb731ec4, type: 3}

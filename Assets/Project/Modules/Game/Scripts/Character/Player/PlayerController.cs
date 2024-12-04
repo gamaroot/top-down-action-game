@@ -1,7 +1,6 @@
 using Game.Database;
 using UnityEngine;
 using Utils;
-using static UnityEngine.Rendering.STP;
 
 namespace Game
 {
@@ -9,11 +8,9 @@ namespace Game
     {
         [Header("Attributes")]
         [SerializeField] private Vector3 _defaultPosition;
-        [SerializeField] private LayerMask _defaultLayerMask;
-        [SerializeField] private Color _defaultPlayerMaterialColor;
 
-        [Header("Components")]
-        [SerializeField] private Material _playerMaterial;
+        [Header("VFX")]
+        [SerializeField] private VFXGhostTrail _ghostTrail;
 
         [Header("Controllers")]
         [SerializeField] private PlayerHealthController _healthController;
@@ -21,6 +18,7 @@ namespace Game
         [SerializeField] private PlayerMovementController _movementController;
         [SerializeField] private PlayerParryController _parryController;
         [SerializeField] private PlayerShootController _shootController;
+        [SerializeField] private InvincibilityController _invincibilityController;
 
         public bool IsDead => this._healthController.IsDead;
 
@@ -28,16 +26,8 @@ namespace Game
 
         private void OnValidate()
         {
-            this._defaultLayerMask = 1 << base.gameObject.layer;
-
             if (this._defaultPosition == Vector3.zero)
                 this._defaultPosition = base.transform.position;
-
-            if (this._playerMaterial == null)
-                this._playerMaterial = base.GetComponent<MeshRenderer>().material;
-
-            if (this._defaultPlayerMaterialColor == Color.clear)
-                this._defaultPlayerMaterialColor = this._playerMaterial.color;
 
             if (this._healthController == null)
                 this._healthController = this.GetComponent<PlayerHealthController>();
@@ -53,6 +43,9 @@ namespace Game
 
             if (this._shootController == null)
                 this._shootController = this.GetComponent<PlayerShootController>();
+
+            if (this._invincibilityController == null)
+                this._invincibilityController = this.GetComponent<InvincibilityController>();
         }
 
         public void OnEnemyKill(IEnemyConfig enemy)
@@ -86,12 +79,10 @@ namespace Game
                 this._experienceController.Init(gameManager);
                 this._parryController.Init(stats);
                 this._shootController.Init(gameManager.WeaponConfig);
-                this._movementController.Init(stats, 
-                                              () => this.ActivateInvincibility(gameManager.PlayerConfig.InvincibilityLayerMask), 
-                                              this.DeactivateInvincibility);
+                this._movementController.Init(stats);
 
-                this.ActivateInvincibility(gameManager.PlayerConfig.InvincibilityLayerMask,
-                                           gameManager.PlayerConfig.SpawnInvincibilityDuration);
+                // Player starts with invincibility
+                this._invincibilityController.ActivateInvincibility(gameManager.PlayerConfig.SpawnInvincibilityDuration);
             }
             base.gameObject.gameObject.SetActive(isActive);
         }
@@ -127,31 +118,6 @@ namespace Game
 
             if (base.gameObject.activeSelf)
                 base.StartCoroutine(CameraHandler.Instance.Shake());
-        }
-
-        public void ActivateInvincibility(LayerMask invincibilityLayerMask)
-        {
-            this._playerMaterial.color = Color.clear;
-            this.UpdateLayerMask(invincibilityLayerMask);
-        }
-
-        public void ActivateInvincibility(LayerMask invincibilityLayerMask, float spawnInvincibilityDuration)
-        {
-            this.ActivateInvincibility(invincibilityLayerMask);
-
-            base.CancelInvoke(nameof(this.DeactivateInvincibility));
-            base.Invoke(nameof(this.DeactivateInvincibility), spawnInvincibilityDuration);
-        }
-
-        public void DeactivateInvincibility()
-        {
-            this._playerMaterial.color = this._defaultPlayerMaterialColor;
-            this.UpdateLayerMask(this._defaultLayerMask);
-        }
-
-        private void UpdateLayerMask(LayerMask layerMask)
-        {
-            base.gameObject.layer = Mathf.RoundToInt(Mathf.Log(layerMask.value, 2));
         }
     }
 }

@@ -1,6 +1,7 @@
 using Game.Database;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using Utils;
 
@@ -11,6 +12,10 @@ namespace Game
     {
         [Header("Components")]
         [SerializeField, ReadOnly] private CharacterController _controller;
+
+        [Header("Events")]
+        [SerializeField] private UnityEvent _onDashStart;
+        [SerializeField] private UnityEvent _onDashEnd;
 
         private float MovementSpeed => this._stats.MovementSpeed;
         private float DashSpeed => this._stats.DashSpeed;
@@ -54,14 +59,14 @@ namespace Game
             this.Move(this._dashHandler.IsDashing ? this._dashHandler.DashMovement : this.NormalMovement);
         }
 
-        public void Init(CharacterStats stats, Action onDashStartListener, Action onDashEndListener)
+        public void Init(CharacterStats stats)
         {
             this._stats = stats;
 
             this._dashHandler = new(this.DashSpeed, this.DashDuration, this.DashCooldown)
             {
-                OnDashStart = onDashStartListener,
-                OnDashEnd = onDashEndListener
+                OnDashStart = this._onDashStart,
+                OnDashEnd = this._onDashEnd
             };
         }
 
