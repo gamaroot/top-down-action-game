@@ -52,7 +52,6 @@ namespace Game
         {
             this._dashHandler.OnUpdate();
 
-            Debug.LogWarning($"Direction: {this._move} -> Movement: {this.NormalMovement}");
             this.Move(this._dashHandler.IsDashing ? this._dashHandler.DashMovement : this.NormalMovement);
         }
 
