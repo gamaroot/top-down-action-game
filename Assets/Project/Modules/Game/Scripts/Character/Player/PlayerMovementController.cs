@@ -61,7 +61,7 @@ namespace Game
             this._dashHandler.OnUpdate();
 
             Vector3 currentPosition = this._controller.transform.position;
-            this._controller.transform.position = new Vector3(0.5f, currentPosition.y, currentPosition.z);
+            this._controller.transform.position = new Vector3(currentPosition.x, this._fixedPosY, currentPosition.z);
 
             this.Move(this._dashHandler.IsDashing ? this._dashHandler.DashMovement : this.NormalMovement);
         }
@@ -81,9 +81,6 @@ namespace Game
         {
             if (point == Vector3.zero)
                 return;
-
-            Vector3 currentPosition = base.transform.position;
-            this._controller.transform.position = new Vector3(currentPosition.x, this._fixedPosY, currentPosition.z);
 
             this._controller.Move(point);
         }
