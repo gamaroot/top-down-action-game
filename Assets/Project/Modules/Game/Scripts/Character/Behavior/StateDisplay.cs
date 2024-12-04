@@ -16,6 +16,8 @@ public partial class StateDisplayAction : Action
 
     private bool _previousIsTargetOnSight;
 
+    private float _lastReactionTime;
+
     protected override Status OnStart()
     {
         return Status.Running;
@@ -24,12 +26,14 @@ public partial class StateDisplayAction : Action
     protected override Status OnUpdate()
     {
         bool hasStateChanged = this.IsTargetOnSight.Value != this._previousIsTargetOnSight;
-        if (hasStateChanged)
+        if (hasStateChanged && Time.time - this._lastReactionTime > this.Seconds)
         {
             SpawnTypeOther spawnType = this.IsTargetOnSight.Value ? SpawnTypeOther.EXCLAMATION_MARK : SpawnTypeOther.QUESTION_MARK;
             UIFollower reactionUI = SpawnablePool.SpawnOther<UIFollower>(spawnType, this.Seconds);
             reactionUI.SetTarget(this.Agent.Value.transform);
             reactionUI.gameObject.SetActive(true);
+
+            this._lastReactionTime = Time.time;
         }
         this._previousIsTargetOnSight = this.IsTargetOnSight.Value;
 
