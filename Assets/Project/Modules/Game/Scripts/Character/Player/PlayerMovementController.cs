@@ -52,6 +52,7 @@ namespace Game
         {
             this._dashHandler.OnUpdate();
 
+            Debug.LogWarning($"Direction: {this._move} -> Movement: {this.NormalMovement}");
             this.Move(this._dashHandler.IsDashing ? this._dashHandler.DashMovement : this.NormalMovement);
         }
 
@@ -71,6 +72,7 @@ namespace Game
             if (point == Vector3.zero)
                 return;
 
+            this._rigidbody.linearVelocity = Vector3.zero;
             this._rigidbody.MovePosition(this._rigidbody.position + point);
         }
 
