@@ -20,6 +20,9 @@ namespace Game
         [SerializeField, ReadOnly] private WeaponConfigDatabase _weaponConfig;
         [SerializeField, ReadOnly] private MapConfigDatabase _mapConfig;
 
+        public static Action<SpawnTypeEnemy, float, float> OnEnemySpawnListener;
+        public static Action<SpawnTypeEnemy, float, float> OnEnemyHealthUpdateListener;
+
         public Action<int, int> OnPlayerHealthUpdateListener { get; set; }
         public Action<float, float> OnPlayerXpUpdateListener { get; set; }
         public Action<int> OnPlayerLevelUpdateListener { get; set; }
@@ -158,7 +161,6 @@ namespace Game
 
             // Generate map
             this._rooms = new MapGenerator().Generate(this._mapConfig.Config, base.transform);
-            
             this._gameStateHandler.OnGameStart();
             Statistics.Instance.OnGameStart();
         }

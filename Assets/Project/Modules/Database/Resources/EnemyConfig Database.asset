@@ -27,7 +27,7 @@ MonoBehaviour:
     <ObstacleLayer>k__BackingField:
       serializedVersion: 2
       m_Bits: 8
-    <DetectionRadius>k__BackingField: 10
+    <DetectionRadius>k__BackingField: 20
   - <Stats>k__BackingField:
       MaxHealth: 2
       MovementSpeed: 9
@@ -42,7 +42,7 @@ MonoBehaviour:
     <ObstacleLayer>k__BackingField:
       serializedVersion: 2
       m_Bits: 8
-    <DetectionRadius>k__BackingField: 10
+    <DetectionRadius>k__BackingField: 20
   - <Stats>k__BackingField:
       MaxHealth: 20
       MovementSpeed: 10
@@ -57,4 +57,4 @@ MonoBehaviour:
     <ObstacleLayer>k__BackingField:
       serializedVersion: 2
       m_Bits: 8
-    <DetectionRadius>k__BackingField: 50
+    <DetectionRadius>k__BackingField: 60

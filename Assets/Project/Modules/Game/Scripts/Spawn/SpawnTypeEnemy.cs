@@ -4,6 +4,6 @@ namespace Game
     {
         KAMIKAZE,
         SHOOTER_PLASMA,
-        BOSS_0,
+        BOSS,
     }
 }

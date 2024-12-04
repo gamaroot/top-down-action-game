@@ -1291,6 +1291,8 @@ MonoBehaviour:
   _txtLevelBack: {fileID: 656975725}
   _txtLevelFront: {fileID: 888527378}
   _btnSettingsAnimator: {fileID: 3369064603206140804}
+  _bossHpBarAnimator: {fileID: 3369064603206140805}
+  _bossHpSlider: {fileID: 3369064603206140806}
 --- !u!1 &1511182784
 GameObject:
   m_ObjectHideFlags: 0
@@ -2161,6 +2163,24 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 3369064603206140802}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &3369064603206140805 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5044022324297373373, guid: c400cbe1b4f5c1a4a906e318865705fd,
+    type: 3}
+  m_PrefabInstance: {fileID: 3369064603206140802}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3369064603206140806 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1653421203986491027, guid: c400cbe1b4f5c1a4a906e318865705fd,
+    type: 3}
+  m_PrefabInstance: {fileID: 3369064603206140802}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

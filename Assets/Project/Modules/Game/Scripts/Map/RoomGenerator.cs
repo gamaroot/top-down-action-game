@@ -1,4 +1,5 @@
 using Game;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -40,12 +41,14 @@ public class RoomGenerator : MonoBehaviour
         Destroy(this);
 
         return base.gameObject.GetComponent<Room>()
-                                .Init(data.Id,
-                                      this.Type,
-                                      existingDoors.ToArray(), 
-                                      this.CreateWaypoints(data.SquaredSize), 
-                                      this._parent, 
-                                      new SpawnerGenerator().GenerateSpawnConfig(data));
+                                .Init(new RoomInitData { 
+                                    Id = data.Id,
+                                    Type = this.Type,
+                                    Doors = existingDoors.ToArray(),
+                                    Waypoints = this.CreateWaypoints(data.SquaredSize),
+                                    Content = this._parent,
+                                    SpawnConfig = new SpawnerGenerator().GenerateSpawnConfig(data)
+                                });
     }
 
     private List<GameObject> CreateWaypoints(float roomSize)

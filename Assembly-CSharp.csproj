@@ -528,7 +528,6 @@
     <None Include="Assets\SampleAssets\VFX\2DxFX\ExtraShaders\Shader\Holographic.shader" />
     <None Include="Assets\SampleAssets\VFX\2DxFX\Resources\_2dxFX_Sepia.shader" />
     <None Include="Assets\SampleAssets\VFX\SineVFX\PostProcessingV2\Shaders\Builtins\CopyStd.shader" />
-    <None Include="Assets\AddressableAssetsData\link.xml" />
     <None Include="Assets\SampleAssets\VFX\SineVFX\Volumetric3DLasers\Resources\Shaders\LaserLayerOpaqueSolidv2.shader" />
     <None Include="Assets\SampleAssets\VFX\2DxFX\ExtraShaders\Shader\DoodleDraw.shader" />
     <None Include="Assets\SampleAssets\VFX\2DxFX\ExtraShaders\Shader\ColorTint.shader" />

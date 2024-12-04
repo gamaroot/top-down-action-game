@@ -17,7 +17,7 @@ namespace Game
             this._defaultLayerMask = 1 << base.gameObject.layer;
 
             if (this._playerMaterial == null)
-                this._playerMaterial = base.GetComponent<MeshRenderer>().material;
+                this._playerMaterial = base.GetComponent<MeshRenderer>().sharedMaterial;
 
             if (this._defaultPlayerMaterialColor == Color.clear)
                 this._defaultPlayerMaterialColor = this._playerMaterial.color;

@@ -23,7 +23,9 @@ namespace Game
         private GameObject[] _doors;
         private List<GameObject> _content;
         private List<GameObject> _waypoints;
-        private Tuple<SpawnConfig<SpawnTypeEnemy>[], SpawnConfig<SpawnTypeTrap>[], SpawnConfig<SpawnTypePickup>[]> _spawnConfig;
+        private Tuple<SpawnConfig<SpawnTypeEnemy>[],
+                      SpawnConfig<SpawnTypeTrap>[],
+                      SpawnConfig<SpawnTypePickup>[]> _spawnConfig;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -57,21 +59,21 @@ namespace Game
 
                 this.IsPlayerHere = false;
                 Debug.Log($"Player left room #{this.Id}");
+
                 this.HideIfNotVisited();
             }
         }
 
-        public Room Init(int id, RoomType type, GameObject[] doors, List<GameObject> waypoints, GameObject content,
-                         Tuple<SpawnConfig<SpawnTypeEnemy>[], SpawnConfig<SpawnTypeTrap>[], SpawnConfig<SpawnTypePickup>[]> spawnConfig)
+        public Room Init(RoomInitData data)
         {
-            this._content = new List<GameObject> { content };
+            this._content = new List<GameObject> { data.Content };
 
-            this.Id = id;
-            this.Type = type;
-            this._doors = doors;
+            this.Id = data.Id;
+            this.Type = data.Type;
+            this._doors = data.Doors;
 
-            this._waypoints = waypoints;
-            this._spawnConfig = spawnConfig;
+            this._waypoints = data.Waypoints;
+            this._spawnConfig = data.SpawnConfig;
 
             return this;
         }

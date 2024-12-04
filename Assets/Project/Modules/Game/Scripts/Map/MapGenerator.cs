@@ -1,4 +1,5 @@
 using Game.Database;
+using System;
 using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace Game
         {
             this.DestroyMap(parent);
 
-            int totalRooms = Random.Range(config.MinRooms, config.MaxRooms);
+            int totalRooms = UnityEngine.Random.Range(config.MinRooms, config.MaxRooms);
             var roomsData = new RoomData[totalRooms];
             var possibleRoomConfigs = new List<int>(config.RoomConfigs.Count);
             bool hasGeneratedBossRoom = false;
@@ -39,11 +40,14 @@ namespace Game
                 if (roomConfig.IsUnique)
                     possibleRoomConfigs.Remove(config.RoomConfigs.IndexOf(roomConfig));
 
-                roomsData[index] = this.CreateRoomData(index, roomConfig, currentPosition, config);
+                roomsData[index] = this.CreateRoomData(index, 
+                                                       roomConfig,
+                                                       currentPosition,
+                                                       config);
                 this._occupiedPositions[currentPosition] = index;
 
                 currentPosition += availableDirections.Count > 0
-                                        ? availableDirections[Random.Range(0, availableDirections.Count)] * config.RoomSquaredSize
+                                        ? availableDirections[UnityEngine.Random.Range(0, availableDirections.Count)] * config.RoomSquaredSize
                                         : Vector2.zero;
 
                 this.UpdateAvailableConfigs(config, possibleRoomConfigs, index);
@@ -86,10 +90,10 @@ namespace Game
                 WallHeight = config.RoomWallHeight,
                 Position = position,
                 NeighborsID = new int[4] { -1, -1, -1, -1 },
-                TotalPickups = Random.Range(roomConfig.MinPickupItems, roomConfig.MaxPickupItems),
-                TotalEnemies = Random.Range(roomConfig.MinEnemies, roomConfig.MaxEnemies),
+                TotalPickups = UnityEngine.Random.Range(roomConfig.MinPickupItems, roomConfig.MaxPickupItems),
+                TotalEnemies = UnityEngine.Random.Range(roomConfig.MinEnemies, roomConfig.MaxEnemies),
                 EnemyPool = roomConfig.EnemyPool,
-                TotalTraps = Random.Range(roomConfig.MinTraps, roomConfig.MaxTraps),
+                TotalTraps = UnityEngine.Random.Range(roomConfig.MinTraps, roomConfig.MaxTraps),
                 TrapPool = roomConfig.TrapPool,
                 PickupsPool = roomConfig.PickupItemsPool
             };
@@ -116,7 +120,7 @@ namespace Game
                 return config.RoomConfigs.Find(rc => rc.Prefab.Type == RoomType.BOSS);
             }
 
-            int randomIndex = Random.Range(0, possibleConfigs.Count);
+            int randomIndex = UnityEngine.Random.Range(0, possibleConfigs.Count);
             return config.RoomConfigs[possibleConfigs[randomIndex]];
         }
 

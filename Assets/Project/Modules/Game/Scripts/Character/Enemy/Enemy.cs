@@ -1,6 +1,7 @@
 using Game.Database;
 using UnityEngine;
 using Utils;
+using static UnityEngine.Rendering.STP;
 
 namespace Game
 {
@@ -25,11 +26,31 @@ namespace Game
                 this._healthController = this.GetComponentInChildren<EnemyHealthController>();
         }
 
+        private void OnEnable()
+        {
+            GameManager.OnEnemySpawnListener(this._type,
+                                             this._healthController.MaxHealth,
+                                             this._healthController.CurrentHealth);
+        }
+
         public void Init(IGameManager gameManager)
         {
             IEnemyConfig config = gameManager.EnemyConfig[(int)this._type];
             this._healthController.Init(config, config.Type == SpawnTypeEnemy.KAMIKAZE);
+            this._healthController.Listener.OnRecoverHealth = () =>
+            {
+                GameManager.OnEnemyHealthUpdateListener(config.Type,
+                                                        this._healthController.MaxHealth,
+                                                        this._healthController.CurrentHealth);
+            };
+            this._healthController.Listener.OnLoseHealth = () =>
+            {
+                GameManager.OnEnemyHealthUpdateListener(config.Type,
+                                                        this._healthController.MaxHealth,
+                                                        this._healthController.CurrentHealth);
+            };
             this._healthController.Listener.OnDeath = () => gameManager.OnEnemyKill(config);
+
 
             this._weaponController?.Init(gameManager.WeaponConfig);
         }

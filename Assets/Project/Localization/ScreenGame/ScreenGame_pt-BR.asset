@@ -26,6 +26,10 @@ MonoBehaviour:
     m_Localized: "N\xEDvel {0}"
     m_Metadata:
       m_Items: []
+  - m_Id: 23680329884397568
+    m_Localized: CHEFE
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using ScreenNavigation;
 using System;
 using TMPro;
@@ -20,6 +21,9 @@ namespace Game
         [SerializeField] private TextMeshProUGUI _txtLevelFront;
 
         [SerializeField] private Animator _btnSettingsAnimator;
+        [SerializeField] private Animator _bossHpBarAnimator;
+
+        [SerializeField] private Slider _bossHpSlider;
 
         private IGameManager _gameManager;
         private string _baseLevelText;
@@ -33,9 +37,12 @@ namespace Game
 
             this._gameManager = new CrossSceneReference().GetObjectByType<GameManager>();
 
-            this._gameManager.OnPlayerHealthUpdateListener += this.OnHealthUpdated;
-            this._gameManager.OnPlayerXpUpdateListener += this.OnXpUpdated;
-            this._gameManager.OnPlayerLevelUpdateListener += this.OnLevelUpdated;
+            this._gameManager.OnPlayerHealthUpdateListener = this.OnHealthUpdated;
+            this._gameManager.OnPlayerXpUpdateListener = this.OnXpUpdated;
+            this._gameManager.OnPlayerLevelUpdateListener = this.OnLevelUpdated;
+
+            GameManager.OnEnemySpawnListener = this.OnEnemySpawnListener;
+            GameManager.OnEnemyHealthUpdateListener = this.OnEnemyHealthUpdated;
 
             this._baseLevelText = LocalizationSettings.StringDatabase.GetLocalizedString(LocalizationKeys.SCREEN_GAME, 
                                                                                          LocalizationKeys.TXT_LEVEL);
@@ -93,6 +100,33 @@ namespace Game
                 SceneNavigator.Instance.UnloadSceneAsync(SceneID.INGAME_SETTINGS);
 
             this._gameManager.SetInputEnabled(!visible);
+        }
+
+        private void OnEnemySpawnListener(SpawnTypeEnemy type, float maxHealth, float health)
+        {
+            if (type != SpawnTypeEnemy.BOSS)
+                return;
+
+            this._bossHpSlider.value = 0;
+            this._bossHpSlider.maxValue = maxHealth;
+
+            this.UpdateBossHpDisplay(health);
+        }
+
+        private void OnEnemyHealthUpdated(SpawnTypeEnemy type, float maxHealth, float health)
+        {
+            if (type != SpawnTypeEnemy.BOSS)
+                return;
+            
+            this.UpdateBossHpDisplay(health);
+        }
+
+        private void UpdateBossHpDisplay(float health)
+        {
+            this._bossHpSlider.DOKill();
+            this._bossHpSlider.DOValue(health, 1f);
+
+            this._bossHpBarAnimator.SetBool(AnimationKeys.VISIBLE, health > 0);
         }
     }
 }

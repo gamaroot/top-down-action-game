@@ -7,11 +7,10 @@ using Utils;
 
 namespace Game
 {
-    [RequireComponent(typeof(CharacterController))]
     public class PlayerMovementController : MovementController
     {
         [Header("Components")]
-        [SerializeField, ReadOnly] private CharacterController _controller;
+        [SerializeField] private Rigidbody _rigidbody;
 
         [Header("Events")]
         [SerializeField] private UnityEvent _onDashStart;
@@ -21,7 +20,7 @@ namespace Game
         private float DashSpeed => this._stats.DashSpeed;
         private float DashDuration => this._stats.DashDuration;
         private float DashCooldown => this._stats.DashCooldown;
-        private Vector3 NormalMovement => this.MovementSpeed * Time.deltaTime * new Vector3(this._move.x, 0, this._move.y);
+        private Vector3 NormalMovement => this.MovementSpeed * Time.fixedDeltaTime * new Vector3(this._move.x, 0, this._move.y);
 
         private Vector2 _move;
         private InputController _inputs;
@@ -30,8 +29,7 @@ namespace Game
 
         private void OnValidate()
         {
-            if (this._controller == null)
-                this._controller = base.GetComponent<CharacterController>();
+            this._rigidbody ??= base.GetComponent<Rigidbody>();
         }
 
         private void Awake()
@@ -52,7 +50,7 @@ namespace Game
             this._inputs.Disable();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             this._dashHandler.OnUpdate();
 
@@ -75,7 +73,7 @@ namespace Game
             if (point == Vector3.zero)
                 return;
 
-            this._controller.Move(point);
+            this._rigidbody.MovePosition(this._rigidbody.position + point);
         }
 
         private void OnDashPressed()

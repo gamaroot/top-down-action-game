@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!-- Generated file, do not modify, your changes will be overwritten (use AssetPostprocessor.OnGeneratedCSProject) -->
   <PropertyGroup>
@@ -65,6 +65,7 @@
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\InvincibilityController.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Persistance\Statistics\Statistics.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Persistance\Statistics\StatisticsData.cs" />
+    <Compile Include="Assets\Project\Modules\Game\Scripts\Map\RoomInitData.cs" />
     <Compile Include="Assets\Project\Modules\Database\Scripts\Enemy\EnenyConfigDatabase.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Spawn\SpawnablePool.cs" />
     <Compile Include="Assets\Project\Modules\Game\Scripts\Character\Behavior\EnemyState.cs" />
