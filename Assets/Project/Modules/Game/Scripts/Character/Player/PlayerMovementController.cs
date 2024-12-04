@@ -1,9 +1,7 @@
 using Game.Database;
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using Utils;
 
 namespace Game
 {
