@@ -84,7 +84,7 @@ namespace Game
                 // Player starts with invincibility
                 this._invincibilityController.ActivateInvincibility(gameManager.PlayerConfig.SpawnInvincibilityDuration);
             }
-            base.gameObject.gameObject.SetActive(isActive);
+            base.gameObject.SetActive(isActive);
         }
 
         public void ResetToDefaultPosition()

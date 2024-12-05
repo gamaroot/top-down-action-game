@@ -8,6 +8,8 @@ namespace ScreenNavigation
     {
         private readonly SceneTransitionAnimator transitionAnimator = new();
 
+        public bool IsSceneTransitioning;
+
         #region Observe Events
         public void ExecuteOnNextShowAnimationComplete(Action action)
         {
@@ -107,7 +109,9 @@ namespace ScreenNavigation
             SceneContext screenContext = base.GetScreenContext(data.ID);
             if (this.IsScreenLoading(screenContext))
                 return null;
-            
+
+            IsSceneTransitioning = true;
+
             screenContext.ExecuteOnShowProcessStart?.Invoke();
 
             this.PrepareOpeningScene(data, clearOldSceneParams);
@@ -155,6 +159,8 @@ namespace ScreenNavigation
                 ID = sceneID,
                 SceneState = SceneState.LOADED
             });
+
+            IsSceneTransitioning = false;
         }
 
         protected void StartHideScreenProcess(SceneID sceneID)
@@ -181,6 +187,8 @@ namespace ScreenNavigation
                 IsIntro = false,
                 OnComplete = () => this.OnHideAnimationComplete(scene)
             });
+            // Destroying EventSystem to prevent input on the scene that is being hidden
+            MonoBehaviour.Destroy(scene.GetRootGameObjects()[0]);
         }
 
         private void OnHideAnimationComplete(Scene scene)

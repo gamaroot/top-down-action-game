@@ -324,7 +324,7 @@
                     "name": "Submit",
                     "type": "Button",
                     "id": "9f420f5d-18da-4d5a-8091-88fb522ffeed",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -411,7 +411,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Start",
+                    "name": "Pause",
                     "type": "Button",
                     "id": "f1855a87-af32-49bc-b584-56c484b2f04e",
                     "expectedControlType": "",
@@ -864,11 +864,11 @@
                 {
                     "name": "",
                     "id": "4deb2482-3bb8-4b89-888e-20c61eae607f",
-                    "path": "<Keyboard>/enter",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Start",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -879,7 +879,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Start",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

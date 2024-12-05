@@ -1,6 +1,5 @@
 using DG.Tweening;
 using ScreenNavigation;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
@@ -25,6 +24,8 @@ namespace Game
 
         [SerializeField] private Slider _bossHpSlider;
 
+        [SerializeField] private GameObject _eventSystem;
+
         private IGameManager _gameManager;
         private string _baseLevelText;
 
@@ -33,7 +34,7 @@ namespace Game
         private void Awake()
         {
             this._input = new InputController();
-            this._input.UI.Start.performed += _ => this.OnMenuButtonClick();
+            this._input.UI.Pause.performed += _ => this.OnMenuButtonClick();
 
             this._gameManager = new CrossSceneReference().GetObjectByType<GameManager>();
 
@@ -91,6 +92,9 @@ namespace Game
 
         public void OnMenuButtonClick()
         {
+            if (SceneNavigator.Instance.IsSceneTransitioning)
+                return;
+
             bool visible = !this._btnSettingsAnimator.GetBool(AnimationKeys.VISIBLE);
             this._btnSettingsAnimator.SetBool(AnimationKeys.VISIBLE, visible);
 
@@ -99,6 +103,7 @@ namespace Game
             else
                 SceneNavigator.Instance.UnloadSceneAsync(SceneID.INGAME_SETTINGS);
 
+            this._eventSystem.SetActive(!visible);
             this._gameManager.SetInputEnabled(!visible);
         }
 

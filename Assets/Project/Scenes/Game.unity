@@ -1293,6 +1293,7 @@ MonoBehaviour:
   _btnSettingsAnimator: {fileID: 3369064603206140804}
   _bossHpBarAnimator: {fileID: 3369064603206140805}
   _bossHpSlider: {fileID: 3369064603206140806}
+  _eventSystem: {fileID: 1626539728}
 --- !u!1 &1511182784
 GameObject:
   m_ObjectHideFlags: 0

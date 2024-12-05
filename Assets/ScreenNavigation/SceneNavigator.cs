@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,22 +22,24 @@ namespace ScreenNavigation
 
         public AsyncOperation LoadAdditiveSceneAsync(SceneID closingSceneID, SceneID openingSceneID, Action onComplete = null, bool clearOldSceneParams = false)
         {
-            this.UnloadSceneAsync(closingSceneID);
-            return this.LoadAdditiveSceneAsync(openingSceneID, onComplete, clearOldSceneParams);
-        }
+            if (SceneNavigator.Instance.IsSceneTransitioning)
+                return null;
 
-        public AsyncOperation LoadAdditiveSceneAsync(SceneID sceneID, bool clearOldSceneParams = false)
-        {
+            this.UnloadSceneAsync(closingSceneID);
+
+            base.ExecuteOnShowAnimationComplete(openingSceneID, onComplete);
+
             return base.StartShowScreenProcess(new SceneLoadData
             {
-                ID = sceneID,
+                ID = openingSceneID,
                 Mode = LoadSceneMode.Additive
             }, clearOldSceneParams);
         }
 
-        public AsyncOperation LoadAdditiveSceneAsync(SceneID sceneID, Action onComplete, bool clearOldSceneParams = false)
+        public AsyncOperation LoadAdditiveSceneAsync(SceneID sceneID, bool clearOldSceneParams = false)
         {
-            base.ExecuteOnShowAnimationComplete(sceneID, onComplete);
+            if (SceneNavigator.Instance.IsSceneTransitioning)
+                return null;
 
             return base.StartShowScreenProcess(new SceneLoadData
             {
@@ -47,12 +50,9 @@ namespace ScreenNavigation
 
         public void UnloadSceneAsync(SceneID sceneID)
         {
-            base.StartHideScreenProcess(sceneID);
-        }
+            if (SceneNavigator.Instance.IsSceneTransitioning)
+                return;
 
-        public void UnloadSceneAsync(SceneID sceneID, Action onComplete)
-        {
-            base.ExecuteOnSceneUnload(sceneID, onComplete);
             base.StartHideScreenProcess(sceneID);
         }
     }
