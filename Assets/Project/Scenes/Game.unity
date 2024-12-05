@@ -1115,6 +1115,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1422891354}
   - component: {fileID: 1422891355}
+  - component: {fileID: 1422891356}
+  - component: {fileID: 1422891357}
   m_Layer: 5
   m_Name: Map Screen
   m_TagString: Untagged
@@ -1154,7 +1156,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc470253aab29f34fb7ca2ff4e99c102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mapAnimator: {fileID: 1871117748}
+  _mapAnimator: {fileID: 1422891356}
+--- !u!95 &1422891356
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422891353}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f75f62e2cceaaf240ac044aa6cd5e66f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1422891357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422891353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc556cc073b6dbc419833890828ea94f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _txtEnemiesDefeated: {fileID: 303007022}
+  _txtHighestCombo: {fileID: 535380473}
+  _txtTimeElapsed: {fileID: 1511182786}
 --- !u!1 &1454760027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1751,8 +1790,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1871117747}
-  - component: {fileID: 1871117749}
-  - component: {fileID: 1871117748}
   m_Layer: 5
   m_Name: Map View
   m_TagString: Untagged
@@ -1783,43 +1820,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &1871117748
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871117746}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f75f62e2cceaaf240ac044aa6cd5e66f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1871117749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871117746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc556cc073b6dbc419833890828ea94f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _txtEnemiesDefeated: {fileID: 303007022}
-  _txtHighestCombo: {fileID: 535380473}
-  _txtTimeElapsed: {fileID: 1511182786}
 --- !u!1 &2102914024
 GameObject:
   m_ObjectHideFlags: 0

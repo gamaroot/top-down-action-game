@@ -1,4 +1,3 @@
-using System;
 using Unity.Cinemachine;
 using UnityEngine;
 using Utils;
@@ -8,8 +7,6 @@ namespace Game
     public class MapScreenEvents : MonoBehaviour
     {
         [SerializeField] private Animator _mapAnimator;
-
-        private bool IsMapVisible => this._mapAnimator.gameObject.activeSelf;
 
         private InputController _input;
 
@@ -35,14 +32,10 @@ namespace Game
             if (this.CanTriggerMap())
                 return;
 
-            bool isMapVisible = !this.IsMapVisible;
-            this.SwitchCamera(isMapVisible);
-
-            if (isMapVisible)
-            {
-                this._mapAnimator.gameObject.SetActive(true);
-            }
+            bool isMapVisible = !this._mapAnimator.GetBool(AnimationKeys.VISIBLE);
             this._mapAnimator.SetBool(AnimationKeys.VISIBLE, isMapVisible);
+
+            this.SwitchCamera(isMapVisible);
         }
 
         private bool CanTriggerMap()
