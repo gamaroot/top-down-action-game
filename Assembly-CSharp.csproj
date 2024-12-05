@@ -139,7 +139,6 @@
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_Lightning.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_EdgeColor.cs" />
     <Compile Include="Assets\SampleAssets\VFX\SineVFX\Volumetric3DLasers\Scripts\UIControllerV3D.cs" />
-    <Compile Include="Assets\Project\Materials\Player_health.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\2dxfx_AL\_2dxFX_AL_GoldFX.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\2dxfx_AL\_2dxFX_AL_GrayScale.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\2dxfx_AL\_2dxFX_AL_ColorChange.cs" />
@@ -160,7 +159,6 @@
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_GrayScale.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_LightningBolt.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\2dxfx_AL\_2dxFX_AL_PlasmaRainbow.cs" />
-    <Compile Include="Assets\Project\Materials\Spike_conditions.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_Hologram2.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\2dxfx_AL\_2dxFX_AL_Color.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_PixelDie.cs" />
@@ -192,7 +190,6 @@
     <Compile Include="Assets\SampleAssets\VFX\SineVFX\Volumetric3DLasers\Scripts\SmartWaveParticlesControllerV3D.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\2dxfx_AL\_2dxFX_AL_PlasmaShield.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\2dxfx_AL\_2dxFX_AL_PixelDie.cs" />
-    <Compile Include="Assets\Project\Materials\Chain_Movement.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_NewTeleportation2.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\_2dxFX_Pixel8bitsGB.cs" />
     <Compile Include="Assets\SampleAssets\VFX\2DxFX\Scripts\2dxfx_AL\_2dxFX_AL_Pixel8bitsGB.cs" />
