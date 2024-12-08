@@ -170,7 +170,7 @@ PlayerSettings:
     Standalone: com.pixelpurge.pixelbrawl
     iPhone: com.pixelpurge.topdownactiongame
   buildNumber:
-    Standalone: 0
+    Standalone: 3.0.0
     VisionOS: 0
     iPhone: 0
     tvOS: 0
